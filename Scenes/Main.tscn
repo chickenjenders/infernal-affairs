@@ -1,0 +1,209 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdkq2iagev6i8"]
+
+[ext_resource type="Texture2D" uid="uid://cad7mpmp34erb" path="res://Assets/Screenshot 2025-09-24 at 8.36.11 PM.png" id="1_kln2b"]
+[ext_resource type="Script" uid="uid://dupimjp1ubarr" path="res://main.gd" id="1_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://jgvpn3573022" path="res://Assets/5809905011543238858-128.png" id="3_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://cj3i07qp0yp31" path="res://Assets/standard.png" id="3_rgh2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1gob"]
+bg_color = Color(0.929412, 0.929412, 0.929412, 1)
+
+[sub_resource type="Theme" id="Theme_jw32o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50glp"]
+texture = ExtResource("1_kln2b")
+
+[sub_resource type="Theme" id="Theme_vy5pj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+script = ExtResource("1_pbw6q")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_right = 1598.0
+offset_bottom = 900.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v1gob")
+
+[node name="SoulCard" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 45.0
+offset_right = 959.0
+offset_bottom = 476.0
+pivot_offset = Vector2(375, 0)
+theme = SubResource("Theme_jw32o")
+
+[node name="Panel" type="Panel" parent="SoulCard"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 11.0
+offset_right = 1141.0
+offset_bottom = 618.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_50glp")
+
+[node name="Portrait" type="TextureRect" parent="SoulCard"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 31.0
+offset_right = 278.0
+offset_bottom = 281.0
+theme = SubResource("Theme_vy5pj")
+
+[node name="SoulPortrait" type="TextureRect" parent="SoulCard/Portrait"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 23.0
+offset_right = 426.0
+offset_bottom = 376.0
+texture = ExtResource("3_rgh2o")
+expand_mode = 1
+
+[node name="NameLabel" type="Label" parent="SoulCard"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 9.0
+offset_right = 404.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Soul Name"
+horizontal_alignment = 1
+
+[node name="DeathCause" type="Label" parent="SoulCard"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 93.0
+offset_right = 1092.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "-How did they die"
+
+[node name="Offenses" type="RichTextLabel" parent="SoulCard"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 276.0
+offset_right = 1094.0
+offset_bottom = 404.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "-Things they did wrong"
+
+[node name="Justification" type="RichTextLabel" parent="SoulCard"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 457.0
+offset_right = 1094.0
+offset_bottom = 573.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "-Why they are in Hell"
+
+[node name="DepartmentFolders" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 265.0
+offset_top = 671.0
+offset_right = 1340.0
+offset_bottom = 817.0
+
+[node name="DemonRelations" type="Button" parent="DepartmentFolders"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 29.0
+offset_right = 168.0
+offset_bottom = 143.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Demon
+Relations"
+flat = true
+
+[node name="SoulsAcquisitions" type="Button" parent="DepartmentFolders"]
+layout_mode = 2
+offset_left = 678.0
+offset_top = 24.0
+offset_right = 841.0
+offset_bottom = 137.0
+theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Souls and
+Acquisitions"
+flat = true
+
+[node name="MortalAffairs" type="Button" parent="DepartmentFolders"]
+layout_mode = 2
+offset_left = 455.0
+offset_top = 23.0
+offset_right = 618.0
+offset_bottom = 138.0
+theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mortal 
+Affairs"
+flat = true
+
+[node name="OperationsCompliance" type="Button" parent="DepartmentFolders"]
+layout_mode = 2
+offset_left = 903.0
+offset_top = 23.0
+offset_right = 1070.0
+offset_bottom = 141.0
+theme_override_colors/icon_pressed_color = Color(2.06962e-06, 0.680176, 0.135599, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Operations
+and
+Compliance"
+flat = true
+
+[node name="AgonyDespair" type="Button" parent="DepartmentFolders"]
+layout_mode = 2
+offset_left = 232.0
+offset_top = 27.0
+offset_right = 391.0
+offset_bottom = 143.0
+theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Agony and
+Despair"
+flat = true
+
+[node name="QuotaLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1366.0
+offset_top = 58.0
+offset_right = 1563.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "0/8 Quota Met"
+
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1379.0
+offset_top = 722.0
+offset_right = 1463.0
+offset_bottom = 802.0
+theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
+icon = ExtResource("3_pbw6q")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="DepartmentFolders/DemonRelations" to="." method="_on_demon_relations_pressed"]
+[connection signal="pressed" from="DepartmentFolders/SoulsAcquisitions" to="." method="_on_souls_acquisitions_pressed"]
+[connection signal="pressed" from="DepartmentFolders/MortalAffairs" to="." method="_on_motral_affairs_pressed"]
+[connection signal="pressed" from="DepartmentFolders/OperationsCompliance" to="." method="_on_operations_compliance_pressed"]
+[connection signal="pressed" from="DepartmentFolders/AgonyDespair" to="." method="_on_agony_despair_pressed"]
