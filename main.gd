@@ -15,7 +15,7 @@ var souls = [
 		"name": "Patricia Lee",
 		"portrait": preload("res://Assets/patricia.png"),
 		"death": "Heart attack during tax season",
-		"offenses": "Cooked the books for 10 years",
+		"offenses": "Cooked the books for 10 years, almond mom, made her kids give her credit on school projects she helped with",
 		"justification": "Signed a deal to never get caught",
 		"correct_department": "Souls and Acquisitions"
 	},
