@@ -1,15 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5xi5jndg8g6v"]
+[gd_scene load_steps=3 format=3 uid="uid://dpb4afkuc0i7q"]
 
-[ext_resource type="Script" uid="uid://dvldr5o4w742y" path="res://Scripts/bad_ending.gd" id="1_lrv5w"]
+[ext_resource type="Script" uid="uid://ck2ye71656qvg" path="res://Scripts/good_ending.gd" id="1_lrv5w"]
 [ext_resource type="Texture2D" uid="uid://bxsv81g1kub4o" path="res://Assets/bad_ending.png" id="1_o0myi"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("accuracy_label")]
+[node name="BadEnding" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_lrv5w")
-accuracy_label = NodePath("Panel/AccuracyScore")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
