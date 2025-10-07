@@ -107,7 +107,7 @@ func _on_department_pressed(department_name):
 
 func _on_submit_pressed():
 	if selected_department == "":
-		print("No  selected!")
+		print("No department selected!")
 		return
 		
 	# Increment quota on every submission (regardless of correctness)
@@ -115,9 +115,10 @@ func _on_submit_pressed():
 	
 	var soul = souls[current_soul_index]
 	if selected_department == soul["correct_department"]:
-		print("Submissions: %d/%d | Correct: %d" % [quota_met, daily_quota, correct_submissions])
+		correct_submissions += 1
+		print("Correct! Submissions: %d/%d | Correct: %d" % [quota_met, daily_quota, correct_submissions])
 	else:
-		print("Submissions: %d/%d | Correct: %d" % [soul["correct_department"], quota_met, daily_quota, correct_submissions])
+		print("Wrong! Expected: %s | Submissions: %d/%d | Correct: %d" % [soul["correct_department"], quota_met, daily_quota, correct_submissions])
 	
 	update_quota_label()
 	
@@ -126,4 +127,22 @@ func _on_submit_pressed():
 	if current_soul_index < souls.size():
 		load_soul(current_soul_index)
 	else:
-		print("Day over! Final Score: %d correct out of %d submissions" % [correct_submissions, quota_met])
+		end_game()
+
+func end_game():
+	var score_percentage = float(correct_submissions) / float(souls.size()) * 100
+	print("Day over! Final Score: %d correct out of %d submissions (%.1f%%)" % [correct_submissions, souls.size(), score_percentage])
+	
+	# Store score in global data
+	GlobalData.final_score_percentage = score_percentage
+	print("=== SCORE STORED IN GLOBALDATA ===")
+	print("Setting GlobalData.final_score_percentage to: ", score_percentage)
+	
+	if score_percentage >= 50.0:
+		# Good ending - 50% or higher
+		print("Triggering GOOD ending (score >= 50%)")
+		get_tree().change_scene_to_file("res://Scenes/good_ending.tscn")
+	else:
+		# Bad ending - below 50%
+		print("Triggering BAD ending (score < 50%)")
+		get_tree().change_scene_to_file("res://Scenes/bad_ending.tscn")
