@@ -4,34 +4,58 @@ extends Control
 # Later, 
 var souls = [
 	{
-		"name": "Rafael Niebles",
-		"portrait": preload("res://Assets/rafael.png"),
-		"death": "Crashed his car while live streaming",
-		"offenses": "Crypto scammed his viewers, sold Alibaba merch, forgot his Mom’s birthday",
-		"justification": "Sold his soul for a million subscribers",
-		"correct_department": "Mortal Affairs"
+		"name": "Greg Baker",
+		"portrait": preload("res://Assets/james.PNG"),
+		"death": "Collapsed in the office parking lot at 9:07 PM on a Sunday from heart failure",
+		"offenses": "Micromanaged interns' lunch breaks, marked every email as high importance, corrected coworkers' grammar in meetings",
+		"justification": "Record indicates consistent pattern of abusive authoritarian workplace conduct",
+		"correct_department": "Operations and Compliance"
 	},
 	{
-		"name": "Patricia Lee",
+		"name": "Tiffany Starshine",
 		"portrait": preload("res://Assets/patricia.PNG"),
-		"death": "Heart attack during tax season",
-		"offenses": "Cooked the books for 10 years, almond mom, made her kids give her credit on school projects she helped with",
-		"justification": "Signed a deal to never get caught",
+		"death": "DUI",
+		"offenses": "Sold diet teas to teenagers, started a business selling courses about starting a business, convinced all her friends they needed facelifts",
+		"justification": "Signed soul contract for \"influencer\" status",
 		"correct_department": "Souls and Acquisitions"
 	},
 	{
-		"name": "James Smith",
-		"portrait": preload("res://Assets/james.PNG"),
-		"death": "Old age",
-		"offenses": "Terroized employees, followed a carnivore diet, doxxed a highschooler they got into a fight with on Twitter",
-		"justification": "Hated by everyone they knew",
-		"correct_department": "Operations and Compliance"
+		"name": "Rafael Niebles",
+		"portrait": preload("res://Assets/rafael.PNG"),
+		"death": "Crashed his car while live streaming",
+		"offenses": "Crypto scammed viewers, sold Alibaba merch, forgot his mom's birthday",
+		"justification": "Entered into soul contract in exchange for a million subscribers",
+		"correct_department": "Mortal Affairs"
+	},
+	{
+		"name": "Eric Palmer",
+		"portrait": preload("res://Assets/eric.PNG"),
+		"death": "Natural causes",
+		"offenses": "Forced his team to attend mandatory vision board workshops, documented reports of consistent psychological bullying from ages 7-18, only plays Radio Head when on aux",
+		"justification": "Caused a 53% increase in misery in his community",
+		"correct_department": "Agony and Despair"
+	},
+	{
+		"name": "Kyle Henderson",
+		"portrait": preload("res://Assets/kyle.PNG"),
+		"death": "Boating accident",
+		"offenses": "Spoke in a \"customer service voice\" to his own family, inserted himself into coworkers' conflicts uninvited, tried to \"mediate\" breakups between friends for personal clout",
+		"justification": "Record indicates compulsive but ineffective attempts at emotional management",
+		"correct_department": "Demon Relations"
+	},
+	{
+		"name": "Laura Schafer",
+		"portrait": preload("res://Assets/laura.PNG"),
+		"death": "Found unresponsive in her apartment after a prolonged fever",
+		"offenses": "Stole coworkers' belongings, committed arson, hissed at a baby",
+		"justification": "Soul corrupted following extended possession period",
+		"correct_department": "Agony and Despair"
 	}
 ]
 
 var current_soul_index := 0
 var quota_met := 0 # This will track total submissions, not just correct ones
-var daily_quota := 8
+var daily_quota := 6
 var correct_submissions := 0 # Track correct answers separately
 var selected_department := "" # updated when player clicks a department button
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdkq2iagev6i8"]
 
 [ext_resource type="Texture2D" uid="uid://cad7mpmp34erb" path="res://Assets/Screenshot 2025-09-24 at 8.36.11 PM.png" id="1_kln2b"]
-[ext_resource type="Script" uid="uid://dupimjp1ubarr" path="res://main.gd" id="1_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://jgvpn3573022" path="res://Assets/5809905011543238858-128.png" id="3_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://cj3i07qp0yp31" path="res://Assets/standard.png" id="3_rgh2o"]
+[ext_resource type="Script" uid="uid://ceykcwtbym6u8" path="res://Scripts/main.gd" id="4_pbw6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1gob"]
 bg_color = Color(0.929412, 0.929412, 0.929412, 1)
@@ -20,7 +20,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1600.0
 offset_bottom = 900.0
-script = ExtResource("1_pbw6q")
+script = ExtResource("4_pbw6q")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
