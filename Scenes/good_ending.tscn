@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://jx3stbaj6mwf"]
+
+[ext_resource type="Texture2D" uid="uid://bj556xnoalk70" path="res://Assets/good_ending.png" id="1_t7ufd"]
+
+[node name="GoodEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoodEnding" type="Sprite2D" parent="Panel"]
+position = Vector2(799, 450)
+scale = Vector2(0.83125, 0.82963)
+texture = ExtResource("1_t7ufd")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 389.0
+offset_right = 934.0
+offset_bottom = 458.0
+rotation = -0.161888
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Accuracy Score:"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuna245mr4n54"]
+
+[ext_resource type="Texture2D" uid="uid://bxsv81g1kub4o" path="res://Assets/bad_ending.png" id="1_o0myi"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BadEnding" type="Sprite2D" parent="Panel"]
+position = Vector2(800, 450)
+scale = Vector2(0.83125, 0.835185)
+texture = ExtResource("1_o0myi")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 409.0
+offset_right = 911.0
+offset_bottom = 488.0
+rotation = -0.191492
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Accuracy Score: "
