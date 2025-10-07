@@ -1,15 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5xi5jndg8g6v"]
+[gd_scene load_steps=2 format=3 uid="uid://cuna245mr4n54"]
 
-[ext_resource type="Script" uid="uid://dvldr5o4w742y" path="res://Scripts/bad_ending.gd" id="1_lrv5w"]
 [ext_resource type="Texture2D" uid="uid://bxsv81g1kub4o" path="res://Assets/bad_ending.png" id="1_o0myi"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("accuracy_label")]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_lrv5w")
-accuracy_label = NodePath("Panel/AccuracyScore")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -25,7 +22,7 @@ texture = ExtResource("1_o0myi")
 layout_mode = 0
 offset_left = 522.0
 offset_top = 409.0
-offset_right = 1178.0
+offset_right = 911.0
 offset_bottom = 488.0
 rotation = -0.191492
 theme_override_colors/font_color = Color(0, 0, 0, 1)
