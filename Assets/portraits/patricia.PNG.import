@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfvx0xinba6sb"
-path="res://.godot/imported/png_jy9is.png-58c04a0c2730b4bc203a45463f4c06dc.ctex"
+uid="uid://cmefvbomv5rup"
+path="res://.godot/imported/patricia.PNG-bb3cde2bfbe41417a238d26c580cd404.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/png_jy9is.png"
-dest_files=["res://.godot/imported/png_jy9is.png-58c04a0c2730b4bc203a45463f4c06dc.ctex"]
+source_file="res://Assets/portraits/patricia.PNG"
+dest_files=["res://.godot/imported/patricia.PNG-bb3cde2bfbe41417a238d26c580cd404.ctex"]
 
 [params]
 
