@@ -1,209 +1,87 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdkq2iagev6i8"]
+[gd_scene load_steps=8 format=3 uid="uid://bdkq2iagev6i8"]
 
-[ext_resource type="Texture2D" uid="uid://cad7mpmp34erb" path="res://Assets/Screenshot 2025-09-24 at 8.36.11 PM.png" id="1_kln2b"]
-[ext_resource type="Texture2D" uid="uid://jgvpn3573022" path="res://Assets/5809905011543238858-128.png" id="3_pbw6q"]
-[ext_resource type="Texture2D" uid="uid://cj3i07qp0yp31" path="res://Assets/standard.png" id="3_rgh2o"]
-[ext_resource type="Script" uid="uid://ceykcwtbym6u8" path="res://Scripts/main.gd" id="4_pbw6q"]
+[ext_resource type="Script" uid="uid://cxi0fb0uswt8v" path="res://Scripts/main.gd" id="1_jw32o"]
+[ext_resource type="Texture2D" uid="uid://cmmtod76b1t0k" path="res://Assets/desktopbg.png" id="1_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://6t1116fjdea7" path="res://Scenes/ button.tscn" id="2_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://bbn4x1h8d3tcg" path="res://Assets/icons/2.png" id="3_v1gob"]
+[ext_resource type="Texture2D" uid="uid://by78l4qgwu2x7" path="res://Assets/icons/files.png" id="4_jw32o"]
+[ext_resource type="Texture2D" uid="uid://cjvtnapr44pk2" path="res://Assets/icons/3.png" id="5_jw32o"]
+[ext_resource type="Texture2D" uid="uid://bq7pk0t8rio1j" path="res://Assets/icons/1.png" id="6_50glp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1gob"]
-bg_color = Color(0.929412, 0.929412, 0.929412, 1)
-
-[sub_resource type="Theme" id="Theme_jw32o"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50glp"]
-texture = ExtResource("1_kln2b")
-
-[sub_resource type="Theme" id="Theme_vy5pj"]
-
-[node name="Control" type="Control"]
+[node name="Desktop" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1600.0
-offset_bottom = 900.0
-script = ExtResource("4_pbw6q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jw32o")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = -2.0
-offset_right = 1598.0
-offset_bottom = 900.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_v1gob")
-
-[node name="SoulCard" type="Control" parent="."]
+[node name="DesktopBackground" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1600, 900)
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 3.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rgh2o")
+stretch_mode = 6
+
+[node name="Taskbar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 822.0
+offset_right = 1603.0
+offset_bottom = 908.0
+
+[node name="IconDock" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 36.0
+offset_right = 434.0
+offset_bottom = 976.0
+grow_vertical = 2
+scale = Vector2(0.47508, 0.409143)
+theme_override_constants/separation = 80
+
+[node name="MiseryManager" parent="IconDock" instance=ExtResource("2_pbw6q")]
+custom_minimum_size = Vector2(380, 400)
+layout_mode = 2
+texture_normal = ExtResource("3_v1gob")
+
+[node name="Files" parent="IconDock" instance=ExtResource("2_pbw6q")]
+custom_minimum_size = Vector2(380, 400)
+layout_mode = 2
+texture_normal = ExtResource("4_jw32o")
+
+[node name="Email" parent="IconDock" instance=ExtResource("2_pbw6q")]
+custom_minimum_size = Vector2(380, 400)
+layout_mode = 2
+texture_normal = ExtResource("5_jw32o")
+
+[node name="Recycle" parent="IconDock" instance=ExtResource("2_pbw6q")]
+custom_minimum_size = Vector2(380, 400)
+layout_mode = 2
+texture_normal = ExtResource("6_50glp")
+
+[node name="Windows" type="Node" parent="."]
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="TutorialHints" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 192.0
-offset_top = 45.0
-offset_right = 959.0
-offset_bottom = 476.0
-pivot_offset = Vector2(375, 0)
-theme = SubResource("Theme_jw32o")
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 0.00140555
 
-[node name="Panel" type="Panel" parent="SoulCard"]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 11.0
-offset_right = 1141.0
-offset_bottom = 618.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_50glp")
-
-[node name="Portrait" type="TextureRect" parent="SoulCard"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 31.0
-offset_right = 278.0
-offset_bottom = 281.0
-theme = SubResource("Theme_vy5pj")
-
-[node name="SoulPortrait" type="TextureRect" parent="SoulCard/Portrait"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 23.0
-offset_right = 426.0
-offset_bottom = 376.0
-texture = ExtResource("3_rgh2o")
-expand_mode = 1
-
-[node name="NameLabel" type="Label" parent="SoulCard"]
-layout_mode = 0
-offset_left = 187.0
-offset_top = 9.0
-offset_right = 404.0
-offset_bottom = 51.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Soul Name"
-horizontal_alignment = 1
-
-[node name="DeathCause" type="Label" parent="SoulCard"]
-layout_mode = 0
-offset_left = 508.0
-offset_top = 93.0
-offset_right = 1092.0
-offset_bottom = 220.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "-How did they die"
-
-[node name="Offenses" type="RichTextLabel" parent="SoulCard"]
-layout_mode = 0
-offset_left = 508.0
-offset_top = 276.0
-offset_right = 1094.0
-offset_bottom = 404.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 20
-text = "-Things they did wrong"
-
-[node name="Justification" type="RichTextLabel" parent="SoulCard"]
-layout_mode = 0
-offset_left = 139.0
-offset_top = 457.0
-offset_right = 1094.0
-offset_bottom = 573.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 20
-text = "-Why they are in Hell"
-
-[node name="DepartmentFolders" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 265.0
-offset_top = 671.0
-offset_right = 1340.0
-offset_bottom = 817.0
-
-[node name="DemonRelations" type="Button" parent="DepartmentFolders"]
-layout_mode = 2
-offset_left = 6.0
-offset_top = 29.0
-offset_right = 168.0
-offset_bottom = 143.0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Demon
-Relations"
-flat = true
-
-[node name="SoulsAcquisitions" type="Button" parent="DepartmentFolders"]
-layout_mode = 2
-offset_left = 678.0
-offset_top = 24.0
-offset_right = 841.0
-offset_bottom = 137.0
-theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Souls and
-Acquisitions"
-flat = true
-
-[node name="MortalAffairs" type="Button" parent="DepartmentFolders"]
-layout_mode = 2
-offset_left = 455.0
-offset_top = 23.0
-offset_right = 618.0
-offset_bottom = 138.0
-theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Mortal 
-Affairs"
-flat = true
-
-[node name="OperationsCompliance" type="Button" parent="DepartmentFolders"]
-layout_mode = 2
-offset_left = 903.0
-offset_top = 23.0
-offset_right = 1070.0
-offset_bottom = 141.0
-theme_override_colors/icon_pressed_color = Color(2.06962e-06, 0.680176, 0.135599, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Operations
-and
-Compliance"
-flat = true
-
-[node name="AgonyDespair" type="Button" parent="DepartmentFolders"]
-layout_mode = 2
-offset_left = 232.0
-offset_top = 27.0
-offset_right = 391.0
-offset_bottom = 143.0
-theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Agony and
-Despair"
-flat = true
-
-[node name="QuotaLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1366.0
-offset_top = 58.0
-offset_right = 1563.0
-offset_bottom = 101.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "0/8 Quota Met"
-
-[node name="SubmitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1379.0
-offset_top = 722.0
-offset_right = 1463.0
-offset_bottom = 802.0
-theme_override_colors/icon_pressed_color = Color(0, 0.678431, 0.137255, 1)
-icon = ExtResource("3_pbw6q")
-flat = true
-expand_icon = true
-
-[connection signal="pressed" from="DepartmentFolders/DemonRelations" to="." method="_on_demon_relations_pressed"]
-[connection signal="pressed" from="DepartmentFolders/SoulsAcquisitions" to="." method="_on_souls_acquisitions_pressed"]
-[connection signal="pressed" from="DepartmentFolders/MortalAffairs" to="." method="_on_motral_affairs_pressed"]
-[connection signal="pressed" from="DepartmentFolders/OperationsCompliance" to="." method="_on_operations_compliance_pressed"]
-[connection signal="pressed" from="DepartmentFolders/AgonyDespair" to="." method="_on_agony_despair_pressed"]
+[connection signal="pressed" from="IconDock/MiseryManager" to="." method="_on_misery_manager_pressed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bslcw8id8v5nc"]
+
+[ext_resource type="FontFile" uid="uid://cqlyq25kdulf7" path="res://Assets/font/Garet-Book.ttf" id="1_aqdx1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knekw"]
+bg_color = Color(0.233421, 0.221414, 0.126711, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.092917, 0.0849738, 0.0551644, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Label" type="Label"]
+custom_minimum_size = Vector2(200, 30)
+offset_left = 2.0
+offset_right = 302.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("1_aqdx1")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_knekw")
+text = "example"
+horizontal_alignment = 1
+autowrap_mode = 2

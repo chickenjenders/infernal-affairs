@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmsvseiv5i4ux"
-path="res://.godot/imported/Screenshot 2025-09-26 at 8.43.40 PM.png-292385f140275abfcb7e1668c2865b4b.ctex"
+uid="uid://dd78dfvecw27t"
+path="res://.godot/imported/cecil.png-48803231eafb86d1dbc9306fafe6be20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Screenshot 2025-09-26 at 8.43.40 PM.png"
-dest_files=["res://.godot/imported/Screenshot 2025-09-26 at 8.43.40 PM.png-292385f140275abfcb7e1668c2865b4b.ctex"]
+source_file="res://Assets/portraits/cecil.png"
+dest_files=["res://.godot/imported/cecil.png-48803231eafb86d1dbc9306fafe6be20.ctex"]
 
 [params]
 
