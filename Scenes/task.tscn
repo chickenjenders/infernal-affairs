@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://brmwmlcqdohsw"]
+
+[ext_resource type="Script" uid="uid://cl3ss8g16rprp" path="res://Scenes/task.gd" id="1_pcxva"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p782q"]
+bg_color = Color(0.23, 0.615, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="task" type="Label"]
+custom_minimum_size = Vector2(400, 70)
+offset_right = 450.0
+offset_bottom = 80.0
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_p782q")
+text = "Example Task Description"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("1_pcxva")
