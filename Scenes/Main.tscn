@@ -34,12 +34,13 @@ grow_vertical = 2
 texture = ExtResource("1_rgh2o")
 stretch_mode = 6
 
-[node name="Taskbar" type="HBoxContainer" parent="."]
+[node name="Taskbar" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 822.0
 offset_right = 1603.0
-offset_bottom = 908.0
+offset_bottom = 907.0
+color = Color(0.192157, 0.188235, 0.168627, 1)
 
 [node name="IconDock" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(60, 60)

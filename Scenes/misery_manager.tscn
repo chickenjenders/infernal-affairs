@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0443y546r1ey"]
+[gd_scene load_steps=10 format=3 uid="uid://d0443y546r1ey"]
 
 [ext_resource type="Texture2D" uid="uid://jni2vrhvv4cy" path="res://Assets/backgrounds/miserymanagerapp.png" id="1_rlxtp"]
 [ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_ataua"]
 [ext_resource type="Theme" uid="uid://b68tpgef133gx" path="res://Assets/UI/default_theme.tres" id="3_3ulmy"]
-[ext_resource type="Script" uid="uid://chctn8s3khr28" path="res://Scenes/traits.gd" id="4_3dajv"]
+[ext_resource type="Script" uid="uid://cb1umph1jxq0w" path="res://Scenes/traits_list.gd" id="4_mksl1"]
 [ext_resource type="PackedScene" uid="uid://bslcw8id8v5nc" path="res://Scenes/traits.tscn" id="5_ekk6s"]
+[ext_resource type="PackedScene" uid="uid://brmwmlcqdohsw" path="res://Scenes/task.tscn" id="6_ekk6s"]
+[ext_resource type="Script" uid="uid://cdctw888ymj84" path="res://Scenes/tasks_container.gd" id="6_mksl1"]
+[ext_resource type="PackedScene" uid="uid://bm1i2exo4scyy" path="res://Scenes/task_bar.tscn" id="7_fne2n"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ijftj"]
 
@@ -113,7 +116,6 @@ offset_left = 22.0
 offset_top = 690.0
 offset_right = 485.0
 offset_bottom = 800.0
-script = ExtResource("4_3dajv")
 
 [node name="TraitsList" type="FlowContainer" parent="MainLayout/DemonInfo/Traits"]
 custom_minimum_size = Vector2(0, 80)
@@ -122,20 +124,39 @@ size_flags_vertical = 4
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 20
 last_wrap_alignment = 1
+script = ExtResource("4_mksl1")
+count = 3
+traits_scene = ExtResource("5_ekk6s")
 
-[node name="Label" parent="MainLayout/DemonInfo/Traits/TraitsList" instance=ExtResource("5_ekk6s")]
-layout_mode = 2
-
-[node name="Label2" parent="MainLayout/DemonInfo/Traits/TraitsList" instance=ExtResource("5_ekk6s")]
-layout_mode = 2
-
-[node name="Label3" parent="MainLayout/DemonInfo/Traits/TraitsList" instance=ExtResource("5_ekk6s")]
-layout_mode = 2
-
-[node name="Schedule" type="VBoxContainer" parent="MainLayout"]
+[node name="Schedule" type="Control" parent="MainLayout"]
 custom_minimum_size = Vector2(580, 0)
 layout_mode = 2
 
-[node name="Tasks" type="VBoxContainer" parent="MainLayout"]
+[node name="TaskScheduler" type="FlowContainer" parent="MainLayout/Schedule"]
+layout_mode = 2
+offset_right = 580.0
+
+[node name="Tasks" type="Control" parent="MainLayout"]
 custom_minimum_size = Vector2(510, 0)
 layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TasksContainer" type="FlowContainer" parent="MainLayout/Tasks"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -1.0
+offset_top = 127.0
+offset_right = 509.0
+offset_bottom = 363.0
+size_flags_vertical = 4
+theme_override_constants/v_separation = 10
+script = ExtResource("6_mksl1")
+count = 6
+task_scene = ExtResource("6_ekk6s")
+
+[node name="taskBar" parent="." instance=ExtResource("7_fne2n")]
+layout_mode = 1
+offset_left = -4.0
+offset_top = -83.0
+offset_right = -8.0
+offset_bottom = -1.0
