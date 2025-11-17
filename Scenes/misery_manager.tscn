@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0443y546r1ey"]
+[gd_scene load_steps=12 format=3 uid="uid://d0443y546r1ey"]
 
 [ext_resource type="Texture2D" uid="uid://jni2vrhvv4cy" path="res://Assets/backgrounds/miserymanagerapp.png" id="1_rlxtp"]
 [ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_ataua"]
 [ext_resource type="Theme" uid="uid://b68tpgef133gx" path="res://Assets/UI/default_theme.tres" id="3_3ulmy"]
-[ext_resource type="Script" uid="uid://cb1umph1jxq0w" path="res://Scenes/traits_list.gd" id="4_mksl1"]
+[ext_resource type="Script" uid="uid://cb1umph1jxq0w" path="res://Scripts/traits_list.gd" id="4_mksl1"]
 [ext_resource type="PackedScene" uid="uid://bslcw8id8v5nc" path="res://Scenes/traits.tscn" id="5_ekk6s"]
+[ext_resource type="Script" uid="uid://ce63dv6m3lmfs" path="res://Scripts/task_scheduler.gd" id="6_44pg8"]
 [ext_resource type="PackedScene" uid="uid://brmwmlcqdohsw" path="res://Scenes/task.tscn" id="6_ekk6s"]
-[ext_resource type="Script" uid="uid://cdctw888ymj84" path="res://Scenes/tasks_container.gd" id="6_mksl1"]
+[ext_resource type="Script" uid="uid://cdctw888ymj84" path="res://Scripts/tasks_container.gd" id="6_mksl1"]
 [ext_resource type="PackedScene" uid="uid://bm1i2exo4scyy" path="res://Scenes/task_bar.tscn" id="7_fne2n"]
+[ext_resource type="PackedScene" uid="uid://dnikjm5skrfrb" path="res://Scenes/task_slot.tscn" id="7_omno3"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ijftj"]
 
@@ -129,12 +131,24 @@ count = 3
 traits_scene = ExtResource("5_ekk6s")
 
 [node name="Schedule" type="Control" parent="MainLayout"]
-custom_minimum_size = Vector2(580, 0)
+custom_minimum_size = Vector2(400, 900)
 layout_mode = 2
+size_flags_horizontal = 2
 
-[node name="TaskScheduler" type="FlowContainer" parent="MainLayout/Schedule"]
-layout_mode = 2
-offset_right = 580.0
+[node name="TaskScheduler" type="VBoxContainer" parent="MainLayout/Schedule"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = 150.0
+offset_right = 135.0
+offset_bottom = -101.0
+theme_override_constants/separation = 20
+script = ExtResource("6_44pg8")
+task_slot_scene = ExtResource("7_omno3")
+task_scene = ExtResource("6_ekk6s")
+count = 8
 
 [node name="Tasks" type="Control" parent="MainLayout"]
 custom_minimum_size = Vector2(510, 0)
