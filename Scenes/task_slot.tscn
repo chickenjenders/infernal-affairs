@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnikjm5skrfrb"]
+
+[ext_resource type="Script" uid="uid://dxewmjy4haggd" path="res://Scenes/task_slot.gd" id="1_wnkvw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efdm0"]
+draw_center = false
+
+[node name="taskSlot" type="Control"]
+layout_mode = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_wnkvw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_efdm0")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

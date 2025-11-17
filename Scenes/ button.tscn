@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6t1116fjdea7"]
 
 [node name="Files" type="TextureButton"]
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(380, 400)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 ignore_texture_size = true
