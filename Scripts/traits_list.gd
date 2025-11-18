@@ -23,3 +23,15 @@ func _place_components():
 		var traits_instance = traits_scene.instantiate()
 		traits_instance.set_text(traitTitle)
 		add_child(traits_instance)
+
+## Set traits from an array and re-render the list
+func set_traits(trait_array: Array):
+	# Clear existing children
+	for child in get_children():
+		child.queue_free()
+	
+	# Add each trait
+	for trait_text in trait_array:
+		var traits_instance = traits_scene.instantiate()
+		traits_instance.set_text(trait_text)
+		add_child(traits_instance)
