@@ -2,66 +2,69 @@ extends Label
 
 var dragging = false
 var drag_offset = Vector2()
+var task_index_in_scheduler: int = -1 # -1 if in taskList, slot index if in task_slots
+var original_position: Vector2 # Store position before dragging
+var original_parent: Node # Store parent before dragging
 
+## Called when the task node is added to the scene tree.
+## Sets up the task to receive mouse input for drag and drop functionality.
 func _ready():
 	# Make sure the label can receive mouse events
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
+## Handles all mouse input for the task, including drag and drop.
+## When the user clicks and drags a task, it can be moved between the task list
+## and task scheduler slots. The task physically moves (reparents) rather than
+## being deleted and recreated.
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
+				# Step 1: Verify task has a group assigned
+				if not is_in_group("tasks_container") and not is_in_group("task_scheduler"):
+					push_error("Task '", text, "' does not have a location group assigned!")
+					return
+				
+				# Store original position and parent before dragging
+				original_position = position
+				original_parent = get_parent()
+				
+				# Store which slot this task came from (if any)
+				if is_in_group("task_scheduler"):
+					if original_parent:
+						task_index_in_scheduler = original_parent.slot_index
+						print("Task came from slot index: ", task_index_in_scheduler)
+				
+				# Notify MiseryManager that dragging started
+				MiseryManager.start_dragging_task(self)
+				
 				dragging = true
-				MiseryManager.draggingTask = text
 				drag_offset = get_global_mouse_position() - global_position
 				print("Started dragging: ", text)
-			else:
-				dragging = false
-				print("Stopped dragging: ", text)
-				var slot = snap_to_nearest_slot()
-				# Update through MiseryManager to trigger signal
-				if slot:
-					MiseryManager.update_task_slot(slot.slot_index, text)
-					# Delete this task - it will be recreated in the slot by refresh_ui()
-					queue_free()
-				MiseryManager.draggingTask = ""
-			
-	elif event is InputEventMouseMotion:
-		if dragging:
-			global_position = get_global_mouse_position() - drag_offset
 
-func snap_to_nearest_slot():
-	# Find the task scheduler in the scene tree
-	var task_scheduler = get_tree().get_first_node_in_group("task_scheduler")
-	
-	if not task_scheduler:
-		print("No task scheduler found")
-		return null
-	
-	# Get all task slot children
-	var slots = task_scheduler.get_children()
-	if slots.is_empty():
-		print("No task slots found")
-		return null
-	
-	# Find the nearest slot
-	var nearest_slot = null
-	var min_distance = INF
-	var task_center = global_position + size / 2
-	
-	for slot in slots:
-		if slot is Control:
-			var slot_center = slot.global_position + slot.size / 2
-			var distance = task_center.distance_to(slot_center)
+## Monitor for mouse release globally since the task might be dragged away from its visual position
+func _input(event):
+	if dragging and event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
+			dragging = false
+			print("Stopped dragging: ", text)
 			
-			if distance < min_distance:
-				min_distance = distance
-				nearest_slot = slot
-	
-	# Snap to the nearest slot
-	if nearest_slot:
-		# Center the task within the slot
-		global_position = nearest_slot.global_position + (nearest_slot.size - size) / 2
-		print("Snapped to slot at: ", global_position)
-	
-	return nearest_slot
+			# Wait a frame to let slots process the mouse release first
+			await get_tree().process_frame
+			
+			# Notify MiseryManager that dragging stopped
+			MiseryManager.stop_dragging_task(self)
+			
+			# If still not reparented (no slot accepted), handle fallback
+			_handle_drop_fallback()
+	elif dragging and event is InputEventMouseMotion:
+		global_position = get_global_mouse_position() - drag_offset
+
+## Handles the case where no slot accepted the task on drop.
+## Returns the task to its original position.
+func _handle_drop_fallback():
+	# Check if we're still in the original parent (no slot accepted)
+	if get_parent() == original_parent:
+		# Return to original position
+		position = original_position
+		print("Task '", text, "' returned to original position")

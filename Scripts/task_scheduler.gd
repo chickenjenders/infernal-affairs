@@ -4,6 +4,8 @@ extends VBoxContainer
 @export var task_scene: PackedScene
 @export_range(0, 20, 1) var count: int = 0
 
+## Called when the scheduler is added to the scene tree.
+## Initializes the task_slots data array and creates all the slot UI elements.
 func _ready():
 	# Add to group so tasks can find this scheduler
 	add_to_group("task_scheduler")
@@ -15,22 +17,18 @@ func _ready():
 			"global_pos": Vector2(0, 0)
 		})
 	
-	# Connect to the signal to refresh UI when task_slots changes
-	MiseryManager.task_slots_changed.connect(refresh_ui)
-	
-	# Initial render
-	refresh_ui()
+	# Initial render - only needed once at startup
+	_initialize_slots()
 
-func refresh_ui():
-	# Clear existing children
-	for child in get_children():
-		child.queue_free()
-	
+## Creates all the slot containers and any tasks that should start in slots.
+## This only runs once at startup. After that, tasks move themselves between
+## slots via drag and drop without recreating the UI.
+func _initialize_slots():
 	var separation = get_theme_constant("separation")
 	var slot_height = size.y / count - separation
 	slot_height = max(slot_height, 10) # prevent negative/zero
 	
-	# Rebuild UI based on current task_slots data
+	# Create slot containers only
 	for i in range(len(MiseryManager.task_slots)):
 		var task_slot_instance = task_slot_scene.instantiate()
 		task_slot_instance.custom_minimum_size = Vector2(size.x, slot_height)
@@ -46,6 +44,8 @@ func refresh_ui():
 		if task_name != "":
 			var task_instance = task_scene.instantiate()
 			task_instance.set_text(task_name)
+			task_instance.task_index_in_scheduler = i
+			task_instance.add_to_group("task_scheduler") # Assign group BEFORE adding to tree
 			task_slot_instance.add_child(task_instance)
 			print("Added task '", task_name, "' to slot ", i)
 
