@@ -187,7 +187,7 @@ offset_bottom = -100.0
 script = ExtResource("6_44pg8")
 task_slot_scene = ExtResource("7_omno3")
 task_scene = ExtResource("6_ekk6s")
-count = 3
+count = 2
 
 [node name="SubmitButton" type="Button" parent="MainLayout/Schedule"]
 layout_mode = 0
