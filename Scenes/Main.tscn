@@ -83,7 +83,6 @@ offset_bottom = 40.0
 rotation = 0.00140555
 
 [node name="Instructions" parent="." instance=ExtResource("8_50glp")]
-visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="IconDock/MiseryManager" to="." method="_on_misery_manager_pressed"]

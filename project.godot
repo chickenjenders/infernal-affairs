@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Infernal Affairs"
-run/main_scene="uid://bdkq2iagev6i8"
+run/main_scene="uid://d1vv3d8tbg8xv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -29,3 +29,4 @@ window/stretch/mode="viewport"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
