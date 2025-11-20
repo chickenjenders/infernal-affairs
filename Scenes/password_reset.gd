@@ -16,9 +16,10 @@ func _ready() -> void:
 		requirements[i].visible = (i == 0)
 	
 	submit_button.pressed.connect(_on_submit_pressed)
+	password_input.text_submitted.connect(_on_submit_pressed)
 	invalid_password_label.visible = false
 
-func _on_submit_pressed() -> void:
+func _on_submit_pressed(_text: String = "") -> void:
 	var password = password_input.text
 	
 	if check_requirements(password):
@@ -26,14 +27,19 @@ func _on_submit_pressed() -> void:
 		if current_requirement_index < requirements.size() - 1:
 			current_requirement_index += 1
 			requirements[current_requirement_index].visible = true
+			password_input.grab_focus()
 		else:
 			print("Password reset complete!")
 			get_tree().change_scene_to_file("res://MiseryManager/Scenes/misery_manager.tscn")
 	else:
 		invalid_password_label.visible = true
-		print("Requirements not met")
+		print("Requirements not met, text is: ", _text)
 
 func check_requirements(text: String) -> bool:
+	# Requirements 9 and 10 override all previous requirements
+	if current_requirement_index >= 9:
+		return validate_rule(current_requirement_index, text)
+	
 	# Check all revealed requirements
 	for i in range(current_requirement_index + 1):
 		if not validate_rule(i, text):
@@ -86,13 +92,9 @@ func validate_rule(index: int, text: String) -> bool:
 					return true
 			return false
 			
-		4: # Must make your password symmetrical (palindrome)
-			var length = text.length()
-			for i in range(length >> 1):
-				if text[i] != text[length - 1 - i]:
-					return false
-			return true
-			
+		4: # Must include at least one unnecessary underscore (_)
+			return text.contains("_")
+
 		5: # Must include one apology
 			var apologies = [
 				"sorry", "apologize", "forgive", "my bad", "oops", "pardon", "excuse me",
@@ -107,6 +109,7 @@ func validate_rule(index: int, text: String) -> bool:
 			for word in apologies:
 				if lower_text.contains(word):
 					return true
+			print("incorrect:", lower_text)
 			return false
 			
 		6: # Must include a date in MM/DD format
@@ -114,11 +117,16 @@ func validate_rule(index: int, text: String) -> bool:
 			regex.compile("\\d{2}/\\d{2}")
 			return regex.search(text) != null
 			
-		7: # Must include at least one unnecessary underscore (_)
-			return text.contains("_")
-			
-		8: # Must include the word 'password' somewhere but not at the start
+		7: # Must include the word 'password' somewhere but not at the start
 			return text.contains("password") and not text.begins_with("password")
+			
+		8: # Must make your password symmetrical (palindrome)
+			var length = text.length()
+			for i in range(length >> 1):
+				if text[i] != text[length - 1 - i]:
+					return false
+			return true
+
 			
 		9: # You'll never remember that, just make your password 'password'
 			return text == "password"

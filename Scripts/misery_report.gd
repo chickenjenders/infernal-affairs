@@ -14,3 +14,9 @@ func _ready():
 	
 	# You can remove or repurpose the QuotaMet label
 	$QuotaMet.text = "You have met %.0f%% of your Misery Quota for this cycle." % efficiency_rating
+	
+	# Connect the TryAgain button
+	$TryAgain.pressed.connect(_on_try_again_pressed)
+
+func _on_try_again_pressed():
+	get_tree().change_scene_to_file("res://MiseryManager/Scenes/misery_manager.tscn")
