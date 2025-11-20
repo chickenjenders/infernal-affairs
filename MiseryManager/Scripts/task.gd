@@ -5,6 +5,12 @@ var drag_offset = Vector2()
 var task_index_in_scheduler: int = -1 # -1 if in taskList, slot index if in task_slots
 var original_position: Vector2 # Store position before dragging
 var original_parent: Node # Store parent before dragging
+var task_data
+
+func set_task_data(new_data) -> void:
+	task_data = new_data
+	if task_data:
+		text = task_data.title
 
 ## Called when the task node is added to the scene tree.
 ## Sets up the task to receive mouse input for drag and drop functionality.
