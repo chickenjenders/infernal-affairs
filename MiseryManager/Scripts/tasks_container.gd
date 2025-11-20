@@ -114,6 +114,9 @@ func _ready():
 		MiseryManager.taskList.append(available_tasks[i])
 
 	_place_components()
+	
+	# Listen for employee change to regenerate tasks
+	MiseryManager.employee_changed.connect(_on_employee_changed)
 
 ## Creates and displays all task nodes from the MiseryManager.taskList.
 ## Each task is assigned to the "tasks_container" group so it knows it belongs
@@ -141,3 +144,23 @@ func _create_task_data_from_template(template: Dictionary):
 
 func _duplicate_task_data(data: TaskData):
 	return data.duplicate()
+
+func _on_employee_changed(_index: int):
+	print("TasksContainer: Regenerating tasks for next employee")
+	regenerate_tasks()
+
+func regenerate_tasks():
+	# Clear all existing task nodes
+	for child in get_children():
+		child.queue_free()
+	
+	# Generate new random tasks
+	var available_tasks := []
+	for task_data in pregenerated_task_data:
+		available_tasks.append(_duplicate_task_data(task_data))
+	available_tasks.shuffle()
+	for i in range(min(count, available_tasks.size())):
+		MiseryManager.taskList.append(available_tasks[i])
+	
+	# Place new task components
+	_place_components()

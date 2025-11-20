@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4e5cwj28o2b0"]
+
+[ext_resource type="Texture2D" uid="uid://bk41hjtd6u3tj" path="res://Assets/UI/misery_popup.png" id="1_csmrs"]
+[ext_resource type="Script" uid="uid://c16edewwusehe" path="res://Scripts/misery_report.gd" id="1_j00bc"]
+[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_j00bc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxiex"]
+bg_color = Color(0.536389, 0.493404, 0.0291, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.218019, 0.191131, 0.140004, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ib4ol"]
+bg_color = Color(0.348012, 0.321207, 0.178811, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfdlc"]
+bg_color = Color(0.431373, 0.396078, 0.0196078, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.218019, 0.191131, 0.140004, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 2)
+
+[node name="MiseryReport" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j00bc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_csmrs")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 34.0
+offset_right = 1388.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0.218019, 0.191131, 0.140004, 1)
+theme_override_fonts/font = ExtResource("2_j00bc")
+theme_override_font_sizes/font_size = 80
+text = "End of Shift Misery Report"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalMisery" type="Label" parent="."]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 207.0
+offset_right = 880.0
+offset_bottom = 266.0
+theme_override_colors/font_color = Color(0.218019, 0.191131, 0.140004, 1)
+theme_override_fonts/font = ExtResource("2_j00bc")
+theme_override_font_sizes/font_size = 40
+text = "Total Misery Generated: [0]"
+
+[node name="ProjectedGoal" type="Label" parent="."]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 303.0
+offset_right = 893.0
+offset_bottom = 368.0
+theme_override_colors/font_color = Color(0.218019, 0.191131, 0.140004, 1)
+theme_override_fonts/font = ExtResource("2_j00bc")
+theme_override_font_sizes/font_size = 40
+text = "Projected Goal: [0]"
+
+[node name="QuotaMet" type="Label" parent="."]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 479.0
+offset_right = 1545.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(0.218019, 0.191131, 0.140004, 1)
+theme_override_fonts/font = ExtResource("2_j00bc")
+theme_override_font_sizes/font_size = 50
+text = "You have met [0]% of your Misery Quota for this cycle.
+"
+
+[node name="TryAgain" type="Button" parent="."]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 690.0
+offset_right = 934.0
+offset_bottom = 793.0
+theme_override_fonts/font = ExtResource("2_j00bc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_bxiex")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ib4ol")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bfdlc")
+text = "Try Again"

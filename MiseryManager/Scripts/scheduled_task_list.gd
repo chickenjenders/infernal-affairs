@@ -22,14 +22,21 @@ func _ready():
 	# Initial render - only needed once at startup
 	_initialize_slots()
 	emit_signal("tasks_changed", get_scheduled_task_count())
+	
+	# Listen for employee change to clear slots
+	MiseryManager.employee_changed.connect(_on_employee_changed)
 
 ## Creates all the slot containers and any tasks that should start in slots.
 ## This only runs once at startup. After that, tasks move themselves between
 ## slots via drag and drop without recreating the UI.
 func _initialize_slots():
-	var separation = get_theme_constant("separation")
-	var slot_height = size.y / count - separation
-	slot_height = max(slot_height, 10) # prevent negative/zero
+	# Infer task height from the task scene
+	var temp_task = task_scene.instantiate()
+	var task_height = temp_task.custom_minimum_size.y
+	temp_task.queue_free()
+	
+	const SLOT_PADDING = 20 # Extra space for comfortable drop target
+	var slot_height = task_height + SLOT_PADDING
 	
 	# Create slot containers only
 	for i in range(len(MiseryManager.task_slots)):
@@ -122,3 +129,17 @@ func get_scheduled_task_count():
 		if slot["task"] != null:
 			scheduled += 1
 	return scheduled
+
+func _on_employee_changed(_index: int):
+	print("ScheduledTaskList: Clearing slots for next employee")
+	clear_all_slots()
+
+func clear_all_slots():
+	# Remove all task nodes from slots
+	for i in range(get_child_count()):
+		var slot = get_child(i)
+		for child in slot.get_children():
+			if child.is_in_group("task_scheduler"):
+				child.queue_free()
+	
+	emit_signal("tasks_changed", 0)

@@ -1,5 +1,7 @@
 extends Node
 
+signal employee_changed(index: int)
+
 var currently_dragging_task: Node = null # Track which task is being dragged
 var taskList := []
 var traitOptions = {
@@ -12,7 +14,10 @@ var traitsList: Array[String] = []
 var task_slots := [
 	
 ]
-var total_misery_score: int = 0
+var current_employee_score: int = 0
+var total_game_score: int = 0
+var current_employee_index: int = 0
+var total_points_possible: int = 500
 
 ## Called when a task starts being dragged
 func start_dragging_task(task: Node):
@@ -58,18 +63,46 @@ func schedule_task(task_data, slot_index: int, old_slot_index: int = -1) -> Dict
 	# Update the new slot's data
 	task_slots[slot_index]["task"] = task_data
 	print("MiseryManager: Scheduled '", task_data.title, "' to slot ", slot_index)
-	_update_total_score()
+	_update_current_score()
 	return {"success": true, "displaced_task": existing_task, "should_swap": should_swap}
 
-func _update_total_score():
-	total_misery_score = 0
+func _update_current_score():
+	current_employee_score = 0
 	for slot in task_slots:
 		if slot["task"] != null:
-			total_misery_score += slot["task"].misery_score
-	print("MiseryManager: Total score updated to: ", total_misery_score)
+			current_employee_score += slot["task"].misery_score
+	print("MiseryManager: Current employee score updated to: ", current_employee_score)
 
-func get_total_misery_score() -> int:
-	return total_misery_score
+func get_current_employee_score() -> int:
+	return current_employee_score
+
+func get_total_game_score() -> int:
+	return total_game_score
+
+func submit_employee_score():
+	total_game_score += current_employee_score
+	print("MiseryManager: Employee submitted. Score: ", current_employee_score, ", Total: ", total_game_score)
+
+func is_last_employee() -> bool:
+	return current_employee_index >= employees.size() - 1
+
+func advance_to_next_employee():
+	current_employee_index += 1
+	print("MiseryManager: Advanced to employee ", current_employee_index)
+	employee_changed.emit(current_employee_index)
+
+func reset_for_next_employee():
+	# Clear all task slots
+	for slot in task_slots:
+		slot["task"] = null
+	
+	# Clear task list
+	taskList.clear()
+	
+	# Reset current employee score
+	current_employee_score = 0
+	
+	print("MiseryManager: Reset for next employee")
 
 # Employee list - demons / employees we can load into the UI
 var employees: Array = [
