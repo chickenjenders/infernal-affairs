@@ -10,7 +10,7 @@ extends Control
 @export var traits: Array = ["Low patience", "Arrogant", "Hates ambiguity"]
 @export var portrait_texture: Texture2D
 
-@export var trait_scene: PackedScene = preload("res://Scenes/traits.tscn")
+@export var trait_scene: PackedScene = preload("res://MiseryManager/Scenes/traits.tscn")
 
 @onready var name_lbl: Label = $Name
 @onready var dept_lbl: Label = $Dept
@@ -96,15 +96,18 @@ func load_employee(index: int):
 		# Do NOT update global department/traits here; DemonInfo will present these values.
 
 		# Update the DemonInfo UI with the provided fields
-		set_info({
-				"name": e["name"],
-				"department": e["department"],
-				"blood_type": e["blood_type"],
-				"mbti": e["mbti"],
-				"sign": e["sign"],
-				"cod": e["cod"],
-				"sentence": e["sentence"],
-				"traits": e["traits"],
-			})
+		var info = {
+			"name": e["name"],
+			"department": e["department"],
+			"blood_type": e["blood_type"],
+			"mbti": e["mbti"],
+			"sign": e["sign"],
+			"cod": e["cod"],
+			"sentence": e["sentence"],
+			"traits": e["traits"],
+		}
+		if e.has("portrait"):
+			info["portrait"] = e["portrait"]
+		set_info(info)
 
 		print("Loaded employee: ", e["name"], " (", e["department"], ")")

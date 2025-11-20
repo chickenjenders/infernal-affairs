@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnikjm5skrfrb"]
 
-[ext_resource type="Script" uid="uid://dxewmjy4haggd" path="res://Scenes/task_slot.gd" id="1_wnkvw"]
+[ext_resource type="Script" uid="uid://dxewmjy4haggd" path="res://MiseryManager/Scripts/task_slot.gd" id="1_wnkvw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efdm0"]
 draw_center = false
