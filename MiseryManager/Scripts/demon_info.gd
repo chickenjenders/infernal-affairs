@@ -22,10 +22,13 @@ extends Control
 @onready var traits_list: Node = $Traits/TraitsList
 @onready var portrait_rect: TextureRect = $Portrait
 
-var current_employee_index: int = 0
-
 func _ready():
-	load_employee(current_employee_index)
+	# Connect to MiseryManager to know when employee changes
+	MiseryManager.employee_changed.connect(_on_employee_changed)
+	
+	# Load initial employee
+	load_employee(MiseryManager.current_employee_index)
+	
 	# Apply the defaults to the UI labels on ready
 	update_labels()
 	# Make sure any child scripts have run before manipulating traits
@@ -84,14 +87,14 @@ func set_info(data: Dictionary) -> void:
 	update_traits()
 
 
-func load_next_employee() -> void:
-		var next_index = (current_employee_index + 1) % MiseryManager.employees.size()
-		load_employee(next_index)
+func _on_employee_changed(index: int) -> void:
+	print("DemonInfo: Loading employee at index %d" % index)
+	load_employee(index)
+
 func load_employee(index: int):
 		if index < 0 or index >= MiseryManager.employees.size():
 			push_error("Invalid employee index: %s" % index)
 			return
-		current_employee_index = index
 		var e = MiseryManager.employees[index]
 		# Do NOT update global department/traits here; DemonInfo will present these values.
 

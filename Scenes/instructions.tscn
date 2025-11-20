@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://6vcun3f1rlco"]
 
 [ext_resource type="Texture2D" uid="uid://bk41hjtd6u3tj" path="res://Assets/UI/misery_popup.png" id="1_8p7yn"]
-[ext_resource type="Script" uid="uid://sb7casi1j06g" path="res://Scenes/instructions.gd" id="1_s7gfc"]
+[ext_resource type="Script" uid="uid://sb7casi1j06g" path="res://Scripts/instructions.gd" id="1_s7gfc"]
 [ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_dxknu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7gfc"]

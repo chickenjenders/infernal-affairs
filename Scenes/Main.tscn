@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdkq2iagev6i8"]
+[gd_scene load_steps=9 format=3 uid="uid://bdkq2iagev6i8"]
 
 [ext_resource type="Script" uid="uid://cxi0fb0uswt8v" path="res://Scripts/main.gd" id="1_jw32o"]
 [ext_resource type="Texture2D" uid="uid://cmmtod76b1t0k" path="res://Assets/desktopbg.png" id="1_rgh2o"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://by78l4qgwu2x7" path="res://Assets/icons/files.png" id="4_jw32o"]
 [ext_resource type="Texture2D" uid="uid://cjvtnapr44pk2" path="res://Assets/icons/3.png" id="5_jw32o"]
 [ext_resource type="Texture2D" uid="uid://bq7pk0t8rio1j" path="res://Assets/icons/1.png" id="6_50glp"]
+[ext_resource type="PackedScene" uid="uid://6vcun3f1rlco" path="res://Scenes/instructions.tscn" id="8_50glp"]
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -80,5 +81,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 rotation = 0.00140555
+
+[node name="Instructions" parent="." instance=ExtResource("8_50glp")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="IconDock/MiseryManager" to="." method="_on_misery_manager_pressed"]

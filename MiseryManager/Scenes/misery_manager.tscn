@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0443y546r1ey"]
+[gd_scene load_steps=18 format=3 uid="uid://d0443y546r1ey"]
 
 [ext_resource type="Texture2D" uid="uid://jni2vrhvv4cy" path="res://Assets/backgrounds/miserymanagerapp.png" id="1_rlxtp"]
 [ext_resource type="Script" uid="uid://d0fy2l68vwj3j" path="res://MiseryManager/Scripts/demon_info.gd" id="2_4dj6r"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dnikjm5skrfrb" path="res://MiseryManager/Scenes/task_slot.tscn" id="7_omno3"]
 [ext_resource type="Script" uid="uid://bdva1rre1n4h5" path="res://MiseryManager/Scripts/schedule.gd" id="8_qp4v8"]
 [ext_resource type="Script" uid="uid://jd2x8hwlu6mp" path="res://MiseryManager/Scripts/submit_button.gd" id="11_0ltho"]
-[ext_resource type="PackedScene" uid="uid://6vcun3f1rlco" path="res://Scenes/instructions.tscn" id="14_7ucjv"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ijftj"]
 
@@ -188,7 +187,7 @@ offset_bottom = -100.0
 script = ExtResource("6_44pg8")
 task_slot_scene = ExtResource("7_omno3")
 task_scene = ExtResource("6_ekk6s")
-count = 5
+count = 3
 
 [node name="SubmitButton" type="Button" parent="MainLayout/Schedule"]
 layout_mode = 0
@@ -228,10 +227,3 @@ offset_left = -4.0
 offset_top = -83.0
 offset_right = -8.0
 offset_bottom = -1.0
-
-[node name="Instructions" parent="." instance=ExtResource("14_7ucjv")]
-layout_mode = 1
-offset_left = -65.0
-offset_top = -32.0
-offset_right = -65.0
-offset_bottom = -32.0
