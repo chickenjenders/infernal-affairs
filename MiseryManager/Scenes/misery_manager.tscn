@@ -16,13 +16,13 @@
 
 [sub_resource type="ImageTexture" id="ImageTexture_ijftj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ltho"]
-bg_color = Color(0.536389, 0.493404, 0.0291, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg7h3"]
+bg_color = Color(0.352941, 0.313726, 0.239216, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(0.219608, 0.192157, 0.141176, 0.858824)
+shadow_color = Color(0, 0, 0, 0.905882)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
@@ -36,13 +36,13 @@ shadow_color = Color(0, 0, 0, 0.905882)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg7h3"]
-bg_color = Color(0.352941, 0.313726, 0.239216, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ltho"]
+bg_color = Color(0.536389, 0.493404, 0.0291, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(0, 0, 0, 0.905882)
+shadow_color = Color(0.219608, 0.192157, 0.141176, 0.858824)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
@@ -71,7 +71,7 @@ script = ExtResource("2_4dj6r")
 blood_type = "C+"
 
 [node name="Portrait" type="TextureRect" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 26.0
 offset_top = 147.0
 offset_right = 226.0
@@ -80,7 +80,7 @@ texture = SubResource("ImageTexture_ijftj")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 33.0
 offset_top = 71.0
 offset_right = 437.0
@@ -92,7 +92,7 @@ text = "Name"
 horizontal_alignment = 1
 
 [node name="Dept" type="Label" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 324.0
 offset_top = 150.0
 offset_right = 501.0
@@ -101,7 +101,7 @@ theme = ExtResource("3_3ulmy")
 theme_override_colors/font_color = Color(0.352941, 0.313726, 0.239216, 1)
 
 [node name="BloodType" type="Label" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 395.0
 offset_top = 206.0
 offset_right = 500.0
@@ -110,7 +110,7 @@ theme = ExtResource("3_3ulmy")
 theme_override_colors/font_color = Color(0.34902, 0.313726, 0.239216, 1)
 
 [node name="MBTI" type="Label" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 326.0
 offset_top = 259.0
 offset_right = 499.0
@@ -119,7 +119,7 @@ theme = ExtResource("3_3ulmy")
 theme_override_colors/font_color = Color(0.352941, 0.313726, 0.239216, 1)
 
 [node name="Sign" type="Label" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 316.0
 offset_top = 314.0
 offset_right = 500.0
@@ -128,7 +128,7 @@ theme = ExtResource("3_3ulmy")
 theme_override_colors/font_color = Color(0.352941, 0.313726, 0.239216, 1)
 
 [node name="COD" type="Label" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 34.0
 offset_top = 413.0
 offset_right = 499.0
@@ -139,7 +139,7 @@ theme_override_constants/line_spacing = 1
 autowrap_mode = 3
 
 [node name="Sentence" type="Label" parent="MainLayout/DemonInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 39.0
 offset_top = 553.0
 offset_right = 491.0
@@ -174,20 +174,22 @@ custom_minimum_size = Vector2(600, 900)
 layout_mode = 2
 size_flags_horizontal = 2
 script = ExtResource("8_qp4v8")
+target_task_count = 8
 
 [node name="ScheduledTaskList" type="VBoxContainer" parent="MainLayout/Schedule"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 73.0
-offset_top = 150.0
-offset_right = -77.0
-offset_bottom = -100.0
+offset_left = 86.0
+offset_top = 153.0
+offset_right = -82.0
+offset_bottom = -97.0
+theme_override_constants/separation = 0
 script = ExtResource("6_44pg8")
 task_slot_scene = ExtResource("7_omno3")
 task_scene = ExtResource("6_ekk6s")
-count = 8
+SLOT_PADDING = 13
 
 [node name="SubmitButton" type="Button" parent="MainLayout/Schedule"]
 layout_mode = 0
@@ -197,9 +199,9 @@ offset_right = 543.0
 offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("2_ataua")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_0ltho")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7ucjv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dg7h3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7ucjv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ltho")
 text = "SUBMIT"
 script = ExtResource("11_0ltho")
 
