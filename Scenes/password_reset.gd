@@ -7,6 +7,7 @@ extends Control
 
 var current_requirement_index: int = 0
 var requirements: Array[Node] = []
+var elapsed_time = 0
 
 func _ready() -> void:
 	requirements = requirements_list.get_children()
@@ -19,10 +20,17 @@ func _ready() -> void:
 	password_input.text_submitted.connect(_on_submit_pressed)
 	invalid_password_label.visible = false
 
+func _process(delta: float) -> void:
+	if current_requirement_index == 8:
+		elapsed_time += delta
+		if elapsed_time >= 10:
+			get_tree().change_scene_to_file("res://Scenes/securityquestions.tscn")
+
 func _on_submit_pressed(_text: String = "") -> void:
 	var password = password_input.text
 	
 	if check_requirements(password):
+		password_input.text = ""
 		invalid_password_label.visible = false
 		if current_requirement_index < requirements.size() - 1:
 			current_requirement_index += 1
@@ -36,10 +44,6 @@ func _on_submit_pressed(_text: String = "") -> void:
 		print("Requirements not met, text is: ", _text)
 
 func check_requirements(text: String) -> bool:
-	# Requirements 9 and 10 override all previous requirements
-	if current_requirement_index >= 9:
-		return validate_rule(current_requirement_index, text)
-	
 	# Check all revealed requirements
 	for i in range(current_requirement_index + 1):
 		if not validate_rule(i, text):
@@ -126,13 +130,6 @@ func validate_rule(index: int, text: String) -> bool:
 				if text[i] != text[length - 1 - i]:
 					return false
 			return true
-
-			
-		9: # You'll never remember that, just make your password 'password'
-			return text == "password"
-			
-		10: # Wait, that password sucks! It’s so unsecure… make it 'password123!'
-			return text == "password123!"
 			
 		_:
 			return true

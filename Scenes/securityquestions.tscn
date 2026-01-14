@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://beku5iiedpq4b"]
+
+[ext_resource type="Script" uid="uid://bc1ndv4fg3aam" path="res://Scenes/securityquestions.gd" id="1_2t3ug"]
+[ext_resource type="Texture2D" uid="uid://bexs3o7eu8nca" path="res://Assets/UI/IA UI.png" id="2_jltq0"]
+[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="3_c8ywn"]
+[ext_resource type="PackedScene" uid="uid://1oxmhss56nay" path="res://Scenes/passwordrequirements.tscn" id="4_6d53j"]
+[ext_resource type="PackedScene" uid="uid://dqgokxakg61nx" path="res://Scenes/popup.tscn" id="5_jltq0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dyug"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kew5y"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwnbr"]
+bg_color = Color(0.536389, 0.493404, 0.0291, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(2, 1)
+
+[node name="security_questions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2t3ug")
+
+[node name="IaUi" type="Sprite2D" parent="."]
+texture = ExtResource("2_jltq0")
+centered = false
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 44.0
+offset_right = 1189.0
+offset_bottom = 859.0
+
+[node name="Title" type="Label" parent="MainLayout"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_c8ywn")
+theme_override_font_sizes/font_size = 40
+text = "Security Questions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RequirementsList" type="VBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="req_one" parent="MainLayout/RequirementsList" instance=ExtResource("4_6d53j")]
+layout_mode = 2
+text = "Who stole Cecil's \"worst worker\" mug from his desk?"
+
+[node name="Label" parent="MainLayout/RequirementsList" instance=ExtResource("4_6d53j")]
+layout_mode = 2
+text = "What was your first pet's mother’s accountant's maiden name?"
+
+[node name="Label2" parent="MainLayout/RequirementsList" instance=ExtResource("4_6d53j")]
+layout_mode = 2
+text = "Sing the national anthem of Hell"
+
+[node name="Label3" parent="MainLayout/RequirementsList" instance=ExtResource("4_6d53j")]
+layout_mode = 2
+text = "Who did you used to be?"
+
+[node name="PasswordManager" type="Node" parent="."]
+
+[node name="invalid_password_label" parent="." instance=ExtResource("4_6d53j")]
+modulate = Color(0.973808, 0.059873, 0.17247, 1)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 703.0
+offset_right = 1189.0
+offset_bottom = 736.0
+text = "Not even close."
+
+[node name="InputArea" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 0
+offset_left = 414.0
+offset_top = 757.0
+offset_right = 1187.0
+offset_bottom = 837.0
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+
+[node name="PasswordInput" type="LineEdit" parent="InputArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+expand_to_text_length = true
+clear_button_enabled = true
+
+[node name="SubmitButton" type="Button" parent="InputArea"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_c8ywn")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_2dyug")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kew5y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mwnbr")
+text = "Submit"
+
+[node name="popup" parent="." instance=ExtResource("5_jltq0")]
+visible = false
+layout_mode = 1

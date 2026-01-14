@@ -19,4 +19,20 @@ func _ready():
 	$TryAgain.pressed.connect(_on_try_again_pressed)
 
 func _on_try_again_pressed():
+	# Reset all game state variables in MiseryManager
+	MiseryManager.total_game_score = 0
+	MiseryManager.current_employee_index = 0
+	MiseryManager.current_employee_score = 0
+	MiseryManager.currently_dragging_task = null
+	MiseryManager.department = "IT"
+	MiseryManager.taskList.clear()
+	MiseryManager.traitsList.clear()
+	
+	# Clear all task slots
+	for slot in MiseryManager.task_slots:
+		slot["task"] = null
+	
+	print("MiseryReport: Game state reset completely")
+	
+	# Return to the beginning of the game
 	get_tree().change_scene_to_file("res://MiseryManager/Scenes/misery_manager.tscn")
