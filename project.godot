@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MiseryManager="*res://MiseryManager/Scripts/miserymanager.gd"
+Global="*res://Scripts/global.gd"
 
 [display]
 

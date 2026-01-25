@@ -16,7 +16,6 @@ var task_slots := [
 ]
 var current_employee_score: int = 0
 var total_game_score: int = 0
-var current_employee_index: int = 0
 var total_points_possible: int = 500
 
 ## Called when a task starts being dragged
@@ -84,14 +83,14 @@ func submit_employee_score():
 	print("MiseryManager: Employee submitted. Score: ", current_employee_score, ", Total: ", total_game_score)
 
 func is_last_employee() -> bool:
-	return current_employee_index >= employees.size() - 1
+	return Global.current_employee_index >= employees.size() - 1
 
 func advance_to_next_employee():
-	current_employee_index += 1
-	print("MiseryManager: Advanced to employee ", current_employee_index)
-	employee_changed.emit(current_employee_index)
+	Global.current_employee_index += 1
+	print("MiseryManager: Advanced to employee ", Global.current_employee_index)
+	employee_changed.emit(Global.current_employee_index)
 	
-	if current_employee_index == 2:
+	if Global.current_employee_index == 2:
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://Scenes/password_reset.tscn")
 
