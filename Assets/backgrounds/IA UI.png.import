@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://swcrljjrta5t"
-path="res://.godot/imported/IA UI.png-ff7b903a486bf304d5bbfeab2cd23629.ctex"
+path="res://.godot/imported/IA UI.png-85fd5d061676b840aeea2062fecb007e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/IA UI.png"
-dest_files=["res://.godot/imported/IA UI.png-ff7b903a486bf304d5bbfeab2cd23629.ctex"]
+source_file="res://Assets/backgrounds/IA UI.png"
+dest_files=["res://.godot/imported/IA UI.png-85fd5d061676b840aeea2062fecb007e.ctex"]
 
 [params]
 
