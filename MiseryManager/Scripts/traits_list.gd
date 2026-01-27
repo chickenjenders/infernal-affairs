@@ -6,20 +6,27 @@ extends FlowContainer
 		count = value
 
 @export var traits_scene: PackedScene
+@export var misery_manager: MiseryManager
 
 
 func _ready():
-	var traitTitles = %MiseryManager.traitOptions[%MiseryManager.department]
+	if not misery_manager:
+		push_error("MiseryManager not found in scene tree")
+		return
+	var traitTitles = misery_manager.traitOptions[misery_manager.department]
 	traitTitles.shuffle()
 	for i in range(count):
 		var traitTitle = traitTitles[i]
-		%MiseryManager.traitsList.append(traitTitle)
+		misery_manager.traitsList.append(traitTitle)
 
 	_place_components()
 
 
 func _place_components():
-	for traitTitle in %MiseryManager.traitsList:
+	if not misery_manager:
+		push_error("MiseryManager not found in scene tree")
+		return
+	for traitTitle in misery_manager.traitsList:
 		var traits_instance = traits_scene.instantiate()
 		traits_instance.set_text(traitTitle)
 		add_child(traits_instance)

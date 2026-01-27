@@ -52,6 +52,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="MiseryManager" type="Control" parent="."]
 unique_name_in_owner = true
@@ -72,11 +73,12 @@ layout_mode = 0
 offset_right = 1600.0
 offset_bottom = 900.0
 
-[node name="DemonInfo" type="Control" parent="MiseryManager/MainLayout"]
+[node name="DemonInfo" type="Control" parent="MiseryManager/MainLayout" node_paths=PackedStringArray("misery_manager")]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 script = ExtResource("2_4dj6r")
 blood_type = "C+"
+misery_manager = NodePath("../..")
 
 [node name="Portrait" type="TextureRect" parent="MiseryManager/MainLayout/DemonInfo"]
 layout_mode = 0
@@ -166,7 +168,7 @@ offset_top = 690.0
 offset_right = 485.0
 offset_bottom = 800.0
 
-[node name="TraitsList" type="FlowContainer" parent="MiseryManager/MainLayout/DemonInfo/Traits"]
+[node name="TraitsList" type="FlowContainer" parent="MiseryManager/MainLayout/DemonInfo/Traits" node_paths=PackedStringArray("misery_manager")]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 4
@@ -176,15 +178,17 @@ last_wrap_alignment = 1
 script = ExtResource("4_mksl1")
 count = 3
 traits_scene = ExtResource("5_ekk6s")
+misery_manager = NodePath("../../../..")
 
-[node name="Schedule" type="Control" parent="MiseryManager/MainLayout"]
+[node name="Schedule" type="Control" parent="MiseryManager/MainLayout" node_paths=PackedStringArray("misery_manager")]
 custom_minimum_size = Vector2(600, 900)
 layout_mode = 2
 size_flags_horizontal = 2
 script = ExtResource("8_qp4v8")
 target_task_count = 8
+misery_manager = NodePath("../..")
 
-[node name="ScheduledTaskList" type="VBoxContainer" parent="MiseryManager/MainLayout/Schedule"]
+[node name="ScheduledTaskList" type="VBoxContainer" parent="MiseryManager/MainLayout/Schedule" node_paths=PackedStringArray("misery_manager")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -198,6 +202,7 @@ script = ExtResource("6_44pg8")
 task_slot_scene = ExtResource("7_omno3")
 task_scene = ExtResource("6_ekk6s")
 SLOT_PADDING = 13
+misery_manager = NodePath("../../..")
 
 [node name="SubmitButton" type="Button" parent="MiseryManager/MainLayout/Schedule"]
 layout_mode = 0
@@ -218,7 +223,7 @@ custom_minimum_size = Vector2(510, 0)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TasksContainer" type="FlowContainer" parent="MiseryManager/MainLayout/Tasks"]
+[node name="TasksContainer" type="FlowContainer" parent="MiseryManager/MainLayout/Tasks" node_paths=PackedStringArray("misery_manager")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -1.0
@@ -230,6 +235,7 @@ theme_override_constants/v_separation = 10
 script = ExtResource("6_mksl1")
 count = 12
 task_scene = ExtResource("6_ekk6s")
+misery_manager = NodePath("../../..")
 
 [node name="taskBar" parent="MiseryManager" instance=ExtResource("7_fne2n")]
 layout_mode = 1

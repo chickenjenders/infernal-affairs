@@ -6,6 +6,7 @@ var task_index_in_scheduler: int = -1 # -1 if in taskList, slot index if in task
 var original_position: Vector2 # Store position before dragging
 var original_parent: Node # Store parent before dragging
 var task_data
+@export var misery_manager: MiseryManager
 
 func set_task_data(new_data) -> void:
 	task_data = new_data
@@ -42,7 +43,10 @@ func _gui_input(event):
 						print("Task came from slot index: ", task_index_in_scheduler)
 				
 				# Notify MiseryManager that dragging started
-				%MiseryManager.start_dragging_task(self)
+				if not misery_manager:
+					push_error("MiseryManager not found in scene tree")
+					return
+				misery_manager.start_dragging_task(self)
 				
 				dragging = true
 				drag_offset = get_global_mouse_position() - global_position
@@ -59,7 +63,10 @@ func _input(event):
 			await get_tree().process_frame
 			
 			# Notify MiseryManager that dragging stopped
-			%MiseryManager.stop_dragging_task(self)
+			if not misery_manager:
+				push_error("MiseryManager not found in scene tree")
+				return
+			misery_manager.stop_dragging_task(self)
 			
 			# If still not reparented (no slot accepted), handle fallback
 			_handle_drop_fallback()
