@@ -21,10 +21,14 @@ extends Control
 @onready var sentence_lbl: Label = $Sentence
 @onready var traits_list: Node = $Traits/TraitsList
 @onready var portrait_rect: TextureRect = $Portrait
+@export var misery_manager: MiseryManager
 
 func _ready():
+	if not misery_manager:
+		push_error("MiseryManager not found in scene tree")
+		return
 	# Connect to MiseryManager to know when employee changes
-	%MiseryManager.employee_changed.connect(_on_employee_changed)
+	misery_manager.employee_changed.connect(_on_employee_changed)
 	
 	# Load initial employee
 	load_employee(Global.current_employee_index)
@@ -92,10 +96,10 @@ func _on_employee_changed(index: int) -> void:
 	load_employee(index)
 
 func load_employee(index: int):
-		if index < 0 or index >= %MiseryManager.employees.size():
+		if index < 0 or index >= misery_manager.employees.size():
 			push_error("Invalid employee index: %s" % index)
 			return
-		var e = %MiseryManager.employees[index]
+		var e = misery_manager.employees[index]
 		# Do NOT update global department/traits here; DemonInfo will present these values.
 
 		# Update the DemonInfo UI with the provided fields

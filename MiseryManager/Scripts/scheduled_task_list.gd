@@ -5,18 +5,22 @@ signal tasks_changed(count: int)
 @export var task_slot_scene: PackedScene
 @export var task_scene: PackedScene
 @export var SLOT_PADDING = 12 # Extra space for comfortable drop target
+@export var misery_manager: MiseryManager
 
 ## Called when the scheduler is added to the scene tree.
 ## Initializes the task_slots data array and creates all the slot UI elements.
 func _ready():
+	if not misery_manager:
+		push_error("MiseryManager not found in scene tree")
+		return
 	# Add to group so tasks can find this scheduler
 	add_to_group("task_scheduler")
 
 	var schedule = get_parent()
 	# Initialize task slots data
-	%MiseryManager.task_slots.clear()
+	misery_manager.task_slots.clear()
 	for i in range(schedule.target_task_count):
-		%MiseryManager.task_slots.append({
+		misery_manager.task_slots.append({
 			"task": null,
 			"global_pos": Vector2(0, 0)
 		})
@@ -26,7 +30,7 @@ func _ready():
 	emit_signal("tasks_changed", get_scheduled_task_count())
 
 	# Listen for employee change to clear slots
-	%MiseryManager.employee_changed.connect(_on_employee_changed)
+	misery_manager.employee_changed.connect(_on_employee_changed)
 
 ## Creates all the slot containers and any tasks that should start in slots.
 ## This only runs once at startup. After that, tasks move themselves between
@@ -40,8 +44,10 @@ func _initialize_slots():
 	var slot_height = task_height + SLOT_PADDING
 
 	# Create slot containers only
-	for i in range(len(%MiseryManager.task_slots)):
+	for i in range(len(misery_manager.task_slots)):
 		var task_slot_instance = task_slot_scene.instantiate()
+		if "misery_manager" in task_slot_instance:
+			task_slot_instance.misery_manager = misery_manager
 		task_slot_instance.custom_minimum_size = Vector2(size.x, slot_height)
 		task_slot_instance.slot_index = i
 		add_child(task_slot_instance)
@@ -51,13 +57,15 @@ func _initialize_slots():
 
 		# Update global_pos after adding to tree
 		await get_tree().process_frame
-		%MiseryManager.task_slots[i].global_pos = task_slot_instance.global_position
+		misery_manager.task_slots[i].global_pos = task_slot_instance.global_position
 
 		# If this slot has a task, create and add the task node
-		var task_data = %MiseryManager.task_slots[i]["task"]
+		var task_data = misery_manager.task_slots[i]["task"]
 		if task_data:
 			var task_instance = task_scene.instantiate()
 			task_instance.set_task_data(task_data)
+			if "misery_manager" in task_instance:
+				task_instance.misery_manager = misery_manager
 			task_instance.task_index_in_scheduler = i
 			task_instance.add_to_group("task_scheduler") # Assign group BEFORE adding to tree
 			task_slot_instance.add_child(task_instance)
@@ -81,7 +89,7 @@ func _on_task_dropped_on_slot(slot: Control, task: Node):
 			break
 
 	# Ask MiseryManager to schedule the task (handles swap logic)
-	var result = %MiseryManager.schedule_task(task.task_data, slot.slot_index, old_slot_index)
+	var result = misery_manager.schedule_task(task.task_data, slot.slot_index, old_slot_index)
 
 	if not result["success"]:
 		push_error("Failed to schedule task")
@@ -126,7 +134,7 @@ func _on_task_dropped_on_slot(slot: Control, task: Node):
 
 func get_scheduled_task_count():
 	var scheduled = 0
-	for slot in %MiseryManager.task_slots:
+	for slot in misery_manager.task_slots:
 		if slot["task"] != null:
 			scheduled += 1
 	return scheduled

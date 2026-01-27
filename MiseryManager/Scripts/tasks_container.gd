@@ -6,6 +6,7 @@ extends FlowContainer
 		count = value
 
 @export var task_scene: PackedScene
+@export var misery_manager: MiseryManager
 
 const TaskDataResource = preload("res://MiseryManager/Scripts/task_data.gd")
 
@@ -104,6 +105,9 @@ var pregenerated_task_data := []
 ## and creates the task nodes to display them.
 func _ready():
 	add_to_group("tasks_container") # Add group for task detection
+	if not misery_manager:
+		push_error("MiseryManager not found in scene tree")
+		return
 
 	_build_pregenerated_task_data()
 	var available_tasks := []
@@ -111,20 +115,25 @@ func _ready():
 		available_tasks.append(_duplicate_task_data(task_data))
 	available_tasks.shuffle()
 	for i in range(min(count, available_tasks.size())):
-		%MiseryManager.taskList.append(available_tasks[i])
+		misery_manager.taskList.append(available_tasks[i])
 
 	_place_components()
 	
 	# Listen for employee change to regenerate tasks
-	%MiseryManager.employee_changed.connect(_on_employee_changed)
+	misery_manager.employee_changed.connect(_on_employee_changed)
 
 ## Creates and displays all task nodes from the MiseryManager.taskList.
 ## Each task is assigned to the "tasks_container" group so it knows it belongs
 ## to the task list (not in a scheduler slot).
 func _place_components():
-	for task_data in %MiseryManager.taskList:
+	if not misery_manager:
+		push_error("MiseryManager not found in scene tree")
+		return
+	for task_data in misery_manager.taskList:
 		var task_instance = task_scene.instantiate()
 		task_instance.set_task_data(task_data)
+		if "misery_manager" in task_instance:
+			task_instance.misery_manager = misery_manager
 		task_instance.add_to_group("tasks_container") # Assign group BEFORE adding to tree
 		add_child(task_instance)
 
@@ -137,7 +146,7 @@ func _create_task_data_from_template(template: Dictionary):
 	var data = TaskDataResource.new()
 	data.title = template.get("title", "")
 	data.description = template.get("description", "")
-	data.department = template.get("department", %MiseryManager.department)
+	data.department = template.get("department", misery_manager.department)
 	data.tags = template.get("tags", [])
 	data.misery_score = template.get("misery_score", 0)
 	return data
@@ -160,7 +169,7 @@ func regenerate_tasks():
 		available_tasks.append(_duplicate_task_data(task_data))
 	available_tasks.shuffle()
 	for i in range(min(count, available_tasks.size())):
-		%MiseryManager.taskList.append(available_tasks[i])
+		misery_manager.taskList.append(available_tasks[i])
 	
 	# Place new task components
 	_place_components()

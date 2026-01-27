@@ -1,3 +1,4 @@
+class_name MiseryManager
 extends Node
 
 signal employee_changed(index: int)
@@ -17,6 +18,10 @@ var task_slots := [
 var current_employee_score: int = 0
 var total_game_score: int = 0
 var total_points_possible: int = 500
+
+func _enter_tree():
+	add_to_group("misery_manager")
+
 
 ## Called when a task starts being dragged
 func start_dragging_task(task: Node):
