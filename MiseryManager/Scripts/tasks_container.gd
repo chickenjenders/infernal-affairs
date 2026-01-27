@@ -111,18 +111,18 @@ func _ready():
 		available_tasks.append(_duplicate_task_data(task_data))
 	available_tasks.shuffle()
 	for i in range(min(count, available_tasks.size())):
-		MiseryManager.taskList.append(available_tasks[i])
+		%MiseryManager.taskList.append(available_tasks[i])
 
 	_place_components()
 	
 	# Listen for employee change to regenerate tasks
-	MiseryManager.employee_changed.connect(_on_employee_changed)
+	%MiseryManager.employee_changed.connect(_on_employee_changed)
 
 ## Creates and displays all task nodes from the MiseryManager.taskList.
 ## Each task is assigned to the "tasks_container" group so it knows it belongs
 ## to the task list (not in a scheduler slot).
 func _place_components():
-	for task_data in MiseryManager.taskList:
+	for task_data in %MiseryManager.taskList:
 		var task_instance = task_scene.instantiate()
 		task_instance.set_task_data(task_data)
 		task_instance.add_to_group("tasks_container") # Assign group BEFORE adding to tree
@@ -137,7 +137,7 @@ func _create_task_data_from_template(template: Dictionary):
 	var data = TaskDataResource.new()
 	data.title = template.get("title", "")
 	data.description = template.get("description", "")
-	data.department = template.get("department", MiseryManager.department)
+	data.department = template.get("department", %MiseryManager.department)
 	data.tags = template.get("tags", [])
 	data.misery_score = template.get("misery_score", 0)
 	return data
@@ -160,7 +160,7 @@ func regenerate_tasks():
 		available_tasks.append(_duplicate_task_data(task_data))
 	available_tasks.shuffle()
 	for i in range(min(count, available_tasks.size())):
-		MiseryManager.taskList.append(available_tasks[i])
+		%MiseryManager.taskList.append(available_tasks[i])
 	
 	# Place new task components
 	_place_components()

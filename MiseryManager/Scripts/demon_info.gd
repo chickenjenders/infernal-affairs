@@ -24,7 +24,7 @@ extends Control
 
 func _ready():
 	# Connect to MiseryManager to know when employee changes
-	MiseryManager.employee_changed.connect(_on_employee_changed)
+	%MiseryManager.employee_changed.connect(_on_employee_changed)
 	
 	# Load initial employee
 	load_employee(Global.current_employee_index)
@@ -92,10 +92,10 @@ func _on_employee_changed(index: int) -> void:
 	load_employee(index)
 
 func load_employee(index: int):
-		if index < 0 or index >= MiseryManager.employees.size():
+		if index < 0 or index >= %MiseryManager.employees.size():
 			push_error("Invalid employee index: %s" % index)
 			return
-		var e = MiseryManager.employees[index]
+		var e = %MiseryManager.employees[index]
 		# Do NOT update global department/traits here; DemonInfo will present these values.
 
 		# Update the DemonInfo UI with the provided fields

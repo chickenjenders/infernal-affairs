@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0443y546r1ey"]
+[gd_scene load_steps=19 format=3 uid="uid://d0443y546r1ey"]
 
+[ext_resource type="Script" uid="uid://b202c7mfdobk8" path="res://MiseryManager/Scripts/miserymanager.gd" id="1_ifxhs"]
 [ext_resource type="Texture2D" uid="uid://jni2vrhvv4cy" path="res://Assets/backgrounds/miserymanagerapp.png" id="1_rlxtp"]
 [ext_resource type="Script" uid="uid://d0fy2l68vwj3j" path="res://MiseryManager/Scripts/demon_info.gd" id="2_4dj6r"]
 [ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_ataua"]
@@ -51,6 +52,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1604.0
 offset_bottom = 902.0
+script = ExtResource("1_ifxhs")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
