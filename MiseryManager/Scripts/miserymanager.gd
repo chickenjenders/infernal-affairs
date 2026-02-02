@@ -5,11 +5,36 @@ signal employee_changed(index: int)
 
 var currently_dragging_task: Node = null # Track which task is being dragged
 var taskList := []
-var traitOptions = {
-	"IT": ['Low patience', 'Arrogant', 'Hates ambiguity'],
-	"Sales": ['Charismatic', 'People-pleaser', 'Hates to be alone'],
-	"Demon Resources": ['Overly formal', 'Rule-oriented', 'Hates conflict and confrontation']
-}
+@export_file("*.json") var trait_options_file: String = "res://Configs/trait_options.json"
+var trait_options: Dictionary = {}
+
+func _ready():
+	_load_trait_options()
+
+func _load_trait_options():
+	if not FileAccess.file_exists(trait_options_file):
+		push_error("Trait options file not found: " + trait_options_file)
+		return
+		
+	var file = FileAccess.open(trait_options_file, FileAccess.READ)
+	var content = file.get_as_text()
+	var json = JSON.new()
+	var error = json.parse(content)
+	
+	if error == OK:
+		var data = json.data
+		if typeof(data) == TYPE_DICTIONARY:
+			trait_options = data
+		else:
+			push_error("Unexpected data structure in trait_options.json")
+	else:
+		push_error("JSON Parse Error: ", json.get_error_message(), " in ", content, " at line ", json.get_error_line())
+
+func get_traits_for_department(dept_name: String) -> Array[String]:
+	if trait_options.has(dept_name):
+		return trait_options[dept_name]
+	return []
+
 var department: String = "IT"
 var traitsList: Array[String] = []
 var task_slots := [

@@ -13,9 +13,13 @@ func _ready():
 	if not misery_manager:
 		push_error("MiseryManager not found in scene tree")
 		return
-	var traitTitles = misery_manager.traitOptions[misery_manager.department]
+	var traitTitles = misery_manager.get_traits_for_department(misery_manager.department)
+	if traitTitles.is_empty():
+		return
+	
 	traitTitles.shuffle()
-	for i in range(count):
+	var actual_count = min(count, traitTitles.size())
+	for i in range(actual_count):
 		var traitTitle = traitTitles[i]
 		misery_manager.traitsList.append(traitTitle)
 

@@ -12,13 +12,13 @@ extends Control
 
 @export var trait_scene: PackedScene = preload("res://MiseryManager/Scenes/traits.tscn")
 
-@onready var name_lbl: Label = $Name
-@onready var dept_lbl: Label = $Dept
-@onready var blood_lbl: Label = $BloodType
-@onready var mbti_lbl: Label = $MBTI
-@onready var sign_lbl: Label = $Sign
-@onready var cod_lbl: Label = $COD
-@onready var sentence_lbl: Label = $Sentence
+@onready var name_lbl: RichTextLabel = $Name
+@onready var dept_lbl: RichTextLabel = $Dept
+@onready var blood_lbl: RichTextLabel = $BloodType
+@onready var mbti_lbl: RichTextLabel = $MBTI
+@onready var sign_lbl: RichTextLabel = $Sign
+@onready var cod_lbl: RichTextLabel = $COD
+@onready var sentence_lbl: RichTextLabel = $Sentence
 @onready var traits_list: Node = $Traits/TraitsList
 @onready var portrait_rect: TextureRect = $Portrait
 @export var misery_manager: MiseryManager
@@ -43,15 +43,15 @@ func _ready():
 
 func update_labels() -> void:
 	if name_lbl:
-		name_lbl.text = demon_name
+		name_lbl.text = "[center]" + demon_name + "[/center]"
 	if dept_lbl:
-		dept_lbl.text = department
+		dept_lbl.text = "[b]Dept:[/b] " + department
 	if blood_lbl:
-		blood_lbl.text = blood_type
+		blood_lbl.text = "[b]Blood Type:[/b] " + blood_type
 	if mbti_lbl:
-		mbti_lbl.text = mbti
+		mbti_lbl.text = "[b]MBTI:[/b] " + mbti
 	if sign_lbl:
-		sign_lbl.text = zodiac_sign
+		sign_lbl.text = "[b]Sign:[/b] " + zodiac_sign
 	if cod_lbl:
 		cod_lbl.text = cod
 	if sentence_lbl:
