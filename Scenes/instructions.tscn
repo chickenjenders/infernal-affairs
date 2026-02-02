@@ -4,13 +4,13 @@
 [ext_resource type="Script" uid="uid://sb7casi1j06g" path="res://Scripts/instructions.gd" id="1_s7gfc"]
 [ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_dxknu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7gfc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oir0"]
 bg_color = Color(0.536389, 0.493404, 0.0291, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(0.219608, 0.192157, 0.141176, 0.858824)
+shadow_color = Color(0, 0, 0, 0.905882)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
@@ -24,13 +24,13 @@ shadow_color = Color(0, 0, 0, 0.905882)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oir0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7gfc"]
 bg_color = Color(0.536389, 0.493404, 0.0291, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(0, 0, 0, 0.905882)
+shadow_color = Color(0.219608, 0.192157, 0.141176, 0.858824)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
@@ -58,10 +58,10 @@ texture = ExtResource("1_8p7yn")
 
 [node name="title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 418.0
-offset_top = 54.0
-offset_right = 1303.0
-offset_bottom = 199.0
+offset_left = 420.0
+offset_top = 77.0
+offset_right = 1305.0
+offset_bottom = 222.0
 theme_override_colors/font_color = Color(0.348012, 0.321207, 0.178811, 1)
 theme_override_fonts/font = ExtResource("2_dxknu")
 theme_override_font_sizes/font_size = 100
@@ -90,18 +90,13 @@ text = "[center][b]Welcome to Hell.[/b]
 Before you begin, you are required to read these instructions. Yes, all of them.
 
 [b]1. Review Your Demon Queue[/b]
-Click a demon to view their profile and learn what makes them tick… and what makes them suffer.
+Read and analyze the information provided about the demon in your worklist. Use the details to understand their personality.
 
 [b]2. Assign Their Tasks[/b]
-Choose the task you believe will create the [i]most[/i] misery for that demon based on their traits and tendencies.
+Click and drag tasks into their scheduler that you believe will create the [i]most[/i] misery for that demon based on their traits and tendencies.
 
 [b]4. Complete the Shift[/b]
-After all tasks are submitted, the shift will end and you'll receive a Performance Review evaluating how accurately you selected the most miserable assignment for each demon.
-
-[b]Tips[/b]
-• Trust your instincts: if it feels mean, it’s probably right.
-• Ask yourself: “What would ruin MY day?” Then assign that.
-"
+After all tasks are aasigned, submit the finished schedule. Repeat for the other demons in your worklist. Complete additional tasks as assigned."
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -121,9 +116,9 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_dxknu")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_s7gfc")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v8bcc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3oir0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v8bcc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s7gfc")
 text = "ACKNOWLEDGE"
 
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
