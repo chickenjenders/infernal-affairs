@@ -7,6 +7,8 @@ var currently_dragging_task: Node = null # Track which task is being dragged
 var taskList := []
 @export_file("*.json") var trait_options_file: String = "res://Configs/trait_options.json"
 var trait_options: Dictionary = {}
+var task_templates: Array = []
+var trait_definitions: Dictionary = {}
 
 func _ready():
 	_load_trait_options()
@@ -24,7 +26,10 @@ func _load_trait_options():
 	if error == OK:
 		var data = json.data
 		if typeof(data) == TYPE_DICTIONARY:
-			trait_options = data
+			trait_options = data.get("traits", {})
+			employees = data.get("employees", [])
+			task_templates = data.get("task_templates", [])
+			trait_definitions = data.get("trait_definitions", {})
 		else:
 			push_error("Unexpected data structure in trait_options.json")
 	else:
@@ -137,39 +142,5 @@ func reset_for_next_employee():
 	
 	print("MiseryManager: Reset for next employee")
 
-# Employee list - demons / employees we can load into the UI
-var employees: Array = [
-		{
-			"name": "Greg Groves",
-			"department": "IT",
-			"blood_type": "A+",
-			"mbti": "ISTJ",
-			"sign": "Capricorn",
-			"cod": "Fell asleep while driving due to not sleeping for 3 days so he could finish a work project",
-			"sentence": "Sold soul for middle management position",
-			"traits": ["Low patience", "Arrogant", "Hates ambiguity"],
-			"portrait": "res://Assets/portraits/greg.png",
-		},
-		{
-			"name": "Sheila McCarthy",
-			"department": "Sales",
-			"blood_type": "O-",
-			"mbti": "ENFP",
-			"sign": "Aries",
-			"cod": "“Accidentally” fell off a mountain during a hike",
-			"sentence": "Traded soul for 20 years with her ex-husband’s fortune",
-			"traits": ["Charismatic", "People-pleaser", "Hates to be alone"],
-			"portrait": "res://Assets/portraits/sheila.PNG",
-		},
-		{
-			"name": "Raymond Dacosta",
-			"department": "Demon Resources",
-			"blood_type": "B+",
-			"mbti": "ENFJ",
-			"sign": "Libra",
-			"cod": "Heart failure after drinking a red bull everyday for 40 years",
-			"sentence": "Literally not a soul on earth liked this man",
-			"traits": ["Overly formal", "Rule-oriented", "Hates conflict and confrontation"],
-			"portrait": "res://Assets/portraits/raymond.PNG",
-		}
-	]
+# Employee list - loaded from JSON
+var employees: Array = []
