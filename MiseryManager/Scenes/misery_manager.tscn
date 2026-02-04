@@ -47,7 +47,7 @@ shadow_color = Color(0.219608, 0.192157, 0.141176, 0.858824)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
-[node name="Control" type="Control"]
+[node name="Shift 1" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -229,10 +229,10 @@ size_flags_vertical = 0
 [node name="TasksContainer" type="FlowContainer" parent="MiseryManager/MainLayout/Tasks" node_paths=PackedStringArray("misery_manager")]
 layout_mode = 1
 anchors_preset = -1
-offset_left = -1.0
-offset_top = 127.0
-offset_right = 509.0
-offset_bottom = 801.0
+offset_left = -30.0
+offset_top = 114.0
+offset_right = 480.0
+offset_bottom = 788.0
 size_flags_vertical = 4
 theme_override_constants/v_separation = 10
 script = ExtResource("6_mksl1")
