@@ -5,40 +5,21 @@ signal employee_changed(index: int)
 
 var currently_dragging_task: Node = null # Track which task is being dragged
 var taskList := []
-@export_file("*.json") var trait_options_file: String = "res://Configs/trait_options.json"
-var trait_options: Dictionary = {}
-var task_templates: Array = []
-var trait_definitions: Dictionary = {}
+# Data loaded from ShiftManager now
+# @export_file("*.json") var trait_options_file: String = "res://Configs/trait_options.json"
+# var trait_options: Dictionary = {}
+# var task_templates: Array = []
+# var trait_definitions: Dictionary = {}
 
 func _ready():
-	_load_trait_options()
+	# _load_trait_options()
+    # Sync with ShiftManager state if needed
+    pass
 
-func _load_trait_options():
-	if not FileAccess.file_exists(trait_options_file):
-		push_error("Trait options file not found: " + trait_options_file)
-		return
-		
-	var file = FileAccess.open(trait_options_file, FileAccess.READ)
-	var content = file.get_as_text()
-	var json = JSON.new()
-	var error = json.parse(content)
-	
-	if error == OK:
-		var data = json.data
-		if typeof(data) == TYPE_DICTIONARY:
-			trait_options = data.get("traits", {})
-			employees = data.get("employees", [])
-			task_templates = data.get("task_templates", [])
-			trait_definitions = data.get("trait_definitions", {})
-		else:
-			push_error("Unexpected data structure in trait_options.json")
-	else:
-		push_error("JSON Parse Error: ", json.get_error_message(), " in ", content, " at line ", json.get_error_line())
+# func _load_trait_options(): ... (Removed)
 
-func get_traits_for_department(dept_name: String) -> Array[String]:
-	if trait_options.has(dept_name):
-		return trait_options[dept_name]
-	return []
+func get_traits_for_department(dept_name: String) -> Array:
+	return ShiftManager.get_trait_options(dept_name)
 
 var department: String = "IT"
 var traitsList: Array[String] = []
@@ -111,21 +92,20 @@ func get_current_employee_score() -> int:
 	return current_employee_score
 
 func get_total_game_score() -> int:
-	return total_game_score
+	return ShiftManager.total_game_score
 
 func submit_employee_score():
-	total_game_score += current_employee_score
-	print("MiseryManager: Employee submitted. Score: ", current_employee_score, ", Total: ", total_game_score)
+	ShiftManager.submit_score(current_employee_score)
 
 func is_last_employee() -> bool:
-	return Global.current_employee_index >= employees.size() - 1
+	return ShiftManager.current_employee_index >= ShiftManager.employees.size() - 1
 
 func advance_to_next_employee():
-	Global.current_employee_index += 1
-	print("MiseryManager: Advanced to employee ", Global.current_employee_index)
-	employee_changed.emit(Global.current_employee_index)
+	ShiftManager.advance_to_next_employee()
+	print("MiseryManager: Advanced to employee ", ShiftManager.current_employee_index)
+	employee_changed.emit(ShiftManager.current_employee_index)
 	
-	if Global.current_employee_index == 2:
+	if ShiftManager.current_employee_index == 2:
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://Scenes/password_reset.tscn")
 
@@ -142,5 +122,5 @@ func reset_for_next_employee():
 	
 	print("MiseryManager: Reset for next employee")
 
-# Employee list - loaded from JSON
-var employees: Array = []
+# Employee list - loaded from ShiftManager
+# var employees: Array = []
