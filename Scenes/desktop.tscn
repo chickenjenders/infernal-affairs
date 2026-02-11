@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdkq2iagev6i8"]
 
-[ext_resource type="Script" uid="uid://cxi0fb0uswt8v" path="res://Scripts/main.gd" id="1_jw32o"]
-[ext_resource type="Texture2D" uid="uid://cfamsfr32lktf" path="res://Assets/backgrounds/desktopbg.png" id="1_rgh2o"]
-[ext_resource type="PackedScene" uid="uid://6t1116fjdea7" path="res://Scenes/ button.tscn" id="2_pbw6q"]
-[ext_resource type="Texture2D" uid="uid://bbn4x1h8d3tcg" path="res://Assets/icons/2.png" id="3_v1gob"]
-[ext_resource type="Texture2D" uid="uid://by78l4qgwu2x7" path="res://Assets/icons/files.png" id="4_jw32o"]
-[ext_resource type="Texture2D" uid="uid://cjvtnapr44pk2" path="res://Assets/icons/3.png" id="5_jw32o"]
-[ext_resource type="Texture2D" uid="uid://bq7pk0t8rio1j" path="res://Assets/icons/1.png" id="6_50glp"]
-[ext_resource type="PackedScene" uid="uid://6vcun3f1rlco" path="res://Scenes/instructions.tscn" id="8_50glp"]
+[ext_resource type="Script" uid="uid://cxi0fb0uswt8v" path="res://Scripts/main.gd" id="1_m3b6i"]
+[ext_resource type="Texture2D" uid="uid://cfamsfr32lktf" path="res://Assets/backgrounds/desktopbg.png" id="2_uegd8"]
+[ext_resource type="PackedScene" uid="uid://6t1116fjdea7" path="res://UI/button.tscn" id="3_fy7rl"]
+[ext_resource type="Texture2D" uid="uid://bbn4x1h8d3tcg" path="res://Assets/icons/2.png" id="4_8shc6"]
+[ext_resource type="Texture2D" uid="uid://by78l4qgwu2x7" path="res://Assets/icons/files.png" id="5_p2f20"]
+[ext_resource type="Texture2D" uid="uid://cjvtnapr44pk2" path="res://Assets/icons/3.png" id="6_gel6t"]
+[ext_resource type="Texture2D" uid="uid://bq7pk0t8rio1j" path="res://Assets/icons/1.png" id="7_j7wpw"]
+[ext_resource type="PackedScene" uid="uid://6vcun3f1rlco" path="res://UI/instructions.tscn" id="8_1djlj"]
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_jw32o")
+script = ExtResource("1_m3b6i")
 
 [node name="DesktopBackground" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(1600, 900)
@@ -32,7 +32,7 @@ offset_right = 3.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_rgh2o")
+texture = ExtResource("2_uegd8")
 stretch_mode = 6
 
 [node name="Taskbar" type="ColorRect" parent="."]
@@ -56,21 +56,21 @@ grow_vertical = 2
 scale = Vector2(0.47508, 0.409143)
 theme_override_constants/separation = 80
 
-[node name="MiseryManager" parent="IconDock" instance=ExtResource("2_pbw6q")]
+[node name="MiseryManager" parent="IconDock" instance=ExtResource("3_fy7rl")]
 layout_mode = 2
-texture_normal = ExtResource("3_v1gob")
+texture_normal = ExtResource("4_8shc6")
 
-[node name="Files" parent="IconDock" instance=ExtResource("2_pbw6q")]
+[node name="Files" parent="IconDock" instance=ExtResource("3_fy7rl")]
 layout_mode = 2
-texture_normal = ExtResource("4_jw32o")
+texture_normal = ExtResource("5_p2f20")
 
-[node name="Email" parent="IconDock" instance=ExtResource("2_pbw6q")]
+[node name="Email" parent="IconDock" instance=ExtResource("3_fy7rl")]
 layout_mode = 2
-texture_normal = ExtResource("5_jw32o")
+texture_normal = ExtResource("6_gel6t")
 
-[node name="Recycle" parent="IconDock" instance=ExtResource("2_pbw6q")]
+[node name="Recycle" parent="IconDock" instance=ExtResource("3_fy7rl")]
 layout_mode = 2
-texture_normal = ExtResource("6_50glp")
+texture_normal = ExtResource("7_j7wpw")
 
 [node name="Windows" type="Node" parent="."]
 
@@ -82,7 +82,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 rotation = 0.00140555
 
-[node name="Instructions" parent="." instance=ExtResource("8_50glp")]
+[node name="Instructions" parent="." instance=ExtResource("8_1djlj")]
 layout_mode = 1
 
 [connection signal="pressed" from="IconDock/MiseryManager" to="." method="_on_misery_manager_pressed"]

@@ -1,19 +1,19 @@
 [gd_scene load_steps=19 format=3 uid="uid://d0443y546r1ey"]
 
-[ext_resource type="Script" uid="uid://b202c7mfdobk8" path="res://MiseryManager/Scripts/miserymanager.gd" id="1_ifxhs"]
-[ext_resource type="Script" uid="uid://d0fy2l68vwj3j" path="res://MiseryManager/Scripts/demon_info.gd" id="2_4dj6r"]
-[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_ataua"]
-[ext_resource type="Texture2D" uid="uid://bhe3vaypfkil" path="res://Assets/backgrounds/MMbackground.png" id="2_ifxhs"]
-[ext_resource type="Theme" uid="uid://b68tpgef133gx" path="res://Assets/UI/default_theme.tres" id="3_3ulmy"]
-[ext_resource type="Script" uid="uid://cb1umph1jxq0w" path="res://MiseryManager/Scripts/traits_list.gd" id="4_mksl1"]
-[ext_resource type="PackedScene" uid="uid://bslcw8id8v5nc" path="res://MiseryManager/Scenes/traits.tscn" id="5_ekk6s"]
-[ext_resource type="Script" uid="uid://ce63dv6m3lmfs" path="res://MiseryManager/Scripts/scheduled_task_list.gd" id="6_44pg8"]
-[ext_resource type="PackedScene" uid="uid://brmwmlcqdohsw" path="res://MiseryManager/Scenes/task.tscn" id="6_ekk6s"]
-[ext_resource type="Script" uid="uid://cdctw888ymj84" path="res://MiseryManager/Scripts/tasks_container.gd" id="6_mksl1"]
-[ext_resource type="PackedScene" uid="uid://bm1i2exo4scyy" path="res://MiseryManager/Scenes/task_bar.tscn" id="7_fne2n"]
-[ext_resource type="PackedScene" uid="uid://dnikjm5skrfrb" path="res://MiseryManager/Scenes/task_slot.tscn" id="7_omno3"]
-[ext_resource type="Script" uid="uid://bdva1rre1n4h5" path="res://MiseryManager/Scripts/schedule.gd" id="8_qp4v8"]
-[ext_resource type="Script" uid="uid://jd2x8hwlu6mp" path="res://MiseryManager/Scripts/submit_button.gd" id="11_0ltho"]
+[ext_resource type="Script" uid="uid://b202c7mfdobk8" path="res://MiseryManager/Scripts/miserymanager.gd" id="1_8w3tu"]
+[ext_resource type="Texture2D" uid="uid://bhe3vaypfkil" path="res://Assets/backgrounds/MMbackground.png" id="2_fddw7"]
+[ext_resource type="Script" uid="uid://d0fy2l68vwj3j" path="res://MiseryManager/Scripts/demon_info.gd" id="3_u54pb"]
+[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="4_brbmx"]
+[ext_resource type="Theme" uid="uid://b68tpgef133gx" path="res://Assets/UI/default_theme.tres" id="5_5seg7"]
+[ext_resource type="Script" uid="uid://cb1umph1jxq0w" path="res://MiseryManager/Scripts/traits_list.gd" id="6_twwna"]
+[ext_resource type="PackedScene" uid="uid://bslcw8id8v5nc" path="res://MiseryManager/Scenes/Components/traits.tscn" id="7_nl1ig"]
+[ext_resource type="Script" uid="uid://bdva1rre1n4h5" path="res://MiseryManager/Scripts/schedule.gd" id="8_jf11r"]
+[ext_resource type="Script" uid="uid://ce63dv6m3lmfs" path="res://MiseryManager/Scripts/scheduled_task_list.gd" id="9_c8r35"]
+[ext_resource type="PackedScene" uid="uid://dnikjm5skrfrb" path="res://MiseryManager/Scenes/Components/task_slot.tscn" id="10_kt2na"]
+[ext_resource type="PackedScene" uid="uid://brmwmlcqdohsw" path="res://MiseryManager/Scenes/Components/task.tscn" id="11_wskxs"]
+[ext_resource type="Script" uid="uid://jd2x8hwlu6mp" path="res://MiseryManager/Scripts/submit_button.gd" id="12_pbydi"]
+[ext_resource type="Script" uid="uid://cdctw888ymj84" path="res://MiseryManager/Scripts/tasks_container.gd" id="13_irhgy"]
+[ext_resource type="PackedScene" uid="uid://bm1i2exo4scyy" path="res://MiseryManager/Scenes/Components/task_bar.tscn" id="14_e7fpv"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ijftj"]
 
@@ -59,13 +59,13 @@ unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 1604.0
 offset_bottom = 902.0
-script = ExtResource("1_ifxhs")
+script = ExtResource("1_8w3tu")
 
 [node name="TextureRect" type="TextureRect" parent="MiseryManager"]
 layout_mode = 0
 offset_right = 1600.0
 offset_bottom = 900.0
-texture = ExtResource("2_ifxhs")
+texture = ExtResource("2_fddw7")
 
 [node name="MainLayout" type="HBoxContainer" parent="MiseryManager"]
 layout_direction = 2
@@ -76,7 +76,7 @@ offset_bottom = 900.0
 [node name="DemonInfo" type="Control" parent="MiseryManager/MainLayout" node_paths=PackedStringArray("misery_manager")]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-script = ExtResource("2_4dj6r")
+script = ExtResource("3_u54pb")
 blood_type = "C+"
 misery_manager = NodePath("../..")
 
@@ -96,7 +96,7 @@ offset_top = 59.0
 offset_right = 462.0
 offset_bottom = 135.0
 theme_override_colors/default_color = Color(0.352941, 0.313726, 0.239216, 1)
-theme_override_fonts/normal_font = ExtResource("2_ataua")
+theme_override_fonts/normal_font = ExtResource("4_brbmx")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "Name"
@@ -107,7 +107,7 @@ offset_left = 257.0
 offset_top = 153.0
 offset_right = 499.0
 offset_bottom = 198.0
-theme = ExtResource("3_3ulmy")
+theme = ExtResource("5_5seg7")
 theme_override_colors/default_color = Color(0.352941, 0.313726, 0.239216, 1)
 bbcode_enabled = true
 
@@ -117,7 +117,7 @@ offset_left = 257.0
 offset_top = 198.0
 offset_right = 499.0
 offset_bottom = 243.0
-theme = ExtResource("3_3ulmy")
+theme = ExtResource("5_5seg7")
 theme_override_colors/default_color = Color(0.34902, 0.313726, 0.239216, 1)
 bbcode_enabled = true
 
@@ -127,7 +127,7 @@ offset_left = 257.0
 offset_top = 246.0
 offset_right = 499.0
 offset_bottom = 291.0
-theme = ExtResource("3_3ulmy")
+theme = ExtResource("5_5seg7")
 theme_override_colors/default_color = Color(0.352941, 0.313726, 0.239216, 1)
 bbcode_enabled = true
 
@@ -137,7 +137,7 @@ offset_left = 257.0
 offset_top = 299.0
 offset_right = 499.0
 offset_bottom = 344.0
-theme = ExtResource("3_3ulmy")
+theme = ExtResource("5_5seg7")
 theme_override_colors/default_color = Color(0.352941, 0.313726, 0.239216, 1)
 bbcode_enabled = true
 
@@ -147,7 +147,7 @@ offset_left = 34.0
 offset_top = 413.0
 offset_right = 499.0
 offset_bottom = 504.0
-theme = ExtResource("3_3ulmy")
+theme = ExtResource("5_5seg7")
 theme_override_colors/default_color = Color(0.352941, 0.313726, 0.239216, 1)
 bbcode_enabled = true
 
@@ -157,7 +157,7 @@ offset_left = 39.0
 offset_top = 553.0
 offset_right = 491.0
 offset_bottom = 648.0
-theme = ExtResource("3_3ulmy")
+theme = ExtResource("5_5seg7")
 theme_override_colors/default_color = Color(0.352941, 0.313726, 0.239216, 1)
 bbcode_enabled = true
 
@@ -178,16 +178,16 @@ size_flags_vertical = 4
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 20
 last_wrap_alignment = 1
-script = ExtResource("4_mksl1")
+script = ExtResource("6_twwna")
 count = 3
-traits_scene = ExtResource("5_ekk6s")
+traits_scene = ExtResource("7_nl1ig")
 misery_manager = NodePath("../../../..")
 
 [node name="Schedule" type="Control" parent="MiseryManager/MainLayout" node_paths=PackedStringArray("misery_manager")]
 custom_minimum_size = Vector2(600, 900)
 layout_mode = 2
 size_flags_horizontal = 2
-script = ExtResource("8_qp4v8")
+script = ExtResource("8_jf11r")
 target_task_count = 8
 misery_manager = NodePath("../..")
 
@@ -201,9 +201,9 @@ offset_top = 153.0
 offset_right = -82.0
 offset_bottom = -97.0
 theme_override_constants/separation = 0
-script = ExtResource("6_44pg8")
-task_slot_scene = ExtResource("7_omno3")
-task_scene = ExtResource("6_ekk6s")
+script = ExtResource("9_c8r35")
+task_slot_scene = ExtResource("10_kt2na")
+task_scene = ExtResource("11_wskxs")
 SLOT_PADDING = 13
 misery_manager = NodePath("../../..")
 
@@ -213,13 +213,13 @@ offset_left = 358.0
 offset_top = 72.0
 offset_right = 543.0
 offset_bottom = 133.0
-theme_override_fonts/font = ExtResource("2_ataua")
+theme_override_fonts/font = ExtResource("4_brbmx")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_dg7h3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7ucjv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ltho")
 text = "SUBMIT"
-script = ExtResource("11_0ltho")
+script = ExtResource("12_pbydi")
 
 [node name="Tasks" type="Control" parent="MiseryManager/MainLayout"]
 custom_minimum_size = Vector2(510, 0)
@@ -235,12 +235,12 @@ offset_right = 480.0
 offset_bottom = 788.0
 size_flags_vertical = 4
 theme_override_constants/v_separation = 10
-script = ExtResource("6_mksl1")
+script = ExtResource("13_irhgy")
 count = 12
-task_scene = ExtResource("6_ekk6s")
+task_scene = ExtResource("11_wskxs")
 misery_manager = NodePath("../../..")
 
-[node name="taskBar" parent="MiseryManager" instance=ExtResource("7_fne2n")]
+[node name="taskBar" parent="MiseryManager" instance=ExtResource("14_e7fpv")]
 layout_mode = 1
 offset_left = -4.0
 offset_top = -83.0
