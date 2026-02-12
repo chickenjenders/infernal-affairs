@@ -21,6 +21,9 @@ func _ready() -> void:
 	submit_button.pressed.connect(_on_submit_pressed)
 	password_input.text_submitted.connect(_on_submit_pressed)
 	invalid_password_label.visible = false
+	
+	# Ensure input focus when scene loads
+	password_input.grab_focus()
 
 func _on_submit_pressed(_text: String = "") -> void:
 	password_input.text = ""
