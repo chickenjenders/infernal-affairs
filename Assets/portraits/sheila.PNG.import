@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kxiaki1817xl"
-path="res://.godot/imported/sheila.PNG-921787116bbe627f4e3263a404cb12a6.ctex"
+uid="uid://dsimiskui3a37"
+path="res://.godot/imported/sheila.PNG-faa819b9802edd7dc8a3fefa5cca0ebc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/portraits/sheila.PNG"
-dest_files=["res://.godot/imported/sheila.PNG-921787116bbe627f4e3263a404cb12a6.ctex"]
+source_file="res://assets/portraits/sheila.PNG"
+dest_files=["res://.godot/imported/sheila.PNG-faa819b9802edd7dc8a3fefa5cca0ebc.ctex"]
 
 [params]
 

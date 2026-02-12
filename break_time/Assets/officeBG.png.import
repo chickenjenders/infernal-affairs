@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dniyfci7pf651"
-path="res://.godot/imported/officeBG.png-296f5a16a712f36ea20d53e978e70a01.ctex"
+uid="uid://dnrekrpn6qnhi"
+path="res://.godot/imported/officeBG.png-362a7ee37db992f68c85f171ae17eaed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Break Time/Assets/officeBG.png"
-dest_files=["res://.godot/imported/officeBG.png-296f5a16a712f36ea20d53e978e70a01.ctex"]
+source_file="res://break_time/assets/officeBG.png"
+dest_files=["res://.godot/imported/officeBG.png-362a7ee37db992f68c85f171ae17eaed.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beurlm18d8udi"
-path="res://.godot/imported/james.PNG-f2b4bca5754f2f57a7f428b707642bcf.ctex"
+uid="uid://sewngtqpafc8"
+path="res://.godot/imported/james.PNG-b38653ceb71c840d2236fbfd688d93e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/portraits/james.PNG"
-dest_files=["res://.godot/imported/james.PNG-f2b4bca5754f2f57a7f428b707642bcf.ctex"]
+source_file="res://assets/portraits/james.PNG"
+dest_files=["res://.godot/imported/james.PNG-b38653ceb71c840d2236fbfd688d93e9.ctex"]
 
 [params]
 
