@@ -6,7 +6,7 @@ extends FlowContainer
 		count = value
 
 @export var traits_scene: PackedScene
-@export var misery_manager: MiseryManager
+@export var misery_manager: Node
 
 
 func _ready():

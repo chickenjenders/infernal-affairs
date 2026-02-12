@@ -3,6 +3,9 @@ extends Node
 
 signal employee_changed(index: int)
 
+# Reference to ShiftManager (assumes it's an autoload)
+@onready var ShiftManager = get_node("/root/ShiftManager")
+
 var currently_dragging_task: Node = null # Track which task is being dragged
 var taskList := []
 # Data loaded from ShiftManager now
@@ -13,13 +16,30 @@ var taskList := []
 
 func _ready():
 	# _load_trait_options()
-    # Sync with ShiftManager state if needed
-    pass
+	# Sync with ShiftManager state if needed
+	pass
 
 # func _load_trait_options(): ... (Removed)
 
-func get_traits_for_department(dept_name: String) -> Array:
-	return ShiftManager.get_trait_options(dept_name)
+func get_traits_for_department(dept: String) -> Array:
+	var shift_manager = get_node_or_null("/root/ShiftManager")
+	if not shift_manager:
+		push_error("ShiftManager autoload not found")
+		return []
+	if not shift_manager.has_method("get_trait_options"):
+		push_error("ShiftManager does not have get_trait_options method")
+		return []
+	return shift_manager.get_trait_options(dept)
+
+func get_task_templates() -> Array:
+	var shift_manager = get_node_or_null("/root/ShiftManager")
+	if not shift_manager:
+		push_error("ShiftManager autoload not found")
+		return []
+	if not "task_templates" in shift_manager:
+		push_error("ShiftManager does not have task_templates property")
+		return []
+	return shift_manager.task_templates
 
 var department: String = "IT"
 var traitsList: Array[String] = []

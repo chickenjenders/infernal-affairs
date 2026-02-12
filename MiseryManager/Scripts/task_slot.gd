@@ -3,7 +3,7 @@ extends Control
 signal task_dropped_on_slot(slot: Control, task: Node) # Signal to notify scheduler
 
 var slot_index: int = -1 # Store the index associated with MiseryManager.task_slots
-@export var misery_manager: MiseryManager
+@export var misery_manager: Node
 
 func _ready():
 	# Enable mouse detection for this slot
@@ -20,7 +20,7 @@ func _input(event):
 				var task = misery_manager.currently_dragging_task
 				print("Slot ", slot_index, " requesting to accept task '", task.text, "'")
 				# Signal the scheduler to handle this
-				task_dropped_on_slot.emit(self, task)
+				task_dropped_on_slot.emit(self , task)
 
 ## Checks if the mouse is currently within this slot's bounds.
 func _is_mouse_over() -> bool:

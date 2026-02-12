@@ -7,7 +7,7 @@ signal ready_flag_changed(is_ready: bool)
 
 @onready var submit_button: Button = $SubmitButton
 @onready var scheduled_list: Node = $ScheduledTaskList
-@export var misery_manager: MiseryManager
+@export var misery_manager: Node
 
 var _default_modulate: Color
 var ready_flag: bool = false

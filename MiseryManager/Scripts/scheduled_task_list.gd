@@ -5,7 +5,7 @@ signal tasks_changed(count: int)
 @export var task_slot_scene: PackedScene
 @export var task_scene: PackedScene
 @export var SLOT_PADDING = 12 # Extra space for comfortable drop target
-@export var misery_manager: MiseryManager
+@export var misery_manager: Node
 
 ## Called when the scheduler is added to the scene tree.
 ## Initializes the task_slots data array and creates all the slot UI elements.
