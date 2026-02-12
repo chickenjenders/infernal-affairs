@@ -6,7 +6,7 @@ extends FlowContainer
 		count = value
 
 @export var task_scene: PackedScene
-@export var misery_manager: MiseryManager
+@export var misery_manager: Node
 
 const TaskDataResource = preload("res://MiseryManager/Scripts/task_data.gd")
 
@@ -21,10 +21,7 @@ func _ready():
 		push_error("MiseryManager not found in scene tree")
 		return
 
-    # Ensure misery manager has loaded data
-	if misery_manager.task_templates.is_empty():
-		misery_manager._load_trait_options()
-
+	# Removed the task_templates check since it's now in ShiftManager
 	_build_pregenerated_task_data()
 	var available_tasks := []
 	for task_data in pregenerated_task_data:
@@ -55,7 +52,8 @@ func _place_components():
 
 func _build_pregenerated_task_data():
 	pregenerated_task_data.clear()
-	for template in misery_manager.task_templates:
+	var templates = misery_manager.get_task_templates()
+	for template in templates:
 		pregenerated_task_data.append(_create_task_data_from_template(template))
 
 func _create_task_data_from_template(template: Dictionary):

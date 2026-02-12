@@ -1,5 +1,7 @@
 extends Control
 
+@onready var ShiftManager = get_node("/root/ShiftManager")
+
 @export var demon_name: String = "Greg Groves"
 @export var department: String = "IT"
 @export var blood_type: String = "A+"
@@ -10,7 +12,7 @@ extends Control
 @export var traits: Array = ["Low patience", "Arrogant", "Hates ambiguity"]
 @export var portrait_texture: Texture2D
 
-@export var trait_scene: PackedScene = preload("res://MiseryManager/Scenes/traits.tscn")
+@export var trait_scene: PackedScene = preload("res://MiseryManager/Scenes/Components/traits.tscn")
 
 @onready var name_lbl: RichTextLabel = $Name
 @onready var dept_lbl: RichTextLabel = $Dept
@@ -21,7 +23,7 @@ extends Control
 @onready var sentence_lbl: RichTextLabel = $Sentence
 @onready var traits_list: Node = $Traits/TraitsList
 @onready var portrait_rect: TextureRect = $Portrait
-@export var misery_manager: MiseryManager
+@export var misery_manager: Node
 
 func _ready():
 	if not misery_manager:
@@ -96,10 +98,10 @@ func _on_employee_changed(index: int) -> void:
 	load_employee(index)
 
 func load_employee(index: int):
-		if index < 0 or index >= misery_manager.employees.size():
+		if index < 0 or index >= ShiftManager.employees.size():
 			push_error("Invalid employee index: %s" % index)
 			return
-		var e = misery_manager.employees[index]
+		var e = ShiftManager.employees[index]
 		# Do NOT update global department/traits here; DemonInfo will present these values.
 
 		# Update the DemonInfo UI with the provided fields
