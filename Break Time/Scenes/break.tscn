@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs3w85ul0r7ml"]
+[gd_scene load_steps=6 format=3 uid="uid://bs3w85ul0r7ml"]
 
 [ext_resource type="Texture2D" uid="uid://dniyfci7pf651" path="res://Break Time/Assets/officeBG.png" id="1_uut2m"]
+[ext_resource type="Script" uid="uid://b81tsi36riuex" path="res://Break Time/Scenes/break.gd" id="1_xahtr"]
 [ext_resource type="PackedScene" uid="uid://3bh0g682ia6n" path="res://UI/menu_button.tscn" id="2_7502k"]
 [ext_resource type="PackedScene" uid="uid://b4bvk60gv805n" path="res://Break Time/Assets/demon.tscn" id="3_jhnkn"]
 
@@ -8,6 +9,7 @@
 texture = ExtResource("1_uut2m")
 
 [node name="BreakOne" type="Node2D"]
+script = ExtResource("1_xahtr")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -31,3 +33,5 @@ position = Vector2(-428, 30)
 
 [node name="Sheila" parent="." instance=ExtResource("3_jhnkn")]
 position = Vector2(464, 36)
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

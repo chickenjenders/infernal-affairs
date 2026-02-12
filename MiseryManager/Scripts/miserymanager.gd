@@ -127,7 +127,9 @@ func advance_to_next_employee():
 	
 	if ShiftManager.current_employee_index == 2:
 		await get_tree().create_timer(2.0).timeout
-		get_tree().change_scene_to_file("res://Scenes/password_reset.tscn")
+		var password_reset_scene = load("res://Scenes/password_reset.tscn")
+		var password_reset_instance = password_reset_scene.instantiate()
+		get_tree().root.add_child(password_reset_instance)
 
 func reset_for_next_employee():
 	# Clear all task slots

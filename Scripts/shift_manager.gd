@@ -64,6 +64,10 @@ func advance_to_next_employee():
 		# Handle end of game or loops
 	else:
 		emit_signal("employee_changed", get_current_employee_data())
+		# Check if we've moved to a new shift
+		if is_shift_complete():
+			current_shift_index += 1
+			emit_signal("shift_changed", current_shift_index)
 
 # Helper to check if current employee is the last one in the current "shift" logic
 # For now, assumes all employees in one big list; adapt logic if shifts are defined differently
