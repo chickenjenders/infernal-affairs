@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c1bxnd8b2ug2u"
-path="res://.godot/imported/Garet-Heavy.ttf-88ab686f2430fa061c290c7cd56e611d.fontdata"
+uid="uid://2dmv8uw2ajv6"
+path="res://.godot/imported/Garet-Heavy.ttf-02e8bc788ffe048d0be1cfb6212a1d2f.fontdata"
 
 [deps]
 
-source_file="res://Assets/font/Garet-Heavy.ttf"
-dest_files=["res://.godot/imported/Garet-Heavy.ttf-88ab686f2430fa061c290c7cd56e611d.fontdata"]
+source_file="res://assets/font/Garet-Heavy.ttf"
+dest_files=["res://.godot/imported/Garet-Heavy.ttf-02e8bc788ffe048d0be1cfb6212a1d2f.fontdata"]
 
 [params]
 

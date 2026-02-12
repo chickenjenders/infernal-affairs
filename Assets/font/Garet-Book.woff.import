@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cit4vnsfuotj1"
-path="res://.godot/imported/Garet-Book.woff-ceb0c988f9f1eba2fda73f128532220a.fontdata"
+uid="uid://jptu5wuo6ic7"
+path="res://.godot/imported/Garet-Book.woff-9127a1e461c0b44a4db4f5eb8277bcc6.fontdata"
 
 [deps]
 
-source_file="res://Assets/font/Garet-Book.woff"
-dest_files=["res://.godot/imported/Garet-Book.woff-ceb0c988f9f1eba2fda73f128532220a.fontdata"]
+source_file="res://assets/font/Garet-Book.woff"
+dest_files=["res://.godot/imported/Garet-Book.woff-9127a1e461c0b44a4db4f5eb8277bcc6.fontdata"]
 
 [params]
 

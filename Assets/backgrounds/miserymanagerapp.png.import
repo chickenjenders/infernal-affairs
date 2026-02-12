@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jni2vrhvv4cy"
-path="res://.godot/imported/miserymanagerapp.png-c64f5ff9ede1a7774efd82f4ffff0be2.ctex"
+uid="uid://6l8ypqplmhvk"
+path="res://.godot/imported/miserymanagerapp.png-0a891d0bbe8ff034988e731b77edc983.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/backgrounds/miserymanagerapp.png"
-dest_files=["res://.godot/imported/miserymanagerapp.png-c64f5ff9ede1a7774efd82f4ffff0be2.ctex"]
+source_file="res://assets/backgrounds/miserymanagerapp.png"
+dest_files=["res://.godot/imported/miserymanagerapp.png-0a891d0bbe8ff034988e731b77edc983.ctex"]
 
 [params]
 

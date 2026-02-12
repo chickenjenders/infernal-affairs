@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt5xgm36etomt"
-path="res://.godot/imported/traitstag.png-6bd7019c656d649da113ca503bf2c644.ctex"
+uid="uid://o8wnrwakyrb4"
+path="res://.godot/imported/traitstag.png-d9d6c849bdd285e678251b3ab09673ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/traitstag.png"
-dest_files=["res://.godot/imported/traitstag.png-6bd7019c656d649da113ca503bf2c644.ctex"]
+source_file="res://assets/UI/traitstag.png"
+dest_files=["res://.godot/imported/traitstag.png-d9d6c849bdd285e678251b3ab09673ab.ctex"]
 
 [params]
 

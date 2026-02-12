@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://6vcun3f1rlco"]
+[gd_scene load_steps=7 format=3 uid="uid://dqgokxakg61nx"]
 
-[ext_resource type="Texture2D" uid="uid://bk41hjtd6u3tj" path="res://Assets/UI/misery_popup.png" id="1_8p7yn"]
-[ext_resource type="Script" uid="uid://sb7casi1j06g" path="res://Scripts/instructions.gd" id="1_s7gfc"]
-[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="2_dxknu"]
+[ext_resource type="Script" uid="uid://wsk3qhscw7gl" path="res://common/scripts/popup.gd" id="1_kksav"]
+[ext_resource type="Texture2D" uid="uid://bk41hjtd6u3tj" path="res://Assets/UI/misery_popup.png" id="2_vjsy5"]
+[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="3_fx8xh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oir0"]
-bg_color = Color(0.536389, 0.493404, 0.0291, 1)
+bg_color = Color(0.5372549, 0.003921569, 0.02745098, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -34,14 +34,14 @@ shadow_color = Color(0.219608, 0.192157, 0.141176, 0.858824)
 shadow_size = 3
 shadow_offset = Vector2(3, 2)
 
-[node name="Instructions" type="Control"]
+[node name="popup" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s7gfc")
+script = ExtResource("1_kksav")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -54,18 +54,18 @@ offset_right = -106.0
 offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_8p7yn")
+texture = ExtResource("2_vjsy5")
 
 [node name="title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 420.0
-offset_top = 77.0
-offset_right = 1305.0
-offset_bottom = 222.0
-theme_override_colors/font_color = Color(0.348012, 0.321207, 0.178811, 1)
-theme_override_fonts/font = ExtResource("2_dxknu")
+offset_left = 353.0
+offset_top = 61.0
+offset_right = 1349.0
+offset_bottom = 206.0
+theme_override_colors/font_color = Color(0.6037591, 0.055667005, 4.813075e-08, 1)
+theme_override_fonts/font = ExtResource("3_fx8xh")
 theme_override_font_sizes/font_size = 100
-text = "Job Description:"
+text = "SECURITY BREACH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -79,29 +79,24 @@ anchor_bottom = 0.5
 offset_left = -526.0
 offset_top = -264.0
 offset_right = 638.0
-offset_bottom = 258.0
+offset_bottom = 238.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.348012, 0.321207, 0.178811, 1)
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 28
 bbcode_enabled = true
-text = "[center][b]Welcome to Hell.[/b] 
-Before you begin, you are required to read these instructions. Yes, all of them.
+text = "Your responses did not meet the minimum accuracy threshold for identity confirmation.
 
-[b]1. Review Your Demon Queue[/b]
-Read and analyze the information provided about the demon in your worklist. Use the details to understand their personality.
+A mandatory “Security Compliance Refresher” has been added to your ongoing training backlog.
 
-[b]2. Assign Their Tasks[/b]
-Click and drag tasks into their scheduler that you believe will create the [i]most[/i] misery for that demon based on their traits and tendencies.
-
-[b]4. Complete the Shift[/b]
-After all tasks are aasigned, submit the finished schedule. Repeat for the other demons in your worklist. Complete additional tasks as assigned."
+Please click [b]Continue[/b] to return to your regularly scheduled suffering."
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SubmitButton" type="Button" parent="."]
+custom_minimum_size = Vector2(243, 69)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -114,11 +109,11 @@ offset_right = 173.0
 offset_bottom = -125.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_dxknu")
+theme_override_fonts/font = ExtResource("3_fx8xh")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_3oir0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_v8bcc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s7gfc")
-text = "ACKNOWLEDGE"
+text = "CONTINUE"
 
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

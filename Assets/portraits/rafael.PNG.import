@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deay801tj88i5"
-path="res://.godot/imported/rafael.PNG-6bbda176839846cae151a995ec7def10.ctex"
+uid="uid://dqcq1k4ou2vn2"
+path="res://.godot/imported/rafael.PNG-797848df7cd16dbf5fc12c0af708099a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/portraits/rafael.PNG"
-dest_files=["res://.godot/imported/rafael.PNG-6bbda176839846cae151a995ec7def10.ctex"]
+source_file="res://assets/portraits/rafael.PNG"
+dest_files=["res://.godot/imported/rafael.PNG-797848df7cd16dbf5fc12c0af708099a.ctex"]
 
 [params]
 

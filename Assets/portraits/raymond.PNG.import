@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd3u11pkm5t55"
-path="res://.godot/imported/raymond.PNG-235fc669fa99d1253210ffaae9a12c05.ctex"
+uid="uid://rcduaxedekwa"
+path="res://.godot/imported/raymond.PNG-2030a26e2d0369aae53fd3af72cc1295.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/portraits/raymond.PNG"
-dest_files=["res://.godot/imported/raymond.PNG-235fc669fa99d1253210ffaae9a12c05.ctex"]
+source_file="res://assets/portraits/raymond.PNG"
+dest_files=["res://.godot/imported/raymond.PNG-2030a26e2d0369aae53fd3af72cc1295.ctex"]
 
 [params]
 

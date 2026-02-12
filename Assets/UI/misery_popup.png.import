@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk41hjtd6u3tj"
-path="res://.godot/imported/misery_popup.png-942060b80d755f04a028148e3e9bdc43.ctex"
+uid="uid://wpain4uhckpk"
+path="res://.godot/imported/misery_popup.png-1b715592336899558e826cf24032e26f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/misery_popup.png"
-dest_files=["res://.godot/imported/misery_popup.png-942060b80d755f04a028148e3e9bdc43.ctex"]
+source_file="res://assets/UI/misery_popup.png"
+dest_files=["res://.godot/imported/misery_popup.png-1b715592336899558e826cf24032e26f.ctex"]
 
 [params]
 

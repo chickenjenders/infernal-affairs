@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brmwmlcqdohsw"]
 
 [ext_resource type="FontFile" uid="uid://c0a4xgwi5afos" path="res://Assets/font/Garet-Book.woff2" id="1_4xayc"]
-[ext_resource type="Script" uid="uid://cl3ss8g16rprp" path="res://MiseryManager/Scripts/task.gd" id="1_pcxva"]
+[ext_resource type="Script" uid="uid://cl3ss8g16rprp" path="res://misery_manager/scripts/task.gd" id="1_pcxva"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p782q"]
 bg_color = Color(0.23, 0.615, 1, 1)

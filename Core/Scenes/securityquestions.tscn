@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://beku5iiedpq4b"]
 
-[ext_resource type="Script" uid="uid://bc1ndv4fg3aam" path="res://Scripts/securityquestions.gd" id="1_2t3ug"]
+[ext_resource type="Script" uid="uid://bc1ndv4fg3aam" path="res://core/scripts/securityquestions.gd" id="1_2t3ug"]
 [ext_resource type="Texture2D" uid="uid://bexs3o7eu8nca" path="res://Assets/UI/IA UI.png" id="2_jltq0"]
 [ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="3_c8ywn"]
-[ext_resource type="PackedScene" uid="uid://1oxmhss56nay" path="res://UI/passwordrequirements.tscn" id="4_6d53j"]
-[ext_resource type="PackedScene" uid="uid://dqgokxakg61nx" path="res://UI/popup.tscn" id="5_jltq0"]
+[ext_resource type="PackedScene" uid="uid://1oxmhss56nay" path="res://core/scenes/passwordrequirements.tscn" id="4_6d53j"]
+[ext_resource type="PackedScene" uid="uid://dqgokxakg61nx" path="res://common/ui/popup.tscn" id="5_jltq0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dyug"]
 bg_color = Color(0.219501, 0.219501, 0.219501, 1)
