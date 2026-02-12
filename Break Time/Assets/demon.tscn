@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4bvk60gv805n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a6vc1"]
+radius = 81.0
+height = 286.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(856, 724)
+shape = SubResource("CapsuleShape2D_a6vc1")
+debug_color = Color(0.99848837, 0, 0.1522794, 0.41960785)
