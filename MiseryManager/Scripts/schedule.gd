@@ -55,8 +55,8 @@ func _on_submit_requested():
 
 	# Check if this was the last employee
 	if misery_manager.is_last_employee():
-		# Last employee - go to Misery Report
-		get_tree().change_scene_to_file("res://Scenes/MiseryReport.tscn")
+		# Last employee - go to Break scene
+		get_tree().change_scene_to_file("res://Break Time/break_two.tscn")
 	else:
 		# More employees to go - reset and load next
 		misery_manager.reset_for_next_employee()
