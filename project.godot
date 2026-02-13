@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://Autoload/global.gd"
-ShiftManager="*res://Core/Scripts/shift_manager.gd"
+Global="*res://autoload/global.gd"
+ShiftManager="*res://core/scripts/shift_manager.gd"
 
 [display]
 

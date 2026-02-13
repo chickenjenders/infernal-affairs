@@ -33,8 +33,8 @@ func _on_try_again_pressed():
 	misery_manager.current_employee_score = 0
 	misery_manager.currently_dragging_task = null
 	misery_manager.department = "IT"
-	misery_manager.taskList.clear()
-	misery_manager.traitsList.clear()
+	misery_manager.task_list.clear()
+	misery_manager.traits_list.clear()
 	
 	# Clear all task slots
 	for slot in misery_manager.task_slots:
@@ -43,4 +43,4 @@ func _on_try_again_pressed():
 	print("MiseryReport: Game state reset completely")
 	
 	# Return to the beginning of the game
-	get_tree().change_scene_to_file("res://MiseryManager/Scenes/misery_manager.tscn")
+	get_tree().change_scene_to_file("res://misery_manager/scenes/misery_manager.tscn")

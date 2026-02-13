@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs3w85ul0r7ml"]
 
-[ext_resource type="Texture2D" uid="uid://dniyfci7pf651" path="res://break_time/assets/officeBG.png" id="1_uut2m"]
+[ext_resource type="Texture2D" uid="uid://dnrekrpn6qnhi" path="res://break_time/assets/officeBG.png" id="1_uut2m"]
 [ext_resource type="Script" uid="uid://b81tsi36riuex" path="res://break_time/scripts/break.gd" id="1_xahtr"]
 [ext_resource type="PackedScene" uid="uid://3bh0g682ia6n" path="res://common/ui/menu_button.tscn" id="2_7502k"]
-[ext_resource type="PackedScene" uid="uid://b4bvk60gv805n" path="res://break_time/assets/demon.tscn" id="3_jhnkn"]
+[ext_resource type="PackedScene" uid="uid://b4bvk60gv805n" path="res://break_time/scenes/greg.tscn" id="3_jhnkn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_quxwx"]
 texture = ExtResource("1_uut2m")

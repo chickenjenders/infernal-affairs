@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4bvk60gv805n"]
+
+[ext_resource type="Texture2D" uid="uid://clevfm25e4omq" path="res://assets/portraits/greg.png" id="1_5mfxm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
+radius = 140.0
+height = 454.0
+
+[node name="Node2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(800, 666)
+shape = SubResource("CapsuleShape2D_dah7x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(784, 659)
+scale = Vector2(0.46679688, 0.44726563)
+texture = ExtResource("1_5mfxm")

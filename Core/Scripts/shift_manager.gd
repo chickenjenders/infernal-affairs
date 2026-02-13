@@ -8,7 +8,7 @@ var current_shift_index: int = 1
 var current_employee_index: int = 0 # Global index across all employees
 var employees_per_shift: int = 5 # Example: 5 employees per shift
 
-var trait_options_file: String = "res://Configs/trait_options.json"
+var trait_options_file: String = "res://configs/trait_options.json"
 
 # Data containers
 var employees: Array = []

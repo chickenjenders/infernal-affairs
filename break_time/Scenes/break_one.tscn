@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b81tsi36riuex" path="res://break_time/scripts/break.gd" id="1_5eu31"]
 [ext_resource type="Texture2D" uid="uid://dnrekrpn6qnhi" path="res://break_time/assets/officeBG.png" id="2_spbmx"]
 [ext_resource type="PackedScene" uid="uid://3bh0g682ia6n" path="res://common/ui/menu_button.tscn" id="3_auirw"]
-[ext_resource type="PackedScene" uid="uid://b4bvk60gv805n" path="res://break_time/assets/demon.tscn" id="4_fa470"]
+[ext_resource type="PackedScene" uid="uid://b4bvk60gv805n" path="res://break_time/scenes/greg.tscn" id="4_5eu31"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_quxwx"]
 texture = ExtResource("2_spbmx")
@@ -28,10 +28,7 @@ offset_right = 1578.0
 offset_bottom = 109.0
 text = "Return to Desk"
 
-[node name="Greg" parent="." instance=ExtResource("4_fa470")]
-position = Vector2(-428, 30)
-
-[node name="Sheila" parent="." instance=ExtResource("4_fa470")]
-position = Vector2(464, 36)
+[node name="Greg" parent="." instance=ExtResource("4_5eu31")]
+position = Vector2(508, 14)
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

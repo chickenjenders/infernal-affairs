@@ -30,7 +30,7 @@
                 "Arrogant",
                 "Hates ambiguity"
             ],
-            "portrait": "res://Assets/portraits/greg.png"
+            "portrait": "res://assets/portraits/greg.png"
         },
         {
             "name": "Sheila McCarthy",
@@ -45,7 +45,7 @@
                 "People-pleaser",
                 "Hates to be alone"
             ],
-            "portrait": "res://Assets/portraits/sheila.PNG"
+            "portrait": "res://assets/portraits/sheila.PNG"
         },
         {
             "name": "Raymond Dacosta",
@@ -60,7 +60,7 @@
                 "Rule-oriented",
                 "Hates conflict and confrontation"
             ],
-            "portrait": "res://Assets/portraits/raymond.PNG"
+            "portrait": "res://assets/portraits/raymond.PNG"
         }
     ],
     "trait_definitions": {

@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	if current_requirement_index == 8:
 		elapsed_time += delta
 		if elapsed_time >= 10:
-			var security_questions_scene = load("res://Scenes/securityquestions.tscn")
+			var security_questions_scene = load("res://core/scenes/securityquestions.tscn")
 			var security_questions_instance = security_questions_scene.instantiate()
 			get_tree().root.add_child(security_questions_instance)
 
@@ -40,7 +40,7 @@ func _on_submit_pressed(_text: String = "") -> void:
 			password_input.grab_focus()
 		else:
 			print("Password reset complete!")
-			get_tree().change_scene_to_file("res://MiseryManager/Scenes/misery_manager.tscn")
+			get_tree().change_scene_to_file("res://misery_manager/scenes/misery_manager.tscn")
 	else:
 		invalid_password_label.visible = true
 		print("Requirements not met, text is: ", _text)
