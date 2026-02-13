@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/desktopbg.png"
+source_file="res://assets/desktopbg.png"
 dest_files=["res://.godot/imported/desktopbg.png-d215317790ae01e229af698a30d0cba2.ctex"]
 
 [params]

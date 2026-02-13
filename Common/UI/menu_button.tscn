@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://3bh0g682ia6n"]
 
-[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="1_5duia"]
+[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="1_5duia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opfnp"]
 bg_color = Color(1, 0.137255, 0.137255, 1)

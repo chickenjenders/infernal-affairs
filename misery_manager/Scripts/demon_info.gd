@@ -12,7 +12,7 @@ extends Control
 @export var traits: Array = ["Low patience", "Arrogant", "Hates ambiguity"]
 @export var portrait_texture: Texture2D
 
-@export var trait_scene: PackedScene = preload("res://MiseryManager/Scenes/Components/traits.tscn")
+@export var trait_scene: PackedScene = preload("res://misery_manager/scenes/traits.tscn")
 
 @onready var name_lbl: RichTextLabel = $Name
 @onready var dept_lbl: RichTextLabel = $Dept

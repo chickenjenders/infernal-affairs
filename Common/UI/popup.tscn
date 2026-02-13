@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqgokxakg61nx"]
 
 [ext_resource type="Script" uid="uid://wsk3qhscw7gl" path="res://common/scripts/popup.gd" id="1_kksav"]
-[ext_resource type="Texture2D" uid="uid://bk41hjtd6u3tj" path="res://Assets/UI/misery_popup.png" id="2_vjsy5"]
-[ext_resource type="FontFile" uid="uid://c1bxnd8b2ug2u" path="res://Assets/font/Garet-Heavy.ttf" id="3_fx8xh"]
+[ext_resource type="Texture2D" uid="uid://wpain4uhckpk" path="res://assets/UI/misery_popup.png" id="2_vjsy5"]
+[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="3_fx8xh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oir0"]
 bg_color = Color(0.5372549, 0.003921569, 0.02745098, 1)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdkq2iagev6i8"]
 
 [ext_resource type="Script" uid="uid://cxi0fb0uswt8v" path="res://core/scripts/desktop.gd" id="1_m3b6i"]
-[ext_resource type="Texture2D" uid="uid://cfamsfr32lktf" path="res://Assets/backgrounds/desktopbg.png" id="2_uegd8"]
+[ext_resource type="Texture2D" uid="uid://b35bggci2b1me" path="res://assets/backgrounds/desktopbg.png" id="2_uegd8"]
 [ext_resource type="PackedScene" uid="uid://6t1116fjdea7" path="res://common/ui/button.tscn" id="3_fy7rl"]
-[ext_resource type="Texture2D" uid="uid://bbn4x1h8d3tcg" path="res://Assets/icons/2.png" id="4_8shc6"]
-[ext_resource type="Texture2D" uid="uid://by78l4qgwu2x7" path="res://Assets/icons/files.png" id="5_p2f20"]
-[ext_resource type="Texture2D" uid="uid://cjvtnapr44pk2" path="res://Assets/icons/3.png" id="6_gel6t"]
-[ext_resource type="Texture2D" uid="uid://bq7pk0t8rio1j" path="res://Assets/icons/1.png" id="7_j7wpw"]
+[ext_resource type="Texture2D" uid="uid://cat77ot0mjdur" path="res://assets/icons/2.png" id="4_8shc6"]
+[ext_resource type="Texture2D" uid="uid://bt1bu3h6ju46i" path="res://assets/icons/files.png" id="5_p2f20"]
+[ext_resource type="Texture2D" uid="uid://bcq2taseg5bjc" path="res://assets/icons/3.png" id="6_gel6t"]
+[ext_resource type="Texture2D" uid="uid://hjdue05i5mki" path="res://assets/icons/1.png" id="7_j7wpw"]
 [ext_resource type="PackedScene" uid="uid://6vcun3f1rlco" path="res://common/ui/instructions.tscn" id="8_1djlj"]
 
 [node name="Desktop" type="Control"]

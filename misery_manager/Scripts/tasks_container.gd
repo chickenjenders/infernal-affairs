@@ -8,7 +8,7 @@ extends FlowContainer
 @export var task_scene: PackedScene
 @export var misery_manager: Node
 
-const TaskDataResource = preload("res://MiseryManager/Scripts/task_data.gd")
+const TaskDataResource = preload("res://misery_manager/scripts/task_data.gd")
 
 var pregenerated_task_data := []
 
@@ -28,21 +28,21 @@ func _ready():
 		available_tasks.append(_duplicate_task_data(task_data))
 	available_tasks.shuffle()
 	for i in range(min(count, available_tasks.size())):
-		misery_manager.taskList.append(available_tasks[i])
+		misery_manager.task_list.append(available_tasks[i])
 
 	_place_components()
 	
 	# Listen for employee change to regenerate tasks
 	misery_manager.employee_changed.connect(_on_employee_changed)
 
-## Creates and displays all task nodes from the MiseryManager.taskList.
+## Creates and displays all task nodes from the MiseryManager.task_list.
 ## Each task is assigned to the "tasks_container" group so it knows it belongs
 ## to the task list (not in a scheduler slot).
 func _place_components():
 	if not misery_manager:
 		push_error("MiseryManager not found in scene tree")
 		return
-	for task_data in misery_manager.taskList:
+	for task_data in misery_manager.task_list:
 		var task_instance = task_scene.instantiate()
 		task_instance.set_task_data(task_data)
 		if "misery_manager" in task_instance:
@@ -83,7 +83,7 @@ func regenerate_tasks():
 		available_tasks.append(_duplicate_task_data(task_data))
 	available_tasks.shuffle()
 	for i in range(min(count, available_tasks.size())):
-		misery_manager.taskList.append(available_tasks[i])
+		misery_manager.task_list.append(available_tasks[i])
 	
 	# Place new task components
 	_place_components()

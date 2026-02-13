@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/hi desktop.png"
+source_file="res://assets/hi desktop.png"
 dest_files=["res://.godot/imported/hi desktop.png-5b8253706726fb9c7665218ce3224654.ctex"]
 
 [params]

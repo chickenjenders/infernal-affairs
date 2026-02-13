@@ -6,14 +6,14 @@
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="4_brbmx"]
 [ext_resource type="Theme" uid="uid://b68tpgef133gx" path="res://assets/UI/default_theme.tres" id="5_5seg7"]
 [ext_resource type="Script" uid="uid://cb1umph1jxq0w" path="res://misery_manager/scripts/traits_list.gd" id="6_twwna"]
-[ext_resource type="PackedScene" uid="uid://bslcw8id8v5nc" path="res://misery_manager/Scenes/traits.tscn" id="7_nl1ig"]
+[ext_resource type="PackedScene" uid="uid://bslcw8id8v5nc" path="res://misery_manager/scenes/traits.tscn" id="7_nl1ig"]
 [ext_resource type="Script" uid="uid://bdva1rre1n4h5" path="res://misery_manager/scripts/schedule.gd" id="8_jf11r"]
 [ext_resource type="Script" uid="uid://ce63dv6m3lmfs" path="res://misery_manager/scripts/scheduled_task_list.gd" id="9_c8r35"]
-[ext_resource type="PackedScene" uid="uid://dnikjm5skrfrb" path="res://misery_manager/Scenes/task_slot.tscn" id="10_kt2na"]
-[ext_resource type="PackedScene" uid="uid://brmwmlcqdohsw" path="res://misery_manager/Scenes/task.tscn" id="11_wskxs"]
+[ext_resource type="PackedScene" uid="uid://dnikjm5skrfrb" path="res://misery_manager/scenes/task_slot.tscn" id="10_kt2na"]
+[ext_resource type="PackedScene" uid="uid://brmwmlcqdohsw" path="res://misery_manager/scenes/task.tscn" id="11_wskxs"]
 [ext_resource type="Script" uid="uid://jd2x8hwlu6mp" path="res://misery_manager/scripts/submit_button.gd" id="12_pbydi"]
 [ext_resource type="Script" uid="uid://cdctw888ymj84" path="res://misery_manager/scripts/tasks_container.gd" id="13_irhgy"]
-[ext_resource type="PackedScene" uid="uid://bm1i2exo4scyy" path="res://misery_manager/Scenes/task_bar.tscn" id="14_e7fpv"]
+[ext_resource type="PackedScene" uid="uid://bm1i2exo4scyy" path="res://misery_manager/scenes/task_bar.tscn" id="14_e7fpv"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ijftj"]
 
@@ -188,7 +188,7 @@ custom_minimum_size = Vector2(600, 900)
 layout_mode = 2
 size_flags_horizontal = 2
 script = ExtResource("8_jf11r")
-target_task_count = 8
+target_task_count = 1
 misery_manager = NodePath("../..")
 
 [node name="ScheduledTaskList" type="VBoxContainer" parent="MiseryManager/MainLayout/Schedule" node_paths=PackedStringArray("misery_manager")]
@@ -204,7 +204,6 @@ theme_override_constants/separation = 0
 script = ExtResource("9_c8r35")
 task_slot_scene = ExtResource("10_kt2na")
 task_scene = ExtResource("11_wskxs")
-SLOT_PADDING = 13
 misery_manager = NodePath("../../..")
 
 [node name="SubmitButton" type="Button" parent="MiseryManager/MainLayout/Schedule"]

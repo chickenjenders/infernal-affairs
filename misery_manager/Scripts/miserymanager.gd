@@ -3,13 +3,10 @@ extends Node
 
 signal employee_changed(index: int)
 
-# Reference to ShiftManager (assumes it's an autoload)
-@onready var ShiftManager = get_node("/root/ShiftManager")
-
 var currently_dragging_task: Node = null # Track which task is being dragged
-var taskList := []
+var task_list := []
 # Data loaded from ShiftManager now
-# @export_file("*.json") var trait_options_file: String = "res://Configs/trait_options.json"
+# @export_file("*.json") var trait_options_file: String = "res://configs/trait_options.json"
 # var trait_options: Dictionary = {}
 # var task_templates: Array = []
 # var trait_definitions: Dictionary = {}
@@ -22,27 +19,25 @@ func _ready():
 # func _load_trait_options(): ... (Removed)
 
 func get_traits_for_department(dept: String) -> Array:
-	var shift_manager = get_node_or_null("/root/ShiftManager")
-	if not shift_manager:
+	if not ShiftManager:
 		push_error("ShiftManager autoload not found")
 		return []
-	if not shift_manager.has_method("get_trait_options"):
+	if not ShiftManager.has_method("get_trait_options"):
 		push_error("ShiftManager does not have get_trait_options method")
 		return []
-	return shift_manager.get_trait_options(dept)
+	return ShiftManager.get_trait_options(dept)
 
 func get_task_templates() -> Array:
-	var shift_manager = get_node_or_null("/root/ShiftManager")
-	if not shift_manager:
+	if not ShiftManager:
 		push_error("ShiftManager autoload not found")
 		return []
-	if not "task_templates" in shift_manager:
+	if not "task_templates" in ShiftManager:
 		push_error("ShiftManager does not have task_templates property")
 		return []
-	return shift_manager.task_templates
+	return ShiftManager.task_templates
 
 var department: String = "IT"
-var traitsList: Array[String] = []
+var traits_list: Array[String] = []
 var task_slots := [
 	
 ]
@@ -85,15 +80,15 @@ func schedule_task(task_data, slot_index: int, old_slot_index: int = -1) -> Dict
 		else:
 			task_slots[old_slot_index]["task"] = null
 	else:
-		# Task came from taskList, so remove it from there
-		if task_data in taskList:
-			taskList.erase(task_data)
-			print("MiseryManager: Removed '", task_data.title, "' from taskList")
+		# Task came from task_list, so remove it from there
+		if task_data in task_list:
+			task_list.erase(task_data)
+			print("MiseryManager: Removed '", task_data.title, "' from task_list")
 		
-		# If target slot has a task and source is taskList, return displaced task to taskList
+		# If target slot has a task and source is task_list, return displaced task to task_list
 		if existing_task != null:
-			taskList.append(existing_task)
-			print("MiseryManager: Returned '", existing_task.title, "' to taskList")
+			task_list.append(existing_task)
+			print("MiseryManager: Returned '", existing_task.title, "' to task_list")
 
 	# Update the new slot's data
 	task_slots[slot_index]["task"] = task_data
@@ -127,7 +122,7 @@ func advance_to_next_employee():
 	
 	if ShiftManager.current_employee_index == 2:
 		await get_tree().create_timer(2.0).timeout
-		var password_reset_scene = load("res://Scenes/password_reset.tscn")
+		var password_reset_scene = load("res://core/scenes/password_reset.tscn")
 		var password_reset_instance = password_reset_scene.instantiate()
 		get_tree().root.add_child(password_reset_instance)
 
@@ -137,7 +132,7 @@ func reset_for_next_employee():
 		slot["task"] = null
 	
 	# Clear task list
-	taskList.clear()
+	task_list.clear()
 	
 	# Reset current employee score
 	current_employee_score = 0

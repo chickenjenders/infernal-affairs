@@ -13,15 +13,15 @@ func _ready():
 	if not misery_manager:
 		push_error("MiseryManager not found in scene tree")
 		return
-	var traitTitles = misery_manager.get_traits_for_department(misery_manager.department)
-	if traitTitles.is_empty():
+	var trait_titles = misery_manager.get_traits_for_department(misery_manager.department)
+	if trait_titles.is_empty():
 		return
 	
-	traitTitles.shuffle()
-	var actual_count = min(count, traitTitles.size())
+	trait_titles.shuffle()
+	var actual_count = min(count, trait_titles.size())
 	for i in range(actual_count):
-		var traitTitle = traitTitles[i]
-		misery_manager.traitsList.append(traitTitle)
+		var trait_title = trait_titles[i]
+		misery_manager.traits_list.append(trait_title)
 
 	_place_components()
 
@@ -30,9 +30,9 @@ func _place_components():
 	if not misery_manager:
 		push_error("MiseryManager not found in scene tree")
 		return
-	for traitTitle in misery_manager.traitsList:
+	for trait_title in misery_manager.traits_list:
 		var traits_instance = traits_scene.instantiate()
-		traits_instance.set_text(traitTitle)
+		traits_instance.set_text(trait_title)
 		add_child(traits_instance)
 
 ## Set traits from an array and re-render the list

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bslcw8id8v5nc"]
 
-[ext_resource type="FontFile" uid="uid://cqlyq25kdulf7" path="res://Assets/font/Garet-Book.ttf" id="1_aqdx1"]
+[ext_resource type="FontFile" uid="uid://4daaj4herp4s" path="res://assets/font/Garet-Book.ttf" id="1_aqdx1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knekw"]
 bg_color = Color(0.219608, 0.239216, 0.12549, 1)

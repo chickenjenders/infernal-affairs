@@ -4,7 +4,7 @@ signal tasks_changed(count: int)
 
 @export var task_slot_scene: PackedScene
 @export var task_scene: PackedScene
-@export var SLOT_PADDING = 12 # Extra space for comfortable drop target
+@export var slot_padding = 12 # Extra space for comfortable drop target
 @export var misery_manager: Node
 
 ## Called when the scheduler is added to the scene tree.
@@ -41,7 +41,7 @@ func _initialize_slots():
 	var task_height = temp_task.custom_minimum_size.y
 	temp_task.queue_free()
 
-	var slot_height = task_height + SLOT_PADDING
+	var slot_height = task_height + slot_padding
 
 	# Create slot containers only
 	for i in range(len(misery_manager.task_slots)):
