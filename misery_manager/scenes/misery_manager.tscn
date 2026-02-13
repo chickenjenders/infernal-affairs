@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0443y546r1ey"]
+[gd_scene load_steps=20 format=3 uid="uid://d0443y546r1ey"]
 
 [ext_resource type="Script" uid="uid://b202c7mfdobk8" path="res://misery_manager/scripts/miserymanager.gd" id="1_8w3tu"]
 [ext_resource type="Texture2D" uid="uid://cpanyl5bc7bl8" path="res://assets/backgrounds/MMbackground.png" id="2_fddw7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://jd2x8hwlu6mp" path="res://misery_manager/scripts/submit_button.gd" id="12_pbydi"]
 [ext_resource type="Script" uid="uid://cdctw888ymj84" path="res://misery_manager/scripts/tasks_container.gd" id="13_irhgy"]
 [ext_resource type="PackedScene" uid="uid://bm1i2exo4scyy" path="res://misery_manager/scenes/task_bar.tscn" id="14_e7fpv"]
+[ext_resource type="PackedScene" uid="uid://b4e5cwj28o2b0" path="res://core/scenes/MiseryReport.tscn" id="15_d02rx"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ijftj"]
 
@@ -91,9 +92,9 @@ expand_mode = 1
 
 [node name="Name" type="RichTextLabel" parent="MiseryManager/MainLayout/DemonInfo"]
 layout_mode = 0
-offset_left = 26.0
+offset_left = 10.0
 offset_top = 59.0
-offset_right = 462.0
+offset_right = 498.0
 offset_bottom = 135.0
 theme_override_colors/default_color = Color(0.352941, 0.313726, 0.239216, 1)
 theme_override_fonts/normal_font = ExtResource("4_brbmx")
@@ -245,3 +246,16 @@ offset_left = -4.0
 offset_top = -83.0
 offset_right = -8.0
 offset_bottom = -1.0
+
+[node name="MiseryReport" parent="MiseryManager" instance=ExtResource("15_d02rx")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -766.0
+offset_top = -419.0
+offset_right = 766.0
+offset_bottom = 419.0

@@ -6,7 +6,7 @@ signal shift_completed
 
 var current_shift_index: int = 1
 var current_employee_index: int = 0 # Global index across all employees
-var employees_per_shift: int = 5 # Example: 5 employees per shift
+var employees_per_shift: int = 3 # Shift ends after 3 employees
 
 var trait_options_file: String = "res://configs/trait_options.json"
 
@@ -61,18 +61,16 @@ func advance_to_next_employee():
 	current_employee_index += 1
 	if current_employee_index >= employees.size():
 		print("ShiftManager: All employees processed.")
-		# Handle end of game or loops
 	else:
 		emit_signal("employee_changed", get_current_employee_data())
-		# Check if we've moved to a new shift
-		if is_shift_complete():
+		# If the NEW index starts a new shift, increment shift index
+		if current_employee_index % employees_per_shift == 0:
 			current_shift_index += 1
 			emit_signal("shift_changed", current_shift_index)
+			print("ShiftManager: New shift started - ", current_shift_index)
 
-# Helper to check if current employee is the last one in the current "shift" logic
-# For now, assumes all employees in one big list; adapt logic if shifts are defined differently
+# Helper to check if current employee is the last one in the current shift
 func is_shift_complete() -> bool:
-	# Example logic: shift ends after N employees
 	return (current_employee_index + 1) % employees_per_shift == 0
 
 func submit_score(score: int):

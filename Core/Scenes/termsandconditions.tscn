@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbdd4on4q5aaf"]
+
+[ext_resource type="Script" uid="uid://wbwbpatyw8vb" path="res://core/scripts/password_reset.gd" id="1_v3nxf"]
+[ext_resource type="Texture2D" uid="uid://dsxnlhhiqqrhv" path="res://assets/backgrounds/termsandconditions.png" id="2_y5vis"]
+
+[node name="termsandconditions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v3nxf")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("2_y5vis")
+centered = false

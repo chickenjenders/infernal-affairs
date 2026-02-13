@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 			var security_questions_scene = load("res://core/scenes/securityquestions.tscn")
 			var security_questions_instance = security_questions_scene.instantiate()
 			get_tree().root.add_child(security_questions_instance)
+			set_process(false)
 
 func _on_submit_pressed(_text: String = "") -> void:
 	var password = password_input.text
