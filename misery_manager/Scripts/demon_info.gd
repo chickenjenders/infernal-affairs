@@ -33,7 +33,7 @@ func _ready():
 	misery_manager.employee_changed.connect(_on_employee_changed)
 	
 	# Load initial employee
-	load_employee(Global.current_employee_index)
+	load_employee(ShiftManager.current_employee_index)
 	
 	# Apply the defaults to the UI labels on ready
 	update_labels()

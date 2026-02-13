@@ -53,11 +53,42 @@ func _on_submit_requested():
 	# Submit score
 	misery_manager.submit_employee_score()
 
-	# Check if this was the last employee
-	if misery_manager.is_last_employee():
-		# Last employee - go to Break scene
-		get_tree().change_scene_to_file("res://Break Time/break_two.tscn")
+	var is_last_in_game = misery_manager.is_last_employee()
+	var is_last_in_shift = misery_manager.is_shift_complete()
+
+	if is_last_in_game:
+		# Absolute last employee - show the misery report popup (now a hidden node)
+		var report_node = misery_manager.get_node_or_null("MiseryReport")
+		if report_node:
+			report_node.visible = true
+			if report_node.has_method("update_report"):
+				report_node.update_report()
+		else:
+			# Fallback if node not found as child
+			report_node = misery_manager.get_parent().get_node_or_null("MiseryReport")
+			if report_node:
+				report_node.visible = true
+				if report_node.has_method("update_report"):
+					report_node.update_report()
+			else:
+				# Fallback if node completely missing: instantiate it
+				var report_scene = load("res://core/scenes/MiseryReport.tscn")
+				var report_instance = report_scene.instantiate()
+				if "misery_manager" in report_instance:
+					report_instance.misery_manager = misery_manager
+				misery_manager.add_child(report_instance)
+		
+		print("Schedule: Game complete, showing Misery Report")
+	elif is_last_in_shift:
+		# Shift complete - advance index for when we return, then go to Break scene
+		misery_manager.advance_to_next_employee()
+		
+		var break_scene = load("res://break_time/scenes/cubicles.tscn")
+		var break_instance = break_scene.instantiate()
+		var mm_root = misery_manager.get_parent()
+		mm_root.get_parent().add_child(break_instance)
+		mm_root.queue_free()
 	else:
-		# More employees to go - reset and load next
+		# More employees in the current shift - reset and load next
 		misery_manager.reset_for_next_employee()
 		misery_manager.advance_to_next_employee()

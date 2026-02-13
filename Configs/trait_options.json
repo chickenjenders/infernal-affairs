@@ -61,6 +61,90 @@
                 "Hates conflict and confrontation"
             ],
             "portrait": "res://assets/portraits/raymond.PNG"
+        },
+        {
+            "name": "Eric Miller",
+            "department": "IT",
+            "blood_type": "O+",
+            "mbti": "INTP",
+            "sign": "Scorpio",
+            "cod": "Electrocuted while trying to fix a server with a fork",
+            "sentence": "Always replied 'did you try restarting it?' to everything",
+            "traits": [
+                "Arrogant",
+                "Hates ambiguity"
+            ],
+            "portrait": "res://assets/portraits/eric.PNG"
+        },
+        {
+            "name": "Laura Chen",
+            "department": "Sales",
+            "blood_type": "A-",
+            "mbti": "ESFP",
+            "sign": "Leo",
+            "cod": "Loudly talking on phone while walking into a manhole",
+            "sentence": "Sold soul for a lifetime supply of designer hand bags",
+            "traits": [
+                "Charismatic",
+                "Hates to be alone"
+            ],
+            "portrait": "res://assets/portraits/laura.PNG"
+        },
+        {
+            "name": "James Wilson",
+            "department": "Demon Resources",
+            "blood_type": "AB+",
+            "mbti": "ISTJ",
+            "sign": "Virgo",
+            "cod": "Died of boredom during a 6-hour powerpoint presentation",
+            "sentence": "Actually enjoyed filling out tax returns",
+            "traits": [
+                "Overly formal",
+                "Rule-oriented"
+            ],
+            "portrait": "res://assets/portraits/james.PNG"
+        },
+        {
+            "name": "Kyle Barker",
+            "department": "IT",
+            "blood_type": "B-",
+            "mbti": "ISTP",
+            "sign": "Aquarius",
+            "cod": "Spent 48 hours straight gaming without water",
+            "sentence": "Hated people so much he became a recluse in hell too",
+            "traits": [
+                "Low patience",
+                "Hates ambiguity"
+            ],
+            "portrait": "res://assets/portraits/kyle.PNG"
+        },
+        {
+            "name": "Patricia Vance",
+            "department": "Sales",
+            "blood_type": "A+",
+            "mbti": "ENTJ",
+            "sign": "Leo",
+            "cod": "Heart attack during a high-stakes negotiation",
+            "sentence": "Would sell her own mother for a 5% commission",
+            "traits": [
+                "Charismatic",
+                "Arrogant"
+            ],
+            "portrait": "res://assets/portraits/patricia.PNG"
+        },
+        {
+            "name": "Rafael Gomez",
+            "department": "Demon Resources",
+            "blood_type": "O-",
+            "mbti": "ISFJ",
+            "sign": "Taurus",
+            "cod": "Crushed by a falling filing cabinet",
+            "sentence": "Once apologized to a door after walking into it",
+            "traits": [
+                "People-pleaser",
+                "Hates conflict and confrontation"
+            ],
+            "portrait": "res://assets/portraits/rafael.PNG"
         }
     ],
     "trait_definitions": {

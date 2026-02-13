@@ -115,6 +115,9 @@ func submit_employee_score():
 func is_last_employee() -> bool:
 	return ShiftManager.current_employee_index >= ShiftManager.employees.size() - 1
 
+func is_shift_complete() -> bool:
+	return ShiftManager.is_shift_complete()
+
 func advance_to_next_employee():
 	ShiftManager.advance_to_next_employee()
 	print("MiseryManager: Advanced to employee ", ShiftManager.current_employee_index)
