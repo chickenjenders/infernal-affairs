@@ -41,7 +41,7 @@ func _on_submit_pressed(_text: String = "") -> void:
 			password_input.grab_focus()
 		else:
 			print("Password reset complete!")
-			get_tree().change_scene_to_file("res://misery_manager/scenes/misery_manager.tscn")
+			queue_free()
 	else:
 		invalid_password_label.visible = true
 		print("Requirements not met, text is: ", _text)
