@@ -19,12 +19,21 @@ config/icon="res://icon.svg"
 
 Global="*res://autoload/global.gd"
 ShiftManager="*res://core/scripts/shift_manager.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://break_time/scripts/cecil.dialogue")
 
 [rendering]
 
