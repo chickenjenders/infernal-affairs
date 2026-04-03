@@ -1,11 +1,130 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
-=> END
+Francine: Ah, hello there! Are you seeking the most valuable of advice from Demon Relations Scheduling Task Force's most honorable asset? As you might not be aware, I have been here for many, many, many, many, many, many..... many, many, many years! I'm basically the team lead, considering that I'm in charge of scheduling tasks for the Exalted. Hell, I even met Satan's assistant once! 
+- Oh, uh, hi. Sure... yeah, I am doing that.
+	Francine: Wonderful! Scheduling is a very important and difficult team to thrive in, but once you do, oh it is only down from there! Misery and productiveness, they go hand-in-hand, you see. Why do you think the most successful business have the worst working conditions?
+	- Right, so I assign tasks to other demons during my shift. These tasks help them to be productive because... they make them miserable?
+		Francine: Correct! Demons... were all stuck here. We have no purpose but to do what we're told. Ensuring that misery stays true and strong will keep us in our place. We find purpose in our uselessness and that is what is so beautiful about eternal damnation.
+		- That is the most depressing thing I've ever heard.
+			Francine: Exactly! It's beautiful and perfect. Sorry, got a little emotional there. Did you have any other questions?
+			- Okay, wow. You mentioned that you schedule tasks for the Exalted. Who is that?
+				Francine: Didn't you read the handbook? The Exalted are the top level managers of this here fine establishment. They all report to Satan himself!
+				- So, Satan is like.... real?
+					Francine: GASP! Of course he's real! What blasphemy are you spewing, cretin?! Do you think we're just all putting on some sick yet incredibly detailed comedy sketch in your dreams or something? Absolutely ridiculous.
+					- Okay, sorry. I'm just not getting the whole office job in Hell deal.
+						Francine: This place... it thrives on efficiency. We are all contributing to the continuing ecosystem of this realm. Hell runs on our energy, and that's why all of our jobs ensure consistent production of our energy.
+						- How exactly does scheduling tasks produce any kind of energy?
+							Francine: Scheduling is a very important and difficult team to thrive in, but once you do, oh it is only down from there! Misery and productiveness, they go hand-in-hand, you see. Why do you think the most successful business have the worst working conditions?
+							- Right, so I assign tasks to other demons during my shift. These tasks help them to be productive because... they make them miserable?
+								Francine: Correct! We find purpose in our uselessness and that is what is so beautiful about eternal damnation.
+								=> END
+							- I'm not sure that makes any sense.
+								Francine: Of course it doesn't make sense to some clueless newbie like you.
+								=> END
+					- I would really love to find out that this is actually just one weirdly specific nightmare I'm currently having.
+						Francine: Well, its not, so! This is reality, I think, and you need to adapt or the consequences will NOT be pretty.
+						- You mean I'll get sent to Floor 404?
+							Francine: Oh, so you did read SOMETHING from the handbook. Yes, you'll get sent there and go through Satan knows what before having to come back here anyway. I recommend something called: getting over it.
+							=> END
+						- Okay, well thanks. I'll get going then.
+							=> END
+				- You must be pretty important.
+					Francine: That didn't sound even a little bit genuine. And is anyone really important in Hell besides the Exalted? Don't worry yourself about what I do, just focus on making sure you don't mess up anywhere, or the consequences can be very... unfavorable.
+					- You mean I'll get sent to Floor 404?
+						Francine: Oh, so you did read SOMETHING from the handbook. Yes, you'll get sent there and go through Satan knows what before having to come back here anyway. I recommend something called: getting over it.
+						=> END
+			- I don't remember how I got here. Do you know why?
+				Francine: Must be possession. When a human is possessed for too long, the soul tarnishes beyond human standard and is casted out to Hell in demon form. It takes awhile for most humans to remember what happened during their possession, and even longer for demons to remember.
+				- But, I don't remember being human at all.
+					Francine: What do you mean? Like, at all at all??? That... isn't possible. Humans always remember their lives before damnation. Just don't let me hear you causing any ruckus about this nonsense story of complete amnesia. I already have Raquel all over the place with her conspiracies, so don't make this more than it needs to be.
+					- Raquel... has she heard of a demon who didn't remember being human?
+						Francine: No, no, no! I'm not starting with all this nonsense she's always spewing! There is no such thing as a demon who doesn't remember being human. There is no such thing as external promotions. And there is CERTAINLY no such thing as a secret ritual to escape Hell!
+						- Okay, well thanks. I'll get going then.
+							=> END
+						- Are you sure?
+							Francine: I'm out of here. I will NOT be sent to Floor 404 due to some other nosey demon who didn't know when to shut the hell up.
+							=> END
+					- Um, yes ma'am. I'll make sure to not be any trouble.
+						Francine: Right... I totally believe that.
+						=> END
+				- Ah, okay. That must be it.
+					Francine: It's nothing to be ashamed of, we all get taken over by some all-consuming evil in some way or another. My husband was a gambler. My brother was a drug addict. Oh, and my mother! God, she was the worst! She made it to level 431,295 in Candy Crush. Now, that's just not right. Anyway, no one will care how you got here, just what you do here: Work, work, work!
+					- Aha, yeah... thanks. I'll get back to it then.
+						=> END
+		- Wouldn't it be better if demons felt like they were actually useful here?
+			Francine: No. That causes imbalance in power and expectation. Do you think anyone here assumes they'll ever get anywhere else? Of course not! And that's exactly the point.
+			- So there really is no way to ever get out of here?
+				Francine: I'm not sure you really understand the concept of afterlife. I figure it's common knowledge that wherever you end up is pretty permanent. This is your final stop on the crazy ride we call life.
+				- Okay, well thanks. I'll get going then.
+					=> END
+				- I don't think I can accept that.
+					Francine: Well, I don't think anyone is really going to hear you out on that. So just give up. Accept it. Figure out how to just deal with it because that's what everyone else does. Well, except Raquel, but I do NOT want you buying into any of her ridiculous conspiracy theories.
+					- Raquel... has she heard of a demon who didn't remember being human?
+						Francine: No, no, no! I'm not starting with all this nonsense she's always spewing! There is no such thing as a demon who doesn't remember being human. There is no such thing as external promotions. And there is CERTAINLY no such thing as a secret ritual to escape Hell!
+						- Okay, well thanks. I'll get going then.
+							=> END
+						- Are you sure?
+							Francine: I'm out of here. I will NOT be sent to Floor 404 due to some other nosey demon who didn't know when to shut the hell up.
+							=> END
+					- You're right, I won't ask anything else about it.
+						Francine: Good! Now, let's get back to our eternal grind, am I right?
+						=> END
+	- I'm not sure that makes any sense.
+		Francine: Of course it doesn't make sense to some clueless newbie like you. You know nothing of this world and how it prospers. We generate misery, that misery fuels demons to work harder to avoid more misery, their work contributes to the productions of Hell's motives, and those motives produce more demons. Its exactly like the Circle of Hell.
+		- Okay, wow. You mentioned that you schedule tasks for the Exalted. Who is that?
+			Francine: Didn't you read the handbook? The Exalted are the top level managers of this here fine establishment. They all report to Satan himself!
+			- So, Satan is like.... real?
+				Francine: GASP! Of course he's real! What blasphemy are you spewing, cretin?! Do you think we're just all putting on some sick yet incredibly detailed comedy sketch in your dreams or something? Absolutely ridiculous.
+				- Okay, sorry. I'm just not getting the whole office job in Hell deal.
+					Francine: This place... it thrives on efficiency. We are all contributing to the continuing ecosystem of this realm. Hell runs on our energy, and that's why all of our jobs ensure consistent production of our energy.
+					=> END
+				- I would really love to find out that this is actually just one weirdly specific nightmare I'm currently having.
+					Francine: Well, its not, so! This is reality, I think, and you need to adapt or the consequences will NOT be pretty.
+					- You mean I'll get sent to Floor 404?
+						Francine: Yes, you'll get sent there and go through Satan knows what before having to come back here anyway. I recommend: getting over it.
+						=> END
+					- Okay, well thanks. I'll get going then.
+						=> END
+			- You must be pretty important.
+				Francine: What did I say about the ass-kissing? Don't worry yourself about what I do, just focus on making sure you don't mess up anywhere, or the consequences can be very... unfavorable.
+				- You mean I'll get sent to Floor 404?
+					Francine: Yes, you'll get sent there and go through Satan knows what before having to come back here anyway. I recommend: getting over it.
+					=> END
+- Why yes, I am most gracious for this opportunity!
+	Francine: Ass-kissing won't work here, heathen! Just ask what you want to know. I can't have my team slacking because of some clueless newbie who is too cowardly to say what's on their mind!
+	- Okay, wow. You mentioned that you schedule tasks for the Exalted. Who is that?
+		Francine: Didn't you read the handbook? The Exalted are the top level managers of this here fine establishment. They all report to Satan himself!
+		- So, Satan is like.... real?
+			Francine: GASP! Of course he's real! What blasphemy are you spewing, cretin?! Do you think we're just all putting on some sick yet incredibly detailed comedy sketch in your dreams or something? Absolutely ridiculous.
+			- Okay, sorry. I'm just not getting the whole office job in Hell deal.
+				Francine: This place... it thrives on efficiency. We are all contributing to the continuing ecosystem of this realm. Hell runs on our energy, and that's why all of our jobs ensure consistent production of our energy.
+				=> END
+			- I would really love to find out that this is actually just one weirdly specific nightmare I'm currently having.
+				Francine: Well, its not, so! This is reality, I think, and you need to adapt or the consequences will NOT be pretty.
+				- You mean I'll get sent to Floor 404?
+					Francine: Yes, you'll get sent there and go through Satan knows what before having to come back here anyway. I recommend: getting over it.
+					=> END
+				- Okay, well thanks. I'll get going then.
+					=> END
+		- You must be pretty important.
+			Francine: What did I say about the ass-kissing? Don't worry yourself about what I do, just focus on making sure you don't mess up anywhere, or the consequences can be very... unfavorable.
+			- You mean I'll get sent to Floor 404?
+				Francine: Yes, you'll get sent there and go through Satan knows what before having to come back here anyway. I recommend: getting over it.
+				=> END
+	- Fine, do you know why I don't remember anything about my human life?
+		Francine: Isn't that obvious? Must be possession. When a human is possessed for too long, the soul tarnishes beyond human standard and is casted out to Hell in demon form. It takes awhile for most humans to remember what happened during their possession, and even longer for demons to remember.
+		- But, I don't remember being human at all.
+			Francine: What do you mean? Like, at all at all??? That... isn't possible. Humans always remember their lives before damnation. Just don't let me hear you causing any ruckus about this nonsense story of complete amnesia. I already have Raquel all over the place with her conspiracies, so don't make this more than it needs to be.
+			- Raquel... has she heard of a demon who didn't remember being human?
+				Francine: No, no, no! I'm not starting with all this nonsense she's always spewing! There is no such thing as a demon who doesn't remember being human. There is no such thing as external promotions. And there is CERTAINLY no such thing as a secret ritual to escape Hell!
+				- Okay, well thanks. I'll get going then.
+					=> END
+				- Are you sure?
+					Francine: I'm out of here. I will NOT be sent to Floor 404 due to some other nosey demon who didn't know when to shut the hell up.
+					=> END
+			- Um, yes ma'am. I'll make sure to not be any trouble.
+				Francine: Right... I totally believe that.
+				=> END
+		- Ah, okay. That must be it.
+			Francine: It's nothing to be ashamed of, we all get taken over by some all-consuming evil in some way or another. My husband was a gambler. My brother was a drug addict. Oh, and my mother! God, she was the worst! She made it to level 431,295 in Candy Crush. Now, that's just not right. Anyway, no one will care how you got here, just what you do here: Work, work, work!
+			- Aha, yeah... thanks. I'll get back to it then.
+				=> END

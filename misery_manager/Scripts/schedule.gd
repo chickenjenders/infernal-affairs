@@ -80,10 +80,17 @@ func _on_submit_requested():
 		
 		print("Schedule: Game complete, showing Misery Report")
 	elif is_last_in_shift:
-		# Shift complete - advance index for when we return, then go to Break scene
+		# Shift complete - check which break scene to show
+		var current_shift = misery_manager.get_current_shift()
+		
+		# Advance index for when we return, then go to Break scene
 		misery_manager.advance_to_next_employee()
 		
-		var break_scene = load("res://break_time/scenes/cubicles.tscn")
+		var break_scene_path = "res://break_time/scenes/cubicles.tscn"
+		if current_shift == 2:
+			break_scene_path = "res://break_time/scenes/breaktwo.tscn"
+			
+		var break_scene = load(break_scene_path)
 		var break_instance = break_scene.instantiate()
 		var mm_root = misery_manager.get_parent()
 		mm_root.get_parent().add_child(break_instance)
