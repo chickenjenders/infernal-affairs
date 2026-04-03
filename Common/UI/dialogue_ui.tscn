@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6xkxe5y5p6f"]
+
+[ext_resource type="Script" path="res://common/scripts/dialogue_ui.gd" id="1_dw3u8"]
+
+[node name="DialogueUI" type="CanvasLayer"]
+script = ExtResource("1_dw3u8")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 200)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueLabel" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Cecil's text goes here..."
+autowrap_mode = 3
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NextPrompt" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -30.0
+offset_right = -10.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Press Enter to continue"
+horizontal_alignment = 2
