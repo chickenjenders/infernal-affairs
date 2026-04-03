@@ -34,4 +34,7 @@ func _input(event):
 
 func start_dialogue():
 	print("Starting Cecil dialogue via Plugin")
-	DialogueManager.show_dialogue_balloon(CECIL_DIALOGUE, "start")
+	var balloon_scene = load("res://break_time/dialogue/dialogue_balloon.tscn")
+	var balloon = balloon_scene.instantiate()
+	get_tree().current_scene.add_child(balloon)
+	balloon.start(CECIL_DIALOGUE, "start")
