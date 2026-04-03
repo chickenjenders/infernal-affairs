@@ -118,6 +118,9 @@ func is_last_employee() -> bool:
 func is_shift_complete() -> bool:
 	return ShiftManager.is_shift_complete()
 
+func get_current_shift() -> int:
+	return ShiftManager.current_shift_index
+
 func advance_to_next_employee():
 	ShiftManager.advance_to_next_employee()
 	print("MiseryManager: Advanced to employee ", ShiftManager.current_employee_index)

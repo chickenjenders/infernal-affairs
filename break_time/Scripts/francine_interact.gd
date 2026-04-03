@@ -36,5 +36,5 @@ func start_dialogue():
 	print("Starting Francine dialogue via Plugin")
 	var balloon_scene = load("res://break_time/dialogue/dialogue_balloon.tscn")
 	var balloon = balloon_scene.instantiate()
-	get_tree().current_scene.add_child(balloon)
+	get_tree().root.add_child(balloon)
 	balloon.start(FRANCINE_DIALOGUE, "start")
