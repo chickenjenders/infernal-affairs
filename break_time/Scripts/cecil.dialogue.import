@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://byruajakn5tqy"
+path="res://.godot/imported/cecil.dialogue-f501b97e13cdebbe20223b1af86e0a7d.tres"
+
+[deps]
+
+source_file="res://break_time/scripts/cecil.dialogue"
+dest_files=["res://.godot/imported/cecil.dialogue-f501b97e13cdebbe20223b1af86e0a7d.tres"]
+
+[params]
+
+defaults=true
