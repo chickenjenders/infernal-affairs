@@ -70,6 +70,8 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+@onready var portrait: TextureRect = get_node_or_null("%Portrait")
+
 
 func _ready() -> void:
 	balloon.hide()
@@ -111,7 +113,7 @@ func _notification(what: int) -> void:
 
 ## Start some dialogue
 func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
-	temporary_game_states = [self] + extra_game_states
+	temporary_game_states = [ self ] + extra_game_states
 	is_waiting_for_input = false
 	if is_instance_valid(with_dialogue_resource):
 		dialogue_resource = with_dialogue_resource
@@ -132,6 +134,28 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+
+	# Manage portraits
+	if portrait:
+		var speaker = dialogue_line.character.to_lower()
+		var portrait_file = speaker + ".png"
+		
+		# Specifically reroute Cecil to greg.png
+		if speaker == "cecil":
+			portrait_file = "greg.png"
+			
+		var portrait_path = "res://assets/portraits/" + portrait_file
+		if FileAccess.file_exists(portrait_path):
+			portrait.texture = load(portrait_path)
+			portrait.show()
+		else:
+			# Check for uppercase PNG just in case
+			portrait_path = "res://assets/portraits/" + portrait_file.replace(".png", ".PNG")
+			if FileAccess.file_exists(portrait_path):
+				portrait.texture = load(portrait_path)
+				portrait.show()
+			else:
+				portrait.hide()
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
