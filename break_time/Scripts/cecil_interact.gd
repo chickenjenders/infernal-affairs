@@ -4,7 +4,7 @@ extends Area2D
 @onready var collision = $CollisionShape2D
 
 # Dialogue resource for the Dialogue Manager plugin
-const CECIL_DIALOGUE = preload("res://break_time/scripts/cecil.dialogue")
+const CECIL_DIALOGUE = preload("res://break_time/dialogue/cecil.dialogue")
 
 func _ready():
 	input_pickable = true
@@ -34,4 +34,4 @@ func _input(event):
 
 func start_dialogue():
 	print("Starting Cecil dialogue via Plugin")
-	DialogueManager.show_example_balloon(CECIL_DIALOGUE, "start")
+	DialogueManager.show_dialogue_balloon(CECIL_DIALOGUE, "start")
