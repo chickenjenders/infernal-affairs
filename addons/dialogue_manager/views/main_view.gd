@@ -251,7 +251,7 @@ func load_from_version_refresh(just_refreshed: Dictionary) -> void:
 	else:
 		EditorInterface.set_main_screen_editor("Dialogue")
 
-	updated_dialog.dialog_text = DMConstants.translate(&"update.success").format({ version = update_button.get_version() })
+	updated_dialog.dialog_text = DMConstants.translate(&"update.success").format({version = update_button.get_version()})
 	updated_dialog.popup_centered()
 
 
@@ -269,7 +269,7 @@ func new_file(path: String, content: String = "") -> void:
 
 
 # Open a dialogue resource for editing
-func open_resource(resource: DialogueResource) -> void:
+func open_resource(resource: Resource) -> void:
 	open_file(resource.resource_path)
 
 
@@ -350,7 +350,7 @@ func close_file(path: String) -> void:
 		remove_file_from_open_buffers(path)
 		await get_tree().process_frame
 	else:
-		close_confirmation_dialog.dialog_text = DMConstants.translate(&"confirm_close").format({ path = path.get_file() })
+		close_confirmation_dialog.dialog_text = DMConstants.translate(&"confirm_close").format({path = path.get_file()})
 		close_confirmation_dialog.popup_centered()
 		await confirmation_closed
 
@@ -946,7 +946,7 @@ func _on_find_in_files_result_selected(path: String, cursor: Vector2, length: in
 	code_edit.set_line_as_center_visible(cursor.y)
 
 
-func _on_banner_image_gui_input(event:  InputEvent) -> void:
+func _on_banner_image_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		OS.shell_open("https://bravestcoconut.com/wishlist")
 
