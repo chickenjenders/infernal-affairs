@@ -3,65 +3,81 @@
 [ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_fnria"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_0jqkb"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_m7fep"]
+[ext_resource type="FontFile" uid="uid://crf5sly5o37w" path="res://assets/font/Garet-Heavy.ttf" id="4_font_h"]
+[ext_resource type="FontFile" uid="uid://b00e3s6j7k0d5" path="res://assets/font/Garet-Book.ttf" id="5_font_b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.329412, 0.329412, 0.329412, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.05, 0.02, 0.02, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.1, 0.1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4m3"]
-bg_color = Color(0.121569, 0.121569, 0.121569, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.15, 0.05, 0.05, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.2, 0.2, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.8, 0.2, 0.2, 0.2)
+shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0njw"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.1, 0.04, 0.04, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.15, 0.15, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkmqt"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.02, 0, 0, 0.85)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3, 0.05, 0.05, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.8)
+shadow_size = 10
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
-default_font_size = 20
+default_font = ExtResource("5_font_b")
+default_font_size = 22
+Button/colors/font_color = Color(0.85, 0.8, 0.8, 1)
+Button/colors/font_hover_color = Color(1, 0.3, 0.3, 1)
+Button/fonts/font = ExtResource("4_font_h")
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
 Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
 Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
-MarginContainer/constants/margin_bottom = 15
-MarginContainer/constants/margin_left = 30
-MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 40
+MarginContainer/constants/margin_right = 40
+MarginContainer/constants/margin_top = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
+RichTextLabel/colors/default_color = Color(0.9, 0.85, 0.85, 1)
+RichTextLabel/fonts/bold_font = ExtResource("4_font_h")
+RichTextLabel/fonts/normal_font = ExtResource("5_font_b")
 
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
@@ -144,9 +160,11 @@ size_flags_horizontal = 3
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.501961)
+modulate = Color(1, 0.4, 0.4, 1)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("4_font_h")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -156,6 +174,8 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.9, 0.85, 0.85, 1)
+theme_override_constants/line_separation = 4
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
@@ -165,6 +185,7 @@ size_flags_vertical = 8
 
 [node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control"]
 unique_name_in_owner = true
+color = Color(0.6, 0.1, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control"]

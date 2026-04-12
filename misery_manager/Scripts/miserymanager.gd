@@ -126,11 +126,24 @@ func advance_to_next_employee():
 	print("MiseryManager: Advanced to employee ", ShiftManager.current_employee_index)
 	employee_changed.emit(ShiftManager.current_employee_index)
 	
-	if ShiftManager.current_employee_index == 2:
+	# Check if we just completed the 3rd demon (index 2 for shift 1, index 5 for shift 2, etc)
+	# Since shift 1 has indices 0-2, shift 2 has indices 3-5, etc
+	var last_employee_of_shift_index = ShiftManager.current_shift_index * 3 - 1
+	
+	if ShiftManager.current_employee_index == last_employee_of_shift_index:
 		await get_tree().create_timer(2.0).timeout
-		var password_reset_scene = load("res://core/scenes/password_reset.tscn")
-		var password_reset_instance = password_reset_scene.instantiate()
-		get_tree().root.add_child(password_reset_instance)
+		var current_shift = ShiftManager.current_shift_index
+		
+		if current_shift == 1:
+			# Shift 1: Show password reset scene
+			var password_reset_scene = load("res://core/scenes/password_reset.tscn")
+			var password_reset_instance = password_reset_scene.instantiate()
+			get_tree().root.add_child(password_reset_instance)
+		elif current_shift == 2:
+			# Shift 2: Show terms and conditions scene
+			var terms_and_conditions_scene = load("res://core/scenes/termsandconditions.tscn")
+			var terms_and_conditions_instance = terms_and_conditions_scene.instantiate()
+			get_tree().root.add_child(terms_and_conditions_instance)
 
 func reset_for_next_employee():
 	# Clear all task slots

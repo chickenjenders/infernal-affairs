@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsxnlhhiqqrhv"
-path="res://.godot/imported/termsandconditions.png-d5900542fe3635899525062a6de7a640.ctex"
+uid="uid://pt753sjsnby3"
+path="res://.godot/imported/termandconditions.png-285f76a11cdfd65af12b1204005d157c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/termsandconditions.png"
-dest_files=["res://.godot/imported/termsandconditions.png-d5900542fe3635899525062a6de7a640.ctex"]
+source_file="res://assets/backgrounds/termandconditions.png"
+dest_files=["res://.godot/imported/termandconditions.png-285f76a11cdfd65af12b1204005d157c.ctex"]
 
 [params]
 
