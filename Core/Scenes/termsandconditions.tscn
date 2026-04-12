@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbdd4on4q5aaf"]
+[gd_scene load_steps=6 format=3 uid="uid://dbdd4on4q5aaf"]
 
-[ext_resource type="Script" uid="uid://wbwbpatyw8vb" path="res://core/scripts/password_reset.gd" id="1_v3nxf"]
-[ext_resource type="Texture2D" uid="uid://dsxnlhhiqqrhv" path="res://assets/backgrounds/termsandconditions.png" id="2_y5vis"]
+[ext_resource type="Script" uid="uid://6kqlob8xcexm" path="res://core/scripts/terms_and_conditions.gd" id="1_v3nxf"]
+[ext_resource type="Texture2D" uid="uid://pt753sjsnby3" path="res://assets/backgrounds/termandconditions.png" id="2_v3nxf"]
+[ext_resource type="FontFile" uid="uid://4daaj4herp4s" path="res://assets/font/Garet-Book.ttf" id="3_gw1io"]
+[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="4_h176b"]
+[ext_resource type="PackedScene" uid="uid://bl6l3kej4oy56" path="res://popup.tscn" id="5_gw1io"]
 
 [node name="termsandconditions" type="Control"]
 layout_mode = 3
@@ -14,5 +17,61 @@ grow_vertical = 2
 script = ExtResource("1_v3nxf")
 
 [node name="BG" type="Sprite2D" parent="."]
-texture = ExtResource("2_y5vis")
+texture = ExtResource("2_v3nxf")
 centered = false
+
+[node name="PageName" type="Label" parent="BG"]
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 262.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gw1io")
+theme_override_font_sizes/font_size = 25
+text = "Form 666A"
+
+[node name="Title" type="Label" parent="BG"]
+offset_left = 395.0
+offset_top = 112.0
+offset_right = 1204.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_h176b")
+theme_override_font_sizes/font_size = 67
+text = "Terms and Conditions"
+
+[node name="Label" type="Label" parent="BG"]
+offset_left = 404.0
+offset_top = 219.0
+offset_right = 1203.0
+offset_bottom = 771.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gw1io")
+text = "lots and lots of text will be here."
+
+[node name="Control" parent="." instance=ExtResource("5_gw1io")]
+visible = false
+layout_mode = 1
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -97.0
+offset_right = 52.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 5
+theme_override_fonts/font = ExtResource("3_gw1io")
+theme_override_font_sizes/font_size = 25
+theme_override_constants/check_v_offset = 2
+text = "I Agree"
+alignment = 1
+icon_alignment = 1
