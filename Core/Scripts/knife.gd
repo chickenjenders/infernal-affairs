@@ -17,11 +17,18 @@ var last_mouse_down: bool = false
 
 func _ready() -> void:
 	# Create visual representation
-	var knife_sprite = Line2D.new()
+	var knife_sprite = Sprite2D.new()
 	knife_sprite.name = "KnifeVisual"
-	knife_sprite.width = 5.0
-	knife_sprite.points = PackedVector2Array([Vector2(-10, -knife_size), Vector2(10, knife_size)])
-	knife_sprite.modulate = knife_color
+	# Load the knife icon from assets/icons/knife.png
+	var tex = load("res://assets/icons/knife.png")
+	if tex:
+		knife_sprite.texture = tex
+	else:
+		# Fallback if the specific path doesn't exist
+		printerr("Knife: Texture not found at res://assets/icons/knife.png")
+	
+	# Adjust scale if needed
+	knife_sprite.scale = Vector2(0.5, 0.5)
 	add_child(knife_sprite)
 	
 	# Start following mouse
@@ -42,25 +49,20 @@ func _process(delta: float) -> void:
 	last_mouse_down = mouse_pressed
 
 func _attempt_stab() -> void:
-	# Check if we're close enough to the popup's yes button
+	# Check if we're close enough to the popup
 	if not is_instance_valid(popup_target):
-		print("Knife: Popup target is no longer valid")
 		return
 	
-	var yes_button = popup_target.get_node_or_null("Yes")
-	if not yes_button:
-		print("Knife: Yes button not found in popup")
-		return
+	# Instead of just the "Yes" button, let's allow stabbing anywhere on the popup
+	# or at least the general area of it.
+	var popup_rect = Rect2(popup_target.global_position, popup_target.size)
 	
-	# Calculate distance to yes button
-	var button_global_pos = yes_button.global_position + yes_button.size / 2.0
-	var distance = global_position.distance_to(button_global_pos)
-	
-	# If within stab range and cooldown expired
-	if distance < stab_proximity_radius and stab_cooldown <= 0:
+	# If mouse is within the popup bounds and cooldown expired
+	if popup_rect.has_point(global_position) and stab_cooldown <= 0:
 		stab_cooldown = stab_cooldown_duration
-		print("Knife: Stabbed the YES button! Distance was: ", distance)
-		terms_and_conditions_manager._on_knife_stab()
+		print("Knife: Stabbed the popup!")
+		if terms_and_conditions_manager and terms_and_conditions_manager.has_method("_on_knife_stab"):
+			terms_and_conditions_manager._on_knife_stab()
 
 func equip() -> void:
 	is_equipped = true

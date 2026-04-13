@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://db226gl8wirq1"]
+
+[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="1_rcuyd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8bms"]
+bg_color = Color(0.81, 0, 0, 1)
+corner_radius_top_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcuyd"]
+bg_color = Color(0.9999998, 0.22052833, 0.17388618, 1)
+
+[node name="TrainingSequence" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlideShow" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="VBoxContainer" type="Control" parent="SlideShow"]
+anchors_preset = 0
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 1594.0
+offset_bottom = 901.0
+
+[node name="slidecounter" type="Label" parent="SlideShow/VBoxContainer"]
+layout_mode = 0
+offset_right = 1599.0
+offset_bottom = 23.0
+
+[node name="slideimage" type="TextureRect" parent="SlideShow/VBoxContainer"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 1599.0
+offset_bottom = 27.0
+
+[node name="HBoxContainer" type="Panel" parent="SlideShow/VBoxContainer"]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 1599.0
+offset_bottom = 31.0
+
+[node name="next" type="Button" parent="SlideShow/VBoxContainer/HBoxContainer"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 220.0
+offset_right = 999.0
+offset_bottom = 376.0
+theme_override_fonts/font = ExtResource("1_rcuyd")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8bms")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rcuyd")
+text = "Next >"
+flat = true
+
+[node name="Video" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Quiz" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

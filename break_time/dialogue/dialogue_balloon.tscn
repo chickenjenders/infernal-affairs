@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnjrw0vnpyx56"]
+[gd_scene load_steps=14 format=3 uid="uid://cnjrw0vnpyx56"]
 
 [ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_fnria"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_0jqkb"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_m7fep"]
-[ext_resource type="FontFile" uid="uid://crf5sly5o37w" path="res://assets/font/Garet-Heavy.ttf" id="4_font_h"]
-[ext_resource type="FontFile" uid="uid://b00e3s6j7k0d5" path="res://assets/font/Garet-Book.ttf" id="5_font_b"]
+[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="4_font_h"]
+[ext_resource type="FontFile" uid="uid://4daaj4herp4s" path="res://assets/font/Garet-Book.ttf" id="5_font_b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0.05, 0.02, 0.02, 0.9)
@@ -17,7 +17,6 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
-shadow_color = Color(0, 0, 0, 0.6)
 shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4m3"]
@@ -218,19 +217,19 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-
 [node name="Portrait" type="TextureRect" parent="Balloon"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 37.0
-offset_top = 315.0
-offset_right = 338.0
-offset_bottom = 629.0
+offset_left = 47.0
+offset_top = 383.0
+offset_right = 348.0
+offset_bottom = 697.0
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
