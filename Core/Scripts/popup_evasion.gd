@@ -1,47 +1,102 @@
 extends Control
 
-# Aimless movement parameters
-@export var movement_speed: float = 2000.0
-@export var direction_change_interval: float = 0.1 # Change direction very frequently
-var current_direction: Vector2 = Vector2.RIGHT
-var time_since_direction_change: float = 0.0
+# Path-based circular movement
+@export var movement_speed: float = 150.0 # pixels per second around the path
+var path_progress: float = 0.0
+var path_total_length: float = 0.0
+var is_moving: bool = true
+var stab_count: int = 0
+
+# Screen dimensions for the path calculations
+var viewport_size: Vector2
+var path_points: Array[Vector2] = []
 
 func _ready() -> void:
-	print("PopupEvasion: Ready, starting ultra-fast movement")
-	time_since_direction_change = 0.0
-	_pick_random_direction()
+	print("PopupEvasion: Ready, setting up circular path movement")
+	viewport_size = get_viewport_rect().size
+	print("PopupEvasion: Popup size at ready: ", size)
+	print("PopupEvasion: Viewport size: ", viewport_size)
+	_setup_circular_path()
+	path_total_length = _calculate_path_length()
+	print("PopupEvasion: Path total length calculated: ", path_total_length)
 
 func _process(delta: float) -> void:
-	# Change direction periodically or when hitting edges
-	time_since_direction_change += delta
-	if time_since_direction_change >= direction_change_interval:
-		_pick_random_direction()
-		time_since_direction_change = 0.0
+	if not is_moving:
+		return
 	
-	# Move in current direction
-	global_position += current_direction * movement_speed * delta
+	# Move along the path
+	path_progress += movement_speed * delta
 	
-	# Keep popup within screen bounds with bouncy behavior
-	var viewport_rect = get_viewport_rect()
-	var safe_margin = 20.0
+	# Wrap around when reaching the end
+	if path_progress >= path_total_length:
+		path_progress = fmod(path_progress, path_total_length)
 	
-	# We need to account for the actual size of the popup for clamping
+	# Calculate position based on path progress
+	global_position = _get_position_on_path(path_progress)
+
+func _setup_circular_path() -> void:
+	# Create a rectangular path around the screen edges
+	# Start from top-left and go clockwise
+	var margin = 10.0 # Distance from screen edge
 	var popup_size = size if size != Vector2.ZERO else Vector2(250, 150)
 	
-	if global_position.x < safe_margin:
-		global_position.x = safe_margin
-		current_direction.x = abs(current_direction.x)
-	elif global_position.x > viewport_rect.size.x - popup_size.x - safe_margin:
-		global_position.x = viewport_rect.size.x - popup_size.x - safe_margin
-		current_direction.x = - abs(current_direction.x)
+	print("PopupEvasion: Setting up path with popup_size: ", popup_size)
 	
-	if global_position.y < safe_margin:
-		global_position.y = safe_margin
-		current_direction.y = abs(current_direction.y)
-	elif global_position.y > viewport_rect.size.y - popup_size.y - safe_margin:
-		global_position.y = viewport_rect.size.y - popup_size.y - safe_margin
-		current_direction.y = - abs(current_direction.y)
+	# Top edge (left to right)
+	var x = margin
+	while x < viewport_size.x - popup_size.x - margin:
+		path_points.append(Vector2(x, margin))
+		x += 20.0
+	
+	# Right edge (top to bottom)
+	var y = margin
+	while y < viewport_size.y - popup_size.y - margin:
+		path_points.append(Vector2(viewport_size.x - popup_size.x - margin, y))
+		y += 20.0
+	
+	# Bottom edge (right to left)
+	x = viewport_size.x - popup_size.x - margin
+	while x > margin:
+		path_points.append(Vector2(x, viewport_size.y - popup_size.y - margin))
+		x -= 20.0
+	
+	# Left edge (bottom to top)
+	y = viewport_size.y - popup_size.y - margin
+	while y > margin:
+		path_points.append(Vector2(margin, y))
+		y -= 20.0
+	
+	# Close the loop
+	path_points.append(path_points[0])
+	
+	print("PopupEvasion: Path points created: ", path_points.size())
 
-func _pick_random_direction() -> void:
-	var angle = randf_range(0, TAU)
-	current_direction = Vector2(cos(angle), sin(angle)).normalized()
+func _calculate_path_length() -> float:
+	var length = 0.0
+	for i in range(path_points.size() - 1):
+		length += path_points[i].distance_to(path_points[i + 1])
+	return length
+
+func _get_position_on_path(progress: float) -> Vector2:
+	# Find which segment of the path we're on
+	var current_distance = 0.0
+	for i in range(path_points.size() - 1):
+		var segment_length = path_points[i].distance_to(path_points[i + 1])
+		if current_distance + segment_length >= progress:
+			# We're on this segment
+			var segment_progress = (progress - current_distance) / segment_length
+			return path_points[i].lerp(path_points[i + 1], segment_progress)
+		current_distance += segment_length
+	
+	# Fallback to last point
+	return path_points[-1]
+
+func record_stab() -> void:
+	stab_count += 1
+	print("PopupEvasion: Stabbed! Count: ", stab_count, "/3")
+	if stab_count >= 3:
+		stop_moving()
+
+func stop_moving() -> void:
+	is_moving = false
+	print("PopupEvasion: Popup stopped!")

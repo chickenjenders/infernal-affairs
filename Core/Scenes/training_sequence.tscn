@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://db226gl8wirq1"]
+[gd_scene load_steps=13 format=3 uid="uid://db226gl8wirq1"]
 
 [ext_resource type="Script" uid="uid://v4pt5v3i7giq" path="res://core/scripts/training_sequence.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://qvkqt18mecqg" path="res://assets/backgrounds/trainingbg.png" id="2_ld4qi"]
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="2_rcuyd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8bms"]
-bg_color = Color(0.81, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt00f"]
+bg_color = Color(0.8046996, 2.117753e-06, 7.70092e-07, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -19,6 +19,69 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_ld4qi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_QuizPanel"]
+bg_color = Color(0.12, 0.12, 0.12, 0.95)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.68, 0.12, 0.15, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 15
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_CorporateButton"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.68, 0.12, 0.15, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_CorporateButtonHover"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.85, 0.15, 0.18, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8bms"]
+bg_color = Color(0.99881357, 0.98155886, 0.96590656, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4qi"]
+bg_color = Color(0.7173672, 0.13711703, 0.16342336, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlesh"]
+bg_color = Color(0.9999998, 0.27239323, 0.14831802, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 2
 
 [node name="TrainingSequence" type="Control"]
 layout_mode = 3
@@ -78,7 +141,7 @@ offset_right = 1539.0
 offset_bottom = 811.0
 theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_u8bms")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wt00f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rcuyd")
 text = "Next >"
 
@@ -124,7 +187,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Quiz/Intro"]
+[node name="Panel" type="Panel" parent="Quiz/Intro"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -132,11 +195,29 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -400.0
-offset_top = -100.0
+offset_top = -150.0
 offset_right = 400.0
-offset_bottom = -20.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_QuizPanel")
+
+[node name="Label" type="Label" parent="Quiz/Intro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -110.0
+offset_right = 350.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.96, 0.94, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 30
 text = "Receive a perfect score on this quiz to successfully complete this training."
@@ -152,12 +233,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = 50.0
+offset_top = 40.0
 offset_right = 100.0
-offset_bottom = 110.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_rcuyd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_CorporateButton")
+theme_override_styles/hover = SubResource("StyleBoxFlat_CorporateButtonHover")
 text = "Start Quiz"
 
 [node name="Questions" type="Control" parent="Quiz"]
@@ -169,17 +252,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="Quiz/Questions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_QuizPanel")
+
 [node name="QuestionLabel" type="Label" parent="Quiz/Questions"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 100.0
-offset_bottom = 200.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = -100.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.96, 0.94, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_rcuyd")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "Question text goes here?"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="OptionsContainer" type="VBoxContainer" parent="Quiz/Questions"]
 layout_mode = 1
@@ -189,12 +298,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
-offset_top = -50.0
+offset_top = -60.0
 offset_right = 300.0
-offset_bottom = 200.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 
 [node name="Results" type="Control" parent="Quiz"]
 visible = false
@@ -205,6 +314,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="Quiz/Results"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -200.0
+offset_right = 450.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_QuizPanel")
+
 [node name="ScoreLabel" type="Label" parent="Quiz/Results"]
 layout_mode = 1
 anchors_preset = 8
@@ -212,16 +336,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -50.0
-offset_right = 200.0
+offset_left = -400.0
+offset_top = -120.0
+offset_right = 400.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.96, 0.94, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_rcuyd")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 text = "Your Score: 0/5"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="finishquiz" type="Button" parent="Quiz/Results"]
 layout_mode = 1
@@ -230,16 +359,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 100.0
-offset_right = 100.0
-offset_bottom = 160.0
+offset_left = -150.0
+offset_top = 70.0
+offset_right = 150.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_rcuyd")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_CorporateButton")
+theme_override_styles/hover = SubResource("StyleBoxFlat_CorporateButtonHover")
 text = "Return to Desktop"
 
-[node name="FeedbackCard" type="ColorRect" parent="Quiz"]
+[node name="FeedbackCard" type="Panel" parent="Quiz"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -248,12 +380,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
-offset_top = -150.0
+offset_top = -125.0
 offset_right = 300.0
-offset_bottom = 100.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.1, 0.1, 0.9)
+theme_override_styles/panel = SubResource("StyleBoxFlat_QuizPanel")
 
 [node name="VBox" type="VBoxContainer" parent="Quiz/FeedbackCard"]
 layout_mode = 1
@@ -266,11 +398,13 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="FeedbackLabel" type="Label" parent="Quiz/FeedbackCard/VBox"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.94, 0.88, 1)
 theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 24
 text = "Feedback message here."
@@ -281,6 +415,8 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_rcuyd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_CorporateButton")
+theme_override_styles/hover = SubResource("StyleBoxFlat_CorporateButtonHover")
 text = "Next"
 
 [node name="UrgentPopup" type="ColorRect" parent="."]
@@ -319,7 +455,9 @@ theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Label" type="Label" parent="UrgentPopup/Panel/VBox"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 40
 text = "URGENT: You have been assigned mandatory training"
@@ -332,4 +470,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ld4qi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mlesh")
 text = "Continue to Training"

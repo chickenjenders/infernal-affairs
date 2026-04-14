@@ -2,220 +2,262 @@ extends Control
 
 @onready var checkbox: CheckButton = $CheckButton
 @onready var hidden_popup: Control = $popup
-@onready var popup_scene = preload("res://popup.tscn")
-@onready var knife_area: Area2D = $Area2D
+@onready var knife_area: Area2D = $knife
+var popup_scene = preload("res://popup.tscn")
 
-# Game phases
-enum Phase {POPUP_SPAM, MINI_GAME, COMPLETE}
-var current_phase: Phase = Phase.POPUP_SPAM
+enum Phase {IDLE, POPUP_SPAM, EVASION, COMPLETE}
+var current_phase: Phase = Phase.IDLE
 
-# Popup spam phase variables
+# Popup spam
 var popup_spam_timer: float = 0.0
 var popup_spam_duration: float = 15.0
-var active_popups: Array[Node] = []
 var spam_phase_active: bool = false
+var active_popups: Array[Node] = []
+var popup_count: int = 0
 
-# Mini-game phase variables
-var knife_equipped: bool = false
+# Evasion phase
+var evasion_popup: Control = null
+var evasion_speed: float = 300.0
+var evasion_direction: Vector2 = Vector2(1, 1)
 var stab_count: int = 0
 var stab_required: int = 3
-var knife_instance: Node2D
-var mini_game_popup: Node
+var shake_timer: float = 0.0
+var is_shaking: bool = false
+var shake_origin: Vector2 = Vector2.ZERO
+
+# Knife (cursor)
+var knife_equipped: bool = false
+var knife_texture: Texture2D = null
+var knife_visible: bool = false
 
 func _ready() -> void:
 	checkbox.toggled.connect(_on_checkbox_clicked)
-	if knife_area:
-		knife_area.visible = false
-		knife_area.input_pickable = false
+	# Hide the scene knife icon until needed
+	knife_area.visible = false
+	knife_area.input_pickable = false
+	knife_area.input_event.connect(_on_knife_area_clicked)
+	
+	# Listen to Global for synchronization
+	Global.knife_spawned.connect(_on_global_knife_spawned)
+	Global.knife_equipped_signal.connect(_on_global_knife_equipped)
+	Global.popup_spawn_requested.connect(_on_global_popup_requested)
+	Global.invasion_started.connect(_on_invasion_started)
+	Global.terms_and_conditions_completed.connect(_on_terms_completed)
 
-func _process(delta: float) -> void:
-	match current_phase:
-		Phase.POPUP_SPAM:
-			_handle_popup_spam_phase(delta)
-		Phase.MINI_GAME:
-			pass # Mini-game phase is handled by evasion and knife scripts
-		Phase.COMPLETE:
-			pass
+	# Preload knife texture for cursor drawing
+	knife_texture = load("res://assets/icons/knife.png")
+	# Hide built-in popup to start
+	hidden_popup.visible = false
 
-func _on_checkbox_clicked(_toggled: bool) -> void:
-	if current_phase == Phase.POPUP_SPAM and not spam_phase_active:
-		# Start the spam phase by showing the first popup
-		spam_phase_active = true
-		popup_spam_timer = 0.0
-		
-		# Setup the hidden popup existing in the scene
-		hidden_popup.visible = true
-		active_popups.append(hidden_popup)
-		
-		# Connect buttons of the pre-existing popup
-		var yes_button = hidden_popup.get_node_or_null("Yes")
-		var no_button = hidden_popup.get_node_or_null("No")
-		if yes_button:
-			yes_button.pressed.connect(_on_popup_button_pressed)
-		if no_button:
-			no_button.pressed.connect(_on_popup_button_pressed)
-
-func _handle_popup_spam_phase(delta: float) -> void:
-	if not spam_phase_active:
-		return
-		
-	popup_spam_timer += delta
-	
-	if popup_spam_timer >= popup_spam_duration:
-		spam_phase_active = false
-		_transition_to_mini_game()
-		return
-	
-	# Optional: spawn a popup every 1 second during spam phase if user isn't clicking
-	# if int(popup_spam_timer) > int(popup_spam_timer - delta):
-	# 	_spawn_popup()
-
-func _spawn_popup() -> void:
-	var popup_instance = popup_scene.instantiate()
-	add_child(popup_instance)
-	
-	# Get the base position to stagger from (either center or the previous popup)
-	var base_pos: Vector2
-	if active_popups.is_empty():
-		var viewport_size = get_viewport_rect().size
-		base_pos = viewport_size / 2.0 - Vector2(125, 75) # Half of typical popup size
-	else:
-		base_pos = active_popups[-1].global_position
-	
-	active_popups.append(popup_instance)
-	
-	# Reset local position to zero so global_position works correctly
-	popup_instance.position = Vector2.ZERO
-	
-	# Stagger popups relative to the PREVIOUS one to create a cascading stack
-	var stagger_x = randf_range(-120, 140)
-	var stagger_y = randf_range(-100, 120)
-	
-	popup_instance.global_position = base_pos + Vector2(stagger_x, stagger_y)
-	
-	# Keep within screen bounds slightly
-	var screen = get_viewport_rect().size
-	popup_instance.global_position.x = clamp(popup_instance.global_position.x, 20, screen.x - 270)
-	popup_instance.global_position.y = clamp(popup_instance.global_position.y, 20, screen.y - 170)
-	
-	# Connect buttons to trigger more popups during spam phase
-	var yes_button = popup_instance.get_node_or_null("Yes")
-	var no_button = popup_instance.get_node_or_null("No")
-	
-	if yes_button:
-		yes_button.pressed.connect(_on_popup_button_pressed)
-	if no_button:
-		no_button.pressed.connect(_on_popup_button_pressed)
-
-func _on_popup_button_pressed() -> void:
-	# During spam phase, clicking either button spawns exactly one more popup
-	if current_phase == Phase.POPUP_SPAM:
-		_spawn_popup()
-
-func _transition_to_mini_game() -> void:
-	current_phase = Phase.MINI_GAME
-	print("Terms & Conditions: Transitioning to mini-game phase. Show the knife!")
-	
-	# Clear all active popups except the one we'll use for mini-game
-	for popup in active_popups:
-		if is_instance_valid(popup):
-			if popup == hidden_popup:
-				popup.visible = false
-			else:
-				popup.queue_free()
-	active_popups.clear()
-	
-	# Show the knife scene that was hidden
-	if knife_area:
+func _on_global_knife_spawned(pos: Vector2) -> void:
+	if is_instance_valid(self ) and is_instance_valid(knife_area):
+		knife_area.global_position = pos
 		knife_area.visible = true
 		knife_area.input_pickable = true
-		# Connect the knife click
-		if not knife_area.input_event.is_connected(_on_knife_clicked):
-			knife_area.input_event.connect(_on_knife_clicked)
 
-func _on_knife_clicked(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		_equip_knife()
-
-func _equip_knife() -> void:
-	if knife_equipped:
-		return
-		
-	knife_equipped = true
-	print("Terms & Conditions: Knife equipped!")
-	
-	# Hide the physical knife object in the scene
-	if knife_area:
+func _on_global_knife_equipped() -> void:
+	if is_instance_valid(self ) and is_instance_valid(knife_area):
+		knife_equipped = true
 		knife_area.visible = false
-	
-	# Spawn the knife script that handles the cursor and stabbing
-	var knife_script_scene = preload("res://core/scripts/knife.gd")
-	knife_instance = Node2D.new()
-	knife_instance.set_script(knife_script_scene)
-	add_child(knife_instance)
-	
-	# Manually initialize required references in the knife script
-	knife_instance.terms_and_conditions_manager = self
-	
-	# Hide the real mouse cursor
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
-	# Start the mini-game popup part
-	_start_evasion_popup()
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		set_process_input(true)
+		queue_redraw()
 
-func _start_evasion_popup() -> void:
-	print("Terms & Conditions: Starting the move-and-stab mini-game!")
-	
-	# We use the existing hidden popup for the mini-game
-	mini_game_popup = hidden_popup
-	mini_game_popup.visible = true
-	
-	# Set target for the knife
-	if knife_instance:
-		knife_instance.popup_target = mini_game_popup
-	
-	# Reset position for mini-game to middle of screen
-	var viewport_size = get_viewport_rect().size
-	mini_game_popup.global_position = viewport_size / 2.0 - Vector2(125, 75)
-	
-	# Reset manager variables for the mini-game
-	stab_count = 0
-	
-	# Set script for logic and motion
-	var evasion_script = preload("res://core/scripts/popup_evasion.gd")
-	mini_game_popup.set_script(evasion_script)
-	
-	# Ensure it can receive mouse clicks!
-	mini_game_popup.mouse_default_cursor_shape = Control.CURSOR_ARROW
-	mini_game_popup.mouse_filter = Control.MOUSE_FILTER_PASS
+func _on_global_popup_requested(is_first: bool) -> void:
+	if is_instance_valid(self ):
+		_spawn_popup(is_first)
 
-func _on_knife_stab() -> void:
-	stab_count += 1
-	print("Stab count: ", stab_count, "/", stab_required)
-	
-	if stab_count >= stab_required:
+func _on_invasion_started() -> void:
+	if is_instance_valid(self ):
+		_transition_to_evasion()
+
+func _on_terms_completed() -> void:
+	if is_instance_valid(self ):
 		_complete_game()
 
+func _on_checkbox_clicked(_toggled: bool) -> void:
+	if Global.is_popup_spam_active or Global.is_invasion_active:
+		return
+	Global.request_popup(true)
+
+func _spawn_popup(is_first: bool = false) -> void:
+	if not is_instance_valid(self ): return
+	
+	var inst: Control
+	if is_first:
+		if not is_instance_valid(hidden_popup): return
+		# Use the pre-existing popup for the first one
+		inst = hidden_popup
+		hidden_popup.visible = true
+	else:
+		inst = popup_scene.instantiate()
+		add_child(inst)
+
+	popup_count += 1
+	active_popups.append(inst)
+
+	# Position: stagger from center, offset gets larger as more spawn
+	var viewport = get_viewport_rect().size
+	var center = viewport / 2.0
+	var popup_size = Vector2(250, 150)
+	var spread = min(popup_count * 30.0, 200.0)
+	var offset = Vector2(
+		randf_range(-spread, spread),
+		randf_range(-spread, spread)
+	)
+	var target_pos = center - popup_size / 2.0 + offset
+	target_pos.x = clamp(target_pos.x, 10, viewport.x - popup_size.x - 10)
+	target_pos.y = clamp(target_pos.y, 10, viewport.y - popup_size.y - 10)
+	inst.global_position = target_pos
+
+	# Connect both buttons to spawn another popup via Global
+	for btn_name in ["Yes", "No"]:
+		var btn = inst.get_node_or_null(btn_name)
+		if btn and not btn.pressed.is_connected(_on_popup_button_pressed):
+			btn.pressed.connect(_on_popup_button_pressed)
+
+func _on_popup_button_pressed() -> void:
+	if Global.is_popup_spam_active:
+		Global.request_popup(false)
+
+# ─────────────────────────────────────────
+# PHASE 2 — EVASION + KNIFE
+# ─────────────────────────────────────────
+
+func _transition_to_evasion() -> void:
+	# Clear all popups except one — keep the first (hidden_popup)
+	for popup in active_popups:
+		if is_instance_valid(popup) and popup != hidden_popup:
+			popup.queue_free()
+	active_popups.clear()
+
+	evasion_popup = hidden_popup
+	evasion_popup.visible = true
+	evasion_popup.top_level = true
+
+	var viewport = get_viewport_rect().size
+	evasion_popup.global_position = viewport / 2.0 - Vector2(125, 75)
+
+	# Disconnect old button signals so they don't keep spawning
+	for btn_name in ["Yes", "No"]:
+		var btn = evasion_popup.get_node_or_null(btn_name)
+		if btn:
+			# Disconnect all existing connections
+			for conn in btn.pressed.get_connections():
+				btn.pressed.disconnect(conn.callable)
+
+	# Pick a random starting direction
+	evasion_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+
+	# Notify Global to spawn the knife
+	Global.spawn_knife(Vector2(60, get_viewport_rect().size.y - 60))
+
+func _process(delta: float) -> void:
+	if Global.is_invasion_active:
+		if is_shaking:
+			_process_shake(delta)
+		else:
+			_process_evasion(delta)
+
+# ─────────────────────────────────────────
+# INPUT - draw knife cursor
+# ─────────────────────────────────────────
+
+func _input(event: InputEvent) -> void:
+	if knife_equipped and event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			_attempt_stab()
+
+func _draw() -> void:
+	if knife_equipped and knife_texture:
+		var mouse = get_local_mouse_position()
+		var knife_size = Vector2(48, 48)
+		draw_texture_rect(knife_texture, Rect2(mouse - knife_size / 2, knife_size), false)
+
+func _process_evasion(delta: float) -> void:
+	if not is_instance_valid(evasion_popup):
+		return
+
+	var viewport = get_viewport_rect().size
+	var popup_size = evasion_popup.size
+	var pos = evasion_popup.global_position
+
+	pos += evasion_direction * evasion_speed * delta
+
+	# Bounce off edges
+	if pos.x <= 0 or pos.x + popup_size.x >= viewport.x:
+		evasion_direction.x *= -1
+		pos.x = clamp(pos.x, 0, viewport.x - popup_size.x)
+	if pos.y <= 0 or pos.y + popup_size.y >= viewport.y:
+		evasion_direction.y *= -1
+		pos.y = clamp(pos.y, 0, viewport.y - popup_size.y)
+
+	evasion_popup.global_position = pos
+
+func _process_shake(delta: float) -> void:
+	shake_timer -= delta
+	if shake_timer <= 0:
+		is_shaking = false
+		evasion_popup.global_position = shake_origin
+		Global.complete_terms_and_conditions()
+		return
+	# Shake by offsetting randomly each frame
+	var shake_strength = 8.0
+	evasion_popup.global_position = shake_origin + Vector2(
+		randf_range(-shake_strength, shake_strength),
+		randf_range(-shake_strength, shake_strength)
+	)
+
+# ─────────────────────────────────────────
+# KNIFE
+# ─────────────────────────────────────────
+
+func _on_knife_area_clicked(_viewport: Node, event: InputEvent, _shape: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		Global.equip_knife()
+
+func _equip_knife() -> void:
+	# Keep for internal logic if needed, but the visual/state is now handled via the Global signal
+	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	set_process_input(true)
+	queue_redraw()
+
+func _attempt_stab() -> void:
+	if not is_instance_valid(evasion_popup) or is_shaking:
+		return
+
+	var mouse = get_global_mouse_position()
+	var popup_rect = Rect2(evasion_popup.global_position, evasion_popup.size)
+
+	if popup_rect.has_point(mouse):
+		stab_count += 1
+		print("Stabbed! %d / %d" % [stab_count, stab_required])
+		# Flash the popup red on hit
+		evasion_popup.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		if is_instance_valid(evasion_popup):
+			evasion_popup.modulate = Color.WHITE
+
+		if stab_count >= stab_required:
+			_start_shake()
+
+func _start_shake() -> void:
+	is_shaking = true
+	shake_timer = 1.2
+	shake_origin = evasion_popup.global_position
+	evasion_speed = 0.0
+
+# ─────────────────────────────────────────
+# COMPLETE
+# ─────────────────────────────────────────
+
 func _complete_game() -> void:
-	current_phase = Phase.COMPLETE
-	print("Terms & Conditions: Game complete!")
-	
-	# Restore normal cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	# Clean up
-	if is_instance_valid(mini_game_popup):
-		mini_game_popup.queue_free()
-	
-	if is_instance_valid(knife_instance):
-		knife_instance.queue_free()
-	
-	# Check the box (visual only since we're leaving)
+	if is_instance_valid(evasion_popup):
+		evasion_popup.queue_free()
 	if checkbox:
 		checkbox.set_pressed_no_signal(true)
 		checkbox.disabled = true
-	
-	# Small delay then clean up and let misery manager resume
-	await get_tree().create_timer(1.0).timeout
-	print("Terms & Conditions: Returning to Misery Manager")
+	await get_tree().create_timer(0.8).timeout
 	queue_free()

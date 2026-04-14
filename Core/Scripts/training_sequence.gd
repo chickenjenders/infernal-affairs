@@ -142,11 +142,14 @@ func _on_next_pressed() -> void:
 
 func play_phishing_video() -> void:
 	var video_path = "res://assets/phishing/phishingvid.ogv"
-	var stream = load(video_path)
-	if stream:
-		video_player.stream = stream
+	var video_stream = load(video_path)
+	if video_stream:
+		# Ensure video player is visible and playable
+		video_player.visible = true
+		video_player.stream = video_stream
 		video_player.play()
-		# Optional: hide counter during video
+		# Hide the slide elements
+		slide_image.visible = false
 		slide_counter.visible = false
 	else:
 		push_error("Could not load video: " + video_path)
@@ -156,6 +159,7 @@ func _on_video_finished() -> void:
 
 func show_quiz_intro() -> void:
 	slideshow_container.visible = false
+	video_player.stop()
 	video_player.visible = false
 	quiz_container.visible = true
 	quiz_intro.visible = true
@@ -174,12 +178,42 @@ func show_question() -> void:
 		child.queue_free()
 	
 	var data = quiz_data[current_question_index]
-	question_label.text = "Question %d: %s" % [current_question_index + 1, data["q"]]
+	question_label.text = data["q"]
 	
 	for i in range(data["o"].size()):
 		var btn = Button.new()
 		btn.text = data["o"][i]
 		btn.add_theme_font_override("font", load("res://assets/font/Garet-Heavy.ttf"))
+		btn.add_theme_font_size_override("font_size", 20)
+		btn.add_theme_color_override("font_color", Color(0.12, 0.12, 0.12, 1))
+		btn.add_theme_color_override("font_hover_color", Color(0, 0, 0, 1))
+		btn.add_theme_color_override("font_pressed_color", Color(0.1, 0, 0, 1))
+		btn.add_theme_color_override("font_focus_color", Color(0, 0, 0, 1))
+		
+		# Corporate Cream & Red styles
+		var normal = StyleBoxFlat.new()
+		normal.bg_color = Color(0.96, 0.94, 0.88, 1) # Cream
+		normal.set_corner_radius_all(30)
+		normal.set_border_width_all(2)
+		normal.border_color = Color(0.8, 0.75, 0.65, 1)
+		normal.content_margin_left = 24
+		normal.content_margin_right = 24
+		normal.content_margin_top = 12
+		normal.content_margin_bottom = 12
+		
+		var hover = normal.duplicate()
+		hover.bg_color = Color(1.0, 0.98, 0.92, 1) # Lighter cream
+		hover.border_color = Color(0.68, 0.12, 0.15, 1) # Corporate Red
+		
+		var pressed = normal.duplicate()
+		pressed.bg_color = Color(0.85, 0.82, 0.75, 1) # Darker cream
+		pressed.border_color = Color(0.4, 0.1, 0.1, 1)
+		
+		btn.add_theme_stylebox_override("normal", normal)
+		btn.add_theme_stylebox_override("hover", hover)
+		btn.add_theme_stylebox_override("pressed", pressed)
+		btn.add_theme_stylebox_override("focus", hover)
+		
 		btn.pressed.connect(_on_answer_selected.bind(i))
 		options_container.add_child(btn)
 

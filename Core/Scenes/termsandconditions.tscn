@@ -5,8 +5,8 @@
 [ext_resource type="FontFile" uid="uid://4daaj4herp4s" path="res://assets/font/Garet-Book.ttf" id="3_gw1io"]
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="4_h176b"]
 [ext_resource type="PackedScene" uid="uid://bl6l3kej4oy56" path="res://popup.tscn" id="5_gw1io"]
-[ext_resource type="PackedScene" uid="uid://dya7vewuwtun1" path="res://break_time/scenes/knife.tscn" id="6_h176b"]
-[ext_resource type="Script" uid="uid://dr143g2h0ohdk" path="res://break_time/scenes/knife.gd" id="7_f0h5x"]
+[ext_resource type="PackedScene" uid="uid://dya7vewuwtun1" path="res://core/scenes/knife.tscn" id="6_h176b"]
+[ext_resource type="Script" uid="uid://ew56apip0ugi" path="res://core/scripts/knife.gd" id="7_f0h5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0h5x"]
 size = Vector2(110, 144)
@@ -88,5 +88,5 @@ visible = false
 position = Vector2(118, 726)
 shape = SubResource("RectangleShape2D_f0h5x")
 
-[node name="Node2D" parent="Area2D" instance=ExtResource("6_h176b")]
+[node name="Knife" parent="Area2D" instance=ExtResource("6_h176b")]
 script = ExtResource("7_f0h5x")
