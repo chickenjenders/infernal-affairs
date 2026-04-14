@@ -67,8 +67,8 @@ func _handle_popup_spam_phase(delta: float) -> void:
 		return
 	
 	# Optional: spawn a popup every 1 second during spam phase if user isn't clicking
-	if int(popup_spam_timer) > int(popup_spam_timer - delta):
-		_spawn_popup()
+	# if int(popup_spam_timer) > int(popup_spam_timer - delta):
+	# 	_spawn_popup()
 
 func _spawn_popup() -> void:
 	var popup_instance = popup_scene.instantiate()
@@ -88,8 +88,8 @@ func _spawn_popup() -> void:
 	popup_instance.position = Vector2.ZERO
 	
 	# Stagger popups relative to the PREVIOUS one to create a cascading stack
-	var stagger_x = randf_range(-60, 80)
-	var stagger_y = randf_range(-60, 80)
+	var stagger_x = randf_range(-120, 140)
+	var stagger_y = randf_range(-100, 120)
 	
 	popup_instance.global_position = base_pos + Vector2(stagger_x, stagger_y)
 	

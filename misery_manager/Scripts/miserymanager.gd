@@ -144,6 +144,16 @@ func advance_to_next_employee():
 			var terms_and_conditions_scene = load("res://core/scenes/termsandconditions.tscn")
 			var terms_and_conditions_instance = terms_and_conditions_scene.instantiate()
 			get_tree().root.add_child(terms_and_conditions_instance)
+	
+	# Training Sequence Trigger: 3rd shift, after 2nd demon shown (8th demon overall)
+	# Shift 3 uses indices 6, 7, 8. 
+	# The 2nd demon of shift 3 is at index 7.
+	if ShiftManager.current_shift_index == 3 and ShiftManager.current_employee_index == 7:
+		print("MiseryManager: Triggering training sequence in 5 seconds...")
+		await get_tree().create_timer(5.0).timeout
+		var training_scene = load("res://core/scenes/training_sequence.tscn")
+		var training_instance = training_scene.instantiate()
+		get_tree().root.add_child(training_instance)
 
 func reset_for_next_employee():
 	# Clear all task slots

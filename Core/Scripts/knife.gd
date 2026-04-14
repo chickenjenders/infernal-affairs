@@ -27,8 +27,9 @@ func _ready() -> void:
 		# Fallback if the specific path doesn't exist
 		printerr("Knife: Texture not found at res://assets/icons/knife.png")
 	
-	# Adjust scale if needed
-	knife_sprite.scale = Vector2(0.5, 0.5)
+	# Adjust scale - make it slightly larger than a standard cursor
+	# Standard cursors are around 32x32, we want something noticeably bigger
+	knife_sprite.scale = Vector2(1.5, 1.5)
 	add_child(knife_sprite)
 	
 	# Start following mouse
