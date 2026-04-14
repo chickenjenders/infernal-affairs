@@ -2,7 +2,7 @@ extends Control
 
 @onready var checkbox: CheckButton = $CheckButton
 @onready var hidden_popup: Control = $popup
-@onready var knife_area: Area2D = $knife
+@onready var knife_area: Area2D = $Area2D/Knife
 var popup_scene = preload("res://popup.tscn")
 
 enum Phase {IDLE, POPUP_SPAM, EVASION, COMPLETE}
@@ -25,43 +25,61 @@ var shake_timer: float = 0.0
 var is_shaking: bool = false
 var shake_origin: Vector2 = Vector2.ZERO
 
-# Knife (cursor)
-var knife_equipped: bool = false
+# Knife (drag and hold)
 var knife_texture: Texture2D = null
-var knife_visible: bool = false
 
 func _ready() -> void:
 	checkbox.toggled.connect(_on_checkbox_clicked)
-	# Hide the scene knife icon until needed
-	knife_area.visible = false
-	knife_area.input_pickable = false
-	knife_area.input_event.connect(_on_knife_area_clicked)
+	# Initially hide the scene's knife icon until the invasion starts
+	if is_instance_valid(knife_area):
+		knife_area.set_active(false)
+		if knife_area.get_parent() is Area2D:
+			knife_area.get_parent().visible = false
 	
 	# Listen to Global for synchronization
 	Global.knife_spawned.connect(_on_global_knife_spawned)
-	Global.knife_equipped_signal.connect(_on_global_knife_equipped)
 	Global.popup_spawn_requested.connect(_on_global_popup_requested)
 	Global.invasion_started.connect(_on_invasion_started)
 	Global.terms_and_conditions_completed.connect(_on_terms_completed)
+	Global.knife_equipped_signal.connect(_on_global_knife_equipped)
 
-	# Preload knife texture for cursor drawing
-	knife_texture = load("res://assets/icons/knife.png")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+	# Try to get the texture from the existing sprite in the scene
+	var sprite = knife_area.get_node_or_null("Sprite2D")
+	if sprite:
+		knife_texture = sprite.texture
+		
 	# Hide built-in popup to start
 	hidden_popup.visible = false
 
 func _on_global_knife_spawned(pos: Vector2) -> void:
 	if is_instance_valid(self ) and is_instance_valid(knife_area):
-		knife_area.global_position = pos
+		# Ensure the knife itself is visible and active
 		knife_area.visible = true
+		knife_area.global_position = pos
+		# This is critical! Ensure set_active is true.
+		knife_area.set_active(true)
+		# Force it to be pickable just in case.
 		knife_area.input_pickable = true
+		
+		# Ensure parent Area2D (if it's a wrapper) is visible but NOT blocking
+		if knife_area.get_parent() is Area2D:
+			knife_area.get_parent().visible = true
+			# CRITICAL: Parent Area2D should not capture events meant for children.
+			knife_area.get_parent().input_pickable = false
+		
+		# Optional: Ensure no big Control nodes are on top
+		if has_node("BG"):
+			$BG.z_index = -1
+		
+		print("Knife script: Scene knife made visible at ", pos)
 
 func _on_global_knife_equipped() -> void:
-	if is_instance_valid(self ) and is_instance_valid(knife_area):
-		knife_equipped = true
-		knife_area.visible = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		set_process_input(true)
-		queue_redraw()
+	# This triggers if the knife was picked up in another scene
+	# We just need to make sure our local knife is ready to go
+	var viewport = get_viewport_rect().size
+	_on_global_knife_spawned(Vector2(60, viewport.y - 60))
 
 func _on_global_popup_requested(is_first: bool) -> void:
 	if is_instance_valid(self ):
@@ -70,6 +88,11 @@ func _on_global_popup_requested(is_first: bool) -> void:
 func _on_invasion_started() -> void:
 	if is_instance_valid(self ):
 		_transition_to_evasion()
+		# Use timer to ensure everything is ready
+		get_tree().create_timer(0.1).timeout.connect(func():
+			var viewport = get_viewport_rect().size
+			_on_global_knife_spawned(Vector2(100, viewport.y - 100))
+		)
 
 func _on_terms_completed() -> void:
 	if is_instance_valid(self ):
@@ -88,9 +111,11 @@ func _spawn_popup(is_first: bool = false) -> void:
 		if not is_instance_valid(hidden_popup): return
 		# Use the pre-existing popup for the first one
 		inst = hidden_popup
+		hidden_popup.top_level = true
 		hidden_popup.visible = true
 	else:
 		inst = popup_scene.instantiate()
+		inst.top_level = true
 		add_child(inst)
 
 	popup_count += 1
@@ -99,16 +124,18 @@ func _spawn_popup(is_first: bool = false) -> void:
 	# Position: stagger from center, offset gets larger as more spawn
 	var viewport = get_viewport_rect().size
 	var center = viewport / 2.0
-	var popup_size = Vector2(250, 150)
+	# The popup is 1152x648 (full screen) in popup.tscn,
+	# but its content is a 400x200 ColorRect at the center.
+	# To stagger the Content, we apply the offset to the whole overlay.
 	var spread = min(popup_count * 30.0, 200.0)
 	var offset = Vector2(
 		randf_range(-spread, spread),
 		randf_range(-spread, spread)
 	)
-	var target_pos = center - popup_size / 2.0 + offset
-	target_pos.x = clamp(target_pos.x, 10, viewport.x - popup_size.x - 10)
-	target_pos.y = clamp(target_pos.y, 10, viewport.y - popup_size.y - 10)
-	inst.global_position = target_pos
+	
+	# We reset the position to (0,0) first, then add the offset.
+	# If we set global_position, we're moving the top-left corner of the 1152x648 scene.
+	inst.global_position = offset
 
 	# Connect both buttons to spawn another popup via Global
 	for btn_name in ["Yes", "No"]:
@@ -132,65 +159,85 @@ func _transition_to_evasion() -> void:
 	active_popups.clear()
 
 	evasion_popup = hidden_popup
-	evasion_popup.visible = true
-	evasion_popup.top_level = true
-
-	var viewport = get_viewport_rect().size
-	evasion_popup.global_position = viewport / 2.0 - Vector2(125, 75)
+	if is_instance_valid(evasion_popup):
+		evasion_popup.visible = true
+		evasion_popup.mouse_filter = Control.MOUSE_FILTER_PASS
+		
+		# Internal node called "ColorRect" might be blocking clicks too
+		var cr = evasion_popup.get_node_or_null("ColorRect")
+		if cr: cr.mouse_filter = Control.MOUSE_FILTER_PASS
+	
+	# Transition internal phase
+	current_phase = Phase.EVASION
 
 	# Disconnect old button signals so they don't keep spawning
-	for btn_name in ["Yes", "No"]:
-		var btn = evasion_popup.get_node_or_null(btn_name)
-		if btn:
-			# Disconnect all existing connections
-			for conn in btn.pressed.get_connections():
-				btn.pressed.disconnect(conn.callable)
+	if is_instance_valid(evasion_popup):
+		for btn_name in ["Yes", "No"]:
+			var btn = evasion_popup.get_node_or_null(btn_name)
+			if btn:
+				for conn in btn.pressed.get_connections():
+					btn.pressed.disconnect(conn.callable)
 
 	# Pick a random starting direction
 	evasion_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	evasion_speed = 1200.0
 
-	# Notify Global to spawn the knife
-	Global.spawn_knife(Vector2(60, get_viewport_rect().size.y - 60))
+	# Ensure the knife's parent is visible
+	var area2d = get_node_or_null("Area2D")
+	if area2d:
+		area2d.visible = true
 
 func _process(delta: float) -> void:
-	if Global.is_invasion_active:
+	if current_phase == Phase.EVASION:
 		if is_shaking:
 			_process_shake(delta)
 		else:
 			_process_evasion(delta)
+			
+		# Automatically attempt a stab if the knife is being dragged and overlaps the popup
+		var knife = $Area2D/Knife
+		if is_instance_valid(knife) and knife.get("is_dragging"):
+			_attempt_stab()
 
 # ─────────────────────────────────────────
-# INPUT - draw knife cursor
+# INPUT - drag and hold
 # ─────────────────────────────────────────
 
 func _input(event: InputEvent) -> void:
-	if knife_equipped and event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_attempt_stab()
+	# Keep the old explicit click-to-stab logic as backup, or relying on _process for constant tracking
+	pass
 
 func _draw() -> void:
-	if knife_equipped and knife_texture:
-		var mouse = get_local_mouse_position()
-		var knife_size = Vector2(48, 48)
-		draw_texture_rect(knife_texture, Rect2(mouse - knife_size / 2, knife_size), false)
+	# No longer need custom draw since we are moving the actual Area2D
+	pass
 
 func _process_evasion(delta: float) -> void:
 	if not is_instance_valid(evasion_popup):
 		return
 
 	var viewport = get_viewport_rect().size
-	var popup_size = evasion_popup.size
-	var pos = evasion_popup.global_position
+	# The popup is actually a full screen overlay (1152x648) with centered content.
+	# We need to treat it as a smaller box for movement.
+	var content = evasion_popup.get_node_or_null("ColorRect") # Assuming the visual part is ColorRect
+	var popup_size = Vector2(400, 200) # Default content size
+	if content:
+		popup_size = content.size
 
+	var pos = evasion_popup.global_position
 	pos += evasion_direction * evasion_speed * delta
 
-	# Bounce off edges
-	if pos.x <= 0 or pos.x + popup_size.x >= viewport.x:
+	# Boundaries for the CENTERED content
+	var margin_x = (viewport.x - popup_size.x) / 2.0
+	var margin_y = (viewport.y - popup_size.y) / 2.0
+	
+	if pos.x + margin_x <= 0 or pos.x + margin_x + popup_size.x >= viewport.x:
 		evasion_direction.x *= -1
-		pos.x = clamp(pos.x, 0, viewport.x - popup_size.x)
-	if pos.y <= 0 or pos.y + popup_size.y >= viewport.y:
+		# Ensure it doesn't get stuck outside
+		pos.x = clamp(pos.x, -margin_x, viewport.x - margin_x - popup_size.x)
+	if pos.y + margin_y <= 0 or pos.y + margin_y + popup_size.y >= viewport.y:
 		evasion_direction.y *= -1
-		pos.y = clamp(pos.y, 0, viewport.y - popup_size.y)
+		# Ensure it doesn't get stuck outside
+		pos.y = clamp(pos.y, -margin_y, viewport.y - margin_y - popup_size.y)
 
 	evasion_popup.global_position = pos
 
@@ -212,32 +259,56 @@ func _process_shake(delta: float) -> void:
 # KNIFE
 # ─────────────────────────────────────────
 
-func _on_knife_area_clicked(_viewport: Node, event: InputEvent, _shape: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.equip_knife()
-
 func _equip_knife() -> void:
 	# Keep for internal logic if needed, but the visual/state is now handled via the Global signal
 	pass
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	set_process_input(true)
-	queue_redraw()
 
 func _attempt_stab() -> void:
 	if not is_instance_valid(evasion_popup) or is_shaking:
 		return
 
-	var mouse = get_global_mouse_position()
-	var popup_rect = Rect2(evasion_popup.global_position, evasion_popup.size)
+	# Use the knife's position for the stab, not just the mouse, 
+	# though they should be synonymous while dragging.
+	var knife = $Area2D/Knife
+	var knife_pos = knife.global_position
+	
+	# Find the visual content (ColorRect) in the popup
+	var content = evasion_popup.get_node_or_null("ColorRect")
+	if not content:
+		return
+	
+	# Global rect of the UI content
+	var popup_rect = content.get_global_rect()
 
-	if popup_rect.has_point(mouse):
+	if popup_rect.has_point(knife_pos):
 		stab_count += 1
 		print("Stabbed! %d / %d" % [stab_count, stab_required])
-		# Flash the popup red on hit
+		
+		# Make the popup flash red temporarily
 		evasion_popup.modulate = Color.RED
-		await get_tree().create_timer(0.1).timeout
-		if is_instance_valid(evasion_popup):
-			evasion_popup.modulate = Color.WHITE
+		
+		# Teleport the popup to a new random location immediately 
+		# so it's not stabbed multiple times in one frame
+		var viewport = get_viewport_rect().size
+		var popup_size = content.size
+		var margin_x = (viewport.x - popup_size.x) / 2.0
+		var margin_y = (viewport.y - popup_size.y) / 2.0
+		evasion_popup.global_position = Vector2(
+			randf_range(-margin_x, viewport.x - margin_x - popup_size.x),
+			randf_range(-margin_y, viewport.y - margin_y - popup_size.y)
+		)
+		
+		# Pick a new direction
+		evasion_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		
+		# Increase speed slightly
+		evasion_speed += 75.0
+		
+		# Reset color after a brief moment
+		get_tree().create_timer(0.1).timeout.connect(func():
+			if is_instance_valid(evasion_popup):
+				evasion_popup.modulate = Color.WHITE
+		)
 
 		if stab_count >= stab_required:
 			_start_shake()

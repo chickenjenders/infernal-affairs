@@ -1,22 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://dya7vewuwtun1"]
 
-[ext_resource type="Script" uid="uid://d12n7lonenlep" path="res://break_time/scripts/cecil_interact.gd" id="1_bewdy"]
+[ext_resource type="Script" uid="uid://dr143g2h0ohdk" path="res://core/scripts/knife.gd" id="1_bewdy"]
 [ext_resource type="Texture2D" uid="uid://0bvo5wj12ipq" path="res://assets/icons/knife.png" id="2_bewdy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
 radius = 44.0
 height = 162.0
 
-[node name="Node2D" type="Area2D"]
+[node name="Knife" type="Area2D"]
 z_index = 10
 script = ExtResource("1_bewdy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(117, 718)
 shape = SubResource("CapsuleShape2D_dah7x")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(117.37498, 725.75)
 scale = Vector2(0.09448237, 0.13427728)
 texture = ExtResource("2_bewdy")

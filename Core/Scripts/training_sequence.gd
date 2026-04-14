@@ -2,7 +2,6 @@ extends Control
 
 @onready var slide_image: TextureRect = $SlideShow/VBoxContainer/slideimage
 @onready var next_button: Button = $SlideShow/VBoxContainer/HBoxContainer/next
-@onready var slide_counter: Label = $SlideShow/VBoxContainer/slidecounter
 @onready var video_player: VideoStreamPlayer = $Video/VideoStreamPlayer
 
 @onready var slideshow_container: Control = $SlideShow
@@ -114,7 +113,6 @@ func show_slide(index: int) -> void:
 	if index >= 0 and index < slides.size():
 		current_slide_index = index
 		slide_image.texture = slides[index]
-		update_counter()
 		
 		# If this is the second to last slide, the "Next" button 
 		# will lead to the last slide + video automatic start.
@@ -125,9 +123,6 @@ func show_slide(index: int) -> void:
 			play_phishing_video()
 		else:
 			next_button.text = "Next >"
-
-func update_counter() -> void:
-	slide_counter.text = "Slide %d / %d" % [current_slide_index + 1, slides.size()]
 
 func _on_next_pressed() -> void:
 	if current_slide_index < slides.size() - 1:
@@ -150,7 +145,6 @@ func play_phishing_video() -> void:
 		video_player.play()
 		# Hide the slide elements
 		slide_image.visible = false
-		slide_counter.visible = false
 	else:
 		push_error("Could not load video: " + video_path)
 

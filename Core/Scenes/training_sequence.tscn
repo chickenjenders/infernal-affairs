@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://db226gl8wirq1"]
+[gd_scene load_steps=14 format=3 uid="uid://db226gl8wirq1"]
 
 [ext_resource type="Script" uid="uid://v4pt5v3i7giq" path="res://core/scripts/training_sequence.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://qvkqt18mecqg" path="res://assets/backgrounds/trainingbg.png" id="2_ld4qi"]
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="2_rcuyd"]
+[ext_resource type="FontFile" uid="uid://4daaj4herp4s" path="res://assets/font/Garet-Book.ttf" id="3_mlesh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt00f"]
 bg_color = Color(0.8046996, 2.117753e-06, 7.70092e-07, 1)
@@ -98,6 +99,17 @@ offset_right = 1599.0
 offset_bottom = 900.0
 texture = ExtResource("2_ld4qi")
 
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlesh")
+theme_override_font_sizes/font_size = 25
+text = "URGENT TRAINING"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="SlideShow" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -114,11 +126,6 @@ offset_left = -5.0
 offset_top = -1.0
 offset_right = 1594.0
 offset_bottom = 901.0
-
-[node name="slidecounter" type="Label" parent="SlideShow/VBoxContainer"]
-layout_mode = 0
-offset_right = 1599.0
-offset_bottom = 23.0
 
 [node name="slideimage" type="TextureRect" parent="SlideShow/VBoxContainer"]
 layout_mode = 0
@@ -424,6 +431,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.705882)
