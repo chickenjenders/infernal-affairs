@@ -25,6 +25,9 @@ var shake_timer: float = 0.0
 var is_shaking: bool = false
 var shake_origin: Vector2 = Vector2.ZERO
 
+# Completion Card
+var completion_card: Panel = null
+
 # Knife (drag and hold)
 var knife_texture: Texture2D = null
 
@@ -95,8 +98,10 @@ func _on_invasion_started() -> void:
 		)
 
 func _on_terms_completed() -> void:
-	if is_instance_valid(self ):
-		_complete_game()
+	# This function is now mostly a bridge, 
+	# as _process_shake handles closing the scene.
+	pass
+
 
 func _on_checkbox_clicked(_toggled: bool) -> void:
 	if Global.is_popup_spam_active or Global.is_invasion_active:
@@ -245,15 +250,19 @@ func _process_shake(delta: float) -> void:
 	shake_timer -= delta
 	if shake_timer <= 0:
 		is_shaking = false
-		evasion_popup.global_position = shake_origin
-		Global.complete_terms_and_conditions()
+		if is_instance_valid(evasion_popup):
+			evasion_popup.global_position = shake_origin
+		
+		# Now that shake is done, show the confirmation card
+		_show_completion_card()
 		return
 	# Shake by offsetting randomly each frame
 	var shake_strength = 8.0
-	evasion_popup.global_position = shake_origin + Vector2(
-		randf_range(-shake_strength, shake_strength),
-		randf_range(-shake_strength, shake_strength)
-	)
+	if is_instance_valid(evasion_popup):
+		evasion_popup.global_position = shake_origin + Vector2(
+			randf_range(-shake_strength, shake_strength),
+			randf_range(-shake_strength, shake_strength)
+		)
 
 # ─────────────────────────────────────────
 # KNIFE
@@ -323,12 +332,55 @@ func _start_shake() -> void:
 # COMPLETE
 # ─────────────────────────────────────────
 
+func _show_completion_card() -> void:
+    # Disable the knife
+    var knife = $Area2D/Knife
+    if is_instance_valid(knife):
+        knife.set_active(false)
+
+    # Create UI overlay
+    completion_card = Panel.new()
+    completion_card.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+    completion_card.custom_minimum_size = Vector2(450, 250)
+    add_child(completion_card)
+
+    var vbox = VBoxContainer.new()
+    vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+    completion_card.add_child(vbox)
+
+    var msg = Label.new()
+    msg.text = "Your obedience has been confirmed.\nPlease continue to return to your tasks."
+    msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    msg.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    vbox.add_child(msg)
+
+    var btn = Button.new()
+    btn.text = "Continue"
+    btn.custom_minimum_size = Vector2(120, 40)
+    btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+    btn.pressed.connect(_on_continue_button_pressed)
+    vbox.add_child(btn)
+
+    # Bring to front
+    completion_card.z_index = 200
+
+func _on_continue_button_pressed() -> void:
+    _complete_game()
+
 func _complete_game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	# Emit completion signal to global state
+	Global.complete_terms_and_conditions()
+	
 	if is_instance_valid(evasion_popup):
 		evasion_popup.queue_free()
+	if is_instance_valid(completion_card):
+		completion_card.queue_free()
 	if checkbox:
 		checkbox.set_pressed_no_signal(true)
 		checkbox.disabled = true
-	await get_tree().create_timer(0.8).timeout
+	# Give short feedback before dismissing scene
+	await get_tree().create_timer(0.4).timeout
 	queue_free()
