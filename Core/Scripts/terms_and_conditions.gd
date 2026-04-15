@@ -72,9 +72,12 @@ func _on_global_knife_spawned(pos: Vector2) -> void:
 			# CRITICAL: Parent Area2D should not capture events meant for children.
 			knife_area.get_parent().input_pickable = false
 		
-		# Optional: Ensure no big Control nodes are on top
+		# Ensure BG stays behind everything
 		if has_node("BG"):
-			$BG.z_index = -1
+			$BG.z_index = 0
+		
+		# Ensure self is on top of common workspace elements
+		z_index = 5
 		
 		print("Knife script: Scene knife made visible at ", pos)
 
@@ -90,6 +93,7 @@ func _on_global_popup_requested(is_first: bool) -> void:
 
 func _on_invasion_started() -> void:
 	if is_instance_valid(self ):
+		print("TermsAndConditions: Invasion started signal received")
 		_transition_to_evasion()
 		# Use timer to ensure everything is ready
 		get_tree().create_timer(0.1).timeout.connect(func():
@@ -116,11 +120,14 @@ func _spawn_popup(is_first: bool = false) -> void:
 		if not is_instance_valid(hidden_popup): return
 		# Use the pre-existing popup for the first one
 		inst = hidden_popup
-		hidden_popup.top_level = true
-		hidden_popup.visible = true
+		# Ensure it's not hidden behind background elements
+		inst.top_level = true
+		inst.z_index = 10
+		inst.visible = true
 	else:
 		inst = popup_scene.instantiate()
 		inst.top_level = true
+		inst.z_index = 10
 		add_child(inst)
 
 	popup_count += 1
@@ -333,40 +340,40 @@ func _start_shake() -> void:
 # ─────────────────────────────────────────
 
 func _show_completion_card() -> void:
-    # Disable the knife
-    var knife = $Area2D/Knife
-    if is_instance_valid(knife):
-        knife.set_active(false)
+	# Disable the knife
+	var knife = $Area2D/Knife
+	if is_instance_valid(knife):
+		knife.set_active(false)
 
-    # Create UI overlay
-    completion_card = Panel.new()
-    completion_card.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-    completion_card.custom_minimum_size = Vector2(450, 250)
-    add_child(completion_card)
+	# Create UI overlay
+	completion_card = Panel.new()
+	completion_card.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	completion_card.custom_minimum_size = Vector2(450, 250)
+	add_child(completion_card)
 
-    var vbox = VBoxContainer.new()
-    vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-    vbox.alignment = BoxContainer.ALIGNMENT_CENTER
-    completion_card.add_child(vbox)
+	var vbox = VBoxContainer.new()
+	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	completion_card.add_child(vbox)
 
-    var msg = Label.new()
-    msg.text = "Your obedience has been confirmed.\nPlease continue to return to your tasks."
-    msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    msg.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-    vbox.add_child(msg)
+	var msg = Label.new()
+	msg.text = "Your obedience has been confirmed.\nPlease continue to return to your tasks."
+	msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	msg.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	vbox.add_child(msg)
 
-    var btn = Button.new()
-    btn.text = "Continue"
-    btn.custom_minimum_size = Vector2(120, 40)
-    btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-    btn.pressed.connect(_on_continue_button_pressed)
-    vbox.add_child(btn)
+	var btn = Button.new()
+	btn.text = "Continue"
+	btn.custom_minimum_size = Vector2(120, 40)
+	btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	btn.pressed.connect(_on_continue_button_pressed)
+	vbox.add_child(btn)
 
-    # Bring to front
-    completion_card.z_index = 200
+	# Bring to front
+	completion_card.z_index = 200
 
 func _on_continue_button_pressed() -> void:
-    _complete_game()
+	_complete_game()
 
 func _complete_game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

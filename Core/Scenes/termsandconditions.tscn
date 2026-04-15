@@ -20,11 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v3nxf")
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
 texture = ExtResource("2_v3nxf")
-centered = false
 
 [node name="PageName" type="Label" parent="BG"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 262.0
@@ -35,6 +36,7 @@ theme_override_font_sizes/font_size = 25
 text = "Form 666A"
 
 [node name="Title" type="Label" parent="BG"]
+layout_mode = 0
 offset_left = 395.0
 offset_top = 112.0
 offset_right = 1204.0
@@ -45,6 +47,7 @@ theme_override_font_sizes/font_size = 67
 text = "Terms and Conditions"
 
 [node name="Label" type="Label" parent="BG"]
+layout_mode = 0
 offset_left = 404.0
 offset_top = 219.0
 offset_right = 1203.0
@@ -54,7 +57,6 @@ theme_override_fonts/font = ExtResource("3_gw1io")
 text = "lots and lots of text will be here."
 
 [node name="popup" parent="." instance=ExtResource("5_gw1io")]
-visible = false
 layout_mode = 1
 
 [node name="CheckButton" type="CheckButton" parent="."]

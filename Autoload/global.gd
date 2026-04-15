@@ -40,6 +40,7 @@ func request_popup(is_first: bool = false) -> void:
 func start_invasion() -> void:
 	if is_invasion_active:
 		return
+	print("Global: Starting invasion phase")
 	is_popup_spam_active = false
 	is_invasion_active = true
 	invasion_started.emit()
