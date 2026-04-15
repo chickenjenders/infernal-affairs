@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbdd4on4q5aaf"]
+[gd_scene load_steps=12 format=3 uid="uid://dbdd4on4q5aaf"]
 
 [ext_resource type="Script" uid="uid://6kqlob8xcexm" path="res://core/scripts/terms_and_conditions.gd" id="1_v3nxf"]
 [ext_resource type="Texture2D" uid="uid://pt753sjsnby3" path="res://assets/backgrounds/termandconditions.png" id="2_v3nxf"]
@@ -6,6 +6,33 @@
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="4_h176b"]
 [ext_resource type="PackedScene" uid="uid://bl6l3kej4oy56" path="res://popup.tscn" id="5_gw1io"]
 [ext_resource type="PackedScene" uid="uid://dya7vewuwtun1" path="res://core/scenes/knife.tscn" id="6_h176b"]
+[ext_resource type="FontFile" uid="uid://bbe1vnufof4jr" path="res://assets/font/Garet-Heavy.otf" id="7_f0h5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nd3b"]
+bg_color = Color(0.88, 0.8594667, 0.8184, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sud8e"]
+bg_color = Color(0.6, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63xbq"]
+bg_color = Color(0.9384885, 0.16622159, 0.15112776, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0h5x"]
 size = Vector2(110, 144)
@@ -83,6 +110,52 @@ text = "I Agree"
 alignment = 1
 icon_alignment = 1
 
+[node name="TCDoneLabel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 158.0
+offset_right = 1240.0
+offset_bottom = 544.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nd3b")
+
+[node name="Label" type="Label" parent="TCDoneLabel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 33.0
+offset_right = 870.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.9522379, 0.1999568, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_h176b")
+theme_override_font_sizes/font_size = 35
+text = "WE APPRECIATE YOUR
+ CONTINUED INVOLUNTARY COOPERATION."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TCDoneLabel"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 196.0
+offset_right = 815.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gw1io")
+theme_override_font_sizes/font_size = 28
+text = "Please continue to your regularly scheduled tasks."
+
+[node name="Button" type="Button" parent="TCDoneLabel"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 288.0
+offset_right = 570.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("7_f0h5x")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_sud8e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_63xbq")
+text = "CONTINUE"
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
@@ -91,3 +164,5 @@ shape = SubResource("RectangleShape2D_f0h5x")
 
 [node name="Knife" parent="Area2D" instance=ExtResource("6_h176b")]
 position = Vector2(114, 723)
+
+[connection signal="pressed" from="TCDoneLabel/Button" to="." method="_on_button_pressed"]

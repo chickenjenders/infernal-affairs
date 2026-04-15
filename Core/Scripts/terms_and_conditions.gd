@@ -2,6 +2,7 @@ extends Control
 
 @onready var checkbox: CheckButton = $CheckButton
 @onready var hidden_popup: Control = $popup
+@onready var tc_done_label: Panel = $TCDoneLabel
 @onready var knife_area: Area2D = $Area2D/Knife
 var popup_scene = preload("res://popup.tscn")
 
@@ -24,9 +25,6 @@ var stab_required: int = 3
 var shake_timer: float = 0.0
 var is_shaking: bool = false
 var shake_origin: Vector2 = Vector2.ZERO
-
-# Completion Card
-var completion_card: Panel = null
 
 # Knife (drag and hold)
 var knife_texture: Texture2D = null
@@ -55,6 +53,7 @@ func _ready() -> void:
 		
 	# Hide built-in popup to start
 	hidden_popup.visible = false
+	tc_done_label.visible = false
 
 func _on_global_knife_spawned(pos: Vector2) -> void:
 	if is_instance_valid(self ) and is_instance_valid(knife_area):
@@ -344,38 +343,45 @@ func _show_completion_card() -> void:
 	var knife = $Area2D/Knife
 	if is_instance_valid(knife):
 		knife.set_active(false)
+	
+	# Disable collisions on the knife area to prevent it from intercepting input
+	var area2d = get_node_or_null("Area2D")
+	if area2d:
+		area2d.input_pickable = false
+		area2d.visible = false
 
-	# Create UI overlay
-	completion_card = Panel.new()
-	completion_card.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	completion_card.custom_minimum_size = Vector2(450, 250)
-	add_child(completion_card)
-
-	var vbox = VBoxContainer.new()
-	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	completion_card.add_child(vbox)
-
-	var msg = Label.new()
-	msg.text = "Your obedience has been confirmed.\nPlease continue to return to your tasks."
-	msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	msg.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	vbox.add_child(msg)
-
-	var btn = Button.new()
-	btn.text = "Continue"
-	btn.custom_minimum_size = Vector2(120, 40)
-	btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	btn.pressed.connect(_on_continue_button_pressed)
-	vbox.add_child(btn)
-
-	# Bring to front
-	completion_card.z_index = 200
+	# Show the new TCDoneLabel node
+	if is_instance_valid(tc_done_label):
+		# CRITICAL: Ensure the panel and its children can receive mouse events
+		tc_done_label.visible = true
+		tc_done_label.z_index = 200
+		tc_done_label.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		# Set this node and its children as top level to ignore parent transformations/visibility
+		tc_done_label.top_level = true
+		
+		# Connect the button click
+		var btn = tc_done_label.get_node_or_null("Button")
+		if btn:
+			btn.mouse_filter = Control.MOUSE_FILTER_STOP
+			# Ensure button is actually enabled
+			btn.disabled = false
+			if btn.pressed.is_connected(_on_continue_button_pressed):
+				btn.pressed.disconnect(_on_continue_button_pressed)
+			btn.pressed.connect(_on_continue_button_pressed)
+			btn.grab_focus()
+			print("TermsAndConditions: TCDoneLabel button configured, top_level set, and focused.")
 
 func _on_continue_button_pressed() -> void:
+	print("TermsAndConditions: Continue button pressed!")
+	_complete_game()
+
+func _on_button_pressed() -> void:
+	print("TermsAndConditions: TCDoneLabel button pressed via signal!")
 	_complete_game()
 
 func _complete_game() -> void:
+	print("TermsAndConditions: Completing game state...")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	# Emit completion signal to global state
@@ -383,11 +389,14 @@ func _complete_game() -> void:
 	
 	if is_instance_valid(evasion_popup):
 		evasion_popup.queue_free()
-	if is_instance_valid(completion_card):
-		completion_card.queue_free()
+	if is_instance_valid(tc_done_label):
+		tc_done_label.queue_free()
 	if checkbox:
 		checkbox.set_pressed_no_signal(true)
 		checkbox.disabled = true
+	
 	# Give short feedback before dismissing scene
 	await get_tree().create_timer(0.4).timeout
+	
+	print("TermsAndConditions: Closing overlay...")
 	queue_free()

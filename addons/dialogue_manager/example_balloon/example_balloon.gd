@@ -143,6 +143,8 @@ func apply_dialogue_line() -> void:
 		# Specifically reroute Cecil to greg.png
 		if speaker == "cecil":
 			portrait_file = "greg.png"
+		elif speaker == "francine":
+			portrait_file = "IMG_0185.PNG"
 			
 		var portrait_path = "res://assets/portraits/" + portrait_file
 		if FileAccess.file_exists(portrait_path):
