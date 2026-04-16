@@ -105,7 +105,7 @@
             "portrait": "res://assets/portraits/james.PNG"
         },
         {
-            "name": "Kyle Barker",
+            "name": "Jordan Barker",
             "department": "IT",
             "blood_type": "B-",
             "mbti": "ISTP",
@@ -116,7 +116,7 @@
                 "Low patience",
                 "Hates ambiguity"
             ],
-            "portrait": "res://assets/portraits/kyle.PNG"
+            "portrait": "res://assets/portraits/jordan.PNG"
         },
         {
             "name": "Patricia Vance",
@@ -133,7 +133,7 @@
             "portrait": "res://assets/portraits/patricia.PNG"
         },
         {
-            "name": "Rafael Gomez",
+            "name": "Regina Gomez",
             "department": "Demon Resources",
             "blood_type": "O-",
             "mbti": "ISFJ",
@@ -144,7 +144,7 @@
                 "People-pleaser",
                 "Hates conflict and confrontation"
             ],
-            "portrait": "res://assets/portraits/rafael.PNG"
+            "portrait": "res://assets/portraits/regina.PNG"
         }
     ],
     "trait_definitions": {
