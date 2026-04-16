@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs3w85ul0r7ml"]
+[gd_scene load_steps=5 format=3 uid="uid://bs3w85ul0r7ml"]
 
 [ext_resource type="Script" uid="uid://b81tsi36riuex" path="res://break_time/scripts/break.gd" id="1_xcdjy"]
 [ext_resource type="Texture2D" uid="uid://cp12xu5ntu0il" path="res://assets/backgrounds/breakroom.png" id="2_xcdjy"]
-[ext_resource type="PackedScene" uid="uid://3bh0g682ia6n" path="res://common/ui/menu_button.tscn" id="3_bvef6"]
 [ext_resource type="PackedScene" uid="uid://b4bvk60gv805n" path="res://break_time/scenes/cecil.tscn" id="4_b4nkc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_quxwx"]
@@ -21,15 +20,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_quxwx")
 
-[node name="Start" parent="." instance=ExtResource("3_bvef6")]
-offset_left = 1217.0
-offset_top = 17.0
-offset_right = 1578.0
-offset_bottom = 107.0
-text = "Return to Desk"
-
 [node name="Cecil" parent="." instance=ExtResource("4_b4nkc")]
 z_index = 0
 position = Vector2(-2, 5)
-
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

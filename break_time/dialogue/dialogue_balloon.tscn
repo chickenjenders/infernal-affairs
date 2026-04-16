@@ -221,10 +221,10 @@ autowrap_mode = 2
 [node name="Portrait" type="TextureRect" parent="Balloon"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 47.0
-offset_top = 387.0
-offset_right = 348.0
-offset_bottom = 696.0
+offset_left = 37.0
+offset_top = 394.0
+offset_right = 338.0
+offset_bottom = 703.0
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5

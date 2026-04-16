@@ -1,13 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmmx6lohnvbos"]
+[gd_scene load_steps=12 format=3 uid="uid://dmmx6lohnvbos"]
 
 [ext_resource type="Script" uid="uid://c0w34kee030uh" path="res://break_time/scripts/francine_interact.gd" id="1_haj1e"]
 [ext_resource type="Texture2D" uid="uid://d3a1e4o76aw7" path="res://assets/breaktwo 12.png" id="2_haj1e"]
+[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="3_ce8ay"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
 radius = 164.0
 height = 570.0
 
-[node name="Node2D" type="Area2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt2xj"]
+bg_color = Color(0.6, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.43405715, 0, 0, 0.97800004)
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0xka"]
+bg_color = Color(0.68865365, 0.012920001, 0.07846785, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.43146813, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tihjd"]
+bg_color = Color(0.3906396, 0, 0.028990265, 1)
+draw_center = false
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.95600003)
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ce8ay"]
+radius = 71.063354
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jt2xj"]
+radius = 70.0
+height = 256.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0xka"]
+size = Vector2(211.5, 885.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tihjd"]
+size = Vector2(318.5, 337.5)
+
+[node name="Node2D2" type="Area2D"]
 z_index = 10
 script = ExtResource("1_haj1e")
 
@@ -20,3 +65,35 @@ debug_color = Color(0.988235, 0, 0, 0.419608)
 position = Vector2(799.49994, 451.99997)
 scale = Vector2(0.9993748, 0.99999994)
 texture = ExtResource("2_haj1e")
+
+[node name="ReturnToDesk" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 792.0
+offset_right = 374.0
+offset_bottom = 894.0
+theme_override_fonts/font = ExtResource("3_ce8ay")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jt2xj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t0xka")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tihjd")
+text = "RETURN TO DESK"
+
+[node name="durian" type="CollisionShape2D" parent="."]
+position = Vector2(782, 465)
+shape = SubResource("CircleShape2D_ce8ay")
+debug_color = Color(0.7392006, 0.42116165, 0.54514647, 0.41960785)
+
+[node name="coffemachine" type="CollisionShape2D" parent="."]
+position = Vector2(1205, 413)
+shape = SubResource("CapsuleShape2D_jt2xj")
+debug_color = Color(0.5069075, 0.49289465, 0.8043034, 0.41960785)
+
+[node name="fridge" type="CollisionShape2D" parent="."]
+position = Vector2(1498.75, 453.25)
+shape = SubResource("RectangleShape2D_t0xka")
+debug_color = Color(0.2811543, 0.6163392, 0.39933443, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(449, 354)
+shape = SubResource("RectangleShape2D_tihjd")
+debug_color = Color(0.74373335, 0.44590133, 0.36109945, 0.41960785)

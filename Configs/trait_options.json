@@ -3,17 +3,20 @@
         "IT": [
             "Low patience",
             "Arrogant",
-            "Hates ambiguity"
+            "Hates ambiguity",
+            "Burned out"
         ],
         "Sales": [
             "Charismatic",
             "People-pleaser",
-            "Hates to be alone"
+            "Hates to be alone",
+            "High-energy"
         ],
         "Demon Resources": [
             "Overly formal",
             "Rule-oriented",
-            "Hates conflict and confrontation"
+            "Hates conflict and confrontation",
+            "Vindictive"
         ]
     },
     "employees": [
@@ -68,8 +71,8 @@
             "blood_type": "O+",
             "mbti": "INTP",
             "sign": "Scorpio",
-            "cod": "Electrocuted while trying to fix a server with a fork",
-            "sentence": "Always replied 'did you try restarting it?' to everything",
+            "cod": "Electrocuted while changing wire on a DIY home renovation project",
+            "sentence": "Retained a superiority complex so large it isolated him.",
             "traits": [
                 "Arrogant",
                 "Hates ambiguity",
@@ -83,8 +86,8 @@
             "blood_type": "A-",
             "mbti": "ESFP",
             "sign": "Leo",
-            "cod": "Loudly talking on phone while walking into a manhole",
-            "sentence": "Sold soul for a lifetime supply of designer hand bags",
+            "cod": "Drove the wrong way on the freeway",
+            "sentence": "Sold soul for 10 million dollars",
             "traits": [
                 "Charismatic",
                 "Hates to be alone",
@@ -98,8 +101,8 @@
             "blood_type": "AB+",
             "mbti": "ISTJ",
             "sign": "Virgo",
-            "cod": "Died of boredom during a 6-hour powerpoint presentation",
-            "sentence": "Actually enjoyed filling out tax returns",
+            "cod": "Natural causes, fueled by caffeine addiction",
+            "sentence": "Commited tax fraud... poorly",
             "traits": [
                 "Overly formal",
                 "Rule-oriented",
@@ -113,8 +116,8 @@
             "blood_type": "B-",
             "mbti": "ISTP",
             "sign": "Aquarius",
-            "cod": "Spent 48 hours straight gaming without water",
-            "sentence": "Hated people so much he became a recluse in hell too",
+            "cod": "Spent 48 hours straight gaming without food or water",
+            "sentence": "Had too many vices to outweigh the virtues.",
             "traits": [
                 "Low patience",
                 "Hates ambiguity",
@@ -129,7 +132,7 @@
             "mbti": "ENTJ",
             "sign": "Leo",
             "cod": "Heart attack during a high-stakes negotiation",
-            "sentence": "Would sell her own mother for a 5% commission",
+            "sentence": "Would sell her own mother for a 5% commission, but sold her soul for a failed business instead",
             "traits": [
                 "Charismatic",
                 "Arrogant",
@@ -143,8 +146,8 @@
             "blood_type": "O-",
             "mbti": "ISFJ",
             "sign": "Taurus",
-            "cod": "Crushed by a falling filing cabinet",
-            "sentence": "Once apologized to a door after walking into it",
+            "cod": "Posession for extensive period",
+            "sentence": "Soul tarnished beyond recognizable human standards",
             "traits": [
                 "People-pleaser",
                 "Hates conflict and confrontation",
@@ -155,87 +158,99 @@
     ],
     "trait_definitions": {
         "Low patience": {
-            "despises": ["repetitive", "tedious"],
-            "prefers": []
+            "despises": ["repetitive", "tedious", "stagnant"],
+            "prefers": ["fast_paced", "brief"]
         },
         "Arrogant": {
-            "despises": ["humiliating", "embarrassing"],
-            "prefers": ["high_stakes", "creative"]
+            "despises": ["humiliating", "subordinate"],
+            "prefers": ["high_stakes", "creative", "leadership"]
         },
         "Hates ambiguity": {
-            "despises": ["ambiguous"],
-            "prefers": []
+            "despises": ["vague", "open_ended"],
+            "prefers": ["structured", "logical"]
+        },
+        "Burned out": {
+            "despises": ["high_stakes", "extra_work", "energetic"],
+            "prefers": ["monotonous", "low_effort"]
         },
         "Charismatic": {
-            "despises": [],
-            "prefers": ["social", "casual", "collaborative", "creative"]
+            "despises": ["isolating", "boring"],
+            "prefers": ["social", "persuasive", "collaborative", "creative"]
         },
         "People-pleaser": {
-            "despises": [],
-            "prefers": ["social", "casual"]
+            "despises": ["confrontational"],
+            "prefers": ["supportive", "social", "casual"]
         },
         "Hates to be alone": {
-            "despises": ["solo"],
-            "prefers": ["social"]
+            "despises": ["solo", "silent"],
+            "prefers": ["social", "crowded"]
+        },
+        "High-energy": {
+            "despises": ["stagnant", "slow"],
+            "prefers": ["active", "chaotic", "fast_paced"]
         },
         "Overly formal": {
-            "despises": ["physical"],
-            "prefers": []
+            "despises": ["unprofessional", "casual", "messy"],
+            "prefers": ["structured", "documented"]
         },
         "Rule-oriented": {
-            "despises": ["ambiguous"],
-            "prefers": []
+            "despises": ["rule_breaking", "chaotic"],
+            "prefers": ["compliance", "orderly"]
         },
         "Hates conflict and confrontation": {
-            "despises": ["conflict", "rejection"],
-            "prefers": []
+            "despises": ["conflict", "rejection", "hostile"],
+            "prefers": ["peaceful", "uncontested"]
+        },
+        "Vindictive": {
+            "despises": ["generous", "forgiving"],
+            "prefers": ["punitive", "spiteful", "petty"]
         }
     },
     "task_templates": [
-        {"title": "Fix the Printer", "description": "Repair the infernal printer that melts every hour.", "tags": ["repetitive", "humiliating"], "misery_score": 11},
-        {"title": "Eternal Ticket Queue", "description": "Clear tech support tickets that regenerate endlessly.", "tags": ["ambiguous", "repetitive"], "misery_score": 20},
-        {"title": "Reset Passwords", "description": "Reset every demon's forgotten login credentials.", "tags": ["repetitive", "social"], "misery_score": 13},
-        {"title": "Debug Mainframe", "description": "Find the source of screaming errors in the infernal mainframe.", "tags": ["ambiguous"], "misery_score": 12},
-        {"title": "Reboot Servers", "description": "Manually restart servers scattered across 27 floors.", "tags": ["repetitive", "physical"], "misery_score": 9},
-        {"title": "Update Software", "description": "Run mandatory updates while demons continue working.", "tags": ["tedious", "repetitive"], "misery_score": 11},
-        {"title": "Repair Laptops", "description": "Fix laptops damaged by brimstone spills.", "tags": ["physical", "tedious"], "misery_score": 4},
-        {"title": "Translate Bug Reports", "description": "Interpret vague, unhelpful bug reports.", "tags": ["ambiguous"], "misery_score": 12},
-        {"title": "Patch Firewall", "description": "Reinforce the actual wall of fire that protects the network.", "tags": ["physical"], "misery_score": 1},
-        {"title": "Clean Data Spill", "description": "Mop up corrupted information puddles.", "tags": ["tedious"], "misery_score": 3},
-        {"title": "Install Security Updates", "description": "Apply updates rune-by-rune to every device.", "tags": ["repetitive", "tedious"], "misery_score": 11},
-        {"title": "Kindness Training", "description": "Attend an HR seminar on \"Nonviolent Communication.\"", "tags": ["social", "humiliating"], "misery_score": 8},
-        {"title": "Investigate Downloads", "description": "Track down who pirated mortal souls on the office Wi-Fi.", "tags": ["ambiguous", "social"], "misery_score": 17},
-        {"title": "Glitch Gremlin Issue", "description": "Remove the gremlin chewing through cables.", "tags": ["ambiguous", "physical"], "misery_score": 13},
-        {"title": "System Backup", "description": "Back up the system to cursed floppy disks.", "tags": ["repetitive", "tedious"], "misery_score": 11},
-        {"title": "Cold-Call Angry Customers", "description": "Make calls to furious Hell residents demanding refunds.", "tags": ["conflict", "rejection"], "misery_score": 20},
-        {"title": "Quarterly Report Alone", "description": "Present the sales report without any team support.", "tags": ["embarrassing", "solo"], "misery_score": 22},
-        {"title": "Upsell Useless Product", "description": "Attempt to sell pointless upgrades demons don't need.", "tags": ["rejection", "embarrassing"], "misery_score": 22},
-        {"title": "Handle Complaints", "description": "Resolve customer issues without assistance.", "tags": ["conflict", "solo"], "misery_score": 20},
-        {"title": "Lead Meeting Unprepared", "description": "Run the sales meeting despite not reviewing the notes.", "tags": ["embarrassing", "high_stakes"], "misery_score": 18},
-        {"title": "Reject Refunds", "description": "Deny all refund requests regardless of merit.", "tags": ["conflict", "rejection"], "misery_score": 20},
-        {"title": "Solo Networking Event", "description": "Attend a networking mixer alone.", "tags": ["solo", "social"], "misery_score": 11},
-        {"title": "Host Team-Building", "description": "Lead an activity everyone instantly hates.", "tags": ["embarrassing", "conflict"], "misery_score": 22},
-        {"title": "Fire Demon", "description": "Terminate a demon for poor performance.", "tags": ["conflict"], "misery_score": 10},
-        {"title": "Pitch to Execs", "description": "Deliver an improvised pitch to intimidating executives.", "tags": ["high_stakes", "embarrassing"], "misery_score": 18},
-        {"title": "Door-to-Door Surveys", "description": "Survey Hell residents in person.", "tags": ["social"], "misery_score": 1},
-        {"title": "Serve VIP Clients", "description": "Handle elite demons who judge everything you do.", "tags": ["high_stakes", "embarrassing"], "misery_score": 18},
-        {"title": "Denial Calls", "description": "Inform clients they did not qualify for service upgrades.", "tags": ["conflict", "rejection"], "misery_score": 20},
-        {"title": "Peer Feedback", "description": "Give honest performance feedback to a coworker.", "tags": ["conflict"], "misery_score": 10},
-        {"title": "Run Expo Booth Alone", "description": "Operate a promotional booth without team support.", "tags": ["solo", "high_stakes"], "misery_score": 16},
-        {"title": "Mediate Feud", "description": "Stop two demons fighting over office drama.", "tags": ["conflict"], "misery_score": 12},
-        {"title": "Design HR Poster", "description": "Create a cheerful motivational poster from scratch.", "tags": ["creative", "casual"], "misery_score": 20},
+        {"title": "Fix the Printer", "description": "Repair the infernal printer that melts every hour.", "tags": ["repetitive", "subordinate", "stagnant"], "misery_score": 14},
+        {"title": "Eternal Ticket Queue", "description": "Clear tech support tickets that regenerate endlessly.", "tags": ["vague", "repetitive", "stagnant"], "misery_score": 22},
+        {"title": "Reset Passwords", "description": "Reset every demon's forgotten login credentials.", "tags": ["repetitive", "social", "subordinate"], "misery_score": 13},
+        {"title": "Debug Mainframe", "description": "Find the source of screaming errors in the infernal mainframe.", "tags": ["vague", "logical"], "misery_score": 12},
+        {"title": "Reboot Servers", "description": "Manually restart servers scattered across 27 floors.", "tags": ["repetitive", "physical", "stagnant"], "misery_score": 15},
+        {"title": "Update Software", "description": "Run mandatory updates while demons continue working.", "tags": ["tedious", "repetitive", "stagnant"], "misery_score": 11},
+        {"title": "Repair Laptops", "description": "Fix laptops damaged by brimstone spills.", "tags": ["physical", "tedious", "subordinate"], "misery_score": 16},
+        {"title": "Translate Bug Reports", "description": "Interpret vague, unhelpful bug reports.", "tags": ["vague", "logical"], "misery_score": 18},
+        {"title": "Patch Firewall", "description": "Reinforce the actual wall of fire that protects the network.", "tags": ["physical", "high_stakes"], "misery_score": 12},
+        {"title": "Clean Data Spill", "description": "Mop up corrupted information puddles.", "tags": ["tedious", "subordinate"], "misery_score": 9},
+        {"title": "Install Security Updates", "description": "Apply updates rune-by-rune to every device.", "tags": ["repetitive", "tedious", "stagnant"], "misery_score": 16},
+        {"title": "Kindness Training", "description": "Attend an HR seminar on \"Nonviolent Communication.\"", "tags": ["social", "humiliating", "peaceful"], "misery_score": 18},
+        {"title": "Investigate Downloads", "description": "Track down who pirated mortal souls on the office Wi-Fi.", "tags": ["vague", "social", "punitive"], "misery_score": 17},
+        {"title": "Glitch Gremlin Issue", "description": "Remove the gremlin chewing through cables.", "tags": ["vague", "physical", "chaotic"], "misery_score": 13},
+        {"title": "System Backup", "description": "Back up the system to cursed floppy disks.", "tags": ["repetitive", "tedious", "stagnant"], "misery_score": 11},
+        {"title": "Cold-Call Angry Customers", "description": "Make calls to furious Hell residents demanding refunds.", "tags": ["conflict", "rejection", "hostile", "vocal"], "misery_score": 25},
+        {"title": "Quarterly Report Alone", "description": "Present the sales report without any team support.", "tags": ["humiliating", "solo", "vague"], "misery_score": 22},
+        {"title": "Upsell Useless Product", "description": "Attempt to sell pointless upgrades demons don't need.", "tags": ["rejection", "hostile", "persuasive"], "misery_score": 22},
+        {"title": "Handle Complaints", "description": "Resolve customer issues without assistance.", "tags": ["conflict", "solo", "hostile"], "misery_score": 20},
+        {"title": "Lead Meeting Unprepared", "description": "Run the sales meeting despite not reviewing the notes.", "tags": ["humiliating", "high_stakes", "vague"], "misery_score": 28},
+        {"title": "Reject Refunds", "description": "Deny all refund requests regardless of merit.", "tags": ["conflict", "rejection", "punitive"], "misery_score": 20},
+        {"title": "Solo Networking Event", "description": "Attend a networking mixer alone.", "tags": ["solo", "social", "vague"], "misery_score": 19},
+        {"title": "Host Team-Building", "description": "Lead an activity everyone instantly hates.", "tags": ["humiliating", "conflict", "social"], "misery_score": 22},
+        {"title": "Fire Demon", "description": "Terminate a demon for poor performance.", "tags": ["conflict", "punitive", "high_stakes"], "misery_score": 24},
+        {"title": "Pitch to Execs", "description": "Deliver an improvised pitch to intimidating executives.", "tags": ["high_stakes", "humiliating", "persuasive"], "misery_score": 26},
+        {"title": "Door-to-Door Surveys", "description": "Survey Hell residents in person.", "tags": ["social", "subordinate", "rejection"], "misery_score": 15},
+        {"title": "Serve VIP Clients", "description": "Handle elite demons who judge everything you do.", "tags": ["high_stakes", "humiliating", "social"], "misery_score": 18},
+        {"title": "Denial Calls", "description": "Inform clients they did not qualify for service upgrades.", "tags": ["conflict", "rejection", "punitive"], "misery_score": 20},
+        {"title": "Peer Feedback", "description": "Give honest performance feedback to a coworker.", "tags": ["conflict", "punitive"], "misery_score": 10},
+        {"title": "Run Expo Booth Alone", "description": "Operate a promotional booth without team support.", "tags": ["solo", "high_stakes", "stagnant"], "misery_score": 16},
+        {"title": "Mediate Feud", "description": "Stop two demons fighting over office drama.", "tags": ["conflict", "peaceful", "vague"], "misery_score": 18},
+        {"title": "Design HR Poster", "description": "Create a cheerful motivational poster from scratch.", "tags": ["creative", "casual", "subordinate"], "misery_score": 20},
         {"title": "Casual Icebreakers", "description": "Run an informal team bonding session.", "tags": ["casual", "social", "creative"], "misery_score": 25},
-        {"title": "Handle Complaints About Himself", "description": "Address anonymous criticisms sent to HR.", "tags": ["conflict", "humiliating"], "misery_score": 15},
-        {"title": "Resolve Dept Drama", "description": "Untangle chaos between rival departments.", "tags": ["conflict", "ambiguous"], "misery_score": 21},
-        {"title": "Exit Interviews", "description": "Interview demons quitting due to workplace misery.", "tags": ["conflict", "social"], "misery_score": 17},
-        {"title": "Creativity Workshop", "description": "Lead a workshop on thinking outside the box.", "tags": ["creative", "collaborative"], "misery_score": 16},
-        {"title": "Write Praise Notes", "description": "Compose personalized compliments for coworkers.", "tags": ["creative", "casual"], "misery_score": 20},
-        {"title": "Loosen Culture Meeting", "description": "Advise management on making Hell \"more fun.\"", "tags": ["ambiguous", "casual", "creative"], "misery_score": 29},
-        {"title": "Role-Play Bonding", "description": "Guide demons through awkward improv games.", "tags": ["creative", "social", "casual"], "misery_score": 25},
-        {"title": "Complaint Against Him", "description": "Meet with HR about a complaint filed by a coworker.", "tags": ["conflict"], "misery_score": 12},
-        {"title": "Brainstorm Session", "description": "Moderate a freeform idea session with no rules.", "tags": ["creative", "collaborative"], "misery_score": 16},
-        {"title": "Instructionless Form", "description": "Process a form missing all required instructions.", "tags": ["ambiguous"], "misery_score": 9},
-        {"title": "Office Birthday Party", "description": "Plan a cheerful surprise party.", "tags": ["casual", "social"], "misery_score": 15},
-        {"title": "Peer Review Circle", "description": "Lead a meeting where demons critique one another.", "tags": ["social", "conflict"], "misery_score": 17}
+        {"title": "Handle Complaints About Himself", "description": "Address anonymous criticisms sent to HR.", "tags": ["conflict", "humiliating", "hostile"], "misery_score": 21},
+        {"title": "Resolve Dept Drama", "description": "Untangle chaos between rival departments.", "tags": ["conflict", "vague", "chaotic"], "misery_score": 21},
+        {"title": "Exit Interviews", "description": "Interview demons quitting due to workplace misery.", "tags": ["conflict", "social", "punitive"], "misery_score": 23},
+        {"title": "Creativity Workshop", "description": "Lead a workshop on thinking outside the box.", "tags": ["creative", "collaborative", "chaotic"], "misery_score": 16},
+        {"title": "Write Praise Notes", "description": "Compose personalized compliments for coworkers.", "tags": ["creative", "casual", "supportive"], "misery_score": 20},
+        {"title": "Loosen Culture Meeting", "description": "Advise management on making Hell \"more fun.\"", "tags": ["vague", "casual", "creative"], "misery_score": 29},
+        {"title": "Role-Play Bonding", "description": "Guide demons through awkward improv games.", "tags": ["creative", "social", "casual", "humiliating"], "misery_score": 25},
+        {"title": "Complaint Against Him", "description": "Meet with HR about a complaint filed by a coworker.", "tags": ["conflict", "punitive", "humiliating"], "misery_score": 18},
+        {"title": "Brainstorm Session", "description": "Moderate a freeform idea session with no rules.", "tags": ["creative", "collaborative", "vague"], "misery_score": 16},
+        {"title": "Instructionless Form", "description": "Process a form missing all required instructions.", "tags": ["vague", "tedious", "stagnant"], "misery_score": 14},
+        {"title": "Office Birthday Party", "description": "Plan a cheerful surprise party.", "tags": ["casual", "social", "supportive"], "misery_score": 15},
+        {"title": "Peer Review Circle", "description": "Lead a meeting where demons critique one another.", "tags": ["social", "conflict", "punitive"], "misery_score": 20}
     ]
 }
