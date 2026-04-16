@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://db226gl8wirq1"]
+[gd_scene load_steps=14 format=3 uid="uid://db226gl8wirq1"]
 
 [ext_resource type="Script" uid="uid://v4pt5v3i7giq" path="res://core/scripts/training_sequence.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://qvkqt18mecqg" path="res://assets/backgrounds/trainingbg.png" id="2_ld4qi"]
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="2_rcuyd"]
 [ext_resource type="FontFile" uid="uid://4daaj4herp4s" path="res://assets/font/Garet-Book.ttf" id="3_mlesh"]
-[ext_resource type="Texture2D" uid="uid://d2fxgextn1b4q" path="res://assets/fish.png" id="5_wt00f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt00f"]
 bg_color = Color(0.8046996, 2.117753e-06, 7.70092e-07, 1)
@@ -152,10 +151,6 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_wt00f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rcuyd")
 text = "Next >"
-
-[node name="fish" type="Sprite2D" parent="SlideShow/VBoxContainer"]
-position = Vector2(381, 651)
-texture = ExtResource("5_wt00f")
 
 [node name="Video" type="Control" parent="."]
 anchors_preset = 0

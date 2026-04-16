@@ -20,8 +20,21 @@ extends Control
 @onready var urgent_popup: Control = $UrgentPopup
 @onready var start_training_button: Button = $UrgentPopup/Panel/VBox/StartTrainingButton
 
+var fish_scene = preload("res://core/scenes/fish.tscn")
+var slide_fishes: Array = []
+
 var slides: Array[Texture2D] = []
 var current_slide_index: int = 0
+
+# Configuration for fish on each slide (0-4)
+# positions are relative to SlideShow/VBoxContainer (which covers the screen)
+var fish_positions = [
+	[], # Slide 1 (no fish)
+	[Vector2(400, 600)], # Slide 2 (good)
+	[Vector2(100, 400)], # Slide 3 (keep left fish only)
+	[Vector2(400, 600)], # Slide 4 (same as Slide 2)
+	[] # Slide 5 (no fish)
+]
 
 var quiz_data = [
 	{
@@ -114,6 +127,20 @@ func show_slide(index: int) -> void:
 		current_slide_index = index
 		slide_image.texture = slides[index]
 		
+		# Clear existing fish
+		for f in slide_fishes:
+			f.queue_free()
+		slide_fishes.clear()
+		
+		# Add new fish for this slide
+		if current_slide_index < fish_positions.size():
+			var positions = fish_positions[current_slide_index]
+			for pos in positions:
+				var f = fish_scene.instantiate()
+				$SlideShow/VBoxContainer.add_child(f)
+				f.position = pos
+				slide_fishes.append(f)
+		
 		# If this is the second to last slide, the "Next" button 
 		# will lead to the last slide + video automatic start.
 		if current_slide_index == slides.size() - 2:
@@ -136,6 +163,11 @@ func _on_next_pressed() -> void:
 		show_quiz_intro()
 
 func play_phishing_video() -> void:
+	# Hide existing fish when video starts
+	for f in slide_fishes:
+		f.queue_free()
+	slide_fishes.clear()
+	
 	var video_path = "res://assets/phishing/phishingvid.ogv"
 	var video_stream = load(video_path)
 	if video_stream:
