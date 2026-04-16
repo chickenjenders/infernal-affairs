@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmmx6lohnvbos"]
 
 [ext_resource type="Script" uid="uid://c0w34kee030uh" path="res://break_time/scripts/francine_interact.gd" id="1_haj1e"]
-[ext_resource type="Texture2D" uid="uid://briolv3mw6wvw" path="res://assets/portraits/IMG_0185.PNG" id="2_haj1e"]
+[ext_resource type="Texture2D" uid="uid://d3a1e4o76aw7" path="res://assets/breaktwo 12.png" id="2_haj1e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
 radius = 164.0
@@ -12,11 +12,11 @@ z_index = 10
 script = ExtResource("1_haj1e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1350, 694)
+position = Vector2(950, 430)
 shape = SubResource("CapsuleShape2D_dah7x")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1349.9999, 671)
-scale = Vector2(0.46679688, 0.44726563)
+position = Vector2(799.49994, 451.99997)
+scale = Vector2(0.9993748, 0.99999994)
 texture = ExtResource("2_haj1e")

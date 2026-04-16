@@ -38,7 +38,7 @@
             "blood_type": "O-",
             "mbti": "ENFP",
             "sign": "Aries",
-            "cod": "“Accidentally” fell off a mountain during a hike",
+            "cod": "Mysteriously fell off a mountain during a hike",
             "sentence": "Traded soul for 20 years with her ex-husband’s fortune",
             "traits": [
                 "Charismatic",
@@ -72,7 +72,8 @@
             "sentence": "Always replied 'did you try restarting it?' to everything",
             "traits": [
                 "Arrogant",
-                "Hates ambiguity"
+                "Hates ambiguity",
+                "People-pleaser"
             ],
             "portrait": "res://assets/portraits/eric.PNG"
         },
@@ -86,7 +87,8 @@
             "sentence": "Sold soul for a lifetime supply of designer hand bags",
             "traits": [
                 "Charismatic",
-                "Hates to be alone"
+                "Hates to be alone",
+                "Hates ambiguity"
             ],
             "portrait": "res://assets/portraits/laura.PNG"
         },
@@ -100,7 +102,8 @@
             "sentence": "Actually enjoyed filling out tax returns",
             "traits": [
                 "Overly formal",
-                "Rule-oriented"
+                "Rule-oriented",
+                "Charismatic"
             ],
             "portrait": "res://assets/portraits/james.PNG"
         },
@@ -114,7 +117,8 @@
             "sentence": "Hated people so much he became a recluse in hell too",
             "traits": [
                 "Low patience",
-                "Hates ambiguity"
+                "Hates ambiguity",
+                "Charismatic"
             ],
             "portrait": "res://assets/portraits/jordan.PNG"
         },
@@ -128,7 +132,8 @@
             "sentence": "Would sell her own mother for a 5% commission",
             "traits": [
                 "Charismatic",
-                "Arrogant"
+                "Arrogant",
+                "Hates conflict and confrontation"
             ],
             "portrait": "res://assets/portraits/patricia.PNG"
         },
@@ -142,7 +147,8 @@
             "sentence": "Once apologized to a door after walking into it",
             "traits": [
                 "People-pleaser",
-                "Hates conflict and confrontation"
+                "Hates conflict and confrontation",
+                "Low patience"
             ],
             "portrait": "res://assets/portraits/regina.PNG"
         }
