@@ -1,22 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4bvk60gv805n"]
 
-[ext_resource type="Texture2D" uid="uid://clevfm25e4omq" path="res://assets/portraits/greg.png" id="1_5mfxm"]
 [ext_resource type="Script" uid="uid://d12n7lonenlep" path="res://break_time/scripts/cecil_interact.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bg61s04i61dkm" path="res://assets/breakone.png" id="2_41774"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
 radius = 161.0
-height = 590.0
+height = 588.0
 
 [node name="Node2D" type="Area2D"]
 z_index = 10
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1172, 704)
+position = Vector2(1249, 616)
 shape = SubResource("CapsuleShape2D_dah7x")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1169.9999, 678)
-scale = Vector2(0.46679688, 0.44726563)
-texture = ExtResource("1_5mfxm")
+position = Vector2(801.5, 451.49997)
+scale = Vector2(0.999375, 1.0033333)
+texture = ExtResource("2_41774")
