@@ -76,13 +76,10 @@ texture_normal = ExtResource("7_j7wpw")
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
-[node name="TutorialHints" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-rotation = 0.00140555
-
 [node name="Instructions" parent="." instance=ExtResource("8_1djlj")]
+visible = false
 layout_mode = 1
+offset_top = 43.0
+offset_right = -56.0
 
 [connection signal="pressed" from="IconDock/MiseryManager" to="." method="_on_misery_manager_pressed"]

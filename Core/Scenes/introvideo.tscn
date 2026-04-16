@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3f1ifllq6lug"]
+
+[ext_resource type="Texture2D" uid="uid://wpain4uhckpk" path="res://assets/UI/misery_popup.png" id="1_vupgp"]
+
+[node name="introvideo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 1600.0
+offset_bottom = 915.0
+texture = ExtResource("1_vupgp")
+
+[node name="SlideShow" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1600.0
+offset_bottom = -900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="Control" parent="SlideShow"]
+anchors_preset = 0
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 1594.0
+offset_bottom = 901.0
+
+[node name="introvid" type="TextureRect" parent="SlideShow/VBoxContainer"]
+custom_minimum_size = Vector2(900, 600)
+layout_mode = 0
+offset_left = 370.0
+offset_top = 42.0
+offset_right = 1270.0
+offset_bottom = 642.0
+
+[node name="HBoxContainer" type="Panel" parent="SlideShow/VBoxContainer"]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 1599.0
+offset_bottom = 31.0
