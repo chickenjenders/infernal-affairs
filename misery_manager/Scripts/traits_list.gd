@@ -18,7 +18,8 @@ func _ready():
 		return
 	
 	trait_titles.shuffle()
-	var actual_count = min(count, trait_titles.size())
+	var actual_count = 5 # Show 5 traits for more variety instead of the previous default
+	actual_count = min(actual_count, trait_titles.size())
 	for i in range(actual_count):
 		var trait_title = trait_titles[i]
 		misery_manager.traits_list.append(trait_title)

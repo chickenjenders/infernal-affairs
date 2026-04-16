@@ -4,19 +4,37 @@
             "Low patience",
             "Arrogant",
             "Hates ambiguity",
-            "Burned out"
+            "Burned out",
+            "Technical elitist",
+            "Socially anxious",
+            "Caffeine-dependent",
+            "Literal-minded",
+            "Keyboard warrior",
+            "Optimization-obsessed"
         ],
         "Sales": [
             "Charismatic",
             "People-pleaser",
             "Hates to be alone",
-            "High-energy"
+            "High-energy",
+            "Compulsive liar",
+            "Aggressively friendly",
+            "Commission-driven",
+            "Name-dropper",
+            "Toxic positivity",
+            "Fear of obscurity"
         ],
         "Demon Resources": [
             "Overly formal",
             "Rule-oriented",
             "Hates conflict and confrontation",
-            "Vindictive"
+            "Vindictive",
+            "Passive-aggressive",
+            "Bureaucratic",
+            "Secret-keeper",
+            "Self-righteous",
+            "Tone-policing",
+            "Micromanager"
         ]
     },
     "employees": [
@@ -30,8 +48,8 @@
             "sentence": "Sold soul for middle management position",
             "traits": [
                 "Low patience",
-                "Arrogant",
-                "Hates ambiguity"
+                "Technical elitist",
+                "Caffeine-dependent"
             ],
             "portrait": "res://assets/portraits/greg.png"
         },
@@ -44,14 +62,14 @@
             "cod": "Mysteriously fell off a mountain during a hike",
             "sentence": "Traded soul for 20 years with her ex-husband’s fortune",
             "traits": [
-                "Charismatic",
-                "People-pleaser",
+                "Toxic positivity",
+                "Aggressively friendly",
                 "Hates to be alone"
             ],
             "portrait": "res://assets/portraits/sheila.PNG"
         },
         {
-            "name": "Raymond Dacosta",
+            "name": "Ray Dacosta",
             "department": "Demon Resources",
             "blood_type": "B+",
             "mbti": "ENFJ",
@@ -60,8 +78,8 @@
             "sentence": "Literally not a soul on earth liked this man",
             "traits": [
                 "Overly formal",
-                "Rule-oriented",
-                "Hates conflict and confrontation"
+                "Bureaucratic",
+                "Tone-policing"
             ],
             "portrait": "res://assets/portraits/raymond.PNG"
         },
@@ -75,8 +93,8 @@
             "sentence": "Retained a superiority complex so large it isolated him.",
             "traits": [
                 "Arrogant",
-                "Hates ambiguity",
-                "People-pleaser"
+                "Literal-minded",
+                "Optimization-obsessed"
             ],
             "portrait": "res://assets/portraits/eric.PNG"
         },
@@ -90,8 +108,8 @@
             "sentence": "Sold soul for 10 million dollars",
             "traits": [
                 "Charismatic",
-                "Hates to be alone",
-                "Hates ambiguity"
+                "High-energy",
+                "Fear of obscurity"
             ],
             "portrait": "res://assets/portraits/laura.PNG"
         },
@@ -104,9 +122,9 @@
             "cod": "Natural causes, fueled by caffeine addiction",
             "sentence": "Commited tax fraud... poorly",
             "traits": [
-                "Overly formal",
                 "Rule-oriented",
-                "Charismatic"
+                "Micromanager",
+                "Secret-keeper"
             ],
             "portrait": "res://assets/portraits/james.PNG"
         },
@@ -119,9 +137,9 @@
             "cod": "Spent 48 hours straight gaming without food or water",
             "sentence": "Had too many vices to outweigh the virtues.",
             "traits": [
-                "Low patience",
-                "Hates ambiguity",
-                "Charismatic"
+                "Burned out",
+                "Keyboard warrior",
+                "Hates ambiguity"
             ],
             "portrait": "res://assets/portraits/jordan.PNG"
         },
@@ -134,9 +152,9 @@
             "cod": "Heart attack during a high-stakes negotiation",
             "sentence": "Would sell her own mother for a 5% commission, but sold her soul for a failed business instead",
             "traits": [
-                "Charismatic",
                 "Arrogant",
-                "Hates conflict and confrontation"
+                "Commission-driven",
+                "Compulsive liar"
             ],
             "portrait": "res://assets/portraits/patricia.PNG"
         },
@@ -150,8 +168,8 @@
             "sentence": "Soul tarnished beyond recognizable human standards",
             "traits": [
                 "People-pleaser",
-                "Hates conflict and confrontation",
-                "Low patience"
+                "Passive-aggressive",
+                "Self-righteous"
             ],
             "portrait": "res://assets/portraits/regina.PNG"
         }
@@ -204,6 +222,78 @@
         "Vindictive": {
             "despises": ["generous", "forgiving"],
             "prefers": ["punitive", "spiteful", "petty"]
+        },
+        "Technical elitist": {
+            "despises": ["unskilled", "layman"],
+            "prefers": ["complex", "exclusive"]
+        },
+        "Socially anxious": {
+            "despises": ["social", "crowded", "public_speaking"],
+            "prefers": ["solo", "silent"]
+        },
+        "Caffeine-dependent": {
+            "despises": ["slow_paced", "calm"],
+            "prefers": ["fast_paced", "jittery"]
+        },
+        "Literal-minded": {
+            "despises": ["metaphorical", "abstract"],
+            "prefers": ["precise", "explicit"]
+        },
+        "Keyboard warrior": {
+            "despises": ["face_to_face", "physical"],
+            "prefers": ["digital", "anonymous"]
+        },
+        "Optimization-obsessed": {
+            "despises": ["inefficient", "wasteful"],
+            "prefers": ["streamlined", "mathematical"]
+        },
+        "Compulsive liar": {
+            "despises": ["transparent", "honest"],
+            "prefers": ["deceptive", "convoluted"]
+        },
+        "Aggressively friendly": {
+            "despises": ["hostile", "aloof"],
+            "prefers": ["intrusive", "social"]
+        },
+        "Commission-driven": {
+            "despises": ["pro_bono", "unprofitable"],
+            "prefers": ["lucrative", "competitive"]
+        },
+        "Name-dropper": {
+            "despises": ["obscure", "humble"],
+            "prefers": ["prestigious", "high_stakes"]
+        },
+        "Toxic positivity": {
+            "despises": ["negative", "realistic", "critical"],
+            "prefers": ["upbeat", "delusional"]
+        },
+        "Fear of obscurity": {
+            "despises": ["anonymous", "behind_the_scenes"],
+            "prefers": ["limelight", "public"]
+        },
+        "Passive-aggressive": {
+            "despises": ["direct", "confrontational"],
+            "prefers": ["coded", "undermining"]
+        },
+        "Bureaucratic": {
+            "despises": ["efficient", "direct"],
+            "prefers": ["redundant", "procedural"]
+        },
+        "Secret-keeper": {
+            "despises": ["public", "transparent"],
+            "prefers": ["confidential", "covert"]
+        },
+        "Self-righteous": {
+            "despises": ["self_deprecating", "apologetic"],
+            "prefers": ["judgmental", "moralizing"]
+        },
+        "Tone-policing": {
+            "despises": ["emotional", "blunt"],
+            "prefers": ["curated", "formal"]
+        },
+        "Micromanager": {
+            "despises": ["autonomous", "independent"],
+            "prefers": ["granular", "controlled"]
         }
     },
     "task_templates": [
