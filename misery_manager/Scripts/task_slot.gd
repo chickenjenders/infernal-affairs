@@ -4,10 +4,19 @@ signal task_dropped_on_slot(slot: Control, task: Node) # Signal to notify schedu
 
 var slot_index: int = -1 # Store the index associated with MiseryManager.task_slots
 @export var misery_manager: Node
+@onready var highlight: Panel = $Highlight
 
 func _ready():
 	# Enable mouse detection for this slot
 	mouse_filter = Control.MOUSE_FILTER_PASS
+
+func _process(_delta):
+	# Update highlight visibility based on dragging state and proximity
+	if misery_manager and misery_manager.currently_dragging_task:
+		# Show highlight if mouse is currently over this slot while dragging
+		highlight.visible = _is_mouse_over()
+	else:
+		highlight.visible = false
 
 ## Called every frame to check for mouse release events over this slot.
 ## If a task is being dragged and mouse is released over this slot,

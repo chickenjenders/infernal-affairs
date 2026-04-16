@@ -1,23 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://brmwmlcqdohsw"]
+[gd_scene load_steps=5 format=3 uid="uid://brmwmlcqdohsw"]
 
 [ext_resource type="FontFile" uid="uid://b13ppglswwwll" path="res://assets/font/Garet-Book.woff2" id="1_4xayc"]
 [ext_resource type="Script" uid="uid://cl3ss8g16rprp" path="res://misery_manager/scripts/task.gd" id="1_pcxva"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p782q"]
-bg_color = Color(0.23, 0.615, 1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlmok"]
+bg_color = Color(0.864303, 0.29534778, 0.26540273, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw1vf"]
+bg_color = Color(0.71844524, 0.053103656, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="task" type="Label"]
 custom_minimum_size = Vector2(400, 70)
+offset_top = 1.0
 offset_right = 450.0
-offset_bottom = 80.0
+offset_bottom = 81.0
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("1_4xayc")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_p782q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tlmok")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rw1vf")
 text = "Example Task Description"
 horizontal_alignment = 1
 autowrap_mode = 2
