@@ -18,15 +18,12 @@ shadow_color = Color(0.43405715, 0, 0, 0.97800004)
 shadow_size = 3
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0xka"]
-bg_color = Color(0.68865365, 0.012920001, 0.07846785, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce8ay"]
+bg_color = Color(0.59657925, 0.017856209, 0.0065453006, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(0.43146813, 0, 0, 1)
-shadow_size = 3
-shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tihjd"]
 bg_color = Color(0.3906396, 0, 0.028990265, 1)
@@ -74,7 +71,7 @@ offset_bottom = 894.0
 theme_override_fonts/font = ExtResource("3_ce8ay")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_jt2xj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t0xka")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ce8ay")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tihjd")
 text = "RETURN TO DESK"
 

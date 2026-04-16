@@ -80,7 +80,10 @@ func show_small_text(text: String, pos: Vector2):
 		current_label.queue_free()
 	
 	current_label = label_scene.instantiate()
-	get_tree().current_scene.add_child(current_label)
+	var root_node = get_tree().current_scene
+	if not root_node:
+		root_node = get_tree().root
+	root_node.add_child(current_label)
 	current_label.text = text
 	
 	var offset = Vector2(10, -30)
@@ -105,9 +108,20 @@ func _input(event):
 func start_dialogue():
 	print("Starting Francine dialogue via Plugin")
 	self.visible = false
+	var parent = get_parent()
+	if parent and parent.has_node("Start"):
+		parent.get_node("Start").visible = false
+	
 	var balloon_scene = load("res://break_time/dialogue/dialogue_balloon.tscn")
 	var balloon = balloon_scene.instantiate()
-	get_tree().current_scene.add_child(balloon)
+	var root_node = get_tree().current_scene
+	if not root_node:
+		root_node = get_tree().root
+	root_node.add_child(balloon)
 	balloon.start(FRANCINE_DIALOGUE, "start")
-	
-	balloon.tree_exited.connect(func(): self.visible = true)
+
+	balloon.tree_exited.connect(func():
+		self.visible = true
+		if parent and parent.has_node("Start"):
+			parent.get_node("Start").visible = true
+	)

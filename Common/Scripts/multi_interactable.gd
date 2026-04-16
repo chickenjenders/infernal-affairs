@@ -30,7 +30,10 @@ func show_text(text: String, pos: Vector2):
 		current_label.queue_free()
 	
 	current_label = label_scene.instantiate()
-	get_tree().current_scene.add_child(current_label)
+	var root_node = get_tree().current_scene
+	if not root_node:
+		root_node = get_tree().root
+	root_node.add_child(current_label)
 	current_label.text = text
 	
 	# Position near the object

@@ -78,7 +78,10 @@ func show_small_text(text: String, pos: Vector2):
 		current_label.queue_free()
 	
 	current_label = label_scene.instantiate()
-	get_tree().current_scene.add_child(current_label)
+	var root_node = get_tree().current_scene
+	if not root_node:
+		root_node = get_tree().root
+	root_node.add_child(current_label)
 	current_label.text = text
 	
 	# Determine offset based on position to avoid going off-screen
@@ -110,7 +113,10 @@ func start_dialogue():
 	self.visible = false
 	var balloon_scene = load("res://break_time/dialogue/dialogue_balloon.tscn")
 	var balloon = balloon_scene.instantiate()
-	get_tree().current_scene.add_child(balloon)
+	var root_node = get_tree().current_scene
+	if not root_node:
+		root_node = get_tree().root
+	root_node.add_child(balloon)
 	balloon.start(CECIL_DIALOGUE, "start")
 	
 	# Connect to the tree_exited signal of the balloon to know when dialogue ends
