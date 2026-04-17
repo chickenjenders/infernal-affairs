@@ -189,7 +189,7 @@ custom_minimum_size = Vector2(600, 900)
 layout_mode = 2
 size_flags_horizontal = 2
 script = ExtResource("8_jf11r")
-target_task_count = 1
+target_task_count = 4
 misery_manager = NodePath("../..")
 
 [node name="ScheduledTaskList" type="VBoxContainer" parent="MiseryManager/MainLayout/Schedule" node_paths=PackedStringArray("misery_manager")]

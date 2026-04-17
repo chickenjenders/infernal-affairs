@@ -1,0 +1,25 @@
+--- Core/Scripts/training_sequence.gd
++++ Core/Scripts/training_sequence.gd
+@@ -152,14 +152,12 @@
+ 		# will lead to the last slide + video automatic start.
+ 		if current_slide_index == slides.size() - 2:
+ 			next_button.text = "Watch Video"
++			next_button.show()
+ 		elif current_slide_index == slides.size() - 1:
+-			next_button.text = "Finish Training"
++			next_button.hide()
+ 			play_phishing_video()
+ 		else:
+ 			next_button.text = "Next >"
++			next_button.show()
+ 
+ func _on_next_pressed() -> void:
+ 	if current_slide_index < slides.size() - 1:
+ 		show_slide(current_slide_index + 1)
+-	else:
+-		# If the video is already over or hasn't started, we're likely in the "Finish training" state
+-		# But the video finish signal should handle transition to quiz.
+-		# If the user clicks "Finish Training" button (which this button becomes during video),
+-		# and video hasn't finished, maybe we skip to quiz?
+-		video_player.stop()
+-		show_quiz_intro()

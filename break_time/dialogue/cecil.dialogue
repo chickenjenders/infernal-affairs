@@ -1,12 +1,9 @@
 ~ start
 Cecil: Hey, you're new, right? How incredibly unfortunate for you.
 - Right, thanks. I'll be going now.
-	=> end_passage
+	=> END
 - I don't know what the hell is going on.
 	=> dont_know_whats_going_on
-
-~ end_passage
-=> END
 
 ~ dont_know_whats_going_on
 Cecil: No, no, you seem to get it just fine. This is literally Hell.
@@ -25,7 +22,7 @@ Cecil: Well, that sounds fun and all, but.... no. I mean, do you see any exits? 
 ~ dreaming_theory
 Cecil: You and I both wish that were the case, but... no. I mean, it can't be THAT much of a surprise to you.
 - What do you mean?
-	=> what_do_you_mean
+	=> what_do_mean
 
 ~ hell_is_supposed_to_be
 Cecil: Hey, I'm atheist, okay? None of this is supposed to be real, let alone a sick and twisted corporate version of it.
@@ -35,11 +32,10 @@ Cecil: Hey, I'm atheist, okay? None of this is supposed to be real, let alone a 
 	=> i_dont_belong_here
 
 ~ i_dont_belong_here
-# Note: Original passage was empty. Proceeding to a default helpful response or ending.
 Cecil: Most people say that. Doesn't change the paperwork.
-=> end_passage
+=> END
 
-~ what_do_you_mean
+~ what_do_mean
 Cecil: Well, you had to do something to get sent down here. So, you're either a terrible person or you made a deal.
 - I don't belong here.
 	=> i_dont_belong_here
@@ -78,7 +74,7 @@ Cecil: Why would I know? I'm just some measley poor bastard stuck here like you.
 - Don't you have anything helpful to say? Or, do you know anyone who could be helpful?
 	=> anyone_helpful
 - Right, thanks. I'll be going now.
-	=> end_passage
+	=> END
 
 ~ what_why
 Cecil: It just seems... off. Suspicious. Weird. All those type of words. Snooping around about it might lead to trouble.
@@ -113,4 +109,4 @@ Cecil: Don't you know anything? When you're caught acting up or not performing w
 ~ what_happens_there
 Cecil: Well I- I... I don't know exactly! I just know that when demons get sent there, they come back wrong. Disturbed! Whatever it is they do down there, we should all do our best to not learn what it is.
 - Right, thanks. I'll be going now.
-	=> end_passage
+	=> END
