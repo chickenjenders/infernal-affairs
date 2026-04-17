@@ -152,7 +152,7 @@ func apply_dialogue_line() -> void:
 			portrait.show()
 		else:
 			# Check for uppercase PNG just in case
-			portrait_path = "res://assets/portraits/" + portrait_file.replace(".png", ".PNG")
+			portrait_path = "res://assets/portraits/" + portrait_file
 			if FileAccess.file_exists(portrait_path):
 				portrait.texture = load(portrait_path)
 				portrait.show()
