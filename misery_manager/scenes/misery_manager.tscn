@@ -236,7 +236,7 @@ offset_bottom = 788.0
 size_flags_vertical = 4
 theme_override_constants/v_separation = 10
 script = ExtResource("13_irhgy")
-count = 12
+count = 8
 task_scene = ExtResource("11_wskxs")
 misery_manager = NodePath("../../..")
 

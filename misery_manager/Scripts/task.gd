@@ -12,6 +12,7 @@ func set_task_data(new_data) -> void:
 	task_data = new_data
 	if task_data:
 		text = task_data.title
+		tooltip_text = task_data.description
 
 ## Called when the task node is added to the scene tree.
 ## Sets up the task to receive mouse input for drag and drop functionality.

@@ -20,6 +20,8 @@ extends Control
 @onready var urgent_popup: Control = $UrgentPopup
 @onready var start_training_button: Button = $UrgentPopup/Panel/VBox/StartTrainingButton
 
+var audio_player: AudioStreamPlayer
+
 var fish_scene = preload("res://core/scenes/fish.tscn")
 var slide_fishes: Array = []
 
@@ -82,6 +84,10 @@ func _ready() -> void:
 	quiz_container.visible = false
 	video_player.visible = false
 	urgent_popup.visible = true
+	
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = load("res://assets/sounds/fishing.wav")
+	add_child(audio_player)
 	
 	load_slides()
 	if slides.size() > 0:
@@ -175,6 +181,7 @@ func play_phishing_video() -> void:
 		video_player.visible = true
 		video_player.stream = video_stream
 		video_player.play()
+		audio_player.play()
 		# Hide the slide elements
 		slide_image.visible = false
 	else:
@@ -186,6 +193,7 @@ func _on_video_finished() -> void:
 func show_quiz_intro() -> void:
 	slideshow_container.visible = false
 	video_player.stop()
+	audio_player.stop()
 	video_player.visible = false
 	quiz_container.visible = true
 	quiz_intro.visible = true

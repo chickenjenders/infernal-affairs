@@ -26,10 +26,16 @@ var shake_timer: float = 0.0
 var is_shaking: bool = false
 var shake_origin: Vector2 = Vector2.ZERO
 
+var stab_sound: AudioStreamPlayer
+
 # Knife (drag and hold)
 var knife_texture: Texture2D = null
 
 func _ready() -> void:
+	stab_sound = AudioStreamPlayer.new()
+	stab_sound.stream = preload("res://assets/sounds/stab.wav")
+	add_child(stab_sound)
+	
 	checkbox.toggled.connect(_on_checkbox_clicked)
 	# Initially hide the scene's knife icon until the invasion starts
 	if is_instance_valid(knife_area):
@@ -302,8 +308,10 @@ func _attempt_stab() -> void:
 		# Make the popup flash red temporarily
 		evasion_popup.modulate = Color.RED
 		
+		if stab_sound:
+			stab_sound.play()
+			
 		# Teleport the popup to a new random location immediately 
-		# so it's not stabbed multiple times in one frame
 		var viewport = get_viewport_rect().size
 		var popup_size = content.size
 		var margin_x = (viewport.x - popup_size.x) / 2.0

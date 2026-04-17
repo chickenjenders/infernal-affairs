@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3f1ifllq6lug"]
 
 [ext_resource type="Script" uid="uid://b5qtj5lqmsfm7" path="res://core/scripts/introvideo.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://wpain4uhckpk" path="res://assets/UI/misery_popup.png" id="1_vupgp"]
+[ext_resource type="Texture2D" uid="uid://j3vagi33y1dl" path="res://assets/backgrounds/introvidbg.png" id="2_er37d"]
 
 [node name="introvideo" type="Control"]
 layout_mode = 3
@@ -49,4 +49,4 @@ layout_mode = 0
 offset_top = -24.0
 offset_right = 1600.0
 offset_bottom = 915.0
-texture = ExtResource("1_vupgp")
+texture = ExtResource("2_er37d")

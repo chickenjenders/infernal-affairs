@@ -14,7 +14,7 @@ func _ready():
 	start_dialogue()
 
 func load_slides():
-	for i in range(1, 23):
+	for i in range(2, 23):
 		var path = "res://assets/introslide/%d.png" % i
 		if ResourceLoader.exists(path):
 			slides.append(load(path))
@@ -23,17 +23,13 @@ func load_slides():
 
 func start_dialogue():
 	var dialogue_resource = load("res://core/dialogue/intro.dialogue")
-	# Set first slide BEFORE showing dialogue
-	current_slide_index = 1
-	set_slide(current_slide_index)
+	current_slide_index = 0
 	
 	DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	DialogueManager.got_dialogue.connect(_on_got_dialogue)
 
 func _on_got_dialogue(_line):
-	# Don't increment for the very first line as it's already set
-	# Logic: first line shows slide 1. Second line shows slide 2.
 	current_slide_index += 1
 	set_slide(current_slide_index)
 

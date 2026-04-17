@@ -297,50 +297,83 @@
         }
     },
     "task_templates": [
-        {"title": "Fix the Printer", "description": "Repair the infernal printer that melts every hour.", "tags": ["repetitive", "subordinate", "stagnant"], "misery_score": 14},
-        {"title": "Eternal Ticket Queue", "description": "Clear tech support tickets that regenerate endlessly.", "tags": ["vague", "repetitive", "stagnant"], "misery_score": 22},
-        {"title": "Reset Passwords", "description": "Reset every demon's forgotten login credentials.", "tags": ["repetitive", "social", "subordinate"], "misery_score": 13},
-        {"title": "Debug Mainframe", "description": "Find the source of screaming errors in the infernal mainframe.", "tags": ["vague", "logical"], "misery_score": 12},
-        {"title": "Reboot Servers", "description": "Manually restart servers scattered across 27 floors.", "tags": ["repetitive", "physical", "stagnant"], "misery_score": 15},
-        {"title": "Update Software", "description": "Run mandatory updates while demons continue working.", "tags": ["tedious", "repetitive", "stagnant"], "misery_score": 11},
-        {"title": "Repair Laptops", "description": "Fix laptops damaged by brimstone spills.", "tags": ["physical", "tedious", "subordinate"], "misery_score": 16},
-        {"title": "Translate Bug Reports", "description": "Interpret vague, unhelpful bug reports.", "tags": ["vague", "logical"], "misery_score": 18},
-        {"title": "Patch Firewall", "description": "Reinforce the actual wall of fire that protects the network.", "tags": ["physical", "high_stakes"], "misery_score": 12},
-        {"title": "Clean Data Spill", "description": "Mop up corrupted information puddles.", "tags": ["tedious", "subordinate"], "misery_score": 9},
-        {"title": "Install Security Updates", "description": "Apply updates rune-by-rune to every device.", "tags": ["repetitive", "tedious", "stagnant"], "misery_score": 16},
-        {"title": "Kindness Training", "description": "Attend an HR seminar on \"Nonviolent Communication.\"", "tags": ["social", "humiliating", "peaceful"], "misery_score": 18},
-        {"title": "Investigate Downloads", "description": "Track down who pirated mortal souls on the office Wi-Fi.", "tags": ["vague", "social", "punitive"], "misery_score": 17},
-        {"title": "Glitch Gremlin Issue", "description": "Remove the gremlin chewing through cables.", "tags": ["vague", "physical", "chaotic"], "misery_score": 13},
-        {"title": "System Backup", "description": "Back up the system to cursed floppy disks.", "tags": ["repetitive", "tedious", "stagnant"], "misery_score": 11},
-        {"title": "Cold-Call Angry Customers", "description": "Make calls to furious Hell residents demanding refunds.", "tags": ["conflict", "rejection", "hostile", "vocal"], "misery_score": 25},
-        {"title": "Quarterly Report Alone", "description": "Present the sales report without any team support.", "tags": ["humiliating", "solo", "vague"], "misery_score": 22},
-        {"title": "Upsell Useless Product", "description": "Attempt to sell pointless upgrades demons don't need.", "tags": ["rejection", "hostile", "persuasive"], "misery_score": 22},
-        {"title": "Handle Complaints", "description": "Resolve customer issues without assistance.", "tags": ["conflict", "solo", "hostile"], "misery_score": 20},
-        {"title": "Lead Meeting Unprepared", "description": "Run the sales meeting despite not reviewing the notes.", "tags": ["humiliating", "high_stakes", "vague"], "misery_score": 28},
-        {"title": "Reject Refunds", "description": "Deny all refund requests regardless of merit.", "tags": ["conflict", "rejection", "punitive"], "misery_score": 20},
-        {"title": "Solo Networking Event", "description": "Attend a networking mixer alone.", "tags": ["solo", "social", "vague"], "misery_score": 19},
-        {"title": "Host Team-Building", "description": "Lead an activity everyone instantly hates.", "tags": ["humiliating", "conflict", "social"], "misery_score": 22},
-        {"title": "Fire Demon", "description": "Terminate a demon for poor performance.", "tags": ["conflict", "punitive", "high_stakes"], "misery_score": 24},
-        {"title": "Pitch to Execs", "description": "Deliver an improvised pitch to intimidating executives.", "tags": ["high_stakes", "humiliating", "persuasive"], "misery_score": 26},
-        {"title": "Door-to-Door Surveys", "description": "Survey Hell residents in person.", "tags": ["social", "subordinate", "rejection"], "misery_score": 15},
-        {"title": "Serve VIP Clients", "description": "Handle elite demons who judge everything you do.", "tags": ["high_stakes", "humiliating", "social"], "misery_score": 18},
-        {"title": "Denial Calls", "description": "Inform clients they did not qualify for service upgrades.", "tags": ["conflict", "rejection", "punitive"], "misery_score": 20},
-        {"title": "Peer Feedback", "description": "Give honest performance feedback to a coworker.", "tags": ["conflict", "punitive"], "misery_score": 10},
-        {"title": "Run Expo Booth Alone", "description": "Operate a promotional booth without team support.", "tags": ["solo", "high_stakes", "stagnant"], "misery_score": 16},
-        {"title": "Mediate Feud", "description": "Stop two demons fighting over office drama.", "tags": ["conflict", "peaceful", "vague"], "misery_score": 18},
-        {"title": "Design HR Poster", "description": "Create a cheerful motivational poster from scratch.", "tags": ["creative", "casual", "subordinate"], "misery_score": 20},
-        {"title": "Casual Icebreakers", "description": "Run an informal team bonding session.", "tags": ["casual", "social", "creative"], "misery_score": 25},
-        {"title": "Handle Complaints About Himself", "description": "Address anonymous criticisms sent to HR.", "tags": ["conflict", "humiliating", "hostile"], "misery_score": 21},
-        {"title": "Resolve Dept Drama", "description": "Untangle chaos between rival departments.", "tags": ["conflict", "vague", "chaotic"], "misery_score": 21},
-        {"title": "Exit Interviews", "description": "Interview demons quitting due to workplace misery.", "tags": ["conflict", "social", "punitive"], "misery_score": 23},
-        {"title": "Creativity Workshop", "description": "Lead a workshop on thinking outside the box.", "tags": ["creative", "collaborative", "chaotic"], "misery_score": 16},
-        {"title": "Write Praise Notes", "description": "Compose personalized compliments for coworkers.", "tags": ["creative", "casual", "supportive"], "misery_score": 20},
-        {"title": "Loosen Culture Meeting", "description": "Advise management on making Hell \"more fun.\"", "tags": ["vague", "casual", "creative"], "misery_score": 29},
-        {"title": "Role-Play Bonding", "description": "Guide demons through awkward improv games.", "tags": ["creative", "social", "casual", "humiliating"], "misery_score": 25},
-        {"title": "Complaint Against Him", "description": "Meet with HR about a complaint filed by a coworker.", "tags": ["conflict", "punitive", "humiliating"], "misery_score": 18},
-        {"title": "Brainstorm Session", "description": "Moderate a freeform idea session with no rules.", "tags": ["creative", "collaborative", "vague"], "misery_score": 16},
-        {"title": "Instructionless Form", "description": "Process a form missing all required instructions.", "tags": ["vague", "tedious", "stagnant"], "misery_score": 14},
-        {"title": "Office Birthday Party", "description": "Plan a cheerful surprise party.", "tags": ["casual", "social", "supportive"], "misery_score": 15},
-        {"title": "Peer Review Circle", "description": "Lead a meeting where demons critique one another.", "tags": ["social", "conflict", "punitive"], "misery_score": 20}
+        {
+            "title": "Printer Maintenance: Floors 2-349", 
+            "description": "Manually reload paper and clear jams in all 347 printers. No elevators allowed.", 
+            "tags": ["repetitive", "physical", "stagnant", "tedious"], 
+            "misery_score": 18
+        },
+        {
+            "title": "Mass Email: Mandatory Potluck", 
+            "description": "Send 4,000 personalized emails inviting demons to a potluck where only 'spirit-free' kale is served.", 
+            "tags": ["social", "tedious", "repetitive"], 
+            "misery_score": 14
+        },
+        {
+            "title": "Confrontation Training", 
+            "description": "Complete a 4-hour e-learning module on 'How to Instigate Confrontation in a Synergistic Way.'", 
+            "tags": ["vague", "peaceful", "formal"], 
+            "misery_score": 20
+        },
+        {
+            "title": "The Infinite Spreadsheet", 
+            "description": "Migrate 10,000 rows of 'Pain Metrics' from a 1998 Excel file to a modern cloud system that doesn't work.", 
+            "tags": ["logical", "stagnant", "tedious", "repetitive"], 
+            "misery_score": 22
+        },
+        {
+            "title": "Unsubscribe Management", 
+            "description": "Manually process 'Unsubscribe' requests by calling each soul to ask why they don't want to be tortured.", 
+            "tags": ["conflict", "rejection", "vocal", "tedious"], 
+            "misery_score": 26
+        },
+        {
+            "title": "Conference Room Jousting", 
+            "description": "Mediate a 3-hour dispute between two managers over who booked 'Brimstone Room B.'", 
+            "tags": ["conflict", "vague", "social", "chaotic"], 
+            "misery_score": 19
+        },
+        {
+            "title": "Reply-All Mitigation", 
+            "description": "Individually email every demon who 'replied-all' to the company-wide birthday thread to tell them to stop.", 
+            "tags": ["repetitive", "digital", "punitive"], 
+            "misery_score": 15
+        },
+        {
+            "title": "Corporate Buzzword Audit", 
+            "description": "Review the company handbook and replace all instances of 'torture' with 'strategic engagement.'", 
+            "tags": ["formal", "tedious", "curated"], 
+            "misery_score": 12
+        },
+        {
+            "title": "Shadowing the CEO", 
+            "description": "Follow a High-Level Archdemon for 12 hours. You are not allowed to speak, sit, or blink.", 
+            "tags": ["subordinate", "stagnant", "humiliating"], 
+            "misery_score": 28
+        },
+        {
+            "title": "Cold-Call Former Interns", 
+            "description": "Call interns from the 14th century to see if they’re interested in a 'high-growth, no-pay' opportunity.", 
+            "tags": ["rejection", "vocal", "persuasive"], 
+            "misery_score": 21
+        },
+        {
+            "title": "Mandatory Phishing Training", 
+            "description": "Complete a 90-minute module on how to spot phishing emails, which triggers a phishing test simulation the next day that looks identical to a company-wide memo.", 
+            "tags": ["tedious", "digital", "punitive", "repetitive"], 
+            "misery_score": 18
+        },
+        {
+            "title": "Password Reset Protocol", 
+            "description": "Reset your domain password. Requirements: 18 characters, 3 numbers, 4 special characters, cannot be a previously used password from the last 10,000 years.", 
+            "tags": ["tedious", "stagnant", "digital", "vague"], 
+            "misery_score": 25
+        },
+        {
+            "title": "Acknowledge Updated Policy", 
+            "description": "Scroll through a 400-page 'Employee Compliance' document you will immediately forget, just so you can check a single box at the bottom.", 
+            "tags": ["repetitive", "tedious", "subordinate", "compliance"], 
+            "misery_score": 15
+        }
     ]
 }

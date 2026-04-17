@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chrl5b2f7ocv7"
-path="res://.godot/imported/1.png-3e66cbe2142ee652ac1b81e93480ffe9.ctex"
+uid="uid://j3vagi33y1dl"
+path="res://.godot/imported/introvidbg.png-b7351cbb813585188b6bb71fa507d68d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/introslide/1.png"
-dest_files=["res://.godot/imported/1.png-3e66cbe2142ee652ac1b81e93480ffe9.ctex"]
+source_file="res://assets/backgrounds/introvidbg.png"
+dest_files=["res://.godot/imported/introvidbg.png-b7351cbb813585188b6bb71fa507d68d.ctex"]
 
 [params]
 

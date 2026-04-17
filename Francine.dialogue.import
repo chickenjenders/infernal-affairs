@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dtym5nxiu8klt"
+path="res://.godot/imported/Francine.dialogue-e153c1d0b8e7de4c78204dc3b521d6f8.tres"
+
+[deps]
+
+source_file="res://Francine.dialogue"
+dest_files=["res://.godot/imported/Francine.dialogue-e153c1d0b8e7de4c78204dc3b521d6f8.tres"]
+
+[params]
+
+defaults=true
