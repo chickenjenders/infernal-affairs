@@ -147,11 +147,12 @@ func apply_dialogue_line() -> void:
 			portrait_file = "francine.png"
 			
 		var portrait_path = "res://assets/portraits/" + portrait_file
-                if ResourceLoader.exists(portrait_path):
-                        portrait.texture = load(portrait_path)
-                        portrait.show()
-                else:
-                        portrait.hide()
+		if ResourceLoader.exists(portrait_path):
+			portrait.texture = load(portrait_path)
+			portrait.show()
+		else:
+			portrait.hide()
+
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
 
