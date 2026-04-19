@@ -38,8 +38,8 @@ func _on_return_to_desk_pressed():
 	
 	# Reference the parent scene (BreakOne/Cubicles) to handle movement/cleanup
 	var parent_scene = get_parent()
-	if parent_scene and parent_scene.name == "BreakOne":
-		if parent_scene.get_parent() and parent_scene.get_parent().name == "Desktop":
+	if parent_scene and "BreakOne" in parent_scene.name:
+		if parent_scene.get_parent() and "Desktop" in parent_scene.get_parent().name:
 			var desktop = parent_scene.get_parent()
 			var misery_manager_scene = load("res://misery_manager/scenes/misery_manager.tscn")
 			var misery_manager_instance = misery_manager_scene.instantiate()
