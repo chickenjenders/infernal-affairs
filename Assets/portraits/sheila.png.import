@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yrtbpxo4xyyd"
-path="res://.godot/imported/sheila.png-6f15a63592296bc52860151321097bc8.ctex"
+path="res://.godot/imported/sheila.PNG-faa819b9802edd7dc8a3fefa5cca0ebc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/sheila.png"
-dest_files=["res://.godot/imported/sheila.png-6f15a63592296bc52860151321097bc8.ctex"]
+source_file="res://assets/portraits/sheila.PNG"
+dest_files=["res://.godot/imported/sheila.PNG-faa819b9802edd7dc8a3fefa5cca0ebc.ctex"]
 
 [params]
 
