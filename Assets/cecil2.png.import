@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h8tr6n7u281v"
-path="res://.godot/imported/cecil.png-b0345ee1507e0bc8d478bd76988ac15f.ctex"
+uid="uid://ckp21113xkc0u"
+path="res://.godot/imported/cecil2.png-44abac0159b3858a7d90a78244fca33c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cecil.png"
-dest_files=["res://.godot/imported/cecil.png-b0345ee1507e0bc8d478bd76988ac15f.ctex"]
+source_file="res://assets/cecil2.png"
+dest_files=["res://.godot/imported/cecil2.png-44abac0159b3858a7d90a78244fca33c.ctex"]
 
 [params]
 

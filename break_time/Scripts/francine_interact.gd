@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var collision = $CollisionShape2D
 @onready var return_button = $ReturnToDesk
 
@@ -13,6 +13,12 @@ func _ready():
 	collision.visible = true
 	# Scale collision to match sprite size better if needed
 	z_index = 10
+	
+	if sprite:
+		sprite.pause()
+		sprite.frame = 0
+		mouse_shape_entered.connect(_on_mouse_shape_entered)
+		mouse_shape_exited.connect(_on_mouse_shape_exited)
 	
 	# Connect the return button signal
 	if return_button:
@@ -125,3 +131,24 @@ func start_dialogue():
 		if parent and parent.has_node("Start"):
 			parent.get_node("Start").visible = true
 	)
+
+func _get_shape_node(shape_idx: int) -> CollisionShape2D:
+	var shape_count = 0
+	for child in get_children():
+		if child is CollisionShape2D:
+			if shape_count == shape_idx:
+				return child
+			shape_count += 1
+	return null
+
+func _on_mouse_shape_entered(shape_idx: int):
+	var shape_node = _get_shape_node(shape_idx)
+	if shape_node and shape_node.name == "CollisionShape2D":
+		if sprite:
+			sprite.frame = 1
+
+func _on_mouse_shape_exited(shape_idx: int):
+	var shape_node = _get_shape_node(shape_idx)
+	if shape_node and shape_node.name == "CollisionShape2D":
+		if sprite:
+			sprite.frame = 0

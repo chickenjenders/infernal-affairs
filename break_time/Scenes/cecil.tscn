@@ -1,12 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4bvk60gv805n"]
+[gd_scene load_steps=15 format=3 uid="uid://b4bvk60gv805n"]
 
 [ext_resource type="Script" uid="uid://d12n7lonenlep" path="res://break_time/scripts/cecil_interact.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://bg61s04i61dkm" path="res://assets/breakone.png" id="2_41774"]
+[ext_resource type="Texture2D" uid="uid://btck8qex8sbmc" path="res://assets/backgrounds/breakroombg.png" id="2_14eb3"]
+[ext_resource type="Texture2D" uid="uid://h8tr6n7u281v" path="res://assets/cecil.png" id="3_ir44c"]
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="3_plyy5"]
+[ext_resource type="Texture2D" uid="uid://ckp21113xkc0u" path="res://assets/cecil2.png" id="4_t2kuv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
-radius = 161.0
-height = 588.0
+radius = 179.0
+height = 670.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbkfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ir44c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t2kuv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcdwl"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -40,31 +56,37 @@ shadow_size = 3
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plyy5"]
-radius = 71.063354
+radius = 86.579445
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lcdwl"]
 radius = 48.0
 height = 164.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14eb3"]
-size = Vector2(177.5, 885.5)
+size = Vector2(207.02002, 911.9492)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir44c"]
-size = Vector2(318.5, 337.5)
+size = Vector2(320.25, 350.75)
 
 [node name="Node2D" type="Area2D"]
 z_index = 10
 script = ExtResource("1_script")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1600.0
+offset_bottom = 900.0
+texture = ExtResource("2_14eb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1246, 616)
 shape = SubResource("CapsuleShape2D_dah7x")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(799.00006, 449.00003)
 scale = Vector2(0.999375, 1.0033333)
-texture = ExtResource("2_41774")
+sprite_frames = SubResource("SpriteFrames_rbkfj")
+frame_progress = 0.16881587
 
 [node name="ReturnToDesk" type="Button" parent="."]
 offset_left = 13.0
@@ -90,12 +112,13 @@ shape = SubResource("CapsuleShape2D_lcdwl")
 debug_color = Color(0.5069075, 0.49289465, 0.8043034, 0.41960785)
 
 [node name="fridge" type="CollisionShape2D" parent="."]
-position = Vector2(1515.75, 453.25)
+position = Vector2(1500.7806, 440.26288)
 rotation = -0.01597506
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_14eb3")
 debug_color = Color(0.2811543, 0.6163392, 0.39933443, 0.41960785)
 
 [node name="files" type="CollisionShape2D" parent="."]
-position = Vector2(449, 354)
+position = Vector2(449.875, 347.375)
 shape = SubResource("RectangleShape2D_ir44c")
 debug_color = Color(0.74373335, 0.44590133, 0.36109945, 0.41960785)

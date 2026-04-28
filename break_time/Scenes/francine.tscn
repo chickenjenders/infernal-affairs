@@ -1,12 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmmx6lohnvbos"]
+[gd_scene load_steps=15 format=3 uid="uid://dmmx6lohnvbos"]
 
 [ext_resource type="Script" uid="uid://c0w34kee030uh" path="res://break_time/scripts/francine_interact.gd" id="1_haj1e"]
-[ext_resource type="Texture2D" uid="uid://d3a1e4o76aw7" path="res://assets/breaktwo 12.png" id="2_haj1e"]
+[ext_resource type="Texture2D" uid="uid://btck8qex8sbmc" path="res://assets/backgrounds/breakroombg.png" id="2_t0xka"]
 [ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="3_ce8ay"]
+[ext_resource type="Texture2D" uid="uid://bi7ulcwpdbomf" path="res://assets/francine.png" id="3_tihjd"]
+[ext_resource type="Texture2D" uid="uid://bgr75m7mvsyxr" path="res://assets/francine2.png" id="4_dsllt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
-radius = 164.0
+radius = 128.0
 height = 570.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0smb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tihjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dsllt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt2xj"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -53,15 +69,20 @@ size = Vector2(318.5, 337.5)
 z_index = 10
 script = ExtResource("1_haj1e")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_t0xka")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(950, 430)
+position = Vector2(961, 579)
 shape = SubResource("CapsuleShape2D_dah7x")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(799.49994, 451.99997)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(801, 448)
 scale = Vector2(0.9993748, 0.99999994)
-texture = ExtResource("2_haj1e")
+sprite_frames = SubResource("SpriteFrames_t0smb")
 
 [node name="ReturnToDesk" type="Button" parent="."]
 offset_left = 13.0
@@ -76,7 +97,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_tihjd")
 text = "RETURN TO DESK"
 
 [node name="durian" type="CollisionShape2D" parent="."]
-position = Vector2(782, 465)
+position = Vector2(766, 458)
 shape = SubResource("CircleShape2D_ce8ay")
 debug_color = Color(0.7392006, 0.42116165, 0.54514647, 0.41960785)
 

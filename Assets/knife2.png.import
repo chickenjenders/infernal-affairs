@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h8tr6n7u281v"
-path="res://.godot/imported/cecil.png-b0345ee1507e0bc8d478bd76988ac15f.ctex"
+uid="uid://f2pakqsobxxc"
+path="res://.godot/imported/knife2.png-8ebc9a0c643f6369c69aa1491bc480cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cecil.png"
-dest_files=["res://.godot/imported/cecil.png-b0345ee1507e0bc8d478bd76988ac15f.ctex"]
+source_file="res://assets/knife2.png"
+dest_files=["res://.godot/imported/knife2.png-8ebc9a0c643f6369c69aa1491bc480cc.ctex"]
 
 [params]
 

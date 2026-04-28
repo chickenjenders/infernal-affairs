@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h8tr6n7u281v"
-path="res://.godot/imported/cecil.png-b0345ee1507e0bc8d478bd76988ac15f.ctex"
+uid="uid://bi7ulcwpdbomf"
+path="res://.godot/imported/francine.png-e38a73a7d8d4a9a56ccf6cad0313e890.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cecil.png"
-dest_files=["res://.godot/imported/cecil.png-b0345ee1507e0bc8d478bd76988ac15f.ctex"]
+source_file="res://assets/francine.png"
+dest_files=["res://.godot/imported/francine.png-e38a73a7d8d4a9a56ccf6cad0313e890.ctex"]
 
 [params]
 
