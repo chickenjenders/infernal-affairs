@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+AudioManager="*res://autoload/audio_manager.gd"
 Global="*res://autoload/global.gd"
 ShiftManager="*res://core/scripts/shift_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"

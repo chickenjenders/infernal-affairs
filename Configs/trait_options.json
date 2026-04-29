@@ -60,7 +60,7 @@
             "mbti": "ENFP",
             "sign": "Aries",
             "cod": "Mysteriously fell off a mountain during a hike",
-            "sentence": "Traded soul for 20 years with her ex-husband’s fortune",
+            "sentence": "Traded soul for 20 years with her ex-husband\u2019s fortune",
             "traits": [
                 "Toxic positivity",
                 "Aggressively friendly",
@@ -176,204 +176,454 @@
     ],
     "trait_definitions": {
         "Low patience": {
-            "despises": ["repetitive", "tedious", "stagnant"],
-            "prefers": ["fast_paced", "brief"]
+            "despises": [
+                "repetitive",
+                "tedious",
+                "stagnant"
+            ],
+            "prefers": [
+                "fast_paced",
+                "brief"
+            ]
         },
         "Arrogant": {
-            "despises": ["humiliating", "subordinate"],
-            "prefers": ["high_stakes", "creative", "leadership"]
+            "despises": [
+                "humiliating",
+                "subordinate"
+            ],
+            "prefers": [
+                "high_stakes",
+                "creative",
+                "leadership"
+            ]
         },
         "Hates ambiguity": {
-            "despises": ["vague", "open_ended"],
-            "prefers": ["structured", "logical"]
+            "despises": [
+                "vague",
+                "open_ended"
+            ],
+            "prefers": [
+                "structured",
+                "logical"
+            ]
         },
         "Burned out": {
-            "despises": ["high_stakes", "extra_work", "energetic"],
-            "prefers": ["monotonous", "low_effort"]
+            "despises": [
+                "high_stakes",
+                "extra_work",
+                "energetic"
+            ],
+            "prefers": [
+                "monotonous",
+                "low_effort"
+            ]
         },
         "Charismatic": {
-            "despises": ["isolating", "boring"],
-            "prefers": ["social", "persuasive", "collaborative", "creative"]
+            "despises": [
+                "isolating",
+                "boring"
+            ],
+            "prefers": [
+                "social",
+                "persuasive",
+                "collaborative",
+                "creative"
+            ]
         },
         "People-pleaser": {
-            "despises": ["confrontational"],
-            "prefers": ["supportive", "social", "casual"]
+            "despises": [
+                "confrontational"
+            ],
+            "prefers": [
+                "supportive",
+                "social",
+                "casual"
+            ]
         },
         "Hates to be alone": {
-            "despises": ["solo", "silent"],
-            "prefers": ["social", "crowded"]
+            "despises": [
+                "solo",
+                "silent"
+            ],
+            "prefers": [
+                "social",
+                "crowded"
+            ]
         },
         "High-energy": {
-            "despises": ["stagnant", "slow"],
-            "prefers": ["active", "chaotic", "fast_paced"]
+            "despises": [
+                "stagnant",
+                "slow"
+            ],
+            "prefers": [
+                "active",
+                "chaotic",
+                "fast_paced"
+            ]
         },
         "Overly formal": {
-            "despises": ["unprofessional", "casual", "messy"],
-            "prefers": ["structured", "documented"]
+            "despises": [
+                "unprofessional",
+                "casual",
+                "messy"
+            ],
+            "prefers": [
+                "structured",
+                "documented"
+            ]
         },
         "Rule-oriented": {
-            "despises": ["rule_breaking", "chaotic"],
-            "prefers": ["compliance", "orderly"]
+            "despises": [
+                "rule_breaking",
+                "chaotic"
+            ],
+            "prefers": [
+                "compliance",
+                "orderly"
+            ]
         },
         "Hates conflict and confrontation": {
-            "despises": ["conflict", "rejection", "hostile"],
-            "prefers": ["peaceful", "uncontested"]
+            "despises": [
+                "conflict",
+                "rejection",
+                "hostile"
+            ],
+            "prefers": [
+                "peaceful",
+                "uncontested"
+            ]
         },
         "Vindictive": {
-            "despises": ["generous", "forgiving"],
-            "prefers": ["punitive", "spiteful", "petty"]
+            "despises": [
+                "generous",
+                "forgiving"
+            ],
+            "prefers": [
+                "punitive",
+                "spiteful",
+                "petty"
+            ]
         },
         "Technical elitist": {
-            "despises": ["unskilled", "layman"],
-            "prefers": ["complex", "exclusive"]
+            "despises": [
+                "unskilled",
+                "layman"
+            ],
+            "prefers": [
+                "complex",
+                "exclusive"
+            ]
         },
         "Socially anxious": {
-            "despises": ["social", "crowded", "public_speaking"],
-            "prefers": ["solo", "silent"]
+            "despises": [
+                "social",
+                "crowded",
+                "public_speaking"
+            ],
+            "prefers": [
+                "solo",
+                "silent"
+            ]
         },
         "Caffeine-dependent": {
-            "despises": ["slow_paced", "calm"],
-            "prefers": ["fast_paced", "jittery"]
+            "despises": [
+                "slow_paced",
+                "calm"
+            ],
+            "prefers": [
+                "fast_paced",
+                "jittery"
+            ]
         },
         "Literal-minded": {
-            "despises": ["metaphorical", "abstract"],
-            "prefers": ["precise", "explicit"]
+            "despises": [
+                "metaphorical",
+                "abstract"
+            ],
+            "prefers": [
+                "precise",
+                "explicit"
+            ]
         },
         "Keyboard warrior": {
-            "despises": ["face_to_face", "physical"],
-            "prefers": ["digital", "anonymous"]
+            "despises": [
+                "face_to_face",
+                "physical"
+            ],
+            "prefers": [
+                "digital",
+                "anonymous"
+            ]
         },
         "Optimization-obsessed": {
-            "despises": ["inefficient", "wasteful"],
-            "prefers": ["streamlined", "mathematical"]
+            "despises": [
+                "inefficient",
+                "wasteful"
+            ],
+            "prefers": [
+                "streamlined",
+                "mathematical"
+            ]
         },
         "Compulsive liar": {
-            "despises": ["transparent", "honest"],
-            "prefers": ["deceptive", "convoluted"]
+            "despises": [
+                "transparent",
+                "honest"
+            ],
+            "prefers": [
+                "deceptive",
+                "convoluted"
+            ]
         },
         "Aggressively friendly": {
-            "despises": ["hostile", "aloof"],
-            "prefers": ["intrusive", "social"]
+            "despises": [
+                "hostile",
+                "aloof"
+            ],
+            "prefers": [
+                "intrusive",
+                "social"
+            ]
         },
         "Commission-driven": {
-            "despises": ["pro_bono", "unprofitable"],
-            "prefers": ["lucrative", "competitive"]
+            "despises": [
+                "pro_bono",
+                "unprofitable"
+            ],
+            "prefers": [
+                "lucrative",
+                "competitive"
+            ]
         },
         "Name-dropper": {
-            "despises": ["obscure", "humble"],
-            "prefers": ["prestigious", "high_stakes"]
+            "despises": [
+                "obscure",
+                "humble"
+            ],
+            "prefers": [
+                "prestigious",
+                "high_stakes"
+            ]
         },
         "Toxic positivity": {
-            "despises": ["negative", "realistic", "critical"],
-            "prefers": ["upbeat", "delusional"]
+            "despises": [
+                "negative",
+                "realistic",
+                "critical"
+            ],
+            "prefers": [
+                "upbeat",
+                "delusional"
+            ]
         },
         "Fear of obscurity": {
-            "despises": ["anonymous", "behind_the_scenes"],
-            "prefers": ["limelight", "public"]
+            "despises": [
+                "anonymous",
+                "behind_the_scenes"
+            ],
+            "prefers": [
+                "limelight",
+                "public"
+            ]
         },
         "Passive-aggressive": {
-            "despises": ["direct", "confrontational"],
-            "prefers": ["coded", "undermining"]
+            "despises": [
+                "direct",
+                "confrontational"
+            ],
+            "prefers": [
+                "coded",
+                "undermining"
+            ]
         },
         "Bureaucratic": {
-            "despises": ["efficient", "direct"],
-            "prefers": ["redundant", "procedural"]
+            "despises": [
+                "efficient",
+                "direct"
+            ],
+            "prefers": [
+                "redundant",
+                "procedural"
+            ]
         },
         "Secret-keeper": {
-            "despises": ["public", "transparent"],
-            "prefers": ["confidential", "covert"]
+            "despises": [
+                "public",
+                "transparent"
+            ],
+            "prefers": [
+                "confidential",
+                "covert"
+            ]
         },
         "Self-righteous": {
-            "despises": ["self_deprecating", "apologetic"],
-            "prefers": ["judgmental", "moralizing"]
+            "despises": [
+                "self_deprecating",
+                "apologetic"
+            ],
+            "prefers": [
+                "judgmental",
+                "moralizing"
+            ]
         },
         "Tone-policing": {
-            "despises": ["emotional", "blunt"],
-            "prefers": ["curated", "formal"]
+            "despises": [
+                "emotional",
+                "blunt"
+            ],
+            "prefers": [
+                "curated",
+                "formal"
+            ]
         },
         "Micromanager": {
-            "despises": ["autonomous", "independent"],
-            "prefers": ["granular", "controlled"]
+            "despises": [
+                "autonomous",
+                "independent"
+            ],
+            "prefers": [
+                "granular",
+                "controlled"
+            ]
         }
     },
     "task_templates": [
         {
-            "title": "Printer Maintenance: Floors 2-349", 
-            "description": "Manually reload paper and clear jams in all 347 printers. No elevators allowed.", 
-            "tags": ["repetitive", "physical", "stagnant", "tedious"], 
-            "misery_score": 18
+            "title": "Printer Maintenance: Floors 2-349",
+            "description": "Manually reload paper and clear jams in all 347 printers. No elevators allowed.",
+            "tags": [
+                "repetitive",
+                "physical",
+                "stagnant",
+                "tedious"
+            ],
+            "misery_score": 7
         },
         {
-            "title": "Mass Email: Mandatory Potluck", 
-            "description": "Send 4,000 personalized emails inviting demons to a potluck where only 'spirit-free' kale is served.", 
-            "tags": ["social", "tedious", "repetitive"], 
-            "misery_score": 14
+            "title": "Mass Email: Mandatory Potluck",
+            "description": "Send 4,000 personalized emails inviting demons to a potluck where only 'spirit-free' kale is served.",
+            "tags": [
+                "social",
+                "tedious",
+                "repetitive"
+            ],
+            "misery_score": 5
         },
         {
-            "title": "Confrontation Training", 
-            "description": "Complete a 4-hour e-learning module on 'How to Instigate Confrontation in a Synergistic Way.'", 
-            "tags": ["vague", "peaceful", "formal"], 
-            "misery_score": 20
+            "title": "Confrontation Training",
+            "description": "Complete a 4-hour e-learning module on 'How to Instigate Confrontation in a Synergistic Way.'",
+            "tags": [
+                "vague",
+                "peaceful",
+                "formal"
+            ],
+            "misery_score": 8
         },
         {
-            "title": "The Infinite Spreadsheet", 
-            "description": "Migrate 10,000 rows of 'Pain Metrics' from a 1998 Excel file to a modern cloud system that doesn't work.", 
-            "tags": ["logical", "stagnant", "tedious", "repetitive"], 
-            "misery_score": 22
+            "title": "The Infinite Spreadsheet",
+            "description": "Migrate 10,000 rows of 'Pain Metrics' from a 1998 Excel file to a modern cloud system that doesn't work.",
+            "tags": [
+                "logical",
+                "stagnant",
+                "tedious",
+                "repetitive"
+            ],
+            "misery_score": 8
         },
         {
-            "title": "Unsubscribe Management", 
-            "description": "Manually process 'Unsubscribe' requests by calling each soul to ask why they don't want to be tortured.", 
-            "tags": ["conflict", "rejection", "vocal", "tedious"], 
-            "misery_score": 26
+            "title": "Unsubscribe Management",
+            "description": "Manually process 'Unsubscribe' requests by calling each soul to ask why they don't want to be tortured.",
+            "tags": [
+                "conflict",
+                "rejection",
+                "vocal",
+                "tedious"
+            ],
+            "misery_score": 10
         },
         {
-            "title": "Conference Room Jousting", 
-            "description": "Mediate a 3-hour dispute between two managers over who booked 'Brimstone Room B.'", 
-            "tags": ["conflict", "vague", "social", "chaotic"], 
-            "misery_score": 19
+            "title": "Conference Room Jousting",
+            "description": "Mediate a 3-hour dispute between two managers over who booked 'Brimstone Room B.'",
+            "tags": [
+                "conflict",
+                "vague",
+                "social",
+                "chaotic"
+            ],
+            "misery_score": 7
         },
         {
-            "title": "Reply-All Mitigation", 
-            "description": "Individually email every demon who 'replied-all' to the company-wide birthday thread to tell them to stop.", 
-            "tags": ["repetitive", "digital", "punitive"], 
-            "misery_score": 15
+            "title": "Reply-All Mitigation",
+            "description": "Individually email every demon who 'replied-all' to the company-wide birthday thread to tell them to stop.",
+            "tags": [
+                "repetitive",
+                "digital",
+                "punitive"
+            ],
+            "misery_score": 6
         },
         {
-            "title": "Corporate Buzzword Audit", 
-            "description": "Review the company handbook and replace all instances of 'torture' with 'strategic engagement.'", 
-            "tags": ["formal", "tedious", "curated"], 
-            "misery_score": 12
+            "title": "Corporate Buzzword Audit",
+            "description": "Review the company handbook and replace all instances of 'torture' with 'strategic engagement.'",
+            "tags": [
+                "formal",
+                "tedious",
+                "curated"
+            ],
+            "misery_score": 5
         },
         {
-            "title": "Shadowing the CEO", 
-            "description": "Follow a High-Level Archdemon for 12 hours. You are not allowed to speak, sit, or blink.", 
-            "tags": ["subordinate", "stagnant", "humiliating"], 
-            "misery_score": 28
+            "title": "Shadowing the CEO",
+            "description": "Follow a High-Level Archdemon for 12 hours. You are not allowed to speak, sit, or blink.",
+            "tags": [
+                "subordinate",
+                "stagnant",
+                "humiliating"
+            ],
+            "misery_score": 11
         },
         {
-            "title": "Cold-Call Former Interns", 
-            "description": "Call interns from the 14th century to see if they’re interested in a 'high-growth, no-pay' opportunity.", 
-            "tags": ["rejection", "vocal", "persuasive"], 
-            "misery_score": 21
+            "title": "Cold-Call Former Interns",
+            "description": "Call interns from the 14th century to see if they\u2019re interested in a 'high-growth, no-pay' opportunity.",
+            "tags": [
+                "rejection",
+                "vocal",
+                "persuasive"
+            ],
+            "misery_score": 8
         },
         {
-            "title": "Mandatory Phishing Training", 
-            "description": "Complete a 90-minute module on how to spot phishing emails, which triggers a phishing test simulation the next day that looks identical to a company-wide memo.", 
-            "tags": ["tedious", "digital", "punitive", "repetitive"], 
-            "misery_score": 18
+            "title": "Mandatory Phishing Training",
+            "description": "Complete a 90-minute module on how to spot phishing emails, which triggers a phishing test simulation the next day that looks identical to a company-wide memo.",
+            "tags": [
+                "tedious",
+                "digital",
+                "punitive",
+                "repetitive"
+            ],
+            "misery_score": 7
         },
         {
-            "title": "Password Reset Protocol", 
-            "description": "Reset your domain password. Requirements: 18 characters, 3 numbers, 4 special characters, cannot be a previously used password from the last 10,000 years.", 
-            "tags": ["tedious", "stagnant", "digital", "vague"], 
-            "misery_score": 25
+            "title": "Password Reset Protocol",
+            "description": "Reset your domain password. Requirements: 18 characters, 3 numbers, 4 special characters, cannot be a previously used password from the last 10,000 years.",
+            "tags": [
+                "tedious",
+                "stagnant",
+                "digital",
+                "vague"
+            ],
+            "misery_score": 10
         },
         {
-            "title": "Acknowledge Updated Policy", 
-            "description": "Scroll through a 400-page 'Employee Compliance' document you will immediately forget, just so you can check a single box at the bottom.", 
-            "tags": ["repetitive", "tedious", "subordinate", "compliance"], 
-            "misery_score": 15
+            "title": "Acknowledge Updated Policy",
+            "description": "Scroll through a 400-page 'Employee Compliance' document you will immediately forget, just so you can check a single box at the bottom.",
+            "tags": [
+                "repetitive",
+                "tedious",
+                "subordinate",
+                "compliance"
+            ],
+            "misery_score": 6
         }
     ]
 }

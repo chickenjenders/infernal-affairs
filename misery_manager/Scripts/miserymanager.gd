@@ -98,9 +98,35 @@ func schedule_task(task_data, slot_index: int, old_slot_index: int = -1) -> Dict
 
 func _update_current_score():
 	current_employee_score = 0
+	
+	var emp_data = ShiftManager.get_current_employee_data()
+	var emp_traits = []
+	if emp_data and "traits" in emp_data:
+		emp_traits = emp_data["traits"]
+		
+	var trait_defs = ShiftManager.trait_definitions
+	
 	for slot in task_slots:
-		if slot["task"] != null:
-			current_employee_score += slot["task"].misery_score
+		var task_data = slot["task"]
+		if task_data != null:
+			var base_score = task_data.misery_score
+			var score_multiplier = 1.0
+			
+			for trait_name in emp_traits:
+				if trait_defs.has(trait_name):
+					var despises = trait_defs[trait_name].get("despises", [])
+					var prefers = trait_defs[trait_name].get("prefers", [])
+					
+					for tag in task_data.tags:
+						if tag in despises:
+							score_multiplier += 0.5 # significant bonus
+						elif tag in prefers:
+							score_multiplier -= 0.5 # massive penalty
+			
+			# prevent the task from bringing score down negatively but penalize heavily if poor match
+			score_multiplier = max(0.1, score_multiplier)
+			current_employee_score += int(base_score * score_multiplier)
+			
 	print("MiseryManager: Current employee score updated to: ", current_employee_score)
 
 func get_current_employee_score() -> int:

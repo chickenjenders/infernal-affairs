@@ -116,6 +116,7 @@ func _on_task_dropped_on_slot(slot: Control, task: Node):
 
 	# Move the dragged task to new slot
 	task.reparent(slot)
+	AudioManager.play_task_drop_sound()
 
 	# Reset position to be relative to new parent
 	task.position = Vector2.ZERO

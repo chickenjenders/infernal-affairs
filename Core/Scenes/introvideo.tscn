@@ -1,7 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3f1ifllq6lug"]
+[gd_scene load_steps=6 format=3 uid="uid://d3f1ifllq6lug"]
 
 [ext_resource type="Script" uid="uid://b5qtj5lqmsfm7" path="res://core/scripts/introvideo.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://j3vagi33y1dl" path="res://assets/backgrounds/introvidbg.png" id="2_er37d"]
+[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="3_lkieh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o64mq"]
+bg_color = Color(0.6, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.8)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uurj"]
+bg_color = Color(0.31365314, 0.043961354, 0.04409901, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.8)
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
 
 [node name="introvideo" type="Control"]
 layout_mode = 3
@@ -50,3 +70,15 @@ offset_top = -24.0
 offset_right = 1600.0
 offset_bottom = 915.0
 texture = ExtResource("2_er37d")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 769.0
+offset_right = 965.0
+offset_bottom = 869.0
+theme_override_fonts/font = ExtResource("3_lkieh")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_o64mq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7uurj")
+text = "Start Onboarding"
