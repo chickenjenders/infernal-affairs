@@ -10,3 +10,9 @@ dist/
 
 # Editor
 .vscode/
+
+# Large files / builds
+*.zip
+*.dmg
+*.exe
+*.pck
