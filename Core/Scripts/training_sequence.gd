@@ -78,10 +78,11 @@ var quiz_data = [
 var current_question_index = 0
 var score = 0
 
-var music = preload("res://assets/sounds/miserymanager.wav")
+var music = preload("res://assets/sounds/boring.wav")
+var interrupt_sound = preload("res://assets/sounds/interrupt.wav")
 
 func _ready() -> void:
-	AudioManager.play_music(music)
+	AudioManager.play_sfx(interrupt_sound)
 	# Hide everything initially except the urgent popup
 	slideshow_container.visible = false
 	quiz_container.visible = false
@@ -108,6 +109,7 @@ func _ready() -> void:
 func _on_start_training_pressed() -> void:
 	urgent_popup.visible = false
 	slideshow_container.visible = true
+	AudioManager.play_music(music)
 
 func load_slides() -> void:
 	var dir = DirAccess.open("res://assets/phishing/")
@@ -181,6 +183,7 @@ func play_phishing_video() -> void:
 		video_player.visible = true
 		video_player.stream = video_stream
 		video_player.play()
+		AudioManager.stop_music()
 		audio_player.play()
 		# Hide the slide elements
 		slide_image.visible = false
@@ -194,6 +197,7 @@ func show_quiz_intro() -> void:
 	slideshow_container.visible = false
 	video_player.stop()
 	audio_player.stop()
+	AudioManager.play_music(music)
 	video_player.visible = false
 	quiz_container.visible = true
 	quiz_intro.visible = true

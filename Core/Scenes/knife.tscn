@@ -19,7 +19,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 3.0
 }]
 
 [node name="Knife" type="Area2D"]
@@ -35,4 +35,4 @@ debug_color = Color(0.988235, 0, 0, 0.419608)
 position = Vector2(4.999999, 1.1920929e-07)
 scale = Vector2(0.21289064, 0.32226563)
 sprite_frames = SubResource("SpriteFrames_cw0aq")
-frame_progress = 0.3615349
+frame_progress = 0.8143242

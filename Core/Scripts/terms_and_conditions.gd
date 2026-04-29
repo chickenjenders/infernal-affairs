@@ -19,10 +19,10 @@ var popup_count: int = 0
 
 # Evasion phase
 var evasion_popup: Control = null
-var evasion_speed: float = 500.0
+var evasion_speed: float = 800.0
 var evasion_direction: Vector2 = Vector2(1, 1)
 var stab_count: int = 0
-var stab_required: int = 3
+var stab_required: int = 4
 var shake_timer: float = 0.0
 var is_shaking: bool = false
 var shake_origin: Vector2 = Vector2.ZERO
