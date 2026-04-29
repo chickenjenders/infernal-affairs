@@ -1,7 +1,9 @@
 extends Node2D
 
+var music = preload("res://assets/sounds/miserymanager.wav")
+
 func _ready():
-	pass
+	AudioManager.play_music(music)
 
 func _on_start_pressed() -> void:
 	# Ensure dialogue is cleaned up

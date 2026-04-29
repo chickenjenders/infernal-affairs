@@ -78,7 +78,10 @@ var quiz_data = [
 var current_question_index = 0
 var score = 0
 
+var music = preload("res://assets/sounds/miserymanager.wav")
+
 func _ready() -> void:
+	AudioManager.play_music(music)
 	# Hide everything initially except the urgent popup
 	slideshow_container.visible = false
 	quiz_container.visible = false

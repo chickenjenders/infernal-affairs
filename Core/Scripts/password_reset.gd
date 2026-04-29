@@ -9,9 +9,12 @@ var current_requirement_index: int = 0
 var requirements: Array[Node] = []
 var elapsed_time = 0
 
+var music = preload("res://assets/sounds/miserymanager.wav")
+
 func _ready() -> void:
+	AudioManager.play_music(music)
 	requirements = requirements_list.get_children()
-	
+
 	# Hide all except the first one
 	for i in range(requirements.size()):
 		requirements[i].visible = (i == 0)

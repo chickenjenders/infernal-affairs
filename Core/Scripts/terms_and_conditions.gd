@@ -3,6 +3,7 @@ extends Control
 @onready var checkbox: CheckButton = $CheckButton
 @onready var hidden_popup: Control = $popup
 @onready var tc_done_label: Panel = $TCDoneLabel
+@onready var read_doc: Panel = $ReadDoc
 @onready var knife_area: Area2D = $Area2D/Knife
 var popup_scene = preload("res://popup.tscn")
 
@@ -18,7 +19,7 @@ var popup_count: int = 0
 
 # Evasion phase
 var evasion_popup: Control = null
-var evasion_speed: float = 300.0
+var evasion_speed: float = 500.0
 var evasion_direction: Vector2 = Vector2(1, 1)
 var stab_count: int = 0
 var stab_required: int = 3
@@ -31,10 +32,28 @@ var stab_sound: AudioStreamPlayer
 # Knife (drag and hold)
 var knife_texture: Texture2D = null
 
+var music = preload("res://assets/sounds/miserymanager.wav")
+
 func _ready() -> void:
+	AudioManager.music_player.stop()
 	stab_sound = AudioStreamPlayer.new()
 	stab_sound.stream = preload("res://assets/sounds/stab.wav")
 	add_child(stab_sound)
+	
+	if is_instance_valid(read_doc):
+		read_doc.visible = true
+		read_doc.z_index = 300
+		var interrupt_sound = AudioStreamPlayer.new()
+		interrupt_sound.stream = preload("res://assets/sounds/interrupt.wav")
+		add_child(interrupt_sound)
+		interrupt_sound.play()
+		
+		var read_doc_btn = read_doc.get_node_or_null("Button")
+		if read_doc_btn:
+			read_doc_btn.pressed.connect(func():
+				read_doc.visible = false
+				AudioManager.play_music(preload("res://assets/sounds/boring.wav"))
+			)
 	
 	checkbox.toggled.connect(_on_checkbox_clicked)
 	# Initially hide the scene's knife icon until the invasion starts
@@ -120,6 +139,8 @@ func _on_checkbox_clicked(_toggled: bool) -> void:
 func _spawn_popup(is_first: bool = false) -> void:
 	if not is_instance_valid(self ): return
 	
+	AudioManager.play_sfx(preload("res://assets/sounds/popup.wav"))
+	
 	var inst: Control
 	if is_first:
 		if not is_instance_valid(hidden_popup): return
@@ -134,6 +155,34 @@ func _spawn_popup(is_first: bool = false) -> void:
 		inst.top_level = true
 		inst.z_index = 10
 		add_child(inst)
+
+	var popup_phrases = [
+		"Are you sure?",
+		"Are you REALLY sure?",
+		"Are you for real?",
+		"Do you mean it?",
+		"Really?",
+		"Are you absolutely certain?",
+		"Did you think carefully?",
+		"Is this your final answer?",
+		"Did you read it all?",
+		"Can you only say yes?",
+		"Wait, are you sure?",
+		"Are you positive?",
+		"Are you really very sure?",
+		"Are you 100% sure?",
+		"There's no going back!",
+		"Are you doing this?",
+		"This isn't a misclick, right?",
+		"Seriously?"
+	]
+
+	var label_node = inst.get_node_or_null("Label")
+	if not label_node:
+		# Some popups might have it under ColorRect/Label
+		label_node = inst.get_node_or_null("ColorRect/Label")
+	if label_node:
+		label_node.text = popup_phrases.pick_random()
 
 	popup_count += 1
 	active_popups.append(inst)
@@ -198,6 +247,8 @@ func _transition_to_evasion() -> void:
 	# Pick a random starting direction
 	evasion_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	evasion_speed = 1200.0
+
+	AudioManager.play_music(preload("res://assets/sounds/popchase.wav"))
 
 	# Ensure the knife's parent is visible
 	var area2d = get_node_or_null("Area2D")
@@ -337,6 +388,7 @@ func _attempt_stab() -> void:
 			_start_shake()
 
 func _start_shake() -> void:
+	AudioManager.music_player.stop()
 	is_shaking = true
 	shake_timer = 1.2
 	shake_origin = evasion_popup.global_position

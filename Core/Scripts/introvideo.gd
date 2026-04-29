@@ -39,7 +39,7 @@ func start_dialogue():
 		
 	var dialogue_resource = load("res://core/dialogue/intro.dialogue")
 	
-	DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
+	DialogueManager.show_dialogue_balloon_scene("res://break_time/dialogue/dialogue_balloon.tscn", dialogue_resource, "start")
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	DialogueManager.got_dialogue.connect(_on_got_dialogue)
 

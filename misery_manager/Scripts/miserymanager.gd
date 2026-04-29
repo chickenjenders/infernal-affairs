@@ -11,7 +11,10 @@ var task_list := []
 # var task_templates: Array = []
 # var trait_definitions: Dictionary = {}
 
+var music = preload("res://assets/sounds/miserymanager.wav")
+
 func _ready():
+	AudioManager.play_music(music)
 	# _load_trait_options()
 	# Sync with ShiftManager state if needed
 	pass

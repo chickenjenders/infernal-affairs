@@ -75,13 +75,15 @@ text = "Terms and Conditions"
 
 [node name="Label" type="Label" parent="BG"]
 layout_mode = 0
-offset_left = 404.0
-offset_top = 219.0
-offset_right = 1203.0
-offset_bottom = 771.0
+offset_left = 403.0
+offset_top = 204.0
+offset_right = 1207.0
+offset_bottom = 789.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_gw1io")
-text = "lots and lots of text will be here."
+theme_override_font_sizes/font_size = 16
+text = "By clicking accept you hereby acknowledge that your existence is now the sole property of Hell Incand its infernal subsidiaries including but not limited to the Department of Demon Relations and the Misery Machine Maintenance Division you agree to waive all rights to a physical form biological needs or any memory of sunlight or fresh air and understand that your employment is eternal and non-negotiable you accept a starting wage of zero credits and recognize that any attempt to calculate an hourly rate will result in immediate seizure of your remaining sanity you agree to work in a cubicle farm of obsidian regardless of temperature fluctuations or proximity to open lava pits and acknowledge that all ideas dreams or hallucinations occurring during your shift belong to management in perpetuity you understand that work-life balance has been replaced with work-work synergy and that your designated wellness breaks are strategically timed to maximize the existential dread of returning to your desk you agree to wear business formal attire at all times even during spontaneous combustion events and recognize that slacks must be creased to a razor-edge or face public shaming in the Monday Morning Huddle you waive the right to trial by jury and agree that all disputes will be settled via infinite arbitration in a room with no chairs and a single unreadable manual you understand that management is not liable for loss of identity or spontaneous demonic possession and you certify that you are not currently a squirrel or other non-sentient entity seeking to exploit an exception for early resignation you acknowledge that success is mandatory and failure results in a one-way ticket to Floor 404 for reconditioning where you will return different but technically more productive as per the requirements of current demand reports and the thriving growth of the infernal economy forever and ever amen."
+autowrap_mode = 2
 
 [node name="popup" parent="." instance=ExtResource("5_gw1io")]
 layout_mode = 1
@@ -164,5 +166,40 @@ shape = SubResource("RectangleShape2D_f0h5x")
 
 [node name="Knife" parent="Area2D" instance=ExtResource("6_h176b")]
 position = Vector2(114, 723)
+
+[node name="ReadDoc" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 158.0
+offset_right = 1240.0
+offset_bottom = 544.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nd3b")
+
+[node name="Label" type="Label" parent="ReadDoc"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 70.0
+offset_right = 870.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0.9522379, 0.1999568, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_h176b")
+theme_override_font_sizes/font_size = 35
+text = "PLEASE REVIEW AND AGREE TO THE HELL INC EMPLOYMENT AGREEMENT"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="ReadDoc"]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 236.0
+offset_right = 558.0
+offset_bottom = 305.0
+theme_override_fonts/font = ExtResource("7_f0h5x")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_sud8e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_63xbq")
+text = "CLOSE"
 
 [connection signal="pressed" from="TCDoneLabel/Button" to="." method="_on_button_pressed"]
