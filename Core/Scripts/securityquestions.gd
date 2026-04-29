@@ -5,6 +5,8 @@ extends Control
 @onready var requirements_list: VBoxContainer = $MainLayout/RequirementsList
 @onready var invalid_password_label: Label = $invalid_password_label
 @onready var popup: Control = $popup
+@onready var security_label_panel: Panel = $SecurityLabel
+@onready var start_button: Button = $SecurityLabel/Button
 
 var requirements: Array[Node] = []
 var current_requirement_index: int = 0
@@ -13,31 +15,33 @@ var error_messages = [
 ]
 
 var boring_music = preload("res://assets/sounds/boring.wav")
+var misery_music = preload("res://assets/sounds/miserymanager.wav")
 var interrupt_sound = preload("res://assets/sounds/interrupt.wav")
 
 func _ready() -> void:
 	AudioManager.stop_music()
 	AudioManager.play_sfx(interrupt_sound)
-	popup.visible = true
 	
-	var popup_btn = popup.get_node("SubmitButton")
-	if popup_btn.is_connected("pressed", Callable(popup, "_on_submit_button_pressed")):
-		popup_btn.disconnect("pressed", Callable(popup, "_on_submit_button_pressed"))
-	popup_btn.pressed.connect(_on_popup_closed)
+	popup.visible = false
+	if popup.has_signal("continue_pressed") and not popup.continue_pressed.is_connected(_on_popup_continue_pressed):
+		popup.continue_pressed.connect(_on_popup_continue_pressed)
+	security_label_panel.visible = true
+	start_button.pressed.connect(_on_start_pressed)
+
 	requirements = requirements_list.get_children()
 
-	# Hide all except the first one
+	# Start with all requirements hidden until the player continues.
 	for i in range(requirements.size()):
-		requirements[i].visible = (i == 0)
-	
+		requirements[i].visible = false
+
 	submit_button.pressed.connect(_on_submit_pressed)
 	password_input.text_submitted.connect(_on_submit_pressed)
 	invalid_password_label.visible = false
-	
-	# Ensure input focus when scene loads
 
-func _on_popup_closed() -> void:
-	popup.visible = false
+func _on_start_pressed() -> void:
+	security_label_panel.visible = false
+	if requirements.size() > 0:
+		requirements[0].visible = true
 	AudioManager.play_music(boring_music)
 	password_input.grab_focus()
 
@@ -49,12 +53,9 @@ func _on_submit_pressed(_text: String = "") -> void:
 		requirements[current_requirement_index].visible = true
 		invalid_password_label.text = error_messages[current_requirement_index]
 	else:
-		var root = get_tree().root
-		var nodes_to_remove = []
-	
-		for child in root.get_children():
-			var node_name = child.name.to_lower()
-			if node_name.contains("password") or node_name.contains("security"):
-				nodes_to_remove.append(child)
-		for node in nodes_to_remove:
-			node.queue_free()
+		invalid_password_label.visible = false
+		popup.visible = true
+
+func _on_popup_continue_pressed() -> void:
+	AudioManager.play_music(misery_music)
+	queue_free()
