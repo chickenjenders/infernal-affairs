@@ -19,6 +19,7 @@ extends Control
 @onready var next_question_button: Button = $Quiz/FeedbackCard/VBox/NextQuestionButton
 @onready var urgent_popup: Control = $UrgentPopup
 @onready var start_training_button: Button = $UrgentPopup/Panel/VBox/StartTrainingButton
+@onready var skip_button: Button = $Video/skip
 
 var audio_player: AudioStreamPlayer
 
@@ -81,6 +82,7 @@ var score = 0
 var music = preload("res://assets/sounds/boring.ogg")
 var misery_music = preload("res://assets/sounds/miserymanager.ogg")
 var interrupt_sound = preload("res://assets/sounds/interrupt.ogg")
+var fishing_music = preload("res://assets/sounds/fishing.ogg")
 
 func _ready() -> void:
 	AudioManager.play_sfx(interrupt_sound)
@@ -89,9 +91,11 @@ func _ready() -> void:
 	quiz_container.visible = false
 	video_player.visible = false
 	urgent_popup.visible = true
+	skip_button.visible = false
 	
 	audio_player = AudioStreamPlayer.new()
-	audio_player.stream = load("res://assets/sounds/fishing.wav")
+	audio_player.stream = fishing_music
+	audio_player.bus = "Master"
 	add_child(audio_player)
 	
 	load_slides()
@@ -106,6 +110,7 @@ func _ready() -> void:
 	quiz_finish_button.pressed.connect(_on_finish_quiz_pressed)
 	video_player.finished.connect(_on_video_finished)
 	next_question_button.pressed.connect(_on_next_question_pressed)
+	skip_button.pressed.connect(_on_skip_pressed)
 
 func _on_start_training_pressed() -> void:
 	urgent_popup.visible = false
@@ -188,10 +193,13 @@ func play_phishing_video() -> void:
 		audio_player.play()
 		# Hide the slide elements
 		slide_image.visible = false
+		# Show the skip button during video playback
+		skip_button.visible = true
 	else:
 		push_error("Could not load video: " + video_path)
 
 func _on_video_finished() -> void:
+	skip_button.visible = false
 	show_quiz_intro()
 
 func show_quiz_intro() -> void:
@@ -288,6 +296,11 @@ func show_results() -> void:
 		score_label.text = "Perfect score.... incredibly suspicious.\nYou will be assigned this training again to check it wasn't a fluke."
 	else:
 		score_label.text = "You have failed to complete this quiz with a 100%.\nYou will be assigned this training again until perfection is obtained."
+
+func _on_skip_pressed() -> void:
+	skip_button.text = "You Can't"
+	skip_button.disabled = true
+
 
 func _on_finish_quiz_pressed() -> void:
 	# Both outcomes now close the training to reveal the game state underneath

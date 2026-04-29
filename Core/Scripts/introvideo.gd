@@ -3,7 +3,6 @@ extends Control
 @onready var intro_texture: TextureRect = $SlideShow/VBoxContainer/introvid
 @onready var start_button: Button = $Button
 
-var fade_scene = preload("res://common/ui/fade_layer.tscn")
 var slides = []
 var current_slide_index = 0
 var intro_texture_default_left := 0.0
@@ -23,11 +22,6 @@ func _ready():
 	intro_texture_default_bottom = intro_texture.offset_bottom
 	intro_texture_default_stretch_mode = intro_texture.stretch_mode
 	start_button.z_index = 10
-
-	var fade = fade_scene.instantiate()
-	add_child(fade)
-	await get_tree().create_timer(0.15).timeout
-	await fade.fade_from_black(0.6)
 	load_slides()
 	
 	current_slide_index = 1
@@ -75,7 +69,7 @@ func _on_got_dialogue(_line):
 func set_slide(index: int):
 	if index > 0 and index <= slides.size():
 		intro_texture.texture = slides[index - 1]
-		if index == 1:
+		if index == 1 or index == 15:
 			intro_texture.set_anchors_preset(Control.PRESET_FULL_RECT)
 			intro_texture.offset_left = 0.0
 			intro_texture.offset_top = 0.0

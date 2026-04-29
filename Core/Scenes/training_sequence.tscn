@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://db226gl8wirq1"]
+[gd_scene load_steps=17 format=3 uid="uid://db226gl8wirq1"]
 
 [ext_resource type="Script" uid="uid://v4pt5v3i7giq" path="res://core/scripts/training_sequence.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://qvkqt18mecqg" path="res://assets/backgrounds/trainingbg.png" id="2_ld4qi"]
@@ -20,6 +20,36 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_ld4qi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjona"]
+bg_color = Color(0.7176471, 0.13725491, 0.16862746, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.78039217)
+shadow_size = 3
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp8dc"]
+bg_color = Color(0.7176471, 0.13725491, 0.16862746, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.7921569)
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53fd2"]
+bg_color = Color(0.8379289, 0, 0.07428213, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.84313726)
+shadow_size = 4
+shadow_offset = Vector2(2, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_QuizPanel"]
 bg_color = Color(0.12, 0.12, 0.12, 0.95)
@@ -176,6 +206,19 @@ grow_vertical = 2
 stream = SubResource("VideoStreamTheora_ld4qi")
 autoplay = true
 expand = true
+
+[node name="skip" type="Button" parent="Video"]
+layout_mode = 0
+offset_left = 1395.0
+offset_top = 772.0
+offset_right = 1524.0
+offset_bottom = 848.0
+theme_override_fonts/font = ExtResource("2_rcuyd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_pjona")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yp8dc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_53fd2")
+text = "Skip"
 
 [node name="Quiz" type="Control" parent="."]
 visible = false
