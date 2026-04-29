@@ -32,12 +32,12 @@ var stab_sound: AudioStreamPlayer
 # Knife (drag and hold)
 var knife_texture: Texture2D = null
 
-var music = preload("res://assets/sounds/miserymanager.wav")
+var music = preload("res://assets/sounds/miserymanager.ogg")
 
 func _ready() -> void:
 	AudioManager.music_player.stop()
 	stab_sound = AudioStreamPlayer.new()
-	stab_sound.stream = preload("res://assets/sounds/stab.wav")
+	stab_sound.stream = preload("res://assets/sounds/stab.ogg")
 	add_child(stab_sound)
 	
 	if is_instance_valid(read_doc):

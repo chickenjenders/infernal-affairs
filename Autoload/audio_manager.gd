@@ -9,8 +9,8 @@ var half_volume_music_paths = {
 	"res://assets/sounds/miserymanager.wav": true,
 }
 
-var click_sound = preload("res://assets/sounds/click.wav")
-var task_drop_sound = preload("res://assets/sounds/task.wav")
+var click_sound = preload("res://assets/sounds/click.ogg")
+var task_drop_sound = preload("res://assets/sounds/task.ogg")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS

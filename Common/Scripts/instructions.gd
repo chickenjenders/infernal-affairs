@@ -5,7 +5,7 @@ signal submitted(username: String)
 @onready var username_input: LineEdit = $LineEdit
 @onready var password_input: LineEdit = $LineEdit2
 
-var interrupt_sound = preload("res://assets/sounds/interrupt.wav")
+var interrupt_sound = preload("res://assets/sounds/interrupt.ogg")
 
 func _ready() -> void:
 	AudioManager.play_sfx(interrupt_sound)

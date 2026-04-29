@@ -1,6 +1,6 @@
 extends Node2D
 
-var music = preload("res://assets/sounds/miserymanager.wav")
+var music = preload("res://assets/sounds/miserymanager.ogg")
 
 func _ready():
 	AudioManager.play_music(music)

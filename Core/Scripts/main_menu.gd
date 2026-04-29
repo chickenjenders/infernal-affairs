@@ -3,7 +3,7 @@ extends Node2D
 var fade_scene = preload("res://common/ui/fade_layer.tscn")
 
 func _ready() -> void:
-	AudioManager.play_music(preload("res://assets/sounds/infernal.wav"))
+	AudioManager.play_music(preload("res://assets/sounds/infernal.ogg"))
 
 func _on_start_pressed() -> void:
 	var fade = fade_scene.instantiate()

@@ -12,9 +12,9 @@ var intro_texture_default_right := 0.0
 var intro_texture_default_bottom := 0.0
 var intro_texture_default_stretch_mode := TextureRect.STRETCH_SCALE
 
-var scaryinst = preload("res://assets/sounds/scaryinst.wav")
-var bgmusic = preload("res://assets/sounds/bgmusic.wav")
-var laugh = preload("res://assets/sounds/laugh.wav")
+var scaryinst = preload("res://assets/sounds/scaryinst.ogg")
+var bgmusic = preload("res://assets/sounds/bgmusic.ogg")
+var laugh = preload("res://assets/sounds/laugh.ogg")
 
 func _ready():
 	intro_texture_default_left = intro_texture.offset_left

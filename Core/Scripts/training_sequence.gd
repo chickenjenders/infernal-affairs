@@ -78,9 +78,9 @@ var quiz_data = [
 var current_question_index = 0
 var score = 0
 
-var music = preload("res://assets/sounds/boring.wav")
-var misery_music = preload("res://assets/sounds/miserymanager.wav")
-var interrupt_sound = preload("res://assets/sounds/interrupt.wav")
+var music = preload("res://assets/sounds/boring.ogg")
+var misery_music = preload("res://assets/sounds/miserymanager.ogg")
+var interrupt_sound = preload("res://assets/sounds/interrupt.ogg")
 
 func _ready() -> void:
 	AudioManager.play_sfx(interrupt_sound)

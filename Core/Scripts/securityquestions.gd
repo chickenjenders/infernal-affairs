@@ -14,9 +14,9 @@ var error_messages = [
   "Not even close.", "Not even close.", "How could you forget?", "This is common knowledge."
 ]
 
-var boring_music = preload("res://assets/sounds/boring.wav")
-var misery_music = preload("res://assets/sounds/miserymanager.wav")
-var interrupt_sound = preload("res://assets/sounds/interrupt.wav")
+var boring_music = preload("res://assets/sounds/boring.ogg")
+var misery_music = preload("res://assets/sounds/miserymanager.ogg")
+var interrupt_sound = preload("res://assets/sounds/interrupt.ogg")
 
 func _ready() -> void:
 	AudioManager.stop_music()
