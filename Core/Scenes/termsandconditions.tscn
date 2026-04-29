@@ -35,7 +35,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0h5x"]
-size = Vector2(110, 144)
+size = Vector2(156, 166)
 
 [node name="termsandconditions" type="Control"]
 layout_mode = 3
@@ -159,7 +159,7 @@ text = "CONTINUE"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(118, 726)
+position = Vector2(116, 720)
 shape = SubResource("RectangleShape2D_f0h5x")
 
 [node name="Knife" parent="Area2D" instance=ExtResource("6_h176b")]

@@ -2,10 +2,18 @@ extends Area2D
 
 signal knife_equipped
 
+@onready var sprite = $AnimatedSprite2D
+
 func _ready() -> void:
 	input_pickable = true
 	# Area2D doesn't have a mouse_filter property; that's for Control nodes.
 	# We use input_pickable which you already have.
+	
+	if sprite:
+		sprite.pause()
+		sprite.frame = 0
+		mouse_entered.connect(_on_mouse_entered)
+		mouse_exited.connect(_on_mouse_exited)
 
 func _input(eventAt: InputEvent) -> void:
 	if eventAt is InputEventMouseButton and eventAt.button_index == MOUSE_BUTTON_LEFT and eventAt.pressed:
@@ -38,3 +46,11 @@ func equip() -> void:
 	Global.equip_knife()
 	visible = false
 	print("Knife script: Equipped via Global")
+
+func _on_mouse_entered() -> void:
+	if sprite:
+		sprite.frame = 1
+
+func _on_mouse_exited() -> void:
+	if sprite:
+		sprite.frame = 0

@@ -1,11 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://dya7vewuwtun1"]
+[gd_scene load_steps=6 format=3 uid="uid://dya7vewuwtun1"]
 
 [ext_resource type="Script" uid="uid://dr143g2h0ohdk" path="res://core/scripts/knife.gd" id="1_bewdy"]
-[ext_resource type="Texture2D" uid="uid://0bvo5wj12ipq" path="res://assets/icons/knife.png" id="2_bewdy"]
+[ext_resource type="Texture2D" uid="uid://bo1hfi2htqx6l" path="res://assets/knife.png" id="2_xcuka"]
+[ext_resource type="Texture2D" uid="uid://f2pakqsobxxc" path="res://assets/knife2.png" id="3_qslmi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dah7x"]
-radius = 71.0
-height = 188.0
+radius = 77.0
+height = 200.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cw0aq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xcuka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qslmi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Knife" type="Area2D"]
 z_index = 10
@@ -16,7 +31,8 @@ position = Vector2(2, -2)
 shape = SubResource("CapsuleShape2D_dah7x")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, -5)
-scale = Vector2(0.09448237, 0.13427728)
-texture = ExtResource("2_bewdy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.999999, 1.1920929e-07)
+scale = Vector2(0.21289064, 0.32226563)
+sprite_frames = SubResource("SpriteFrames_cw0aq")
+frame_progress = 0.3615349
