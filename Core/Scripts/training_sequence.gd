@@ -182,7 +182,7 @@ func play_phishing_video() -> void:
 		f.queue_free()
 	slide_fishes.clear()
 	
-	var video_path = "res://assets/phishing/phishingvid.ogv"
+	var video_path = "res://assets/phishing/phishingvid.webm"
 	var video_stream = load(video_path)
 	if video_stream:
 		# Ensure video player is visible and playable
