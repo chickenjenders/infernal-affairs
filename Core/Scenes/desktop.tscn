@@ -45,6 +45,17 @@ offset_right = 1603.0
 offset_bottom = 907.0
 color = Color(0.192157, 0.188235, 0.168627, 1)
 
+[node name="UserLabel" type="Label" parent="Taskbar"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 24.0
+offset_right = 360.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.9, 0.870588, 0.741176, 1)
+theme_override_font_sizes/font_size = 24
+visible = false
+text = "User:"
+
 [node name="IconDock" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -79,9 +90,9 @@ texture_normal = ExtResource("7_j7wpw")
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="Instructions" parent="." instance=ExtResource("8_1djlj")]
-visible = false
+custom_minimum_size = Vector2(275, 94)
 layout_mode = 1
-offset_top = 43.0
-offset_right = -56.0
+offset_top = 10.0
+offset_bottom = 10.0
 
 [connection signal="pressed" from="IconDock/MiseryManager" to="." method="_on_misery_manager_pressed"]

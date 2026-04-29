@@ -1,9 +1,20 @@
 extends Control
 
+@onready var instructions: Control = $Instructions
+@onready var user_label: Label = $Taskbar/UserLabel
+
 var current_label: Label = null
 var label_scene = preload("res://common/ui/interaction_label.tscn")
 
 func _ready() -> void:
+	if is_instance_valid(instructions) and not instructions.submitted.is_connected(_on_instructions_submitted):
+		instructions.submitted.connect(_on_instructions_submitted)
+	if Global.current_username.is_empty():
+		if is_instance_valid(user_label):
+			user_label.visible = false
+	else:
+		_update_user_label(Global.current_username)
+
 	var misery = $IconDock/MiseryManager
 	var files = $IconDock/Files
 	var email = $IconDock/Email
@@ -47,6 +58,15 @@ func _on_icon_mouse_exited() -> void:
 		tween.tween_property(current_label, "modulate:a", 0.0, 0.2)
 		tween.tween_callback(current_label.queue_free)
 		current_label = null
+
+func _on_instructions_submitted(username: String) -> void:
+	Global.current_username = username
+	_update_user_label(username)
+
+func _update_user_label(username: String) -> void:
+	if is_instance_valid(user_label):
+		user_label.visible = true
+		user_label.text = "User:" + username
 
 func _on_misery_manager_pressed() -> void:
 	var misery_manager_scene = load("res://misery_manager/scenes/misery_manager.tscn")

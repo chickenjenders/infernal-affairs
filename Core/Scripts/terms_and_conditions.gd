@@ -459,4 +459,5 @@ func _complete_game() -> void:
 	await get_tree().create_timer(0.4).timeout
 	
 	print("TermsAndConditions: Closing overlay...")
+	AudioManager.play_music(music)
 	queue_free()

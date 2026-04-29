@@ -7,6 +7,7 @@ signal invasion_started
 signal terms_and_conditions_completed
 
 var current_employee_index: int = 0
+var current_username: String = ""
 var is_knife_equipped: bool = false
 var terms_accepted: bool = false
 

@@ -79,6 +79,7 @@ var current_question_index = 0
 var score = 0
 
 var music = preload("res://assets/sounds/boring.wav")
+var misery_music = preload("res://assets/sounds/miserymanager.wav")
 var interrupt_sound = preload("res://assets/sounds/interrupt.wav")
 
 func _ready() -> void:
@@ -290,4 +291,5 @@ func show_results() -> void:
 
 func _on_finish_quiz_pressed() -> void:
 	# Both outcomes now close the training to reveal the game state underneath
+	AudioManager.play_music(misery_music)
 	queue_free()
