@@ -61,4 +61,8 @@ func _on_submit_pressed(_text: String = "") -> void:
 
 func _on_popup_continue_pressed() -> void:
 	AudioManager.play_music(misery_music)
+	# Find and free the password_reset scene as well
+	var password_reset = get_tree().root.find_child("password_reset", true, false)
+	if password_reset:
+		password_reset.queue_free()
 	queue_free()
