@@ -218,6 +218,7 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_dg7h3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7ucjv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ltho")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dg7h3")
 text = "SUBMIT"
 script = ExtResource("12_pbydi")
 

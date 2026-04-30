@@ -41,4 +41,5 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_cp0ys")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1ehe0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_opfnp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cp0ys")
 text = "START"

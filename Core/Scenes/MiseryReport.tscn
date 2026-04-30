@@ -116,4 +116,5 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_bfdlc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ib4ol")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bxiex")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bfdlc")
 text = "Try Again"

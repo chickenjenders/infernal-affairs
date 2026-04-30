@@ -1,25 +1,67 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1vv3d8tbg8xv"]
 
 [ext_resource type="Script" uid="uid://cqbkvs0o3v0e" path="res://core/scripts/main_menu.gd" id="1_28flt"]
-[ext_resource type="Texture2D" uid="uid://dd5cal7ny6vpu" path="res://assets/backgrounds/mainmenu.png" id="2_1ehe0"]
-[ext_resource type="FontFile" uid="uid://2dmv8uw2ajv6" path="res://assets/font/Garet-Heavy.ttf" id="3_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://3bh0g682ia6n" path="res://common/ui/menu_button.tscn" id="3_n45e2"]
+[ext_resource type="Texture2D" uid="uid://d1nxx58ldco3g" path="res://assets/backgrounds/mainmenu 2/lighton.png" id="4_8u8i2"]
+[ext_resource type="Texture2D" uid="uid://b0wpwpj78hqwi" path="res://assets/backgrounds/mainmenu 2/lightoff.png" id="5_6fw8s"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
-texture = ExtResource("2_1ehe0")
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k2ap"]
+animations = [{
+"frames": [{
+"duration": 22.0,
+"texture": ExtResource("5_6fw8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8u8i2")
+}, {
+"duration": 1.2,
+"texture": ExtResource("5_6fw8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8u8i2")
+}, {
+"duration": 18.0,
+"texture": ExtResource("5_6fw8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8u8i2")
+}, {
+"duration": 16.0,
+"texture": ExtResource("5_6fw8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8u8i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6fw8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8u8i2")
+}, {
+"duration": 20.0,
+"texture": ExtResource("5_6fw8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8u8i2")
+}, {
+"duration": 24.0,
+"texture": ExtResource("5_6fw8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.2
+}]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_28flt")
 
-[node name="Panel" type="Panel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1600.0
-offset_bottom = 900.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_n45e2")
+[node name="BackgroundFlicker" type="AnimatedSprite2D" parent="."]
+z_index = -10
+position = Vector2(-4, -2)
+scale = Vector2(1.00875, 1.0077777)
+sprite_frames = SubResource("SpriteFrames_0k2ap")
+autoplay = "default"
+centered = false
 
 [node name="ButtonManager" type="Control" parent="."]
 layout_mode = 3
@@ -43,40 +85,6 @@ offset_left = 396.0
 offset_top = 504.0
 offset_right = 675.0
 offset_bottom = 601.0
-
-[node name="Label" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 385.0
-offset_top = 105.0
-offset_right = 1257.0
-offset_bottom = 541.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.827451, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.365404, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 7
-theme_override_constants/shadow_outline_size = 15
-theme_override_fonts/font = ExtResource("3_ce3w2")
-theme_override_font_sizes/font_size = 150
-text = "INFERNAL
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 481.0
-offset_top = 234.0
-offset_right = 1147.0
-offset_bottom = 452.0
-theme_override_colors/font_color = Color(0.784314, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.365402, 1.76279e-06, 6.01634e-07, 1)
-theme_override_constants/shadow_offset_x = 6
-theme_override_constants/shadow_outline_size = 15
-theme_override_fonts/font = ExtResource("3_ce3w2")
-theme_override_font_sizes/font_size = 150
-text = "AFFAIRS"
 
 [connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]

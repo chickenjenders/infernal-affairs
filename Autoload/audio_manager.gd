@@ -5,8 +5,8 @@ var sfx_players = []
 var music_player: AudioStreamPlayer
 var music_should_loop := false
 var half_volume_music_paths = {
-	"res://assets/sounds/bgmusic.wav": true,
-	"res://assets/sounds/miserymanager.wav": true,
+	"res://assets/sounds/bgmusic.ogg": true,
+	"res://assets/sounds/miserymanager.ogg": true,
 }
 
 var click_sound = preload("res://assets/sounds/click.ogg")

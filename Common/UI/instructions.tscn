@@ -151,6 +151,7 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_3oir0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_v8bcc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s7gfc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3oir0")
 text = "SUBMIT"
 
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

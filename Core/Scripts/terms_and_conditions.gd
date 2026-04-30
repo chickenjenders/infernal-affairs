@@ -44,7 +44,7 @@ func _ready() -> void:
 		read_doc.visible = true
 		read_doc.z_index = 300
 		var interrupt_sound = AudioStreamPlayer.new()
-		interrupt_sound.stream = preload("res://assets/sounds/interrupt.wav")
+		interrupt_sound.stream = preload("res://assets/sounds/interrupt.ogg")
 		add_child(interrupt_sound)
 		interrupt_sound.play()
 		
@@ -52,7 +52,7 @@ func _ready() -> void:
 		if read_doc_btn:
 			read_doc_btn.pressed.connect(func():
 				read_doc.visible = false
-				AudioManager.play_music(preload("res://assets/sounds/boring.wav"))
+				AudioManager.play_music(preload("res://assets/sounds/boring.ogg"))
 			)
 	
 	checkbox.toggled.connect(_on_checkbox_clicked)
@@ -139,7 +139,7 @@ func _on_checkbox_clicked(_toggled: bool) -> void:
 func _spawn_popup(is_first: bool = false) -> void:
 	if not is_instance_valid(self ): return
 	
-	AudioManager.play_sfx(preload("res://assets/sounds/popup.wav"))
+	AudioManager.play_sfx(preload("res://assets/sounds/popup.ogg"))
 	
 	var inst: Control
 	if is_first:
@@ -248,7 +248,7 @@ func _transition_to_evasion() -> void:
 	evasion_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	evasion_speed = 1200.0
 
-	AudioManager.play_music(preload("res://assets/sounds/popchase.wav"))
+	AudioManager.play_music(preload("res://assets/sounds/popchase.ogg"))
 
 	# Ensure the knife's parent is visible
 	var area2d = get_node_or_null("Area2D")

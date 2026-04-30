@@ -180,6 +180,7 @@ theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_wt00f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rcuyd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wt00f")
 text = "Next >"
 
 [node name="Video" type="Control" parent="."]
@@ -218,6 +219,7 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_pjona")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yp8dc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_53fd2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pjona")
 text = "Skip"
 
 [node name="Quiz" type="Control" parent="."]
@@ -291,6 +293,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_CorporateButton")
 theme_override_styles/hover = SubResource("StyleBoxFlat_CorporateButtonHover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_CorporateButton")
 text = "Start Quiz"
 
 [node name="Questions" type="Control" parent="Quiz"]
@@ -419,6 +422,7 @@ theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_CorporateButton")
 theme_override_styles/hover = SubResource("StyleBoxFlat_CorporateButtonHover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_CorporateButton")
 text = "Return to Desktop"
 
 [node name="FeedbackCard" type="Panel" parent="Quiz"]
@@ -467,6 +471,7 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_CorporateButton")
 theme_override_styles/hover = SubResource("StyleBoxFlat_CorporateButtonHover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_CorporateButton")
 text = "Next"
 
 [node name="UrgentPopup" type="ColorRect" parent="."]
@@ -524,4 +529,5 @@ theme_override_fonts/font = ExtResource("2_rcuyd")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ld4qi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mlesh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ld4qi")
 text = "Continue to Training"

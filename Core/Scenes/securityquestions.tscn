@@ -150,6 +150,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_2dyug")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kew5y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mwnbr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2dyug")
 text = "Submit"
 
 [node name="SecurityLabel" type="Panel" parent="."]
@@ -199,6 +200,7 @@ theme_override_fonts/font = ExtResource("3_c8ywn")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ssjav")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w3p4h")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ssjav")
 text = "OK"
 
 [node name="popup" parent="." instance=ExtResource("5_jltq0")]

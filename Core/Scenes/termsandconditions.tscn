@@ -156,6 +156,7 @@ theme_override_fonts/font = ExtResource("7_f0h5x")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_sud8e")
 theme_override_styles/hover = SubResource("StyleBoxFlat_63xbq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sud8e")
 text = "CONTINUE"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -200,6 +201,7 @@ theme_override_fonts/font = ExtResource("7_f0h5x")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_sud8e")
 theme_override_styles/hover = SubResource("StyleBoxFlat_63xbq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sud8e")
 text = "CLOSE"
 
 [connection signal="pressed" from="TCDoneLabel/Button" to="." method="_on_button_pressed"]
