@@ -21,10 +21,11 @@ var interrupt_sound = preload("res://assets/sounds/interrupt.ogg")
 func _ready() -> void:
 	AudioManager.stop_music()
 	AudioManager.play_sfx(interrupt_sound)
-	
+
 	popup.visible = false
-	if popup.has_signal("continue_pressed") and not popup.continue_pressed.is_connected(_on_popup_continue_pressed):
-		popup.continue_pressed.connect(_on_popup_continue_pressed)
+	var _continue_cb = Callable(self , "_on_popup_continue_pressed")
+	if popup.has_signal("continue_pressed") and not popup.is_connected("continue_pressed", _continue_cb):
+		popup.connect("continue_pressed", _continue_cb)
 	security_label_panel.visible = true
 	start_button.pressed.connect(_on_start_pressed)
 
@@ -54,6 +55,8 @@ func _on_submit_pressed(_text: String = "") -> void:
 		invalid_password_label.text = error_messages[current_requirement_index]
 	else:
 		invalid_password_label.visible = false
+		# show the final popup with an interrupt SFX
+		AudioManager.play_sfx(interrupt_sound)
 		popup.visible = true
 
 func _on_popup_continue_pressed() -> void:
