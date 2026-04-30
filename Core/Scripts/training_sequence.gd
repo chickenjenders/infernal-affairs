@@ -182,21 +182,24 @@ func play_phishing_video() -> void:
 		f.queue_free()
 	slide_fishes.clear()
 	
-	var video_path = "res://assets/phishing/phishingvid.webm"
-	var video_stream = load(video_path)
-	if video_stream:
-		# Ensure video player is visible and playable
+	var video_path := "res://assets/phishing/phishingvid.ogv"
+	var video_exists := FileAccess.file_exists(video_path)
+	
+	if video_exists:
+		# Create VideoStreamTheora at runtime and assign the file
+		var video_stream = VideoStreamTheora.new()
+		video_stream.file = video_path
+		
 		video_player.visible = true
 		video_player.stream = video_stream
 		video_player.play()
 		AudioManager.stop_music()
 		audio_player.play()
-		# Hide the slide elements
 		slide_image.visible = false
-		# Show the skip button during video playback
 		skip_button.visible = true
+		print("play_phishing_video: loaded and playing ", video_path)
 	else:
-		push_error("Could not load video: " + video_path)
+		push_error("Could not find video file: " + video_path)
 
 func _on_video_finished() -> void:
 	skip_button.visible = false
