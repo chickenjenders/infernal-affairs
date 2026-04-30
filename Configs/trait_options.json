@@ -66,7 +66,7 @@
                 "Aggressively friendly",
                 "Hates to be alone"
             ],
-            "portrait": "res://assets/portraits/sheila.png"
+            "portrait": "res://assets/portraits/sheila.PNG"
         },
         {
             "name": "Ray Dacosta",
@@ -81,7 +81,7 @@
                 "Bureaucratic",
                 "Tone-policing"
             ],
-            "portrait": "res://assets/portraits/raymond.png"
+            "portrait": "res://assets/portraits/raymond.PNG"
         },
         {
             "name": "Eric Miller",
@@ -96,7 +96,7 @@
                 "Literal-minded",
                 "Optimization-obsessed"
             ],
-            "portrait": "res://assets/portraits/eric.png"
+            "portrait": "res://assets/portraits/eric.PNG"
         },
         {
             "name": "Laura Chen",
@@ -111,7 +111,7 @@
                 "High-energy",
                 "Fear of obscurity"
             ],
-            "portrait": "res://assets/portraits/laura.png"
+            "portrait": "res://assets/portraits/laura.PNG"
         },
         {
             "name": "James Wilson",
@@ -126,7 +126,7 @@
                 "Micromanager",
                 "Secret-keeper"
             ],
-            "portrait": "res://assets/portraits/james.png"
+            "portrait": "res://assets/portraits/james.PNG"
         },
         {
             "name": "Jordan Barker",
@@ -156,7 +156,7 @@
                 "Commission-driven",
                 "Compulsive liar"
             ],
-            "portrait": "res://assets/portraits/patricia.png"
+            "portrait": "res://assets/portraits/patricia.PNG"
         },
         {
             "name": "Regina Gomez",
