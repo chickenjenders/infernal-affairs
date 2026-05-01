@@ -21,8 +21,8 @@ func _ready():
 		mouse_shape_exited.connect(_on_mouse_shape_exited)
 	
 	# Connect the return button signal
-	if return_button:
-		return_button.pressed.connect(_on_return_to_desk_pressed)
+	# Use call_deferred to ensure button is fully ready in the scene tree
+	call_deferred("_connect_return_button")
 
 var current_label: Label = null
 var label_scene = preload("res://common/ui/interaction_label.tscn")
@@ -33,6 +33,14 @@ const ITEM_TEXTS = {
 	"fridge": "Where does anyone get food from anyway?",
 	"files": "Who is reading these?"
 }
+
+func _connect_return_button():
+	if return_button:
+		return_button.pressed.connect(_on_return_to_desk_pressed)
+		print("[Francine] Return to desk button connected successfully")
+	else:
+		push_warning("[Francine] Failed to connect return button - button reference is null")
+
 
 func _on_return_to_desk_pressed():
 	# Ensure dialogue is cleaned up
