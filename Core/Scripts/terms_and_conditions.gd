@@ -188,8 +188,6 @@ func _spawn_popup(is_first: bool = false) -> void:
 	active_popups.append(inst)
 
 	# Position: stagger from center, offset gets larger as more spawn
-	var viewport = get_viewport_rect().size
-	var center = viewport / 2.0
 	# The popup is 1152x648 (full screen) in popup.tscn,
 	# but its content is a 400x200 ColorRect at the center.
 	# To stagger the Content, we apply the offset to the whole overlay.
@@ -271,7 +269,7 @@ func _process(delta: float) -> void:
 # INPUT - drag and hold
 # ─────────────────────────────────────────
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	# Keep the old explicit click-to-stab logic as backup, or relying on _process for constant tracking
 	pass
 
@@ -399,9 +397,12 @@ func _start_shake() -> void:
 # ─────────────────────────────────────────
 
 func _show_completion_card() -> void:
+	current_phase = Phase.COMPLETE
+
 	# Disable the knife
 	var knife = $Area2D/Knife
 	if is_instance_valid(knife):
+		knife.is_dragging = false
 		knife.set_active(false)
 	
 	# Disable collisions on the knife area to prevent it from intercepting input
