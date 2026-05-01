@@ -7,6 +7,8 @@ var music_should_loop := false
 var half_volume_music_paths = {
 	"res://assets/sounds/bgmusic.ogg": true,
 	"res://assets/sounds/miserymanager.ogg": true,
+	"res://assets/sounds/boring.ogg": true,
+	"res://assets/sounds/popchase.ogg": true,
 }
 
 var click_sound = preload("res://assets/sounds/click.ogg")
@@ -55,7 +57,7 @@ func play_music(stream: AudioStream, _crossfade: float = 0.0):
 		return
 	music_should_loop = true
 	music_player.stream = stream
-	music_player.volume_db = -6.0 if stream and half_volume_music_paths.has(stream.resource_path) else 0.0
+	music_player.volume_db = -8.0 if stream and half_volume_music_paths.has(stream.resource_path) else 0.0
 	music_player.play()
 
 func stop_music():
